@@ -11,8 +11,8 @@ export const siteConfig = {
     },
   ],
   links: {
-    revnet: "https://revnetsystems.com",
+    twitter: "https://twitter.com/r_mourey_jr",
     github: "https://github.com/rmourey26/onyx",
-    aws deployer: "https://github.com/rmourey26/appsync-gpt",
+  
   },
 }
