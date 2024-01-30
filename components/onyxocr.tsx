@@ -1,3 +1,4 @@
+import { createWorker } from 'tesseract.js';
 import React from 'react'
 
 async function runOCR(imagePath: string): Promise<string> 
