@@ -3,56 +3,45 @@
 import { Form, Formik } from "formik";
 import React from "react";
 import { useSearchParams, useRouter } from "next/navigation";
-import { FormStepComponentType } from '../formstepsprops'
-import { FormValues } from "@/lib/form";
+import { FormStepComponentType } from '@/components/forms/formstepprops'
+import { FormValues } from '@/lib/form'
+import { createBrowserClient } from '@supabase/ssr'
 
 type Props = {
   steps: FormStepComponentType[];
 };
 const SignUpForm = ({ steps }: Props) => {
+  const supabase = createBrowserClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+  )
+
+  
   const handleSubmit = async (values: FormValues, {setSubmitting}) => {
-    setIsSubmitting(true)
-    class MatchRule {
-      custom_rules_answer: any
-      custom_rules_name: any
-      custom_rules_select: any
-      max_answers: any
-      min_answers: any
-      constructor(custom_rules_answer, custom_rules_name, max_answers, min_answers, custom_rules_select) {
-        this.custom_rules_answer = custom_rules_answer;
-        this.custom_rules_name = custom_rules_name;
-        this.custom_rules_select = custom_rules_select;
-        this.max_answers = max_answers;
-        this.min_answers = min_answers;
-      }
-      toString() {
-        return `${this.custom_rules_name} ${this.custom_rules_select} ${this.custom_rules_answer} ${this.max_answers} ${this.min_answers}`;
-      }
-    }
+    setSubmitting(true)
+    
+    
      
-     let Temp = Array.from(values.rows.values());
+     let Temp = Array.from(values.rows.values()) as Object [];
      function extractValue(arr: Object[], prop: string) {
         let extractedValue = arr.map(item => item[prop]);
            return extractedValue as unknown as string;
       }
-      let result: string = extractValue(Temp, 'custom_rules_answer');
-      let nameresult:string = extractValue(Temp, 'custom_rules_name');
-      let tempstring:string = extractValue(Temp, 'custom_rules_name');
-      let cxstring: string = extractValue(Temp, 'custom_rules_select');
+      let result: string = extractValue(Temp, 'column_name');
+      let nameresult:string = extractValue(Temp, 'column_name');
+      let tempstring:string = extractValue(Temp, 'column_name');
+      let cxstring: string = extractValue(Temp, 'column_name');
       result = result.toString();
       tempstring = tempstring.toString()
        
       
     try {
-      const { data, error } = await supabase.from('questions')
+      const { data, error } = await supabase.from('gpt_one')
      
       .insert({
         
           custom_rules_name: tempstring,
           custom_rules_answer: result,
-          min_answers: values.min_answers,
-          max_answers: values.max_answers,
-          custom_rules_select: values.custom_rules_select,
           
           
 
@@ -74,7 +63,7 @@ const SignUpForm = ({ steps }: Props) => {
       console.error('Error:', error);
     } finally {
      
-      setIsSubmitting(false);
+      setSubmitting(false);
       
     }
   };

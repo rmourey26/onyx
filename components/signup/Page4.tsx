@@ -1,11 +1,11 @@
 "use client";
 import {  Menu } from "@headlessui/react";
-import { FormStepComponentType } from '../formstepsprops'
-import FormikSelect from '../formikselect'
-import FormikCustomDropdown from "../formikcustomdropdown";
-import { ErrorMessage, Field, FieldArray } from "formik";
-import FormikTextField from "../formiktextfield";
-;
+import { FormStepComponentType } from '@/components/forms/formstepprops'
+
+import FormikCustomDropdown from '@/components/forms/formikcustomdropdown'
+import { ErrorMessage, Field, FieldArray } from "formik"
+import FormikTextField from '@/components/forms/formiktextfield';
+import OnboardingProgess from '@/components/onboarding-progress'
 import React, { useState } from "react";
 
 const Page4: FormStepComponentType = (props) => {
@@ -19,13 +19,13 @@ const Page4: FormStepComponentType = (props) => {
   const isCustom = rulesFlow !== "automatic";
   
 
-  const handleChangeType = (type, resetForm) => {
+  const handleChangeType = (type: string, resetForm: any) => {
     if (type === "custom") {
       setRulesFlow("custom");
     
     } else {
       setRulesFlow("automatic");
-      return resetForm();
+      
     }
   };
   
@@ -33,14 +33,14 @@ const Page4: FormStepComponentType = (props) => {
   return (
 <>
 
-<OnboardingHeader />
+
 
   
 
-      <OnboardingProgress step={4} />
+      <OnboardingProgess step={4} />
       <div className="px-4 py-8">
             <div className="max-w-md mx-auto">
-      <h1 className="text-3xl text-slate-800 dark:text-slate-100 font-bold mb-6">Create a Custom Match ✨</h1>
+      <h1 className="text-3xl text-slate-800 dark:text-slate-100 font-bold mb-6">Onyx OCR ✨</h1>
      
       <FormikTextField className="form-input w-full" name="custom_rules_name" label="What department do you work in?" />
       <FormikTextField className="form-input w-full" name="custom_rules_answer" label="Answer separated by commmas (John, " type="text" />
@@ -57,8 +57,8 @@ const Page4: FormStepComponentType = (props) => {
                                 <circle className="text-indigo-100" cx="20" cy="20" r="20" />
                                 <path className="text-indigo-500" d="m26.371 23.749-3.742-1.5a1 1 0 0 1-.629-.926v-.878A3.982 3.982 0 0 0 24 17v-1.828A4.087 4.087 0 0 0 20 11a4.087 4.087 0 0 0-4 4.172V17a3.982 3.982 0 0 0 2 3.445v.878a1 1 0 0 1-.629.928l-3.742 1.5a1 1 0 0 0-.629.926V27a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.323a1 1 0 0 0-.629-.928Z" />
                               </svg>
-                              <div className="font-medium text-slate-800 dark:text-slate-100 mb-1">Automatically Curated</div>
-                              <div className="text-sm">Our unique algorithm will match users for best fit</div>
+                              <div className="font-medium text-slate-800 dark:text-slate-100 mb-1">Auto OCR</div>
+                              <div className="text-sm">Onxy will handle everything</div>
                             </div>
                             <div className="absolute inset-0 border-2 border-transparent peer-checked:border-indigo-400 dark:peer-checked:border-indigo-500 rounded pointer-events-none" aria-hidden="true"></div>
                           </label>
@@ -77,22 +77,24 @@ const Page4: FormStepComponentType = (props) => {
                                 <path className="text-indigo-300" d="m30.377 22.749-3.709-1.5a1 1 0 0 1-.623-.926v-.878A3.989 3.989 0 0 0 28.027 16v-1.828c.047-2.257-1.728-4.124-3.964-4.172-2.236.048-4.011 1.915-3.964 4.172V16a3.989 3.989 0 0 0 1.982 3.445v.878a1 1 0 0 1-.623.928c-.906.266-1.626.557-2.159.872-.533.315-1.3 1.272-2.299 2.872 1.131.453 6.075-.546 6.072.682V28a2.99 2.99 0 0 1-.182 1h7.119A.996.996 0 0 0 31 28v-4.323a1 1 0 0 0-.623-.928Z" />
                                 <path className="text-indigo-500" d="m22.371 24.749-3.742-1.5a1 1 0 0 1-.629-.926v-.878A3.982 3.982 0 0 0 20 18v-1.828A4.087 4.087 0 0 0 16 12a4.087 4.087 0 0 0-4 4.172V18a3.982 3.982 0 0 0 2 3.445v.878a1 1 0 0 1-.629.928l-3.742 1.5a1 1 0 0 0-.629.926V28a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.323a1 1 0 0 0-.629-.928Z" />
                               </svg>
-                              <div className="font-medium text-slate-800 dark:text-slate-100 mb-1">Set Custom Rules</div>
-                              <div className="text-sm">Match users based on their answers to questions</div>
+                              <div className="font-medium text-slate-800 dark:text-slate-100 mb-1">Set Custom Params</div>
+                              <div className="text-sm">Whats your painpoint?</div>
                             </div>
                             <div className="absolute inset-0 border-2 border-transparent peer-checked:border-indigo-400 dark:peer-checked:border-indigo-500 rounded pointer-events-none" aria-hidden="true"></div>
                           </label>
                         </div>
                         <div>
-                          <FieldArray
-                            name="rows"
+                          <FieldArray name="rows">
+                            
+                            {({ push, remove, form }) => {
+                              const { values } = form;
                             
                             
                               return (
                                 <div>
                                   {isCustom &&
                                     values.rows.length > 0 &&
-                                    values.rows.map((row, idx) => (
+                                    values.rows.map((row:any, idx: any) => (
                                       <div className="row" key={idx}>
                                         <label htmlFor={`rows.[${idx}].custom_rules_name`} className="block text-xs mb-2">
                                           Question #{idx + 1}{" "}
@@ -207,11 +209,7 @@ const Page4: FormStepComponentType = (props) => {
                 ]} /> 
                 </div>
                 
- {/*
- <DropdownFs options={[]} value={undefined} onChange={function (value: unknown): void {
-                                              throw new Error('Function not implemented.')
-                                            } }/>
-                                          */}
+ 
  
  
  
@@ -224,21 +222,7 @@ const Page4: FormStepComponentType = (props) => {
       
     
 
-{/*
 
-      <Listbox as="div" className="relative inline-flex w-full" name="min_answer" defaultValue={minanswer[0]}>
-        <Listbox.Button className={`flex items-center justify-between w-full py-2 px-3 cursor-pointer text-indigo-500'}`} onClick={()=> setCustomClick(true)}>{({ value }) => value.value}</Listbox.Button>
-        <Listbox.Options>
-          {minanswer.map((minanswer) => (
-            <Listbox.Option key={minanswer.id} value={minanswer}>
-              {minanswer.value}
-            </Listbox.Option>
-          ))}
-        </Listbox.Options>
-      </Listbox>
-      <button>Submit</button>
-    
-          */}
                                           
                                           </div>
                                         </div>
@@ -254,14 +238,14 @@ const Page4: FormStepComponentType = (props) => {
                                     <span className="text-rose-500">*</span>
                                   </label>
 
-{/* #TODO add function updateArrayColumn(user.id, values.customRules) to onclick below when FieldArray value abstraction layer is added */}
+
                                   <a
                                     className={`btn ml-auto cursor-pointer ${isCustom
                                       ? "bg-indigo-500 hover:bg-indigo-600 text-white"
                                       : "bg-gray-200 text-gray-400"
                                       }`}
                                     onClick={
-                                      isCustom ? () => push({custom_rules_name: '', custom_rules_answer:'', min_answers: 0}) : null
+                                      isCustom ? () => push({custom_rules_name: '', custom_rules_answer:'', min_answers: 0}) : undefined
                                       
                                     }
                                     
@@ -283,24 +267,12 @@ const Page4: FormStepComponentType = (props) => {
                                     Add Rule
                                   </a>
 
-                                {/*
-                                  <div className="flex items-center justify-between mb-1">
-        <button
-          type="submit"
-          className="mt-2 btn bg-indigo-500 hover:bg-indigo-600 text-white ml-auto"
-          onClick={clickHandler}
-          disabled={isSubmitting}
-        >
-          {loading ? 'Loading ...' : 'Submit'}
-        </button>
-                                      </div>
-                                      
-                                      */}
-                                </div>
                                 
-                              );
+                                </div>
+                              )
                             }}
-                          />
+                                    </FieldArray>
+                            
                         </div>
 
                 
@@ -320,16 +292,7 @@ const Page4: FormStepComponentType = (props) => {
       </div>
       </div>
      
-      </div>
-      
-    </div>
-    </div>
-    </div>
-    </div>
-    
-    <OnboardingImage />
-    </div>
-    </div>
+      </>
     
   );
 };

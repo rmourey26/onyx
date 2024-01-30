@@ -2,8 +2,8 @@
 "use client";
 import { Button } from "@mui/material";
 import React from "react";
-import { FormStepComponentType } from "@/components/signup/FormStepProps";
-import FormikTextField from "../formik/FormikTextField";
+import { FormStepComponentType } from '@/components/forms/formstepprops';
+import FormikTextField from '@/components/forms/formiktextfield'
 
 const Page1: FormStepComponentType = (props) => {
   return (
