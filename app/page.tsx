@@ -22,7 +22,7 @@ export default function IndexPage() {
           rel="noreferrer"
           className={buttonVariants()}
         >
-          Documentation
+          Twitter
         </Link>
         <Link
           target="_blank"
