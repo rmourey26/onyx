@@ -1,11 +1,12 @@
 // components/signup/SignUpForm.tsx
 "use client";
-import { Form, Formik } from "formik";
+import { Form, Formik, FormikHelpers } from "formik";
 import React from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { FormStepComponentType } from '@/components/forms/formstepprops'
 import { FormValues } from '@/lib/form'
 import { createBrowserClient } from '@supabase/ssr'
+
 
 type Props = {
   steps: FormStepComponentType[];
@@ -17,7 +18,7 @@ const SignUpForm = ({ steps }: Props) => {
   )
 
   
-  const handleSubmit = async (values: FormValues, {setSubmitting}) => {
+  const handleSubmit = async (values: FormValues, {setSubmitting}: FormikHelpers<FormValues>) => {
     setSubmitting(true)
     
     
