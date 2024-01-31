@@ -20,6 +20,7 @@
     "@supabase/ssr": "^0.0.10",
     "@supabase/supabase-js": "^2.39.3",
     "class-variance-authority": "^0.7.0",
+    "classnames": "^2.5.1",
     "clsx": "^2.1.0",
     "formik": "^2.4.5",
     "lucide-react": "0.105.0-alpha.4",
