@@ -23,7 +23,7 @@ const SignUpForm = ({ steps }: Props) => {
     
     
      
-     let Temp = Array.from(values.rows.values()) as Object [];
+     let Temp = Array.from(values.rows.values());
      function extractValue(arr: Object[], prop: string) {
         let extractedValue = arr.map(item => item[prop]);
            return extractedValue as unknown as string;
