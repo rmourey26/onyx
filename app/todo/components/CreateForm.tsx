@@ -37,7 +37,7 @@ export default function CreateForm() {
 
 	function onSubmit(data: z.infer<typeof FormSchema>) {
 		toast({
-			title: "You are successfully create todo.",
+			title: "You have successfully create todo.",
 			description: (
 				<pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
 					<code className="text-white">{data.title} is created</code>
