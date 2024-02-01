@@ -1,9 +1,9 @@
 export type SiteConfig = typeof siteConfig
 
 export const siteConfig = {
-  name: "Onxy",
+  name: "Onyx",
   description:
-    "Occams Razor",
+    "Embedded systems",
   mainNav: [
     {
       title: "Home",
