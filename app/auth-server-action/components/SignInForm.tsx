@@ -2,7 +2,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
-
+import { login, signin } from "actions/actions"
 import {
 	Form,
 	FormControl,
@@ -32,7 +32,7 @@ export default function SignInForm() {
 		},
 	});
 
-	function onSubmit(data: z.infer<typeof FormSchema>) {
+	function onSub(data: z.infer<typeof FormSchema>) {
 		toast({
 			title: "You submitted the following values:",
 			description: (
@@ -48,7 +48,7 @@ export default function SignInForm() {
 	return (
 		<Form {...form}>
 			<form
-				onSubmit={form.handleSubmit(onSubmit)}
+				onSubmit={onSub}
 				className="w-full space-y-6"
 			>
 				<FormField
@@ -88,7 +88,7 @@ export default function SignInForm() {
 						</FormItem>
 					)}
 				/>
-				<Button type="submit" className="w-full flex gap-2">
+				<Button formAction={login} type="submit" className="w-full flex gap-2">
 					SignIn
 					<AiOutlineLoading3Quarters className={cn("animate-spin")} />
 				</Button>
