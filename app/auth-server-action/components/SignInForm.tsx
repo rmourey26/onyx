@@ -2,7 +2,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
-import { login, signin } from "./actions/actions"
+import { login, signup } from '@/app/auth-server-action/actions/actions'
 import {
 	Form,
 	FormControl,
@@ -48,7 +48,7 @@ export default function SignInForm() {
 	return (
 		<Form {...form}>
 			<form
-				onSubmit={onSub}
+				onSubmit={form.handleSubmit(onSub)}
 				className="w-full space-y-6"
 			>
 				<FormField

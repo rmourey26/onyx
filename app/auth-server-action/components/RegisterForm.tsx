@@ -2,6 +2,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import { login, signup } from '@/app/auth-server-action/actions/actions'
 
 import {
 	Form,
@@ -117,7 +118,7 @@ export default function RegisterForm() {
 						</FormItem>
 					)}
 				/>
-				<Button type="submit" className="w-full flex gap-2">
+				<Button formAction={signup} type="submit" className="w-full flex gap-2">
 					Register
 					<AiOutlineLoading3Quarters className={cn("animate-spin")} />
 				</Button>
