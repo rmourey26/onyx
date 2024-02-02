@@ -1,6 +1,6 @@
 import React from "react";
-import AuthForm from "./auth-server-actions/components/AuthForm";
-import { readUserSession } from "@/utils/actions/supaone";
+import AuthForm from "@/app/auth-server-action/components/AuthForm";
+import { readUserSession } from "@/utils/actions";
 import { redirect } from "next/navigation";
 
 export default async function page() {
