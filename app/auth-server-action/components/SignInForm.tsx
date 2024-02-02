@@ -32,8 +32,8 @@ export default function SignInForm() {
 		},
 	});
 
-	const onSignInSubmit = async(data: z.infer<typeof FormSchema>) {
-		  await login(data) 
+	const onSignInSubmit = async(data: z.infer<typeof FormSchema>) => {
+		  await login
 
   toast({
 			title: "You submitted the following values:",
@@ -50,7 +50,7 @@ export default function SignInForm() {
 	return (
 		<Form {...form}>
 			<form className="w-full space-y-6"
-     onSubmit={form.handleSubmit((data) => onSignInSubmit(data))}>
+     onSubmit={form.handleSubmit((data) => onSignInSubmit(data))}
 			>
 				<FormField
 					control={form.control}
