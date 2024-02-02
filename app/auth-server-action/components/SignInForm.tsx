@@ -15,7 +15,7 @@ import { Input } from "@/components/ui/input";
 import { toast } from "@/components/ui/use-toast";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-
+import { ToastAction } from "@/components/ui/toast"
 const FormSchema = z.object({
 	email: z.string().email(),
 	password: z.string().min(1, {
@@ -88,7 +88,13 @@ export default function SignInForm() {
 						</FormItem>
 					)}
 				/>
-				<Button formAction={login} type="submit" className="w-full flex gap-2">
+				<Button onClick={() => {
+        toast({
+          title: "onclick handler.",
+          description: "Toast is logging in.",
+          action: <ToastAction formAction={login}">Try again</ToastAction>,
+        })
+      }} type="submit" className="w-full flex gap-2">
 					SignIn
 					<AiOutlineLoading3Quarters className={cn("animate-spin")} />
 				</Button>
