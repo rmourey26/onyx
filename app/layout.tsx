@@ -3,7 +3,7 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import { ThemeProvider } from "@/components/theme-provider"
 import { ReactQueryClientProvider } from '@/components/react-query-client-provider'
-
+import { Toaster } from "@/components/toaster"
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
@@ -26,7 +26,7 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            {children}
+            {children}<Toaster/>
           </ThemeProvider>
         
 
