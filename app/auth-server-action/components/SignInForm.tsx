@@ -45,11 +45,20 @@ export default function SignInForm() {
 		});
 	}
 
+const NO_OPERATION = () => {};
+
+<form
+  {...(formState.isValid ? { action: serverAction } : { onSubmit: handleSubmit(NO_OPERATION) })}
+>
+
+
+
 	return (
 		<Form {...form}>
 			<form
-				onSubmit={form.handleSubmit(onSub)}
-				className="w-full space-y-6"
+     {...(formState.isValid ? { action: {login} } : { onSubmit: handleSubmit(NO_OPERATION) })}
+			   className="w-full space-y-6"
+     
 			>
 				<FormField
 					control={form.control}
@@ -88,7 +97,7 @@ export default function SignInForm() {
 						</FormItem>
 					)}
 				/>
-				<Button formAction={login}type="submit" className="w-full flex gap-2">
+				<Button formAction={login} type="submit" className="w-full flex gap-2">
 					SignIn 
 					<AiOutlineLoading3Quarters className={cn("animate-spin")} />
 				</Button>
