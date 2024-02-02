@@ -1,4 +1,4 @@
-'use client'
+
 import React from "react";
 import CreateForm from "./components/CreateForm";
 import { cn } from "@/lib/utils";
@@ -17,9 +17,7 @@ export default function Todo() {
 	return (
 		<div className="flex justify-center items-center h-screen">
 			<div className="w-96 space-y-5">
-   <div>
-   <TodoList />
-</div>
+
 				<CreateForm />
 
 				{todos?.map((todo, index) => {
