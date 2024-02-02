@@ -88,14 +88,8 @@ export default function SignInForm() {
 						</FormItem>
 					)}
 				/>
-				<Button onClick={() => {
-        toast({
-          title: "onclick handler.",
-          description: "Toast is logging in.",
-          action: <ToastAction formAction={login}">Try again</ToastAction>,
-        })
-      }} type="submit" className="w-full flex gap-2">
-					SignIn
+				<Button formAction={login}type="submit" className="w-full flex gap-2">
+					SignIn 
 					<AiOutlineLoading3Quarters className={cn("animate-spin")} />
 				</Button>
 			</form>
