@@ -10,5 +10,5 @@ export default async function ToDos() {
     data: { session },
   } = await supabase.auth.getSession()
 
-  return <Todo session={session} />
+  return <Todo />
 }
