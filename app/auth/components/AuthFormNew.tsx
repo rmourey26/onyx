@@ -27,7 +27,7 @@ const FormSchema = z.object({
 	password: z.string().min(1, { message: "Password can not be empty" }),
 });
 
-export default function AuthForm() {
+export default function AuthFormNew() {
 	const [isPending, startTransition] = useTransition();
 
 	const form = useForm<z.infer<typeof FormSchema>>({
