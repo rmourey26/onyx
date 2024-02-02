@@ -2,7 +2,7 @@ import React from "react";
 import CreateForm from "./components/CreateForm";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { ToDoList } from "./components/ToDoList";
+import TodoList from "./components/todolist";
 export default function Page() {
 	const todos = [
 		{
@@ -17,7 +17,7 @@ export default function Page() {
 		<div className="flex justify-center items-center h-screen">
 			<div className="w-96 space-y-5">
    <div>
-   <ToDoList />
+   <TodoList />
 </div>
 				<CreateForm />
 
