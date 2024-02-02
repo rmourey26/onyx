@@ -32,8 +32,10 @@ export default function SignInForm() {
 		},
 	});
 
-	function onSub(data: z.infer<typeof FormSchema>) {
-		toast({
+	const onSignInSubmit = async(data: z.infer<typeof FormSchema>) {
+		  await login(data) 
+
+  toast({
 			title: "You submitted the following values:",
 			description: (
 				<pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
@@ -45,14 +47,10 @@ export default function SignInForm() {
 		});
 	}
 
- const NO_OPERATION = () => {};
-
 	return (
 		<Form {...form}>
-			<form
-     {...(formState.isValid ? { action: {login} } : { onSubmit: handleSubmit(NO_OPERATION) })}
-			   className="w-full space-y-6"
-     
+			<form className="w-full space-y-6"
+     onSubmit={form.handleSubmit((data) => onSignInSubmit(data))}>
 			>
 				<FormField
 					control={form.control}
