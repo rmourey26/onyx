@@ -1,43 +1,14 @@
-import React from "react";
-import CreateForm from "./components/CreateForm";
-import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
-import TodoList from "./components/todolist";
-export default function Page() {
-	const todos = [
-		{
-			title: "Subscribe",
-			created_by: "091832901830",
-			id: "101981908",
-			completed: false,
-		},
-	];
+import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
+import { cookies } from 'next/headers'
+import { Database } from '@/lib/supabase'
+import Todo from './todo'
 
-	return (
-		<div className="flex justify-center items-center h-screen">
-			<div className="w-96 space-y-5">
-   <div>
-   <TodoList />
-</div>
-				<CreateForm />
+export default async function ToDos() {
+  const supabase = createServerComponentClient<Database>({ cookies })
 
-				{todos?.map((todo, index) => {
-					return (
-						<div key={index} className="flex items-center gap-6">
-							<h1
-								className={cn({
-									"line-through": todo.completed,
-								})}
-							>
-								{todo.title}
-							</h1>
+  const {
+    data: { session },
+  } = await supabase.auth.getSession()
 
-							<Button>delete</Button>
-							<Button>Update</Button>
-						</div>
-					);
-				})}
-			</div>
-		</div>
-	);
+  return <Todo session={session} />
 }
