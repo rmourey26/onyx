@@ -45,13 +45,7 @@ export default function SignInForm() {
 		});
 	}
 
-const NO_OPERATION = () => {};
-
-<form
-  {...(formState.isValid ? { action: serverAction } : { onSubmit: handleSubmit(NO_OPERATION) })}
->
-
-
+ const NO_OPERATION = () => {};
 
 	return (
 		<Form {...form}>
