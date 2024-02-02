@@ -18,7 +18,7 @@ export default function Todo() {
 		<div className="flex justify-center items-center h-screen">
 			<div className="w-96 space-y-5">
    <div>
-   <TodoList session={undefined} />
+   <TodoList />
 </div>
 				<CreateForm />
 
