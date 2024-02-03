@@ -63,6 +63,27 @@ export interface Database {
         }
         Relationships: []
       }
+      members_table: {
+        Row: {
+          created_at: string
+          id: number
+          member_id: string
+          name: string | null
+        }
+        Insert: {
+          created_at?: string
+          id: number
+          member_id: string
+          name?: string | null
+        }
+        Update: {
+          created_at?: string
+          id?: number
+          member_id?: string
+          name?: string | null
+        }
+        Relationships: []
+      }
       nods_page: {
         Row: {
           checksum: string | null
@@ -139,6 +160,30 @@ export interface Database {
           }
         ]
       }
+      permission_table: {
+        Row: {
+          created_at: string
+          id: number
+          member_id: string
+          role: string
+          status: string
+        }
+        Insert: {
+          created_at?: string
+          id?: number
+          member_id: string
+          role: string
+          status: string
+        }
+        Update: {
+          created_at?: string
+          id?: number
+          member_id?: string
+          role?: string
+          status?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           avatar_url: string | null
@@ -179,27 +224,40 @@ export interface Database {
       }
       todos: {
         Row: {
+          created_at: string
+          created_by: string
           id: number
-          inserted_at: string
           is_complete: boolean | null
           task: string | null
+          title: string
           user_id: string
         }
         Insert: {
+          created_at: string
+          created_by: string
           id?: number
-          inserted_at?: string
           is_complete?: boolean | null
           task?: string | null
+          title?: string
           user_id: string
         }
         Update: {
+          created_at?: string
+          created_by?: string
           id?: number
-          inserted_at?: string
           is_complete?: boolean | null
           task?: string | null
+          title?: string
           user_id?: string
         }
         Relationships: [
+          {
+            foreignKeyName: "todos_created_by_fkey"
+            columns: ["created_by"]
+            isOneToOne: false
+            referencedRelation: "members_table"
+            referencedColumns: ["member_id"]
+          },
           {
             foreignKeyName: "todos_user_id_fkey"
             columns: ["user_id"]
