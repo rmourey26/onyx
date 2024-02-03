@@ -75,7 +75,7 @@ export default function AuthForm() {
 							<FormItem>
 								<FormLabel>Email</FormLabel>
 								<FormControl>
-									<Input placeholder="shadcn" {...field} />
+									<Input placeholder="email@example.com" {...field} />
 								</FormControl>
 
 								<FormMessage />
@@ -90,14 +90,14 @@ export default function AuthForm() {
 								<FormLabel>Password</FormLabel>
 								<FormControl>
 									<Input
-										placeholder="shadcn"
+										placeholder="password"
 										{...field}
 										type="password"
 									/>
 								</FormControl>
 								<FormDescription>
 									{
-										"contact your admin if you forgot your password"
+										"Contact your admin if you forgot your password."
 									}
 								</FormDescription>
 								<FormMessage />
