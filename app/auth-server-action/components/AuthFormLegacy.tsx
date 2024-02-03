@@ -5,7 +5,7 @@ import SignInForm from "./SignInForm";
 import RegisterForm from "./RegisterForm";
 import OAuthForm from "./OAuthForm";
 
-export function AuthForm() {
+export function AuthFormLegacy() {
 	return (
 		<div className="w-full space-y-5">
 			<Tabs defaultValue="signin" className="w-full">
