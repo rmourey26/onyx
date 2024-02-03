@@ -196,7 +196,7 @@ export interface Database {
         }
         Insert: {
           avatar_url?: string | null
-          email: string
+          email?: string
           full_name?: string | null
           id: string
           updated_at?: string | null
@@ -443,3 +443,4 @@ export type Enums<
   : PublicEnumNameOrOptions extends keyof Database["public"]["Enums"]
   ? Database["public"]["Enums"][PublicEnumNameOrOptions]
   : never
+
