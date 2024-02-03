@@ -1,4 +1,4 @@
-import { createClient } from "@/utils/supa-server-action";
+import { createClient } from "@/utils/supa-server-actions";
 import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
 
