@@ -23,17 +23,7 @@ const SignUpForm = ({ steps }: Props) => {
     
     
      
-     let Temp = Array.from(values.rows.values());
-     function extractValue(arr: Object[], prop: string) {
-        let extractedValue = arr.map(item => item[prop]);
-           return extractedValue as unknown as string;
-      }
-      let result: string = extractValue(Temp, 'column_name');
-      let nameresult:string = extractValue(Temp, 'column_name');
-      let tempstring:string = extractValue(Temp, 'column_name');
-      let cxstring: string = extractValue(Temp, 'column_name');
-      result = result.toString();
-      tempstring = tempstring.toString()
+     
        
       
     try {
@@ -41,8 +31,8 @@ const SignUpForm = ({ steps }: Props) => {
      
       .insert({
         
-          custom_rules_name: tempstring,
-          custom_rules_answer: result,
+          email: values.email,
+          company_name: values.company_name,
           
           
 
