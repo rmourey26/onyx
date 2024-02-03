@@ -8,7 +8,7 @@ import OnboardingProgress from '@/components/onboarding-progress'
 
 const Page1: FormStepComponentType = (props) => {
   return (
-    <div className=" md:flex">
+  
 
     {/* Content */}
     <div className="w-full md:w-1/2">
@@ -25,7 +25,6 @@ const Page1: FormStepComponentType = (props) => {
         Next
       </Button>
     </div>
-</div>
 </div>
 </div>
   );
