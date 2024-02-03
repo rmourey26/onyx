@@ -2,7 +2,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
-import { login, signup } from '@/app/auth-server-action/actions/actions'
+import { signUpWithEmailAndPassword } from '@/app/auth-server-action/actions'
 
 import {
 	Form,
@@ -18,6 +18,8 @@ import { Input } from "@/components/ui/input";
 import { toast } from "@/components/ui/use-toast";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { useTransition } from "react";
+import { AuthTokenResponse } from "@supabase/supabase-js";
 
 const RegisterSchema = z
 	.object({
@@ -34,6 +36,7 @@ const RegisterSchema = z
 		path: ["confirm"],
 	});
 export default function RegisterForm() {
+	const [isPending, startTransition] = useTransition();
 	const form = useForm<z.infer<typeof RegisterSchema>>({
 		resolver: zodResolver(RegisterSchema),
 		defaultValues: {
@@ -44,9 +47,15 @@ export default function RegisterForm() {
 	});
 
 	function onSubmit(data: z.infer<typeof RegisterSchema>) {
-		toast({
-			title: "You submitted the following values:",
-			description: (
+		startTransition(async () => {
+			const { error } = JSON.parse(
+				await signUpWithEmailAndPassword(data)
+			) as AuthTokenResponse;
+		
+		if (error)	{	
+			toast({
+				title: "You submitted the following values:",
+				description: (
 				<pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
 					<code className="text-white">
 						{JSON.stringify(data, null, 2)}
@@ -54,7 +63,13 @@ export default function RegisterForm() {
 				</pre>
 			),
 		});
+	} else {
+		toast({
+			title: "Successful Login 🎉",
+		});
 	}
+});
+}
 
 	return (
 		<Form {...form}>
@@ -118,7 +133,7 @@ export default function RegisterForm() {
 						</FormItem>
 					)}
 				/>
-				<Button formAction={signup} type="submit" className="w-full flex gap-2">
+				<Button type="submit" className="w-full flex gap-2">
 					Register
 					<AiOutlineLoading3Quarters className={cn("animate-spin")} />
 				</Button>
