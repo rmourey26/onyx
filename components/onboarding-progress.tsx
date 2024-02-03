@@ -11,13 +11,13 @@ export default function OnboardingProgress({ step = 1 }: { step?: number }) {
               <Link className={`flex items-center justify-center w-6 h-6 rounded-full text-xs font-semibold ${step >= 1 ? 'bg-slate-800 text-white' : 'bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-400'}`} href="/signup?=page1">1</Link>
             </li>
             <li>
-              <Link className={`flex items-center justify-center w-6 h-6 rounded-full text-xs font-semibold ${step >= 2 ? 'bg-slate-800 text-white' : 'bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-400'}`} href="/add-details">2</Link>
+              <Link className={`flex items-center justify-center w-6 h-6 rounded-full text-xs font-semibold ${step >= 2 ? 'bg-slate-800 text-white' : 'bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-400'}`} href="/signup?=page2">2</Link>
             </li>
             <li>
-              <Link className={`flex items-center justify-center w-6 h-6 rounded-full text-xs font-semibold ${step >= 3 ? 'bg-indigo-500 text-white' : 'bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-400'}`} href="/matching-rules">3</Link>
+              <Link className={`flex items-center justify-center w-6 h-6 rounded-full text-xs font-semibold ${step >= 3 ? 'bg-indigo-500 text-white' : 'bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-400'}`} href="/signup?=page3">3</Link>
             </li>
             <li>
-              <Link className={`flex items-center justify-center w-6 h-6 rounded-full text-xs font-semibold ${step >= 4 ? 'bg-indigo-500 text-white' : 'bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-400'}`} href="/finalize">4</Link>
+              <Link className={`flex items-center justify-center w-6 h-6 rounded-full text-xs font-semibold ${step >= 4 ? 'bg-indigo-500 text-white' : 'bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-400'}`} href="/signup?=page4">4</Link>
             </li>
           </ul>
         </div>
