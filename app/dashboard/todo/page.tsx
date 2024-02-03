@@ -3,7 +3,7 @@ import React from "react";
 import CreateForm from "./components/CreateForm";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import TodoList from "./components/todolist";
+
 export default function Todo() {
 	const todos = [
 		{
