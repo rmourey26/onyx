@@ -1,6 +1,6 @@
 // components/signu/Page1.tsx
 "use client";
-import { Button } from "@mui/material";
+import { Button } from "@/components/ui/button";
 import React from "react";
 import { FormStepComponentType } from '@/components/forms/formstepprops';
 import FormikTextField from '@/components/forms/formiktextfield'
