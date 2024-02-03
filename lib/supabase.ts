@@ -39,7 +39,7 @@ export interface Database {
       gpt_one: {
         Row: {
           created_at: string
-          email: string | null
+          email: string
           id: string
           messages: string | null
           user_input: string | null
@@ -47,7 +47,7 @@ export interface Database {
         }
         Insert: {
           created_at?: string
-          email?: string | null
+          email?: string
           id?: string
           messages?: string | null
           user_input?: string | null
@@ -55,7 +55,7 @@ export interface Database {
         }
         Update: {
           created_at?: string
-          email?: string | null
+          email?: string
           id?: string
           messages?: string | null
           user_input?: string | null
@@ -142,6 +142,7 @@ export interface Database {
       profiles: {
         Row: {
           avatar_url: string | null
+          email: string
           full_name: string | null
           id: string
           updated_at: string | null
@@ -150,6 +151,7 @@ export interface Database {
         }
         Insert: {
           avatar_url?: string | null
+          email: string
           full_name?: string | null
           id: string
           updated_at?: string | null
@@ -158,6 +160,7 @@ export interface Database {
         }
         Update: {
           avatar_url?: string | null
+          email?: string
           full_name?: string | null
           id?: string
           updated_at?: string | null
