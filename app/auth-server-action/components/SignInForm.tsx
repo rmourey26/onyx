@@ -16,7 +16,7 @@ import { toast } from "@/components/ui/use-toast";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { ToastAction } from "@/components/ui/toast"
-const FormSchema = z.object({
+const SignInSchema = z.object({
 	email: z.string().email(),
 	password: z.string().min(1, {
 		message: "Password is required.",
@@ -24,15 +24,15 @@ const FormSchema = z.object({
 });
 
 export default function SignInForm() {
-	const form = useForm<z.infer<typeof FormSchema>>({
-		resolver: zodResolver(FormSchema),
+	const form = useForm<z.infer<typeof SignInSchema>>({
+		resolver: zodResolver(SignInSchema),
 		defaultValues: {
 			email: "",
 			password: "",
 		},
 	});
 
-	const onSignInSubmit = async(data: z.infer<typeof FormSchema>) => {
+	const onSignInSubmit = async(data: z.infer<typeof SignInSchema>) => {
 		  await login
 
   toast({

@@ -1,5 +1,5 @@
 import React from "react";
-import { AuthFormLegacy } from "./components/AuthFormLegacy";
+import { AuthFormLegacy } from '@/app/auth-server-action/components/AuthFormLegacy'
 
 export default function page() {
 	return (

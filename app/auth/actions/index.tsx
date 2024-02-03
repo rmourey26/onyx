@@ -3,14 +3,11 @@
 import { createSupbaseServerClient } from "@/utils/supaone";
 import { redirect } from "next/navigation";
 
-export async function loginWithEmailAndPassword(formData: FormData) {
- const supabase = await createSupbaseServerClient();	
- const data = {
-		email: formData.get('email') as string,
-		password: formData.get('password') as string,
-	  }
-
-	
+export async function loginWithEmailAndPassword(data: {
+	email: string;
+	password: string;
+}) {
+	const supabase = await createSupbaseServerClient();
 
 	const result = await supabase.auth.signInWithPassword(data);
 	return JSON.stringify(result);

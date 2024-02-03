@@ -22,7 +22,7 @@ import { useTransition } from "react";
 import { loginWithEmailAndPassword } from "../actions";
 import { AuthTokenResponse } from "@supabase/supabase-js";
 
-const FormSchema = z.object({
+const LoginSchema = z.object({
 	email: z.string().email(),
 	password: z.string().min(1, { message: "Password can not be empty" }),
 });
@@ -30,15 +30,15 @@ const FormSchema = z.object({
 export default function AuthForm() {
 	const [isPending, startTransition] = useTransition();
 
-	const form = useForm<z.infer<typeof FormSchema>>({
-		resolver: zodResolver(FormSchema),
+	const form = useForm<z.infer<typeof LoginSchema>>({
+		resolver: zodResolver(LoginSchema),
 		defaultValues: {
 			email: "",
 			password: "",
 		},
 	});
 
-	function onSubmit(data: z.infer<typeof FormSchema>) {
+	function onSubmit(data: z.infer<typeof LoginSchema>) {
 		startTransition(async () => {
 			const { error } = JSON.parse(
 				await loginWithEmailAndPassword(data)

@@ -19,7 +19,7 @@ import { toast } from "@/components/ui/use-toast";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
-const FormSchema = z
+const RegisterSchema = z
 	.object({
 		email: z.string().email(),
 		password: z.string().min(6, {
@@ -34,8 +34,8 @@ const FormSchema = z
 		path: ["confirm"],
 	});
 export default function RegisterForm() {
-	const form = useForm<z.infer<typeof FormSchema>>({
-		resolver: zodResolver(FormSchema),
+	const form = useForm<z.infer<typeof RegisterSchema>>({
+		resolver: zodResolver(RegisterSchema),
 		defaultValues: {
 			email: "",
 			password: "",
@@ -43,7 +43,7 @@ export default function RegisterForm() {
 		},
 	});
 
-	function onSubmit(data: z.infer<typeof FormSchema>) {
+	function onSubmit(data: z.infer<typeof RegisterSchema>) {
 		toast({
 			title: "You submitted the following values:",
 			description: (
