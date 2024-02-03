@@ -4,7 +4,7 @@ import { Button } from "@mui/material";
 import React from "react";
 import { FormStepComponentType } from '@/components/forms/formstepprops';
 import FormikTextField from '@/components/forms/formiktextfield'
-import OnboardingProgress from '@/components/forms/onboardingprogress'
+import OnboardingProgress from '@/components/onboarding-progress'
 
 const Page1: FormStepComponentType = (props) => {
   return (
