@@ -1,4 +1,4 @@
-yo import {
+import {
   LucideProps,
   Moon,
   SunMedium,
