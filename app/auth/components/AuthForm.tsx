@@ -110,7 +110,7 @@ export default function AuthForm() {
 						className="w-full flex items-center gap-2"
 					>
 						Login
-						<Icon.spinner />
+						<Icons.spinner />
 					</Button>
 				</form>
 			</Form>
