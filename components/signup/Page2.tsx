@@ -39,7 +39,7 @@ const Page2: FormStepComponentType = (props) => {
           ]}
         ></FormikRadioGroup>
      <div className="flex justify-center gap-2">
-        <button onClick={props.onPrevious} className="btn mt-4 bg-indigo-500 hover:bg-indigo-600 text-white ml-auto">
+        <button onClick={props.onPrevious} className="btn mt-2 px-8 py-2 bg-slate-800 hover:bg-slate-600 text-white ml-auto">
           Back
         </button>
         
@@ -47,7 +47,7 @@ const Page2: FormStepComponentType = (props) => {
         <button
           
           onClick={props.onNext}
-          className="btn px-2 py-4 mt-4 bg-inherit hover:bg-slate-900 text-white mx-auto"
+          className="btn px-2 py-8 mt-2 px-8 py-2 bg-slate-800 hover:bg-slate-600 text-white mx-auto"
         >
           Next
         </button>
