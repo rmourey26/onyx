@@ -63,7 +63,7 @@ if (error)	{
 
 	return (
 		<Form {...form}>
-			<form className="w-11/12 space-y-6"
+			<form className="w-full space-y-6"
      onSubmit={form.handleSubmit((data) => onSignInSubmit(data))}
 			>
 				<FormField
@@ -106,12 +106,12 @@ if (error)	{
 						<Button
 						type="submit"
 						variant="outline"
-						className="w-11/12 flex self-align-center items-center gap-2"
+						className="w-full flex self-align-center items-center gap-2"
 					>
 						Sign In{" "}
 						<AiOutlineLoading3Quarters
-							className={cn("animate-spin", {
-								hidden: true,
+							className={cn("loading ? : animate-spin", {
+								hidden: false,
 							})}
 						/>
 					</Button>
