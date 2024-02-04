@@ -51,6 +51,12 @@ if (error)	{
 				</pre>
 			),
 		});
+} else {
+				toast({
+					title: "Successfully login 🎉",
+				});
+			}
+		});
 	}
 
 	return (
