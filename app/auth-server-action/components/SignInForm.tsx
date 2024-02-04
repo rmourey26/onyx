@@ -34,7 +34,12 @@ export default function SignInForm() {
 	});
 
 	const onSignInSubmit = async(data: z.infer<typeof SignInSchema>) => {
-		  await login
+		  startTransition(async () => {
+			const { error } = JSON.parse(
+				await signUpWithEmailAndPassword(data)
+			) as AuthTokenResponse;
+		
+if (error)	{	
 
   toast({
 			title: "You submitted the following values:",
