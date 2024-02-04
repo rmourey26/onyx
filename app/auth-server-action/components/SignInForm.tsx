@@ -104,8 +104,8 @@ if (error)	{
 					)}
 				/>
 				<Button type="submit" className="w-full flex gap-2">
-					SignIn 
-					<AiOutlineLoading3Quarters className={cn("animate-spin")} />
+					{!loading ? SignIn :
+					<AiOutlineLoading3Quarters className={cn("animate-spin")} /> }
 				</Button>
 			</form>
 		</Form>
