@@ -11,7 +11,7 @@ const Page1: FormStepComponentType = (props) => {
   
 <>
     {/* Content */}
-    <div className="w-full md:w-1/2">
+    <div className="grid space={8} w-full md:w-1/2">
     <div className="min-h-[100dvh] h-full flex flex-col after:flex-1">
 
 
