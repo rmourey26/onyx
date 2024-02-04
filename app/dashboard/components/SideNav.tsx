@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 import ModeToggle from '../todo/components/ToggleDarkMode'
 import { Button } from "@/components/ui/button";
 import SignOut from "./SignOut";
-
+import { ThemeToggle } from "@/components/theme-toggle"
 export default function SideNav() {
 	return (
 		<SideBar className=" hidden lg:block dark:bg-gradient-dark flex-1" />
@@ -24,7 +24,7 @@ export const SideBar = ({ className }: { className?: string }) => {
 					<div className="flex items-center gap-2 flex-1">
 						<h1 className="text-3xl font-bold">Onyx Dash</h1>
 
-						<ModeToggle />
+						<ThemeToggle />
 					</div>
 					<NavLinks />
 				</div>
