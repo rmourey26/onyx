@@ -54,13 +54,13 @@ const Page4: FormStepComponentType = (props) => {
                             />
                             <div className="h-full text-center bg-white dark:bg-slate-800 px-4 py-6 rounded border border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600 shadow-sm duration-150 ease-in-out">
                               <svg className="inline-flex w-10 h-10 shrink-0 fill-current mb-2" viewBox="0 0 40 40">
-                                <circle className="text-indigo-100" cx="20" cy="20" r="20" />
-                                <path className="text-indigo-500" d="m26.371 23.749-3.742-1.5a1 1 0 0 1-.629-.926v-.878A3.982 3.982 0 0 0 24 17v-1.828A4.087 4.087 0 0 0 20 11a4.087 4.087 0 0 0-4 4.172V17a3.982 3.982 0 0 0 2 3.445v.878a1 1 0 0 1-.629.928l-3.742 1.5a1 1 0 0 0-.629.926V27a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.323a1 1 0 0 0-.629-.928Z" />
+                                <circle className="text-coolGray-100" cx="20" cy="20" r="20" />
+                                <path className="text-slate-950" d="m26.371 23.749-3.742-1.5a1 1 0 0 1-.629-.926v-.878A3.982 3.982 0 0 0 24 17v-1.828A4.087 4.087 0 0 0 20 11a4.087 4.087 0 0 0-4 4.172V17a3.982 3.982 0 0 0 2 3.445v.878a1 1 0 0 1-.629.928l-3.742 1.5a1 1 0 0 0-.629.926V27a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.323a1 1 0 0 0-.629-.928Z" />
                               </svg>
                               <div className="font-medium text-slate-800 dark:text-slate-100 mb-1">Auto OCR</div>
                               <div className="text-sm">Onxy will handle everything</div>
                             </div>
-                            <div className="absolute inset-0 border-2 border-transparent peer-checked:border-indigo-400 dark:peer-checked:border-indigo-500 rounded pointer-events-none" aria-hidden="true"></div>
+                            <div className="absolute inset-0 border-2 border-transparent peer-checked:border-indigo-400 dark:peer-checked:border-slate-950 rounded pointer-events-none" aria-hidden="true"></div>
                           </label>
                           <label className="flex-1 relative block cursor-pointer">
                             <input
@@ -71,16 +71,16 @@ const Page4: FormStepComponentType = (props) => {
                             />
                             <div className="h-full text-center bg-white dark:bg-slate-800 px-2 py-6 rounded border border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600 shadow-sm duration-150 ease-in-out">
                               <svg className="inline-flex w-10 h-10 shrink-0 fill-current mb-2" viewBox="0 0 40 40">
-                                <circle className="text-indigo-100" cx="20" cy="20" r="20" />
-                                <path className="text-indigo-500" d="m26.371 23.749-3.742-1.5a1 1 0 0 1-.629-.926v-.878A3.982 3.982 0 0 0 24 17v-1.828A4.087 4.087 0 0 0 20 11a4.087 4.087 0 0 0-4 4.172V17a3.982 3.982 0 0 0 2 3.445v.878a1 1 0 0 1-.629.928l-3.742 1.5a1 1 0 0 0-.629.926V27a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.323a1 1 0 0 0-.629-.928Z" />
-                                <circle className="text-indigo-100" cx="20" cy="20" r="20" />
-                                <path className="text-indigo-300" d="m30.377 22.749-3.709-1.5a1 1 0 0 1-.623-.926v-.878A3.989 3.989 0 0 0 28.027 16v-1.828c.047-2.257-1.728-4.124-3.964-4.172-2.236.048-4.011 1.915-3.964 4.172V16a3.989 3.989 0 0 0 1.982 3.445v.878a1 1 0 0 1-.623.928c-.906.266-1.626.557-2.159.872-.533.315-1.3 1.272-2.299 2.872 1.131.453 6.075-.546 6.072.682V28a2.99 2.99 0 0 1-.182 1h7.119A.996.996 0 0 0 31 28v-4.323a1 1 0 0 0-.623-.928Z" />
-                                <path className="text-indigo-500" d="m22.371 24.749-3.742-1.5a1 1 0 0 1-.629-.926v-.878A3.982 3.982 0 0 0 20 18v-1.828A4.087 4.087 0 0 0 16 12a4.087 4.087 0 0 0-4 4.172V18a3.982 3.982 0 0 0 2 3.445v.878a1 1 0 0 1-.629.928l-3.742 1.5a1 1 0 0 0-.629.926V28a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.323a1 1 0 0 0-.629-.928Z" />
+                                <circle className="text-coolGray-100" cx="20" cy="20" r="20" />
+                                <path className="text-slate-950" d="m26.371 23.749-3.742-1.5a1 1 0 0 1-.629-.926v-.878A3.982 3.982 0 0 0 24 17v-1.828A4.087 4.087 0 0 0 20 11a4.087 4.087 0 0 0-4 4.172V17a3.982 3.982 0 0 0 2 3.445v.878a1 1 0 0 1-.629.928l-3.742 1.5a1 1 0 0 0-.629.926V27a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.323a1 1 0 0 0-.629-.928Z" />
+                                <circle className="text-coolGray-100" cx="20" cy="20" r="20" />
+                                <path className="text-coolGray-300" d="m30.377 22.749-3.709-1.5a1 1 0 0 1-.623-.926v-.878A3.989 3.989 0 0 0 28.027 16v-1.828c.047-2.257-1.728-4.124-3.964-4.172-2.236.048-4.011 1.915-3.964 4.172V16a3.989 3.989 0 0 0 1.982 3.445v.878a1 1 0 0 1-.623.928c-.906.266-1.626.557-2.159.872-.533.315-1.3 1.272-2.299 2.872 1.131.453 6.075-.546 6.072.682V28a2.99 2.99 0 0 1-.182 1h7.119A.996.996 0 0 0 31 28v-4.323a1 1 0 0 0-.623-.928Z" />
+                                <path className="text-slate-950" d="m22.371 24.749-3.742-1.5a1 1 0 0 1-.629-.926v-.878A3.982 3.982 0 0 0 20 18v-1.828A4.087 4.087 0 0 0 16 12a4.087 4.087 0 0 0-4 4.172V18a3.982 3.982 0 0 0 2 3.445v.878a1 1 0 0 1-.629.928l-3.742 1.5a1 1 0 0 0-.629.926V28a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.323a1 1 0 0 0-.629-.928Z" />
                               </svg>
                               <div className="font-medium text-slate-800 dark:text-slate-100 mb-1">Set Custom Params</div>
                               <div className="text-sm">Whats your painpoint?</div>
                             </div>
-                            <div className="absolute inset-0 border-2 border-transparent peer-checked:border-indigo-400 dark:peer-checked:border-indigo-500 rounded pointer-events-none" aria-hidden="true"></div>
+                            <div className="absolute inset-0 border-2 border-transparent peer-checked:border-indigo-400 dark:peer-checked:border-slate-950 rounded pointer-events-none" aria-hidden="true"></div>
                           </label>
                         </div>
                         <div>
@@ -153,7 +153,7 @@ const Page4: FormStepComponentType = (props) => {
                                             className="mt-2 text-sm text-red-600"
                                           />
                                           <div className="mt-2">
-                                           <button className="mt-2 btn bg-indigo-500 hover:bg-indigo-600 text-white ml-auto" onClick={() => remove(idx)}> - Remove</button>
+                                           <button className="mt-2 btn bg-slate-950 hover:bg-indigo-600 text-white ml-auto" onClick={() => remove(idx)}> - Remove</button>
                                        </div>
 
                                         </div>
@@ -241,7 +241,7 @@ const Page4: FormStepComponentType = (props) => {
 
                                   <a
                                     className={`btn ml-auto cursor-pointer ${isCustom
-                                      ? "bg-indigo-500 hover:bg-indigo-600 text-white"
+                                      ? "bg-slate-950 hover:bg-indigo-600 text-white"
                                       : "bg-gray-200 text-gray-400"
                                       }`}
                                     onClick={
@@ -258,7 +258,7 @@ const Page4: FormStepComponentType = (props) => {
                                     >
                                       <path
                                         className={
-                                          isCustom ? "text-indigo-300" : "text-gray-400"
+                                          isCustom ? "text-coolGray-300" : "text-gray-400"
                                         }
                                         opacity="0.8"
                                         d="M15.7693 7H9.82054V1C9.82054 0.4 9.42396 0 8.82908 0C8.23421 0 7.83763 0.4 7.83763 1V7H1.88891C1.29404 7 0.897461 7.4 0.897461 8C0.897461 8.6 1.29404 9 1.88891 9H7.83763V15C7.83763 15.6 8.23421 16 8.82908 16C9.42396 16 9.82054 15.6 9.82054 15V9H15.7693C16.3641 9 16.7607 8.6 16.7607 8C16.7607 7.4 16.3641 7 15.7693 7Z"

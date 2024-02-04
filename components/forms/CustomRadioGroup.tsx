@@ -42,9 +42,9 @@ const CustomRadioGroup = <TValue,>(props: CustomRadioGroupProps<TValue>) => {
             })}
           >
             <svg className="w-6 h-6 shrink-0 fill-current mr-4" viewBox="0 0 24 24">
-                          <path className="text-indigo-500" d="m12 10.856 9-5-8.514-4.73a1 1 0 0 0-.972 0L3 5.856l9 5Z" />
-                          <path className="text-indigo-300" d="m11 12.588-9-5V18a1 1 0 0 0 .514.874L11 23.588v-11Z" />
-                          <path className="text-indigo-200" d="M13 12.588v11l8.486-4.714A1 1 0 0 0 22 18V7.589l-9 4.999Z" />
+                          <path className="text-slate-950" d="m12 10.856 9-5-8.514-4.73a1 1 0 0 0-.972 0L3 5.856l9 5Z" />
+                          <path className="text-coolGray-300" d="m11 12.588-9-5V18a1 1 0 0 0 .514.874L11 23.588v-11Z" />
+                          <path className="text-coolGray-200" d="M13 12.588v11l8.486-4.714A1 1 0 0 0 22 18V7.589l-9 4.999Z" />
                         </svg>
             <span className="w-5 h-5">
               {checked ? <span></span> : <span></span>}
