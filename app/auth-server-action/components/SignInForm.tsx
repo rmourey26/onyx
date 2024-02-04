@@ -105,7 +105,7 @@ if (error)	{
 				/>
 				<Button type="submit" className="w-full flex gap-2">
 	   Sign In{" "}
-<AiOutlineLoading3Quarters className={cn("animate-spin", { hidden=true})}/>
+<AiOutlineLoading3Quarters className={cn("animate-spin", { hidden=true,})}/>
 </Button>
 			</form>
 		</Form>
