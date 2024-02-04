@@ -42,12 +42,18 @@ const Page3: FormStepComponentType = (props) => {
       
       </div>
       <div className="flex justify-center gap-2">
-        <button onClick={props.onPrevious} className="btn mt-4 bg-indigo-500 hover:bg-indigo-600 text-white ml-auto">
+         <Button color="inherit" variant="contained" onClick={props.onPrevious}>
           Back
-        </button>
-        <button onClick={props.onNext} className="btn mt-4 bg-indigo-500 hover:bg-indigo-600 text-white mx-auto">
+        </Button>
+        
+        
+        <Button
+          color="inherit" variant="contained"
+          onClick={props.onNext}
+      
+        >
           Next
-        </button>
+        </Button>
       </div>
     
    
