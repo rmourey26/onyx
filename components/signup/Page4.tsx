@@ -278,16 +278,18 @@ const Page4: FormStepComponentType = (props) => {
                 
                 <div className="flex justify-center gap-2">
      
-        <button onClick={props.onPrevious} className="btn mt-4 bg-indigo-500 hover:bg-indigo-600 text-white ml-auto">
+       <Button  color="inherit" variant="contained" onClick={props.onPrevious}>
           Back
-        </button>
+        </Button>
         
-       
-        <button 
-          className="btn mt-4 bg-indigo-500 hover:bg-indigo-600 text-white mx-auto"
-        type="submit">
-          Finalize
-        </button>
+        
+        <Button
+          color="inherit" variant="contained"
+          onClick={props.onNext}
+      
+        >
+          Complete
+        </Button>
       
       </div>
       </div>
