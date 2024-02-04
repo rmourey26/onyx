@@ -103,9 +103,9 @@ if (error)	{
 						</FormItem>
 					)}
 				/>
-				<Button type="submit" className=`"w-full flex gap-2" {!isPending ? `:
-	
-<AiOutlineLoading3Quarters className={cn("animate-spin")}/>}
+				<Button type="submit" className="w-full flex gap-2">
+	   Sign In{" "}
+<AiOutlineLoading3Quarters className={cn("animate-spin", {hidden="true"})} />
 				</Button>
 			</form>
 		</Form>
