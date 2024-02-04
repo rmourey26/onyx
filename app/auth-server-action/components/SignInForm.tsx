@@ -103,7 +103,7 @@ if (error)	{
 						</FormItem>
 					)}
 				/>
-				<Button formAction={login} type="submit" className="w-full flex gap-2">
+				<Button type="submit" className="w-full flex gap-2">
 					SignIn 
 					<AiOutlineLoading3Quarters className={cn("animate-spin")} />
 				</Button>
