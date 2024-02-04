@@ -21,7 +21,7 @@ const Page1: FormStepComponentType = (props) => {
     
       <FormikTextField className="form-input w-full" InputLabelProps={{sx: {boxShadow:0},}} sx={{ boxShadow:0, '&:focus-within::before': { boxShadow: 0 } }} variant="standard" name="email" label="Email" />
       <FormikTextField className="form-input w full" sx={{ boxShadow:0}} variant="outlined" name="password" label="Password" type="password" />
-      <Button sx={{color:'slate-800'}} variant="contained" onClick={props.onNext}>
+      <Button sx={{color:'primary'}} variant="contained" onClick={props.onNext}>
         Next
       </Button>
     </div>
