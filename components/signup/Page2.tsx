@@ -1,6 +1,7 @@
 // components/signup/Page2.tsx
 "use client";
 import React from "react";
+import { Button } from '@mui/material'
 import { FormStepComponentType } from '@/components/forms/formstepprops';
 
 import FormikRadioGroup from '@/components/forms/formikradiogroup'
@@ -39,18 +40,18 @@ const Page2: FormStepComponentType = (props) => {
           ]}
         ></FormikRadioGroup>
      <div className="flex justify-center gap-2">
-        <button onClick={props.onPrevious} className="btn mt-2 px-8 py-2 bg-slate-800 hover:bg-slate-600 text-white ml-auto">
+        <Button color="inherit" variant="contained" onClick={props.onPrevious}>
           Back
-        </button>
+        </Button>
         
         
-        <button
-          
+        <Button
+          color="inherit" variant="contained"
           onClick={props.onNext}
-          className="btn px-2 py-8 mt-2 px-8 py-2 bg-slate-800 hover:bg-slate-600 text-white mx-auto"
+      
         >
           Next
-        </button>
+        </Button>
         
       </div>
     </div>
