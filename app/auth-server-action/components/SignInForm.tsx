@@ -105,12 +105,11 @@ if (error)	{
 				/>
 						<Button
 						type="submit"
-						variant="outline"
 						className="w-full flex self-align-center items-center gap-2"
 					>
 						Sign In{" "}
 						<AiOutlineLoading3Quarters
-							className={cn("loading ? : animate-spin", {
+							className={cn("active:animate-spin", {
 								hidden: false,
 							})}
 						/>
