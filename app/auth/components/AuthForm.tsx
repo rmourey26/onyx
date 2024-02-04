@@ -3,7 +3,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
-
+import { Icons } from "@/components/icons"
 import { Button } from "@/components/ui/button";
 import {
 	Form,
@@ -110,11 +110,7 @@ export default function AuthForm() {
 						className="w-11/12 flex items-center gap-2"
 					>
 						Login{" "}
-						<AiOutlineLoading3Quarters
-							className={cn("animate-spin", {
-								hidden: true,
-							})}
-						/>
+						<Icon.spinner />
 					</Button>
 				</form>
 			</Form>
