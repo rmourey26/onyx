@@ -10,8 +10,9 @@ export const siteConfig = {
       href: "/",
     },
     { 
-      title: "Members"
-      href: "/dashboard"
+      title: "Members",
+      href: "/dashboard",
+    },
   ],
   links: {
     twitter: "https://twitter.com/r_mourey_jr",
