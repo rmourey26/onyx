@@ -22,7 +22,7 @@ export const SideBar = ({ className }: { className?: string }) => {
 			>
 				<div className="flex-1 space-y-5">
 					<div className="flex items-center gap-2 flex-1">
-						<h1 className="text-3xl font-bold">Daily Todo</h1>
+						<h1 className="text-3xl font-bold">Onyx Dash</h1>
 
 						<ModeToggle />
 					</div>
