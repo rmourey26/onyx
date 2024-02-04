@@ -66,7 +66,7 @@ export default function AuthForm() {
 			<Form {...form}>
 				<form
 					onSubmit={form.handleSubmit(onSubmit)}
-					className="w-full space-y-6"
+					className="w-11/12 space-y-6"
 				>
 					<FormField
 						control={form.control}
@@ -107,7 +107,7 @@ export default function AuthForm() {
 					<Button
 						type="submit"
 						variant="outline"
-						className="w-full flex items-center gap-2"
+						className="w-11/12 flex items-center gap-2"
 					>
 						Login{" "}
 						<AiOutlineLoading3Quarters
