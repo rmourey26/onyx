@@ -37,8 +37,8 @@ export default function SignInForm() {
 
 	const onSignInSubmit = async(data: z.infer<typeof SignInSchema>) => {
 		  startTransition(async () => {
-			const { error } = JSON.parse(
-				await signUpWithEmailAndPassword(data)
+			 const { error } = JSON.parse(
+				await loginWithEmailAndPassword(data)
 			) as AuthTokenResponse;
 		
 if (error)	{	
