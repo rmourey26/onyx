@@ -22,7 +22,7 @@ export default function MobileSideNav() {
 			<SheetTrigger asChild id="toggle-sidebar">
 				<span></span>
 			</SheetTrigger>
-			<SheetContent side={"left"} className="dark:bg-graident-dark flex">
+			<SheetContent side={"left"} className="dark:bg-gradient-dark flex">
 				<SideBar />
 			</SheetContent>
 		</Sheet>

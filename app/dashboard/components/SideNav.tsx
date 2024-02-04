@@ -8,7 +8,7 @@ import SignOut from "./SignOut";
 
 export default function SideNav() {
 	return (
-		<SideBar className=" hidden lg:block dark:bg-graident-dark flex-1" />
+		<SideBar className=" hidden lg:block dark:bg-gradient-dark flex-1" />
 	);
 }
 
