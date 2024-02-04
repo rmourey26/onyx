@@ -9,7 +9,7 @@ import OnboardingProgress from "@/components/onboarding-progress";
 
 const Page2: FormStepComponentType = (props) => {
   return (
-    <div className=" md:flex">
+    <>
 
     {/* Content */}
     <div className="w-full md:w-1/2">
@@ -47,7 +47,7 @@ const Page2: FormStepComponentType = (props) => {
         <button
           
           onClick={props.onNext}
-          className="btn mt-4 bg-indigo-500 hover:bg-indigo-600 text-white mx-auto"
+          className="btn px-2 py-4 mt-4 bg-inherit hover:bg-slate-900 text-white mx-auto"
         >
           Next
         </button>
@@ -56,7 +56,7 @@ const Page2: FormStepComponentType = (props) => {
     </div>
    
     </div>
-    </div>
+    </>
   );
 };
 
