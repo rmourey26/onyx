@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 export default function OnboardingPage() {
   return (
     <>
-      <div className="md:max-lg:flex">
+      <div className="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12 md:grid-cols-8 sm:grid-cols-1">
         <Image
           src="https://quantumone.b-cdn.net/onyx/IMG_4777.jpeg"
           width={1280}
