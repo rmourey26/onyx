@@ -1,6 +1,18 @@
-## Onyx is stacked with NextJS 14, Shadcn, Zod, Supabase Auth and DB and more. This is a work in progress. 
+## Getting Started with Onyx
+ -- Onyx is a turnkey full stack web app written in Typescript with role based access control and dashboard. Fork and get your full stack MVP up and running in hours. 
 
-## Getting Started
+## Stack 
+
+-- NextJS 14 App Router
+-- Supabase SSR Auth with middleware, Postgresql DB, React Query Provider
+-- Shadcn UI 
+-- React hook form 
+-- Zod Validation
+-- Tailwind CSS
+-- Formik 
+-- YUP!
+-- React Icons
+
 
 First, run the development server:
 
