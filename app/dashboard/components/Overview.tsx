@@ -1,11 +1,8 @@
 "use client"
 
 import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from "recharts"
-interface overviewData {
-    name: string
-    total: number
-};
-const data: overviewData = [
+
+const data = [
   {
     name: "Jan",
     total: Math.floor(Math.random() * 5000) + 1000,
