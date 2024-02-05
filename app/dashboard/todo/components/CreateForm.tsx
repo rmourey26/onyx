@@ -70,11 +70,16 @@ export default function CreateForm() {
 						</FormItem>
 					)}
 				/>
+<Button
+				className="w-full flex items-center gap-2"
+				variant="outline"
+			>
+				Create{" "}
+				<AiOutlineLoading3Quarters
+					className={cn(" animate-spin", { hidden: !isPending })}
+				/>
+			</Button>
 
-				<Button type="submit" className="w-full flex gap-2">
-					Create
-					<AiOutlineLoading3Quarters className={cn("animate-spin")} />
-				</Button>
 			</form>
 		</Form>
 	);
