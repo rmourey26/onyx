@@ -18,6 +18,7 @@
 - Formik 
 - YUP!
 - React Icons
+- Lucide React
 
 ## API 
 - TODO
