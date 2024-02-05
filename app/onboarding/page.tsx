@@ -1,4 +1,4 @@
-
+import { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
 
@@ -7,8 +7,8 @@ import { buttonVariants } from "@/components/ui/button"
 import { UserAuthForm } from "@/app/auth/components/user-auth-form"
 
 export const metadata: Metadata = {
-  title: "Authentication",
-  description: "Authentication forms built using the components.",
+  title: "Onboarding",
+  description: "Onyx new customer onboarding",
 }
 
 export default function OnboardingPage() {
