@@ -24,16 +24,26 @@
 - TODO
 
 ## Getting started with Onyx:
-- First, run the development server:
+- First, configure your environment
+  - Create a file named .env.local in project root
+  - Create a Supabase account and add the following to your env file
+    - NEXT_PUBLIC_SUPABASE_KEY="Your supabase anon key"
+    - SUPABASE_JWT_SECRET="Your supabase JWT secret"
+    - NEXT_PUBLIC_SUPABASE_URL="Your supabase project URL"
+    - SUPABASE_SERVIC_ROLE_KEY="Your supabase service role key"
+  - Ensure your Supabase tables match the tables and types found in '@/lib/supabase'.
+  - Add authorized development and production URL's to Supabase URL config. 
+## Run  
+- Development server:
 
 ```bash
-npm run dev
+npm i && npm run dev
 # or
-yarn dev
+yarn i && yarn run dev
 # or
-pnpm dev
+pnpm i && pnpm dev
 # or
-bun dev
+bun i && bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
