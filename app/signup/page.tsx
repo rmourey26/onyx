@@ -9,10 +9,10 @@ import React from "react";
 
 const SignupPage = () => {
   return (
-    <div className="flex grid grid-col h-screen bg-white text-slate-950 dark:bg-slate-950:text-white">
+    <div className="flex grid h-screen">
         
            <div className="px-4 py-8">
-            <div className="max-w-md mx-auto">
+            <div className="grid-col mx-auto">
 <SignUpForm steps={[Page1, Page2, Page3, Page4]} />
     </div>
     </div>
