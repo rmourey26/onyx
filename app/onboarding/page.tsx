@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 export default function OnboardingPage() {
   return (
     <>
-      <div className="md:hidden">
+      <div className="md:max-lg:flex">
         <Image
           src="https://quantumone.b-cdn.net/onyx/IMG_4777.jpeg"
           width={1280}
