@@ -97,7 +97,7 @@ export default function AuthForm() {
 								</FormControl>
 								<FormDescription>
 									{
-										"Contact your admin if you forgot your password."
+										"Forget password? Please contact your admin for assistance."
 									}
 								</FormDescription>
 								<FormMessage />
@@ -110,7 +110,7 @@ export default function AuthForm() {
 						className="w-full flex items-center gap-2"
 					>
 						Login
-						<Icons.spinner />
+						<Icons.spinner/>
 					</Button>
 				</form>
 			</Form>
