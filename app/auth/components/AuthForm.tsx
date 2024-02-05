@@ -107,10 +107,10 @@ export default function AuthForm() {
 					<Button
 						type="submit"
 						variant="outline"
-						className="w-full flex items-center gap-2"
+						className="group w-full flex items-center gap-2"
 					>
 						Login
-						<Icons.spinner/>
+						<Icons.spinner className="group-active: w-5 h-5 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"/>
 					</Button>
 				</form>
 			</Form>
