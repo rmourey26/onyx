@@ -24,7 +24,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import { Textarea } from "@/components/ui/text-area"
+import { Textarea } from "@/components/ui/textarea"
 import { toast } from "@/components/ui/use-toast"
 
 const profileFormSchema = z.object({
