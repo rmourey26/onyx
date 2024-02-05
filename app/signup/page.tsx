@@ -9,7 +9,7 @@ import React from "react";
 
 const SignupPage = () => {
   return (
-    <div className="grid h-screen bg-white dark:bg-slate-900">
+    <div className="grid h-screen bg-white text-slate-950 dark:bg-slate-950:text-white">
         
            <div className="px-4 py-8">
             <div className="max-w-md mx-auto">
