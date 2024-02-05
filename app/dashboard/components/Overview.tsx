@@ -2,9 +2,9 @@
 
 import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from "recharts"
 interface overviewData {
-  "name": string;
-  "total": number;
-}[];
+    name: string
+    total: number
+};
 const data: overviewData = [
   {
     name: "Jan",
