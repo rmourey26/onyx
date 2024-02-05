@@ -133,10 +133,15 @@ export default function RegisterForm() {
 						</FormItem>
 					)}
 				/>
-				<Button type="submit" className="w-full flex gap-2">
-					Register
-					<AiOutlineLoading3Quarters className={cn("animate-spin")} />
-				</Button>
+<Button
+				className="w-full flex items-center gap-2"
+				variant="outline"
+			>
+				Register{" "}
+				<AiOutlineLoading3Quarters
+					className={cn(" animate-spin", { hidden: !isPending })}
+				/>
+			</Button>
 			</form>
 		</Form>
 	);
