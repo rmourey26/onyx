@@ -38,6 +38,7 @@ export const Icons = {
     </svg>
   ),
   spinner: (props: LucideProps) => (
+   <div role="status">
     <svg 
       {...props}
       viewBox="0 0 64 64" 
@@ -54,5 +55,7 @@ export const Icons = {
       stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
     </path>
   </svg>
-  ),
+  <span class="sr-only">Loading...</span>
+  </div>
+ ),
 }
