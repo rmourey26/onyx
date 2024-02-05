@@ -6,11 +6,11 @@
 ## Stack 
 - NextJS 14 App Router
 - Supabase 
-    - SSR Auth with middleware
-    - Postgres DB 
-    - React Query Provider
-    - Middleware, Cookies, and headers configured
-    - Built with @supabase/ssr using server actions
+  - SSR Auth with middleware
+  - Postgres DB 
+  - React Query Provider
+  - Middleware, Cookies, and headers configured
+  - Built with @supabase/ssr using server actions
 - Shadcn UI 
 - React hook form 
 - Zod Validation
