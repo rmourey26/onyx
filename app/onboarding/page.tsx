@@ -30,7 +30,7 @@ export default function OnboardingPage() {
           className="hidden dark:block"
         />
       </div>
-      <div className="container relative hidden h-[800px] flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0">
+      <div className="container relative h-[800px] grid grid-cols-1 flex-col items-center justify-center mx-auto md:grid-cols-2 lg:max-w-none lg:px-0">
         <Link
           href="/auth"
           className={cn(
