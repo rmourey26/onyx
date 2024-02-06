@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 export default function OnboardingPage() {
   return (
     <>
-      <div className="sm:hidden">
+      <div className="hidden">
         <Image
           src="https://quantumone.b-cdn.net/onyx/IMG_4777.jpeg"
           width={1280}
@@ -27,7 +27,7 @@ export default function OnboardingPage() {
           width={1280}
           height={843}
           alt="Authentication"
-          className="hidden dark:block"
+          className="hidden"
         />
       </div>
       <div className="container relative h-[800px] grid grid-cols-1 flex-col items-center justify-center mx-auto md:grid-cols-2 lg:max-w-none lg:px-0">
