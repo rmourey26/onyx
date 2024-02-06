@@ -7,16 +7,55 @@ import { Icons } from "@/components/icons"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { loginWithEmailAndPassword } from "../actions"
+import { toast } from "@/components/ui/use-toast"
+import { AuthTokenResponse } from "@supabase/supabase-js"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useForm } from "react-hook-form"
+import { z } from "zod"
+import { AiOutlineLoading3Quarters } from "react-icons/ai"
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
+  const LoginSchema = z.object({
+    email: z.string().email(),
+    password: z.string().min(1, { message: "Password can not be empty" }),
+  });
+  
   const [isLoading, setIsLoading] = React.useState<boolean>(false)
-
-  async function onSubmit(event: React.SyntheticEvent) {
-    event.preventDefault()
+  const [isPending, startTransition] = React.useTransition();
+  
+  const form = useForm<z.infer<typeof LoginSchema>>({
+		resolver: zodResolver(LoginSchema),
+		defaultValues: {
+			email: "",
+			password: "",
+		},
+	});
+  async function onSubmit(data: z.infer<typeof LoginSchema>) {
+    
     setIsLoading(true)
+    startTransition(async () => {
+			const { error } = JSON.parse(
+				await loginWithEmailAndPassword(data)
+			) as AuthTokenResponse;
 
+			if (error) {
+				toast({
+					title: "Fail to login",
+					description: (
+						<pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
+							<code className="text-white">{error.message}</code>
+						</pre>
+					),
+				});
+			} else {
+				toast({
+					title: "Successfully login 🎉",
+				});
+			}
+		});
     setTimeout(() => {
       setIsLoading(false)
     }, 3000)
@@ -24,7 +63,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
 
   return (
     <div className={cn("grid gap-6", className)} {...props}>
-      <form onSubmit={onSubmit}>
+      <form onSubmit={form.handleSubmit(onSubmit)}>
         <div className="grid gap-2">
           <div className="grid gap-1">
             <Label className="sr-only" htmlFor="email">
@@ -40,12 +79,15 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
               disabled={isLoading}
             />
           </div>
-          <Button disabled={isLoading}>
-            {isLoading && (
-              <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
-            )}
-            Sign In with Email
-          </Button>
+          <Button
+				className="w-full flex items-center gap-2"
+				variant="outline"
+			>
+				Sign In{" "}
+				<AiOutlineLoading3Quarters
+					className={cn(" animate-spin", { hidden: !isPending })}
+				/>
+        </Button>
         </div>
       </form>
       <div className="relative">
