@@ -83,7 +83,7 @@ export default function MemberForm() {
 		<Form {...form}>
 			<form
 				onSubmit={form.handleSubmit(onSubmit)}
-				className="w-full space-y-6"
+				className="px-2 py-2 w-full space-y-6"
 			>
 				<FormField
 					control={form.control}
@@ -150,7 +150,7 @@ export default function MemberForm() {
 								/>
 							</FormControl>
 							<FormDescription>
-								This is your public display name.
+								Your publicly displayed name.
 							</FormDescription>
 							<FormMessage />
 						</FormItem>
@@ -217,10 +217,6 @@ export default function MemberForm() {
 									})}
 								</SelectContent>
 							</Select>
-							<FormDescription>
-								status resign mean the user is no longer work
-								here.
-							</FormDescription>
 
 							<FormMessage />
 						</FormItem>
