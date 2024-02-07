@@ -25,11 +25,11 @@ export default function DailogForm({
 			<DialogTrigger asChild id={id}>
 				{Trigger}
 			</DialogTrigger>
-			<DialogContent className="px-4 py-4 sm:max-w-[525px] dark:bg-gradient-dark">
+			<DialogContent className="sm:max-w-[525px] dark:bg-gradient-dark my-5">
 				<DialogHeader>
 					<DialogTitle>{title}</DialogTitle>
 					<DialogDescription>
-						Make changes to your profile here. Click save when
+						
 					</DialogDescription>
 				</DialogHeader>
 				{form}
