@@ -2,7 +2,7 @@ import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query
 import { prefetchQuery } from '@supabase-cache-helpers/postgrest-react-query'
 import useSupabaseServer from '@/utils/supabase-server'
 import { cookies } from 'next/headers'
-import Country from '../country'
+import Country from './country'
 import { getCountryById } from '@/queries/country-by-id'
 
 export default async function CountryPage({ params }: { params: { id: number } }) {
