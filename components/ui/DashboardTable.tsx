@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
 
-export default function Table({
+export default function DashboardTable({
 	children,
 	headers,
 }: {
