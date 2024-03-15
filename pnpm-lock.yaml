@@ -110,9 +110,15 @@ dependencies:
   '@uniswap/sdk':
     specifier: ^3.0.3
     version: 3.0.3(@ethersproject/address@5.7.0)(@ethersproject/contracts@5.7.0)(@ethersproject/networks@5.7.1)(@ethersproject/providers@5.7.2)(@ethersproject/solidity@5.7.0)
+  '@uniswap/v2-periphery':
+    specifier: 1.1.0-beta.0
+    version: 1.1.0-beta.0
   '@uniswap/v3-core':
     specifier: 1.0.1
     version: 1.0.1
+  '@uniswap/v3-periphery':
+    specifier: ^1.4.4
+    version: 1.4.4
   '@uniswap/v3-sdk':
     specifier: 3.10.0
     version: 3.10.0(hardhat@2.20.1)
@@ -122,6 +128,9 @@ dependencies:
   '@zetachain/networks':
     specifier: ^5.0.0
     version: 5.0.0
+  '@zetachain/protocol-contracts':
+    specifier: ^6.0.0
+    version: 6.0.0
   '@zetachain/toolkit':
     specifier: 5.0.1-rc1
     version: 5.0.1-rc1(typescript@5.3.3)
@@ -5316,6 +5325,10 @@ packages:
 
   /@zetachain/protocol-contracts@3.0.2:
     resolution: {integrity: sha512-5Z66o0AdOtHYWFfcgjsH9Y79bHHK/h9I+TsOwHsIiqOp/fTdGLZ2HJO/PKgjbeUsfvI2RMm/UyYYWgsX6gucBQ==}
+    dev: false
+
+  /@zetachain/protocol-contracts@6.0.0:
+    resolution: {integrity: sha512-sdWFNc6VXz4vAMzWaVbqQclfAKkhaNpfQ1J4RseUqNEnXsyicAZUr86xdV3gzz/7pkfmM0nXlpKFsWgm4y8duQ==}
     dev: false
 
   /@zetachain/toolkit@5.0.1-rc1(typescript@5.3.3):
