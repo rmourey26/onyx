@@ -119,6 +119,9 @@ dependencies:
   '@zetachain/example-contracts':
     specifier: 1.0.0-rc1
     version: 1.0.0-rc1
+  '@zetachain/networks':
+    specifier: ^5.0.0
+    version: 5.0.0
   '@zetachain/toolkit':
     specifier: 5.0.1-rc1
     version: 5.0.1-rc1(typescript@5.3.3)
@@ -5298,6 +5301,12 @@ packages:
 
   /@zetachain/networks@3.0.1:
     resolution: {integrity: sha512-85da7KB0R7tWxj0SEvSgK8dgizTAb4V0Fyvmx2uk1PQkw99roWQftDnYBpqyKK4OCX/a9bT+iOd78NTStma9Lw==}
+    dependencies:
+      dotenv: 16.4.4
+    dev: false
+
+  /@zetachain/networks@5.0.0:
+    resolution: {integrity: sha512-bVnNN/U/DSALRwYgxZ9Cw4YKXFeRR34yCq43OumhGDq4niwfw14vRF/w0YwBJZW6eTs4/bkcFC1c5uir6kg8qA==}
     dependencies:
       dotenv: 16.4.4
     dev: false
