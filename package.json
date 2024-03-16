@@ -51,7 +51,7 @@
     "@zetachain/example-contracts": "1.0.0-rc1",
     "@zetachain/networks": "^5.0.0",
     "@zetachain/protocol-contracts": "^6.0.0",
-    "@zetachain/toolkit": "5.0.1-rc1",
+    "@zetachain/toolkit": "6.0.0-rc3",
     "bech32": "^2.0.0",
     "class-variance-authority": "^0.7.0",
     "classnames": "^2.5.1",
