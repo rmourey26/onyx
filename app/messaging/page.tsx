@@ -61,10 +61,10 @@ const MessagingPage = () => {
 
   const { chain } = useNetwork()
   useEffect(() => {
-    setCurrentNetworkName(chain ? getNetworkName(chain.network) : null)
+    setCurrentNetworkName(chain ? getNetworkName(chain.name) : undefined)
     if (chain) {
       setCurrentChain(chain)
-      setIsZeta(getNetworkName(chain.network) === "zeta_testnet")
+      setIsZeta(getNetworkName(chain.name) === "zeta_testnet")
     }
   }, [chain])
 
