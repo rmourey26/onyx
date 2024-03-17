@@ -70,6 +70,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
             fontSans.variable
           )}
         >
+<WagmiConfig config={wagmiConfig}>
+            <RainbowKitProvider chains={chains}>
+              <ZetaChainProvider>
 <ThemeProvider
             attribute="class"
             defaultTheme="system"
@@ -82,7 +85,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
               </div>
               <TailwindIndicator />
           </ThemeProvider>
-        
+        </ZetaChainProvider>
+            </RainbowKitProvider>
+          </WagmiConfig>
 
 
 </body>
