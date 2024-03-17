@@ -1,7 +1,10 @@
 ## What is Onyx?
-- Onyx is a turnkey, full stack web app written in Typescript that includes role based access control, 
-  complete Supabase SSR Auth and DB integration, Zod validation and more. Note the ZetaChain integration process began on 2-16-2024. Additional details on Zeta will be added soon. Stack details are below. 
-  Fork, customize, and deploy on Vercel to have your MVP up and running in a few days or less.
+
+- Onyx is a turnkey, full stack web app written in Typescript that anyone can
+fork, customize, and deploy on Vercel or elsewhere to have an MVP up and running in a few days or less.
+
+- Onyx includes role based access control, 
+complete Supabase SSR Auth and DB integration, Zod validation and more. Note ZetaChain integration is in progress. For those who do not need Zetachain, clone the repo and run a 'git checkout a6bsnchO4' to obtain pre-ZetaChain Onyx that includes the stack detailed below. 
 
 ## Stack 
 - NextJS 14 App Router
@@ -31,8 +34,10 @@
     - SUPABASE_JWT_SECRET="Your supabase JWT secret"
     - NEXT_PUBLIC_SUPABASE_URL="Your supabase project URL"
     - SUPABASE_SERVIC_ROLE_KEY="Your supabase service role key"
+    - NEXT_PUBLIC_ATN_KEY="Your AllThatNode API Key" This key is used along with the Zetachain integration. To obtain your own key create an account at allthatnode.com, setup a zetachain node, and find your api key from settings. 
   - Ensure your Supabase tables match the tables and types found in '@/lib/supabase'.
   - Add authorized development and production URL's to Supabase URL config. 
+
 ## Run  
 - Development server:
 
@@ -57,6 +62,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 ## Reference/Credit
 - @chensokheng 
+- @zetachain 
 
 ## Tips/Support
 <a href="https://www.buymeacoffee.com/rmoureyjr" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="51" width="217"></a>
