@@ -9,6 +9,32 @@ import { Toaster } from "@/components/ui/toaster"
 import { SiteHeader } from "@/components/site-header"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { cn } from "@/lib/utils"
+
+import {
+  injectedWallet,
+  metaMaskWallet,
+  okxWallet,
+  xdefiWallet,
+} from "@rainbow-me/rainbowkit/wallets"
+
+// import Index from "@/app/index"
+
+import { ZetaChainProvider } from "./ZetaChainContext"
+import "@rainbow-me/rainbowkit/styles.css"
+import {
+  RainbowKitProvider,
+  connectorsForWallets,
+} from "@rainbow-me/rainbowkit"
+import { WagmiConfig, configureChains, createConfig } from "wagmi"
+import {
+  bscTestnet,
+  goerli,
+  polygonMumbai,
+  zetachainAthensTestnet,
+} from "wagmi/chains"
+
+import { publicProvider } from "wagmi/providers/public"
+
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
