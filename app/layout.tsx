@@ -78,6 +78,7 @@ const wagmiConfig = createConfig({
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
+<WagmiConfig config={wagmiConfig}>
     <ReactQueryClientProvider>
     <html lang="en" suppressHydrationWarning>
       <body className={cn(
@@ -102,11 +103,11 @@ export default function RootLayout({ children }: RootLayoutProps) {
           </ThemeProvider>
         </ZetaChainProvider>
             </RainbowKitProvider>
-          </WagmiConfig>
 
 
 </body>
     </html>
     </ReactQueryClientProvider>
+</WagmiConfig>
   )
 }
