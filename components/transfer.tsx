@@ -18,7 +18,7 @@ import {
   Loader2,
   RefreshCcw,
   Send,
-  UserCircle2,
+  UserCircle,
 } from "lucide-react"
 import { parseEther, parseUnits } from "viem"
 import { useAccount, useNetwork, useSwitchNetwork } from "wagmi"
@@ -1020,7 +1020,7 @@ const Transfer = () => {
                   className="rounded-full w-[110px] text-xs h-6 px-3"
                 >
                   {isAddressSelectedValid ? (
-                    <UserCircle2 className="h-3 w-3 mr-1" />
+                    <UserCircle className="h-3 w-3 mr-1" />
                   ) : (
                     <AlertCircle className="h-3 w-3 mr-1" />
                   )}
