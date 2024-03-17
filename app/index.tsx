@@ -3,16 +3,8 @@
 import { EvmPriceServiceConnection } from "@pythnetwork/pyth-evm-js"
 
 import "@/styles/globals.css"
-import { parse } from "path"
-import { createContext, use, useCallback, useEffect, useState } from "react"
+import { createContext, useCallback, useEffect, useState } from "react"
 import { getEndpoints } from "@zetachain/networks/dist/src/getEndpoints"
-import {
-  fetchFees,
-  getBalances,
-  getPools,
-  trackCCTX,
-  // @ts-ignore
-} from "@zetachain/toolkit/helpers"
 import EventEmitter from "eventemitter3"
 // @ts-ignore
 import Cookies from "js-cookie"
@@ -20,12 +12,12 @@ import debounce from "lodash/debounce"
 import { useAccount } from "wagmi"
 
 import { hexToBech32Address } from "@/lib/hexToBech32Address"
-import { ToastAction } from "@/components/ui/toast"
 import { Toaster } from "@/components/ui/toaster"
 import { useToast } from "@/components/ui/use-toast"
 import { SiteHeader } from "@/components/site-header"
 import { ThemeProvider } from "@/components/theme-provider"
 
+import { useZetaChain } from "./ZetaChainContext"
 import { NFTProvider } from "./nft/useNFT"
 
 interface RootLayoutProps {
@@ -35,6 +27,8 @@ interface RootLayoutProps {
 export const AppContext = createContext<any>(null)
 
 export default function Index({ children }: RootLayoutProps) {
+  const { client } = useZetaChain()
+
   const [balances, setBalances] = useState<any>([])
   const [balancesLoading, setBalancesLoading] = useState(true)
   const [balancesRefreshing, setBalancesRefreshing] = useState(false)
@@ -195,7 +189,7 @@ export default function Index({ children }: RootLayoutProps) {
         if (!isConnected) {
           return setBalances([])
         }
-        const b = await getBalances(address, btc)
+        const b = await client.getBalances(address, btc)
         setBalances(b)
       } catch (e) {
         console.log(e)
@@ -213,7 +207,7 @@ export default function Index({ children }: RootLayoutProps) {
         if (!isConnected) {
           return setFees([])
         }
-        setFees(await fetchFees(500000))
+        setFees(await client.getFees(500000))
       } catch (e) {
         console.log(e)
       }
@@ -225,7 +219,7 @@ export default function Index({ children }: RootLayoutProps) {
     debounce(async () => {
       setPoolsLoading(true)
       try {
-        setPools(await getPools())
+        setPools(await client.getPools())
       } catch (e) {
         console.log(e)
       } finally {
@@ -368,7 +362,7 @@ export default function Index({ children }: RootLayoutProps) {
             })
           })
 
-        trackCCTX(i.inboundHash, false, emitter)
+        client.trackCCTX(i.inboundHash, false, emitter)
         setCCTXs([...cctxs, { inboundHash: i.inboundHash, desc: i.desc }])
       }
     }
