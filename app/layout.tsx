@@ -86,7 +86,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
             fontSans.variable
           )}
         >
-<WagmiConfig config={wagmiConfig}>
             <RainbowKitProvider chains={chains}>
               <ZetaChainProvider>
 <ThemeProvider
