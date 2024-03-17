@@ -44,6 +44,37 @@ interface RootLayoutProps {
   children: React.ReactNode
 }
 
+const { chains, publicClient, webSocketPublicClient } = configureChains(
+  [
+    goerli,
+    polygonMumbai,
+    bscTestnet,
+    {
+      ...zetachainAthensTestnet,
+      iconUrl: "https://www.zetachain.com/favicon/favicon.png",
+    },
+  ],
+  [publicProvider()]
+)
+
+const connectors = connectorsForWallets([
+  {
+    groupName: "Recommended",
+    wallets: [
+      injectedWallet({ chains }),
+      metaMaskWallet({ projectId: "PROJECT_ID", chains }),
+      xdefiWallet({ chains }),
+      okxWallet({ projectId: "PROJECT_ID", chains }),
+    ],
+  },
+])
+
+const wagmiConfig = createConfig({
+  autoConnect: true,
+  connectors,
+  publicClient,
+  webSocketPublicClient,
+})
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
