@@ -33,8 +33,8 @@ import {
   bscTestnet,
   goerli,
   polygonMumbai,
-} from "wagmi/chains"
-import { zetachainAthensTestnet } from "wagmi/chains"
+} from "wagmi/core/chains"
+import { zetachainAthensTestnet } from "wagmi/core/chains"
 import { publicProvider } from "wagmi/providers/public"
 
 const inter = Inter({ subsets: ['latin'] })
