@@ -91,7 +91,7 @@ dependencies:
     version: 1.0.7(@types/react-dom@18.2.18)(@types/react@18.2.46)(react-dom@18.2.0)(react@18.2.0)
   '@rainbow-me/rainbowkit':
     specifier: ^1.1.2
-    version: 1.3.6(@types/react@18.2.46)(react-dom@18.2.0)(react@18.2.0)(viem@0.3.35)(wagmi@1.4.13)
+    version: 1.3.6(@types/react@18.2.46)(react-dom@18.2.0)(react@18.2.0)(viem@2.8.11)(wagmi@1.4.13)
   '@supabase-cache-helpers/postgrest-react-query':
     specifier: ^1.4.0
     version: 1.4.0(@supabase/postgrest-js@1.9.2)(@supabase/supabase-js@2.39.3)(@tanstack/react-query@5.18.0)(react@18.2.0)
@@ -234,11 +234,11 @@ dependencies:
     specifier: ^9.0.4
     version: 9.0.4(react@18.2.0)
   viem:
-    specifier: ^0.3.35
-    version: 0.3.35(typescript@5.3.3)(zod@3.22.4)
+    specifier: ^2.8.11
+    version: 2.8.11(typescript@5.3.3)(zod@3.22.4)
   wagmi:
     specifier: ^1.4.5
-    version: 1.4.13(@types/react@18.2.46)(react-dom@18.2.0)(react@18.2.0)(typescript@5.3.3)(viem@0.3.35)(zod@3.22.4)
+    version: 1.4.13(@types/react@18.2.46)(react-dom@18.2.0)(react@18.2.0)(typescript@5.3.3)(viem@2.8.11)(zod@3.22.4)
   yup:
     specifier: ^1.3.3
     version: 1.3.3
@@ -309,10 +309,6 @@ packages:
 
   /@adraffy/ens-normalize@1.10.0:
     resolution: {integrity: sha512-nA9XHtlAkYfJxY7bce8DcN7eKxWWCWkU+1GR9d+U6MbNpfwQp8TI7vqOsBsMcHoT4mBu2kypKoSKnghEzOOq5Q==}
-    dev: false
-
-  /@adraffy/ens-normalize@1.9.0:
-    resolution: {integrity: sha512-iowxq3U30sghZotgl4s/oJRci6WPBfNO5YYgk2cIOMCHr3LeGPcsZjCEr+33Q4N+oV3OABDAtA+pyvWjbvBifQ==}
     dev: false
 
   /@alloc/quick-lru@5.2.0:
@@ -2151,12 +2147,6 @@ packages:
     dev: false
     optional: true
 
-  /@noble/curves@1.0.0:
-    resolution: {integrity: sha512-2upgEu0iLiDVDZkNLeFV2+ht0BAVgQnEmCk6JsOch9Rp8xfkMCbvbAZlA2pBHQc73dbl+vFOXfqkf4uemdn0bw==}
-    dependencies:
-      '@noble/hashes': 1.3.0
-    dev: false
-
   /@noble/curves@1.2.0:
     resolution: {integrity: sha512-oYclrNgRaM9SsBUBVbb8M6DTV7ZHRTKugureoYEncY5c65HOmRzvSiTE3y5CYaPYJA/GVkrhXEoF0M3Ya9PMnw==}
     dependencies:
@@ -2171,10 +2161,6 @@ packages:
 
   /@noble/hashes@1.2.0:
     resolution: {integrity: sha512-FZfhjEDbT5GRswV3C6uvLPHMiVD6lQBmpoX5+eSiPaMTXte/IKqI5dykDxzZB/WBeK/CDuQRBWarPdi3FNY2zQ==}
-    dev: false
-
-  /@noble/hashes@1.3.0:
-    resolution: {integrity: sha512-ilHEACi9DwqJB0pw7kv+Apvh50jiiSyR/cQ3y4W7lOR5mhvn/50FLUfsnfJz0BDZtl/RR16kXvptiv6q1msYZg==}
     dev: false
 
   /@noble/hashes@1.3.2:
@@ -3811,7 +3797,7 @@ packages:
       '@babel/runtime': 7.23.9
     dev: false
 
-  /@rainbow-me/rainbowkit@1.3.6(@types/react@18.2.46)(react-dom@18.2.0)(react@18.2.0)(viem@0.3.35)(wagmi@1.4.13):
+  /@rainbow-me/rainbowkit@1.3.6(@types/react@18.2.46)(react-dom@18.2.0)(react@18.2.0)(viem@2.8.11)(wagmi@1.4.13):
     resolution: {integrity: sha512-NA9jAX3Niw0T0OMJQ1jsjPmB3XHbifK2+6e75YJEwxPR4JDFRF0wjW25kzHBSpn6VgayPK7dOZM5Z+zURClvug==}
     engines: {node: '>=12.4'}
     peerDependencies:
@@ -3829,8 +3815,8 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
       react-remove-scroll: 2.5.7(@types/react@18.2.46)(react@18.2.0)
       ua-parser-js: 1.0.37
-      viem: 0.3.35(typescript@5.3.3)(zod@3.22.4)
-      wagmi: 1.4.13(@types/react@18.2.46)(react-dom@18.2.0)(react@18.2.0)(typescript@5.3.3)(viem@0.3.35)(zod@3.22.4)
+      viem: 2.8.11(typescript@5.3.3)(zod@3.22.4)
+      wagmi: 1.4.13(@types/react@18.2.46)(react-dom@18.2.0)(react@18.2.0)(typescript@5.3.3)(viem@2.8.11)(zod@3.22.4)
     transitivePeerDependencies:
       - '@types/react'
     dev: false
@@ -3892,14 +3878,6 @@ packages:
       '@scure/base': 1.1.5
     dev: false
 
-  /@scure/bip32@1.3.0:
-    resolution: {integrity: sha512-bcKpo1oj54hGholplGLpqPHRbIsnbixFtc06nwuNM5/dwSXOq/AAYoIBRsBmnZJSdfeNW5rnff7NTAz3ZCqR9Q==}
-    dependencies:
-      '@noble/curves': 1.0.0
-      '@noble/hashes': 1.3.3
-      '@scure/base': 1.1.5
-    dev: false
-
   /@scure/bip32@1.3.2:
     resolution: {integrity: sha512-N1ZhksgwD3OBlwTv3R6KFEcPojl/W4ElJOeCZdi+vuI5QmTFwLq3OFf2zd2ROpKvxFdgZ6hUpb0dx9bVNEwYCA==}
     dependencies:
@@ -3920,13 +3898,6 @@ packages:
     resolution: {integrity: sha512-t+wDck2rVkh65Hmv280fYdVdY25J9YeEUIgn2LG1WM6gxFkGzcksoDiUkWVpVp3Oex9xGC68JU2dSbUfwZ2jPg==}
     dependencies:
       '@noble/hashes': 1.2.0
-      '@scure/base': 1.1.5
-    dev: false
-
-  /@scure/bip39@1.2.0:
-    resolution: {integrity: sha512-SX/uKq52cuxm4YFXWFaVByaSHJh2w3BnokVSeUJVCv6K7WulT9u2BuNRBhuFl8vAuYnzx9bEu9WgpcNYTrYieg==}
-    dependencies:
-      '@noble/hashes': 1.3.3
       '@scure/base': 1.1.5
     dev: false
 
@@ -4797,18 +4768,7 @@ packages:
       '@vanilla-extract/css': 1.14.0
     dev: false
 
-  /@wagmi/chains@0.2.16(typescript@5.3.3):
-    resolution: {integrity: sha512-rkWaI2PxCnbD8G07ZZff5QXftnSkYL0h5f4DkHCG3fGYYr/ZDvmCL4bMae7j7A9sAif1csPPBmbCzHp3R5ogCQ==}
-    peerDependencies:
-      typescript: '>=4.9.4'
-    peerDependenciesMeta:
-      typescript:
-        optional: true
-    dependencies:
-      typescript: 5.3.3
-    dev: false
-
-  /@wagmi/connectors@3.1.11(@types/react@18.2.46)(react@18.2.0)(typescript@5.3.3)(viem@0.3.35)(zod@3.22.4):
+  /@wagmi/connectors@3.1.11(@types/react@18.2.46)(react@18.2.0)(typescript@5.3.3)(viem@2.8.11)(zod@3.22.4):
     resolution: {integrity: sha512-wzxp9f9PtSUFjDUP/QDjc1t7HON4D8wrVKsw35ejdO8hToDpx1gU9lwH/47Zo/1zExGezQc392sjoHSszYd7OA==}
     peerDependencies:
       typescript: '>=5.0.4'
@@ -4827,7 +4787,7 @@ packages:
       abitype: 0.8.7(typescript@5.3.3)(zod@3.22.4)
       eventemitter3: 4.0.7
       typescript: 5.3.3
-      viem: 0.3.35(typescript@5.3.3)(zod@3.22.4)
+      viem: 2.8.11(typescript@5.3.3)(zod@3.22.4)
     transitivePeerDependencies:
       - '@azure/app-configuration'
       - '@azure/cosmos'
@@ -4850,7 +4810,7 @@ packages:
       - zod
     dev: false
 
-  /@wagmi/core@1.4.13(@types/react@18.2.46)(react@18.2.0)(typescript@5.3.3)(viem@0.3.35)(zod@3.22.4):
+  /@wagmi/core@1.4.13(@types/react@18.2.46)(react@18.2.0)(typescript@5.3.3)(viem@2.8.11)(zod@3.22.4):
     resolution: {integrity: sha512-ytMCvXbBOgfDu9Qw67279wq/jNEe7EZLjLyekX7ROnvHRADqFr3lwZI6ih41UmtRZAmXAx8Ghyuqy154EjB5mQ==}
     peerDependencies:
       typescript: '>=5.0.4'
@@ -4859,11 +4819,11 @@ packages:
       typescript:
         optional: true
     dependencies:
-      '@wagmi/connectors': 3.1.11(@types/react@18.2.46)(react@18.2.0)(typescript@5.3.3)(viem@0.3.35)(zod@3.22.4)
+      '@wagmi/connectors': 3.1.11(@types/react@18.2.46)(react@18.2.0)(typescript@5.3.3)(viem@2.8.11)(zod@3.22.4)
       abitype: 0.8.7(typescript@5.3.3)(zod@3.22.4)
       eventemitter3: 4.0.7
       typescript: 5.3.3
-      viem: 0.3.35(typescript@5.3.3)(zod@3.22.4)
+      viem: 2.8.11(typescript@5.3.3)(zod@3.22.4)
       zustand: 4.5.0(@types/react@18.2.46)(react@18.2.0)
     transitivePeerDependencies:
       - '@azure/app-configuration'
@@ -5431,19 +5391,6 @@ packages:
       through: 2.3.8
     dev: false
 
-  /abitype@0.8.2(typescript@5.3.3)(zod@3.22.4):
-    resolution: {integrity: sha512-B1ViNMGpfx/qjVQi0RTc2HEFHuR9uoCoTEkwELT5Y7pBPtBbctYijz9BK6+Kd0hQ3S70FhYTO2dWWk0QNUEXMA==}
-    peerDependencies:
-      typescript: '>=5.0.4'
-      zod: ^3 >=3.19.1
-    peerDependenciesMeta:
-      zod:
-        optional: true
-    dependencies:
-      typescript: 5.3.3
-      zod: 3.22.4
-    dev: false
-
   /abitype@0.8.7(typescript@5.3.3)(zod@3.22.4):
     resolution: {integrity: sha512-wQ7hV8Yg/yKmGyFpqrNZufCxbszDe5es4AZGYPBitocfSqXtjrTG9JMWFcc4N30ukl2ve48aBTwt7NJxVQdU3w==}
     peerDependencies:
@@ -5462,6 +5409,21 @@ packages:
     peerDependencies:
       typescript: '>=5.0.4'
       zod: ^3 >=3.19.1
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+      zod:
+        optional: true
+    dependencies:
+      typescript: 5.3.3
+      zod: 3.22.4
+    dev: false
+
+  /abitype@1.0.0(typescript@5.3.3)(zod@3.22.4):
+    resolution: {integrity: sha512-NMeMah//6bJ56H5XRj8QCV4AwuW6hB6zqz2LnhhLdcWVQOsXki6/Pn3APeqxCma62nXIcmZWdu1DlHWS74umVQ==}
+    peerDependencies:
+      typescript: '>=5.0.4'
+      zod: ^3 >=3.22.0
     peerDependenciesMeta:
       typescript:
         optional: true
@@ -8524,14 +8486,6 @@ packages:
       ws: 8.16.0(bufferutil@4.0.8)(utf-8-validate@5.0.10)
     dev: false
 
-  /isomorphic-ws@5.0.0(ws@8.12.0):
-    resolution: {integrity: sha512-muId7Zzn9ywDsyXgTIafTry2sV3nySZeUDe6YedVd1Hvuuep5AsIlqK+XefWpYTyJG5e503F2xIuT2lcU6rCSw==}
-    peerDependencies:
-      ws: '*'
-    dependencies:
-      ws: 8.12.0
-    dev: false
-
   /isows@1.0.3(ws@8.13.0):
     resolution: {integrity: sha512-2cKei4vlmg2cxEjm3wVSqn8pcoRF/LX/wpifuuNquFO4SQmPwarClT+SUCA2lt+l581tTeZIPIZuIDo2jWN1fg==}
     peerDependencies:
@@ -11559,25 +11513,6 @@ packages:
       d3-timer: 3.0.1
     dev: false
 
-  /viem@0.3.35(typescript@5.3.3)(zod@3.22.4):
-    resolution: {integrity: sha512-r9GrjAwY5BAehRAMSDJQGpPWGM6sKbAftb3GVny/rLCdjjtK4Zz2B3HOcjOQEM7jo+3LfPWSd85rBkNEpWntiA==}
-    dependencies:
-      '@adraffy/ens-normalize': 1.9.0
-      '@noble/curves': 1.0.0
-      '@noble/hashes': 1.3.0
-      '@scure/bip32': 1.3.0
-      '@scure/bip39': 1.2.0
-      '@wagmi/chains': 0.2.16(typescript@5.3.3)
-      abitype: 0.8.2(typescript@5.3.3)(zod@3.22.4)
-      isomorphic-ws: 5.0.0(ws@8.12.0)
-      ws: 8.12.0
-    transitivePeerDependencies:
-      - bufferutil
-      - typescript
-      - utf-8-validate
-      - zod
-    dev: false
-
   /viem@1.21.4(typescript@5.3.3)(zod@3.22.4):
     resolution: {integrity: sha512-BNVYdSaUjeS2zKQgPs+49e5JKocfo60Ib2yiXOWBT6LuVxY1I/6fFX3waEtpXvL1Xn4qu+BVitVtMh9lyThyhQ==}
     peerDependencies:
@@ -11601,6 +11536,29 @@ packages:
       - zod
     dev: false
 
+  /viem@2.8.11(typescript@5.3.3)(zod@3.22.4):
+    resolution: {integrity: sha512-TMmHle2k6gZ0+LENMr5ulb/bKGMTaCFj5V3sbS52OGCnhxI4t46NDIk6RIIAiaPR4AkwZPf31LY5LORjpb02Tg==}
+    peerDependencies:
+      typescript: '>=5.0.4'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+    dependencies:
+      '@adraffy/ens-normalize': 1.10.0
+      '@noble/curves': 1.2.0
+      '@noble/hashes': 1.3.2
+      '@scure/bip32': 1.3.2
+      '@scure/bip39': 1.2.1
+      abitype: 1.0.0(typescript@5.3.3)(zod@3.22.4)
+      isows: 1.0.3(ws@8.13.0)
+      typescript: 5.3.3
+      ws: 8.13.0
+    transitivePeerDependencies:
+      - bufferutil
+      - utf-8-validate
+      - zod
+    dev: false
+
   /vscode-oniguruma@1.7.0:
     resolution: {integrity: sha512-L9WMGRfrjOhgHSdOYgCt/yRMsXzLDJSL7BPrOZt73gU0iWO4mpqzqQzOz5srxqTvMBaR0XZTSrVWo4j55Rc6cA==}
     dev: false
@@ -11609,7 +11567,7 @@ packages:
     resolution: {integrity: sha512-AFbieoL7a5LMqcnOF04ji+rpXadgOXnZsxQr//r83kLPr7biP7am3g9zbaZIaBGwBRWeSvoMD4mgPdX3e4NWBg==}
     dev: false
 
-  /wagmi@1.4.13(@types/react@18.2.46)(react-dom@18.2.0)(react@18.2.0)(typescript@5.3.3)(viem@0.3.35)(zod@3.22.4):
+  /wagmi@1.4.13(@types/react@18.2.46)(react-dom@18.2.0)(react@18.2.0)(typescript@5.3.3)(viem@2.8.11)(zod@3.22.4):
     resolution: {integrity: sha512-AScVYFjqNt1wMgL99Bob7MLdhoTZ3XKiOZL5HVBdy4W1sh7QodA3gQ8IsmTuUrQ7oQaTxjiXEhwg7sWNrPBvJA==}
     peerDependencies:
       react: '>=17.0.0'
@@ -11622,12 +11580,12 @@ packages:
       '@tanstack/query-sync-storage-persister': 4.36.1
       '@tanstack/react-query': 4.36.1(react-dom@18.2.0)(react@18.2.0)
       '@tanstack/react-query-persist-client': 4.36.1(@tanstack/react-query@4.36.1)
-      '@wagmi/core': 1.4.13(@types/react@18.2.46)(react@18.2.0)(typescript@5.3.3)(viem@0.3.35)(zod@3.22.4)
+      '@wagmi/core': 1.4.13(@types/react@18.2.46)(react@18.2.0)(typescript@5.3.3)(viem@2.8.11)(zod@3.22.4)
       abitype: 0.8.7(typescript@5.3.3)(zod@3.22.4)
       react: 18.2.0
       typescript: 5.3.3
       use-sync-external-store: 1.2.0(react@18.2.0)
-      viem: 0.3.35(typescript@5.3.3)(zod@3.22.4)
+      viem: 2.8.11(typescript@5.3.3)(zod@3.22.4)
     transitivePeerDependencies:
       - '@azure/app-configuration'
       - '@azure/cosmos'
@@ -11819,19 +11777,6 @@ packages:
     peerDependencies:
       bufferutil: ^4.0.1
       utf-8-validate: ^5.0.2
-    peerDependenciesMeta:
-      bufferutil:
-        optional: true
-      utf-8-validate:
-        optional: true
-    dev: false
-
-  /ws@8.12.0:
-    resolution: {integrity: sha512-kU62emKIdKVeEIOIKVegvqpXMSTAMLJozpHZaJNDYqBjzlSYXQGviYwN1osDLJ9av68qHd4a2oSjd7yD4pacig==}
-    engines: {node: '>=10.0.0'}
-    peerDependencies:
-      bufferutil: ^4.0.1
-      utf-8-validate: '>=5.0.2'
     peerDependenciesMeta:
       bufferutil:
         optional: true
