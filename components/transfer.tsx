@@ -3,6 +3,8 @@
 import { useCallback, useContext, useEffect, useState } from "react"
 import ERC20_ABI from "@openzeppelin/contracts/build/contracts/ERC20.json"
 import UniswapV2Factory from "@uniswap/v2-periphery/build/IUniswapV2Router02.json"
+import '@uniswap/v2-core/contracts/interfaces/IUniswapV2Factory.sol';
+import '@uniswap/lib/contracts/libraries/TransferHelper.sol';
 import { getEndpoints } from "@zetachain/networks/dist/src/getEndpoints"
 import { getAddress } from "@zetachain/protocol-contracts"
 import ERC20Custody from "@zetachain/protocol-contracts/abi/evm/ERC20Custody.sol/ERC20Custody.json"
@@ -198,7 +200,7 @@ const Transfer = () => {
       parseFloat(sourceAmount) > 0 && setDestinationAmountIsLoading(true)
       const rpc = getEndpoints("evm", "zeta_testnet")[0]?.url
       const provider = new ethers.providers.StaticJsonRpcProvider(rpc)
-      const routerAddress = getAddress("uniswapv2Router02", "zeta_testnet")
+      const routerAddress = getAddress("uniswapV2Router02", "zeta_testnet")
       const router = new ethers.Contract(
         routerAddress as any,
         UniswapV2Factory.abi,
