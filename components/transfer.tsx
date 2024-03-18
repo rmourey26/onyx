@@ -3,8 +3,6 @@
 import { useCallback, useContext, useEffect, useState } from "react"
 import ERC20_ABI from "@openzeppelin/contracts/build/contracts/ERC20.json"
 import UniswapV2Factory from "@uniswap/v2-periphery/build/IUniswapV2Router02.json"
-import '@uniswap/v2-core/contracts/interfaces/IUniswapV2Factory.sol';
-import '@uniswap/lib/contracts/libraries/TransferHelper.sol';
 import { getEndpoints } from "@zetachain/networks/dist/src/getEndpoints"
 import { getAddress } from "@zetachain/protocol-contracts"
 import ERC20Custody from "@zetachain/protocol-contracts/abi/evm/ERC20Custody.sol/ERC20Custody.json"
