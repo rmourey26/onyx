@@ -29,12 +29,12 @@ import {
 } from "@rainbow-me/rainbowkit"
 import { WagmiConfig, configureChains, createConfig } from "wagmi"
 import {
+  mainnet,
   bscTestnet,
   goerli,
   polygonMumbai,
-  zetachainAthensTestnet,
 } from "wagmi/chains"
-
+import { zetachainAthensTestnet } from "wagmi/chains"
 import { publicProvider } from "wagmi/providers/public"
 
 const inter = Inter({ subsets: ['latin'] })
