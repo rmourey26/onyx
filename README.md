@@ -30,6 +30,7 @@ complete Supabase SSR Auth and DB integration, Zod validation and more. Note Zet
 - Add SSR and tanstack query driven wagmi provider config and SSR enabled zetachain client
 - additional updates as needed throughout zeta logic
 - Existing Zetachain example runs on Next 13.48 > feel free to create a pull request and help with Next 14+ and SSR version
+- Here's a working non-SSR [zetachain app](https://zetaone.vercel.app/) configured for testnet. Open from Metamask or similar wallet. 
 
 ## Getting started with Onyx:
 - First, configure your environment
