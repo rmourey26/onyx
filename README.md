@@ -1,23 +1,19 @@
 ## What is Onyx?
-- Onyx is a turnkey, full stack web app written in Typescript that includes role based access control, 
-  complete Supabase SSR Auth and DB integration, Zod validation and more. Note the ZetaChain integration process began on 2-16-2024. Additional details on Zeta will be added soon. Stack details are below. 
-  Fork, customize, and deploy on Vercel to have your MVP up and running in a few days or less.
+- Onyx is a turnkey, full stack web app written in Typescript that includes role based access control (RBAC),
+complete Supabase SSR Auth and DB integration, Zod and YUP! validation, Tanstack React Query, React Hook form, and more. Fork, customize, and deploy on Vercel or elsewhere to have your MVP up and running in a few days or less. Stack details are below. 
 
 ## Stack 
 - NextJS 14 App Router
 - Supabase 
-  - SSR Auth with middleware
+  - SSR Auth with middleware and server actions
   - Postgres DB 
-  - React Query Provider
-  - Middleware, Cookies, and headers configured
-  - Built with @supabase/ssr using server actions
+  - TanStack React Query Provider 
+  - Configured cookies and storage
+  - Admin dashboard with RBAC
 - Shadcn UI 
 - React hook form 
-- Zod Validation
-- Tailwind CSS
-- Formik 
-- YUP!
-- React Icons
+- Tailwind CSS 
+- YUP! & Zod validation 
 - Lucide React
 
 ## API 
