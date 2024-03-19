@@ -16,10 +16,8 @@ complete Supabase SSR Auth and DB integration, Zod validation and more. Note Zet
   - Built with @supabase/ssr using server actions
 - Shadcn UI 
 - React hook form 
-- Zod Validation
+- Zod and YUP! Validation
 - Tailwind CSS
-- Formik 
-- YUP!
 - React Icons
 - Lucide React
 
