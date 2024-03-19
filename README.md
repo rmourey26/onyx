@@ -4,7 +4,7 @@
 fork, customize, and deploy on Vercel or elsewhere to have an MVP up and running in a few days or less.
 
 - Onyx includes role based access control, 
-complete Supabase SSR Auth and DB integration, Zod validation and more. Note ZetaChain integration is in progress. For those who do not need Zetachain, clone the repo and run a 'git checkout a6bsnchO4' to obtain pre-ZetaChain Onyx that includes the stack detailed below. 
+complete Supabase SSR Auth and DB integration, Zod validation and more. Note ZetaChain integration is in progress. For those who do not need Zetachain, switch the branch name from 'main' to 'default' to obtain pre-ZetaChain Onyx that includes the stack detailed below. 
 
 ## Stack 
 - NextJS 14 App Router
