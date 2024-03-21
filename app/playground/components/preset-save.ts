@@ -14,7 +14,7 @@ import { Label } from "@/components/ui/label"
 export function PresetSave() {
   return (
     <Dialog>
-      <DialogTrigger asChild >
+      <DialogTrigger>
         <Button variant="secondary">Save</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[475px]">
