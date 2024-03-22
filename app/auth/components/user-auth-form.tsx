@@ -7,7 +7,7 @@ import { Icons } from "@/components/icons"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { loginWithEmailAndPassword } from "../actions"
+import { loginWithEmailAndPassword, signInWithGithub } from "../actions"
 import { toast } from "@/components/ui/use-toast"
 import { AuthTokenResponse } from "@supabase/supabase-js"
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -39,6 +39,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
     startTransition(async () => {
 			const { error } = JSON.parse(
 				await loginWithEmailAndPassword(data)
+                                await signInWithGithub()
 			) as AuthTokenResponse;
 
 			if (error) {
