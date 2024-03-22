@@ -10,9 +10,18 @@ export const siteConfig = {
       href: "/",
     },
     { 
-      title: "Members",
+      title: "Dashboard",
       href: "/dashboard",
     },
+    
+    { 
+      title: "AI Tools",
+      href: "/playground",
+    },
+    {  
+      title: "RBAC",
+      href: "/dashboard/members",
+    }, 
   ],
   links: {
     twitter: "https://twitter.com/r_mourey_jr",
