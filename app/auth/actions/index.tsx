@@ -19,7 +19,14 @@ export async function signInWithGithub() {
 
     const { data, error } = await supabase.auth.signInWithOAuth({
     provider: 'github',
+    options: {
+       redirectTo: '/auth/callback',
+    },
   })
+
+if (data.url) {
+  redirect(data.url)
+ }
 }
 export async function logout() {
 	const supabase = await createSupbaseServerClient();
