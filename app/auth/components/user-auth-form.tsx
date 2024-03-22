@@ -39,7 +39,6 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
     startTransition(async () => {
 			const { error } = JSON.parse(
 				await loginWithEmailAndPassword(data)
-                                await signInWithGithub()
 			) as AuthTokenResponse;
 
 			if (error) {
