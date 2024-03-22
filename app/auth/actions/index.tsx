@@ -14,7 +14,10 @@ export async function loginWithEmailAndPassword(data: {
 }
 
 export async function signInWithGithub() {
-  const { data, error } = await supabase.auth.signInWithOAuth({
+  
+     const supabase = await createSupbaseServerClient();  
+
+    const { data, error } = await supabase.auth.signInWithOAuth({
     provider: 'github',
   })
 }
