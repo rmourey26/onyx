@@ -13,6 +13,11 @@ export async function loginWithEmailAndPassword(data: {
 	return JSON.stringify(result);
 }
 
+export async function signInWithGithub() {
+  const { data, error } = await supabase.auth.signInWithOAuth({
+    provider: 'github',
+  })
+}
 export async function logout() {
 	const supabase = await createSupbaseServerClient();
 	await supabase.auth.signOut();
