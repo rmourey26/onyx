@@ -1,19 +1,20 @@
-import { NextRequest } from 'next/server';
+import { createClient } from "@/utils/supa-server-actions";
+import { NextResponse } from "next/server";
+import { cookies } from "next/headers";
 
-export async function GET(request: NextRequest) {
-  // get authorization code from query string
-  let code = request.nextUrl.searchParams.get('code');
-  if (!code) {
-    // show an error page to the user
-    return Response.redirect('https://onyx-rho-pink.vercel.app/error');
+export async function GET(request: Request) {
+  // The `/auth/callback` route is required for the server-side auth flow implemented
+  // by the Auth Helpers package. It exchanges an auth code for the user's session.
+  // https://supabase.com/docs/guides/auth/auth-helpers/nextjs#managing-sign-in-with-code-exchange
+  const requestUrl = new URL(request.url);
+  const code = requestUrl.searchParams.get("code");
+
+  if (code) {
+    const cookieStore = cookies();
+    const supabase = createClient(cookieStore);
+    await supabase.auth.exchangeCodeForSession(code);
   }
-  
-  // perform token exchange to get access token and refresh token
-  let { accessToken, refreshToken } = await tokenExchange(code);
 
-  // save tokens to database
-  // ...
-
-  // redirect user back to your application
-  return Response.redirect('https://onyx-rho-pink.vercel.app/dashboard');
+  // URL to redirect to after sign in process completes
+  return NextResponse.redirect(requestUrl.origin);
 }
