@@ -36,6 +36,11 @@ import {
 } from "wagmi/chains"
 import { zetachainAthensTestnet } from "wagmi/chains"
 import { publicProvider } from "wagmi/providers/public"
+import { headers } from 'next/headers' 
+import { cookieToInitialState } from 'wagmi' 
+
+import { config } from './config'
+import { Providers } from './providers'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -69,14 +74,12 @@ const connectors = connectorsForWallets([
   },
 ])
 
-const wagmiConfig = createConfig({
-  autoConnect: true,
-  connectors,
-  publicClient,
-  webSocketPublicClient,
-})
 
 export default function RootLayout({ children }: RootLayoutProps) {
+const initialState = cookieToInitialState( 
+    config, 
+    headers().get('cookie') 
+  )
   return (
 
     <ReactQueryClientProvider>
@@ -86,9 +89,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
             fontSans.variable
           )}
         >
-          <WagmiConfig config={wagmiConfig}>
-            <RainbowKitProvider chains={chains}>
-              <ZetaChainProvider>
+          <Providers>
 <ThemeProvider
             attribute="class"
             defaultTheme="system"
@@ -97,13 +98,10 @@ export default function RootLayout({ children }: RootLayoutProps) {
           >
              <div className="relative flex min-h-screen flex-col">
               <SiteHeader />
-              <div className="flex-1">{children}<Toaster/></div>
+              <div className="flex-1"><Providers initialState={initialState}>{children}<Toaster/></div>
               </div>
               <TailwindIndicator />
-          </ThemeProvider>
-        </ZetaChainProvider>
-            </RainbowKitProvider>
-            </WagmiConfig>
+          </Providers>
 
 </body>
     </html>
