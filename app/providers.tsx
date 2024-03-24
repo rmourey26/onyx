@@ -21,7 +21,7 @@ type Props = {
   initialState: State | undefined, 
 }
 
-const queryClient = new QueryClient()
+const queryClient = new ReactQueryClientProvider()
 
 export function Providers({ children, initialState }: Props) {  
   return (
