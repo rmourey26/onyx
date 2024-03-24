@@ -49,6 +49,7 @@
     "@uniswap/v3-core": "1.0.1",
     "@uniswap/v3-periphery": "^1.4.4",
     "@uniswap/v3-sdk": "3.10.0",
+    "@web3modal/wagmi": "^4.1.1",
     "@zetachain/example-contracts": "1.0.0-rc1",
     "@zetachain/networks": "^5.0.0",
     "@zetachain/protocol-contracts": "^6.0.0",
