@@ -11,7 +11,7 @@ if (!projectId) throw new Error('Project ID is not defined')
 const metadata = {
   name: 'Onyx',
   description: 'Web3 Connect',
-  url: 'https://onyx-rho-pink.vercel.app', // origin must match your domain & subdomain
+  url: 'https://onyx-s2rm-git-onyxzeta-rmourey26s-projects.vercel.app', // origin must match your domain & subdomain
   icons: ['https://avatars.githubusercontent.com/u/37784886']
 }
 
