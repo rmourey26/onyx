@@ -1,5 +1,15 @@
 'use client'
-
+import type { Metadata, Viewport } from 'next'
+import { Inter } from 'next/font/google'
+import './globals.css'
+import { ThemeProvider } from "@/components/theme-provider"
+import { fontSans } from "@/lib/font"
+import { siteConfig } from '@/config/site'
+import { ReactQueryClientProvider } from '@/components/react-query-client-provider'
+import { Toaster } from "@/components/ui/toaster"
+import { SiteHeader } from "@/components/site-header"
+import { TailwindIndicator } from "@/components/tailwind-indicator"
+import { cn } from "@/lib/utils"
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import type { ReactNode } from 'react'
 import { type State, WagmiProvider } from 'wagmi'
