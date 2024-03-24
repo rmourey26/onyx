@@ -27,7 +27,17 @@ export function Providers({ children, initialState }: Props) {
   return (
     <WagmiProvider config={config} initialState={initialState}> 
       <QueryClientProvider client={queryClient}>
-        {children}
+<ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+             
+        {children}<Toaster/>
+        <TailwindIndicator />
+       </ThemeProvider>
+      
       </QueryClientProvider>
     </WagmiProvider>
   )
