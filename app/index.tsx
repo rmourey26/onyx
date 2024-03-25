@@ -10,7 +10,7 @@ import EventEmitter from "eventemitter3"
 import Cookies from "js-cookie"
 import debounce from "lodash/debounce"
 import { useAccount } from "wagmi"
-
+import { useWeb3ModalState } from '@/lib/hooks/useWeb3ModalState'
 import { hexToBech32Address } from "@/lib/hexToBech32Address"
 import { Toaster } from "@/components/ui/toaster"
 import { useToast } from "@/components/ui/use-toast"
