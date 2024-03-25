@@ -16,7 +16,7 @@ import { Toaster } from "@/components/ui/toaster"
 import { useToast } from "@/components/ui/use-toast"
 import { SiteHeader } from "@/components/site-header"
 import { ThemeProvider } from "@/components/theme-provider"
-
+import { ConnectButton } from '@/lib/hooks/useWeb3Modal'
 import { useZetaChain } from "./ZetaChainContext"
 import { NFTProvider } from "./nft/useNFT"
 
