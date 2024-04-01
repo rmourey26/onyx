@@ -15,7 +15,7 @@ export const siteConfig = {
     },
     
     { 
-      title: "AI Tools",
+      title: "OpenAI",
       href: "/playground",
     },
     {  
