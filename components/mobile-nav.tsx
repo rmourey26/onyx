@@ -80,7 +80,7 @@ export function MobileNav() {
             )}
           </div>
           <div className="flex flex-col space-y-2">
-            {siteConfig.sidebarNav.map((item, index) => (
+            {siteConfig.MainNav.map((item, index) => (
               <div key={index} className="flex flex-col space-y-3 pt-6">
                 <h4 className="font-medium">{item.title}</h4>
                 {item?.items?.length &&
