@@ -1,11 +1,11 @@
-"use client"
+om"use client"
 
 import * as React from "react"
 import Link, { LinkProps } from "next/link"
 import { useRouter } from "next/navigation"
 import { ViewVerticalIcon } from "@radix-ui/react-icons"
 
-
+import { sideBar } from '@/app/dashboard/components/SideNav'
 import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
 import { Icons } from "@/components/icons"
