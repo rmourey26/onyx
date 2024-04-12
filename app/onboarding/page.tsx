@@ -4,7 +4,7 @@ import Link from "next/link"
 
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
-import { AuthForm } from "@/app/auth/components/AuthForm"
+import AuthForm from "@/app/auth/components/AuthForm"
 
 export const metadata: Metadata = {
   title: "Onboarding",
