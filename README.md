@@ -20,7 +20,7 @@ complete Supabase SSR Auth and DB integration, Zod and YUP! validation, Tanstack
 - TanStack React Query Provider
   - Demo SSR with Supabase DB & cache helpers 
 - YUP! & Zod validation and schemas
-- Shadcn-UI and Tailwind CSS
+- Shadcn-UI, Radix-UI primitives, Tailwind CSS
 - React Hook Form
 - User profile base at /private page
 - OpenAI playground UI
