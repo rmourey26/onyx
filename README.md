@@ -1,5 +1,5 @@
-## DApp Builders 
-- Onyx Web3/DApp version/branch available at github.com/quantum-one-dlt/onyx-one. OnyxOne includes everything in Onyx plus a TanStack React Query powered Web3Modal and Wagmi SSR configuration allowing users to connect any one of 380+ cryptographic wallets across every Ethereum virtual machine compatible chain.
+## Attention DApp Builders 
+- Onyx Web3/DApp version/branch available at github.com/quantum-one-dlt/onyx-one. OnyxOne includes everything in Onyx plus a TanStack React Query powered Web3Modal and Wagmi SSR configuration allowing users to connect to any one of 380+ cryptographic wallets across every Ethereum virtual machine compatible chain. 
 
 ## What is Onyx?
 - Onyx is a turnkey, full stack web app written in Typescript that includes role based access control (RBAC),
@@ -62,10 +62,10 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Frmourey26%2Fonyx%2Ftree%2Fmain)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
 ## Reference/Credit
-- @chensokheng 
+- @chensokheng
+
 
 ## Tips/Support
 <a href="https://www.buymeacoffee.com/rmoureyjr" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="51" width="217"></a>
