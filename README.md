@@ -8,15 +8,21 @@ complete Supabase SSR Auth and DB integration, Zod and YUP! validation, Tanstack
 ## Stack and Features
 - NextJS 14 App Router in Typescript 
 - Supabase 
-  - SSR Auth with middleware and server actions
+  - SSR Auth with
+    - Fully configured email/password signup, login, oauth, PKCE and confirm routes 
+    - middleware 
+    - server actions
+    - typed Auth & DB clients
+    - readOnly userSession clients
   - Postgres DB with CRUD functions  configured
-- TanStack React Query Provider 
-- Configured cookies and storage
+    - RBAC configured admin dashboard with data visualization, members administration and todo lists
+    - Contact form with toast, Zod validation, server side table insert  
+- TanStack React Query Provider
+  - Demo SSR with Supabase DB & cache helpers 
 - YUP! & Zod validation and schemas
 - Shadcn-UI and Tailwind CSS
 - React Hook Form
 - User profile base at /private page
-- Admin dashboard with data visualization and RBAC
 - OpenAI playground UI
 - Onboarding, signIn/signUp pages
 - Podcast UI 
