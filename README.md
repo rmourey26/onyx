@@ -1,5 +1,5 @@
 ## Attention DApp Builders 
-- Onyx Web3/DApp version/branch available called [Onyx One](https://github.com/quantum-one-dlt/onyx-one). OnyxOne includes everything in Onyx plus a TanStack React Query powered Web3Modal and Wagmi SSR configuration allowing users to connect to any one of 380+ cryptographic wallets across every Ethereum virtual machine compatible chain. 
+- Onyx Web3/DApp version/branch available called [Onyx One](https://github.com/quantum-one-dlt/onyx-one). Onyx One includes everything in Onyx plus a TanStack React Query powered Web3Modal and Wagmi SSR configuration allowing users to connect to any one of 380+ cryptographic wallets across every Ethereum virtual machine compatible chain. 
 
 ## What is Onyx?
 - Onyx is a turnkey, full stack web app written in Typescript that includes role based access control (RBAC),
