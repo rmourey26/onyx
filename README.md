@@ -25,8 +25,9 @@ complete Supabase SSR Auth and DB integration, Zod and YUP! validation, Tanstack
 - User profile base at /private page
 - OpenAI playground UI
 - Onboarding, signIn/signUp pages
-- Podcast UI 
-- Lucide React
+- Podcast UI
+- CookieButton component configured to work with Consent Manager from Termly free plan. Just create a free Termly account, add your Script tag on the app/layout page using Next Script and then add your CookieButton to your app/layout just above the ThemeProvider and just below your termly Script tag. 
+- Lucide React Icons with many brand SVGs ready for your props 
 - More..
 
 ## API 
