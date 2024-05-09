@@ -1,5 +1,5 @@
 import { Separator } from "@/components/ui/separator"
-import { AccountForm } from "./supa-account-form"
+import AccountForm from "./supa-account-form"
 
 export default function SettingsAccountPage() {
   return (
