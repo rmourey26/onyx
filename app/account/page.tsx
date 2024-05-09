@@ -1,5 +1,5 @@
 import { Separator } from "@/components/ui/separator"
-import { AccountForm } from "./account-form"
+import { AccountForm } from "./supa-account-form"
 
 export default function SettingsAccountPage() {
   return (
@@ -7,8 +7,7 @@ export default function SettingsAccountPage() {
       <div>
         <h3 className="text-lg font-medium">Account</h3>
         <p className="text-sm text-muted-foreground">
-          Update your account settings. Set your preferred language and
-          timezone.
+          Update your profile..
         </p>
       </div>
       <Separator />
