@@ -105,7 +105,7 @@ const languages = [
       size={144}
       onUpload={(url) => {
         setAvatarUrl(url)
-        updateProfile({ fullname, username, website, email, waddress, avatar_url: url })
+        updateProfile({ fullname, username, website, email, avatar_url: url })
       }}
     />
  <div className="flex flex-col">
