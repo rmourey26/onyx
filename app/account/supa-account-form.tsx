@@ -149,7 +149,7 @@ const languages = [
 
         <button
           className={buttonVariants({ variant: "outline" })}
-          onClick={() => updateProfile({ fullname, username, website, email, waddress, avatar_url })}
+          onClick={() => updateProfile({ fullname, username, website, email, avatar_url })}
           disabled={loading}
         >
           {loading ? 'Loading ...' : 'Update Account'}
