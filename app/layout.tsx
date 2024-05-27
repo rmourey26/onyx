@@ -7,6 +7,7 @@ import { siteConfig } from '@/config/site'
 import { ReactQueryClientProvider } from '@/components/react-query-client-provider'
 import { Toaster } from "@/components/ui/toaster"
 import { SiteHeader } from "@/components/site-header"
+import { SiteFooter } from "@/components/site-footer"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { cn } from "@/lib/utils"
 const inter = Inter({ subsets: ['latin'] })
@@ -55,6 +56,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
               <div className="flex-1">{children}<Toaster/></div>
               </div>
               <TailwindIndicator />
+<SiteFooter/>
           </ThemeProvider>
         
 
