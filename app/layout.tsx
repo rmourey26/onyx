@@ -55,7 +55,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
               <SiteHeader />
               <div className="flex-1">{children}<Toaster/></div>
               </div>
-              <TailwindIndicator />
+              
 <SiteFooter/>
           </ThemeProvider>
         
