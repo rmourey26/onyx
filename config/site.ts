@@ -9,19 +9,27 @@ export const siteConfig = {
       title: "Home",
       href: "/",
     },
+
+    { 
+      title: "Account",
+      href: "/account",
+    },
     { 
       title: "Dashboard",
       href: "/dashboard",
     },
-    
     { 
       title: "OpenAI",
       href: "/playground",
     },
-    {  
+    { 
       title: "RBAC",
       href: "/dashboard/members",
-    }, 
+    },
+    {
+      title: "Contact",
+      href: "/contact",
+    },
   ],
   links: {
     twitter: "https://twitter.com/r_mourey_jr",
