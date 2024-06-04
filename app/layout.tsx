@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import { ThemeProvider } from "@/components/theme-provider"
+import { CookieButton } from "@/components/cookie-button"
 import { fontSans } from "@/lib/font"
 import { siteConfig } from '@/config/site'
 import { ReactQueryClientProvider } from '@/components/react-query-client-provider'
@@ -57,6 +58,16 @@ export default function RootLayout({ children }: RootLayoutProps) {
               </div>
               
 <SiteFooter/>
+
+
+{/*
+enter your api info from termly.io or a provider of your choice
+<Script
+  type="text/javascript"
+  src="https://app.termly.io/resource-blocker/123456789abcdefg"/>
+
+*/}
+   <CookieButton />    
           </ThemeProvider>
         
 
