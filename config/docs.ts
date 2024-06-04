@@ -25,7 +25,7 @@ export const docsConfig: DocsConfig = {
     },
     { 
       title: "RBAC",
-      href: "/members",
+      href: "/dashboard/members",
     },
     {
       title: "Contact",
