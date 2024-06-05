@@ -55,10 +55,10 @@ export default function RootLayout({ children }: RootLayoutProps) {
              <div className="relative flex min-h-screen flex-col">
               <SiteHeader />
               <div className="flex-1">{children}<Toaster/></div>
-              </div>
+              
               
 <SiteFooter/>
-
+</div>
 
 {/*
 enter your api info from termly.io or a provider of your choice
