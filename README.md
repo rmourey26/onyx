@@ -22,6 +22,9 @@ complete Supabase SSR Auth and DB integration, Zod and YUP! validation, Tanstack
   - Demo SSR with Supabase DB & cache helpers 
 - YUP! & Zod validation and schemas
 - Shadcn-UI, Radix-UI primitives, Tailwind CSS
+- Markdown pages with Next/MDX - create page.mdx and layout.tsx for each markdown page
+- Next-PWA
+- Next Compose Plugins  
 - React Hook Form
 - User profile at /account page
 - OpenAI playground UI
