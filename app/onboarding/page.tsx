@@ -5,6 +5,7 @@ import Link from "next/link"
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
 import AuthForm from "@/app/auth/components/AuthForm"
+import { AuthFormLegacy } from '@/app/auth-server-action/components/AuthFormLegacy'
 
 export const metadata: Metadata = {
   title: "Onboarding",
@@ -86,7 +87,7 @@ export default function OnboardingPage() {
                 Enter your email below to create your account
               </p>
             </div>
-            <AuthForm />
+            <AuthFormLegacy />
             <p className="px-8 text-center text-sm text-muted-foreground">
               By clicking continue, you agree to our{" "}
               <Link
