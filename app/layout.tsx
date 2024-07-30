@@ -34,7 +34,6 @@ export const metadata: Metadata = {
       'pt-PT': '/pt-PT',
     },
   },
-  description: siteConfig.description,
   referrer: 'origin-when-cross-origin',
   keywords: ['NextJS 14 TypeScript', 'Supbase SSR', 'Tanstack React Query', 'vercel', 'openai', 'MVP Template', 'Onyx template', 'Zod', 'Shadcn-UI', 'Tailwind CSS'],
   authors: [{ name: 'Robert Mourey Jr' }],
