@@ -19,6 +19,91 @@ export const metadata: Metadata = {
     template: `%s - ${siteConfig.name}`,
   },
   description: siteConfig.description,
+    manifest: 'https://onyx-rho-pink.vercel.app/manifest.json',
+  metadataBase: new URL('https://onyx-rho-pink.vercel.app'),
+  alternates: {
+    canonical: '/',
+    languages: {
+      'en-US': '/en-US',
+      'de-DE': '/de-DE',
+      'es-ES': '/es-ES',
+      'fr-FR': '/fr-FR',
+      'jp-JP': '/jp-JP',
+      'ko-KO': '/ko-KP',
+      'zh-ZH': '/zh-ZH',
+      'pt-PT': '/pt-PT',
+    },
+  },
+  description: siteConfig.description,
+  referrer: 'origin-when-cross-origin',
+  keywords: ['NextJS 14 TypeScript', 'Supbase SSR', 'Tanstack React Query', 'vercel', 'openai', 'MVP Template', 'Onyx template', 'Zod', 'Shadcn-UI', 'Tailwind CSS'],
+  authors: [{ name: 'Robert Mourey Jr' }],
+  creator: 'Robert Mourey Jr',
+  publisher: 'Robert Mourey Jr', 
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  generator: 'NextJS',
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon-16x16.png",
+    apple: "/apple-touch-icon.png",
+  },
+
+  robots: {
+    index: false,
+    follow: true,
+    nocache: true,
+    googleBot: {
+      index: true,
+      follow: false,
+      noimageindex: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  openGraph: {
+    title: siteConfig.name,
+    description: siteConfig.description,
+    siteName: siteConfig.name,
+    url: "https://onyx-rho-pink.vercel.app",
+    images: [
+      {
+        url: 'https://onyx-rho-pink.vercel.app/og-image.jpg', // Must be an absolute URL
+        width: 1230,
+        height: 640,
+      },
+      {
+        url: 'https://quantumone.b-cdn.net/onyx/opengraph-image.jpg', // Must be an absolute URL
+        width: 1800,
+        height: 1600,
+        alt: 'blockchain business',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+    twitter: {
+         title: siteConfig.name,
+         description: siteConfig.description,
+         site: '@r_mourey_jr',
+         creator: '@r_mourey_jr',
+         images: [
+      {
+        url: 'https://onyx-rho-pink.vercel.app/twitter-image.jpg', // Must be an absolute URL
+        width: 1800,
+        height: 900,
+      },
+      {
+        url: 'https://quantumone.b-cdn.net/onyx/twitter-image.jpg',
+        width: 1800,
+        height: 900,
+      },
+     ],
+   },
   
   icons: {
     icon: "/favicon.ico",
