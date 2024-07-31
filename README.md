@@ -30,7 +30,8 @@ complete Supabase SSR Auth and DB integration, Zod and YUP! validation, Tanstack
 - OpenAI playground UI
 - Onboarding, signIn/signUp pages
 - Podcast UI
-- CookieButton component configured to work with Consent Manager from Termly free plan. Just create a free Termly account, add your Script tag on the app/layout page using Next Script and then add your CookieButton to your app/layout just above the ThemeProvider and just below your termly Script tag. 
+- CookieButton component configured to work with Consent Manager from Termly free plan. Just create a free Termly account, add your Script tag on the app/layout page using Next Script and then add your CookieButton to your app/layout just above the ThemeProvider and just below your termly Script tag.  
+- Custom Formik Components with MUI are not used in app but code is solid for use in a "MUI Base X TailwindCSS config". Onyx is NOT currently configured for MUI nor MUI Base X TailwindCSS. 
 - Lucide React Icons with many brand SVGs ready for your props 
 - More..
 
