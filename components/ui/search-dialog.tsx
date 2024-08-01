@@ -77,7 +77,7 @@ export function SearchDialog() {
       <Dialog open={open}>
         <DialogContent className="sm:max-w-[850px] max-h-[80vh] overflow-y-auto text-black">
           <DialogHeader>
-            <DialogTitle>PatentAI-0724 Text Embedding App </DialogTitle>
+            <DialogTitle>Onyx AI</DialogTitle>
             <DialogDescription>
              Augment ChatGPT&lsquo;s knowledge with your own data and without any code.</DialogDescription>
             <hr />
@@ -147,8 +147,8 @@ export function SearchDialog() {
                   hover:bg-slate-100 dark:hover:bg-gray-600
                   rounded border border-slate-200 dark:border-slate-600
                   transition-colors"
-                  onClick={(_) => setQuery('Tell me about patent 2021123456a')}
-                >Tell me about patent 2021123456a</button>
+                  onClick={(_) => setQuery('Connecting soon')}
+                >Connecting soon</button>
               </div>
             </div>
             <DialogFooter>
