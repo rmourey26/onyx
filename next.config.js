@@ -13,12 +13,6 @@ const nextConfig = {
   },
   experimental: {
     mdxRs: true,
-
-{/*
-    serverActions: {
-      allowedOrigins: ['my-proxy.com', '*.my-proxy.com'],
-    },
-*/}
   },
     images : {
       remotePatterns: [
