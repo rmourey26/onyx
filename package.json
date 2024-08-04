@@ -89,7 +89,6 @@
     "next-compose-plugins": "^2.2.1",
     "next-themes": "^0.2.1",
     "openai": "^4.53.2",
-    "openai-edge": "^1.2.2",
     "pdf-lib": "^1.17.1",
     "prettier": "^2.8.8",
     "react": "^18.3.1",

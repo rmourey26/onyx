@@ -248,9 +248,6 @@ importers:
       openai:
         specifier: ^4.53.2
         version: 4.53.2
-      openai-edge:
-        specifier: ^1.2.2
-        version: 1.2.2
       pdf-lib:
         specifier: ^1.17.1
         version: 1.17.1
@@ -6377,10 +6374,6 @@ packages:
   onetime@6.0.0:
     resolution: {integrity: sha512-1FlR+gjXK7X+AsAHso35MnyN5KqGwJRi/31ft6x0M194ht7S+rWAvd7PHss9xSKMzE0asv1pyIHaJYq+BbacAQ==}
     engines: {node: '>=12'}
-
-  openai-edge@1.2.2:
-    resolution: {integrity: sha512-C3/Ao9Hkx5uBPv9YFBpX/x59XMPgPUU4dyGg/0J2sOJ7O9D98kD+lfdOc7v/60oYo5xzMGct80uFkYLH+X2qgw==}
-    engines: {node: '>=18'}
 
   openai@4.53.2:
     resolution: {integrity: sha512-ohYEv6OV3jsFGqNrgolDDWN6Ssx1nFg6JDJQuaBFo4SL2i+MBoOQ16n2Pq1iBF5lH1PKnfCIOfqAGkmzPvdB9g==}
@@ -16307,8 +16300,6 @@ snapshots:
   onetime@6.0.0:
     dependencies:
       mimic-fn: 4.0.0
-
-  openai-edge@1.2.2: {}
 
   openai@4.53.2:
     dependencies:
