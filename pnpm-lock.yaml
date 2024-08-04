@@ -179,6 +179,9 @@ importers:
       common-tags:
         specifier: ^1.8.2
         version: 1.8.2
+      d3-scale:
+        specifier: ^4.0.2
+        version: 4.0.2
       date-fns:
         specifier: ^3.3.1
         version: 3.3.1
@@ -339,6 +342,9 @@ importers:
       '@types/common-tags':
         specifier: ^1.8.4
         version: 1.8.4
+      '@types/d3-scale':
+        specifier: ^4.0.8
+        version: 4.0.8
       '@types/eslint':
         specifier: ^8.44.8
         version: 8.56.2
@@ -360,6 +366,9 @@ importers:
       '@types/react-dom':
         specifier: ^18.2.18
         version: 18.2.18
+      '@types/react-syntax-highlighter':
+        specifier: ^15.5.13
+        version: 15.5.13
       '@types/yargs':
         specifier: ^17.0.32
         version: 17.0.32
@@ -3191,6 +3200,9 @@ packages:
 
   '@types/react-dom@18.2.18':
     resolution: {integrity: sha512-TJxDm6OfAX2KJWJdMEVTwWke5Sc/E/RlnPGvGfS0W7+6ocy2xhDVQVh/KvC2Uf7kACs+gDytdusDSdWfWkaNzw==}
+
+  '@types/react-syntax-highlighter@15.5.13':
+    resolution: {integrity: sha512-uLGJ87j6Sz8UaBAooU0T6lWJ0dBmjZgN1PZTrj05TNql2/XpC6+4HhMT5syIdFUUt+FASfCeLLv4kBygNU+8qA==}
 
   '@types/react-transition-group@4.4.10':
     resolution: {integrity: sha512-hT/+s0VQs2ojCX823m60m5f0sL5idt9SO6Tj6Dg+rdphGPIeJbJ6CxvBYkgkGKrYeDjvIpKTR38UzmtHJOGW3Q==}
@@ -12031,6 +12043,10 @@ snapshots:
   '@types/prop-types@15.7.11': {}
 
   '@types/react-dom@18.2.18':
+    dependencies:
+      '@types/react': 18.2.46
+
+  '@types/react-syntax-highlighter@15.5.13':
     dependencies:
       '@types/react': 18.2.46
 
