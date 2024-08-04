@@ -1,6 +1,6 @@
 'use client'
 
-import { IconOpenAI, IconUser } from '@/components/ui/chat-icons'
+import { IconOpenAI, IconUser } from '@/components/chat-icons'
 import { cn } from '@/lib/utils'
 import { spinner } from './spinner'
 import { CodeBlock } from '../ui/codeblock'
