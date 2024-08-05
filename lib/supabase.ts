@@ -15,27 +15,30 @@ export type Database = {
           id: number
           messages: string[] | null
           path: string | null
+          profile_id: string
           sharepath: string | null
           title: string | null
-          userId: string | null
+          user_id: string | null
         }
         Insert: {
           created_at: string
           id?: number
           messages?: string[] | null
           path?: string | null
+          profile_id: string
           sharepath?: string | null
           title?: string | null
-          userId?: string | null
+          user_id?: string | null
         }
         Update: {
           created_at?: string
           id?: number
           messages?: string[] | null
           path?: string | null
+          profile_id?: string
           sharepath?: string | null
           title?: string | null
-          userId?: string | null
+          user_id?: string | null
         }
         Relationships: []
       }
