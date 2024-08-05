@@ -9,6 +9,36 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
+      chat: {
+        Row: {
+          created_at: string
+          id: number
+          messages: string[] | null
+          path: string | null
+          sharepath: string | null
+          title: string | null
+          userId: string | null
+        }
+        Insert: {
+          created_at: string
+          id?: number
+          messages?: string[] | null
+          path?: string | null
+          sharepath?: string | null
+          title?: string | null
+          userId?: string | null
+        }
+        Update: {
+          created_at?: string
+          id?: number
+          messages?: string[] | null
+          path?: string | null
+          sharepath?: string | null
+          title?: string | null
+          userId?: string | null
+        }
+        Relationships: []
+      }
       countries: {
         Row: {
           continent: Database["public"]["Enums"]["continents"] | null
@@ -248,7 +278,9 @@ export type Database = {
           id: string
           updated_at: string | null
           username: string | null
+          waddress: string | null
           website: string | null
+          xhandle: string | null
         }
         Insert: {
           avatar_url?: string | null
@@ -257,7 +289,9 @@ export type Database = {
           id?: string
           updated_at?: string | null
           username?: string | null
+          waddress?: string | null
           website?: string | null
+          xhandle?: string | null
         }
         Update: {
           avatar_url?: string | null
@@ -266,7 +300,9 @@ export type Database = {
           id?: string
           updated_at?: string | null
           username?: string | null
+          waddress?: string | null
           website?: string | null
+          xhandle?: string | null
         }
         Relationships: [
           {
