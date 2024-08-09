@@ -10,9 +10,9 @@ complete Supabase SSR Auth and DB integration, Zod and YUP! validation, Tanstack
 ## Onyx Updates 
 - As of 8/4/2024, in process of adding chatbot feature with chat history and sharing capabilities. 
 - In your terminal, checkout the most recent production build by entering:
+
   ```
     git checkout 49cf12b
-
   ```
 ## Stack and Features
 - NextJS 14 App Router in Typescript 
