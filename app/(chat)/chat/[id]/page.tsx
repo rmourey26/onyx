@@ -4,11 +4,9 @@ import { createClient } from '@/utils/supa-server-actions'
 import { nanoid } from '@/lib/utils'
 import { notFound, redirect } from 'next/navigation'
 
-import { auth } from '@/auth'
 import { getChat } from '@/app/actions'
 import { Chat } from '@/components/chat'
 import { AI } from '@/lib/chat/actions'
-import { Session } from '@/lib/types'
 
 export interface ChatPageProps {
   params: {
@@ -54,7 +52,7 @@ data: { user },} = await supabase.auth.getUser()
   
 
 
-  if (!session?.user) {
+  if (!user) {
     redirect(`/login?next=/chat/${params.id}`)
   }
 
@@ -65,7 +63,7 @@ data: { user },} = await supabase.auth.getUser()
     redirect('/')
   }
 
-  if (chat?.userId !== session?.user?.id) {
+  if (chat?.userId !== user?.id) {
     notFound()
   }
 
