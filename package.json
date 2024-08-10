@@ -90,7 +90,7 @@
     "react-syntax-highlighter": "^15.5.0",
     "react-textarea-autosize": "^8.5.3",
     "recharts": "^2.11.0",
-    "sharp": "^0.31.3",
+    "sharp": "^0.32.6",
     "sonner": "^1.5.0",
     "tailwind-merge": "^2.2.0",
     "tailwindcss-animate": "^1.0.7",
