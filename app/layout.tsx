@@ -134,10 +134,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
               <SiteHeader />
               <div className="flex-1">{children}<Toaster/></div>
               
-              
+            </div>
 <SiteFooter/>
-</div>
-
 {/*
 enter your api info from termly.io or a provider of your choice
 <Script
