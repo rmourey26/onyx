@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
+import { Analytics } from '@vercel/analytics/react';
 import './globals.css'
 import { ThemeProvider } from "@/components/theme-provider"
 import { CookieButton } from "@/components/cookie-button"
@@ -132,7 +133,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
           >
              <div className="relative flex min-h-screen flex-col">
               <SiteHeader />
-              <div className="flex-1">{children}<Toaster/></div>
+              <div className="flex-1">{children}<Toaster/><Analytics/></div>
               
    </div>           
 <SiteFooter/>
