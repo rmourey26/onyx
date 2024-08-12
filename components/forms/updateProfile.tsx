@@ -53,12 +53,12 @@ const profileFormSchema = z.object({
 
 type ProfileFormValues = z.infer<typeof profileFormSchema>
 
-// This can come from your database or API.
+// This can come from your database or API. See contact page for working example using Supabase postgres DB and server actions
 const defaultValues: Partial<ProfileFormValues> = {
-  bio: "I own a computer.",
+  bio: "MVP Boilerplate and RBAC ready admin dashboard built with NextJS, Supabase, Tanstack React Query & Table, Zod, Shadcn-UI, and more.",
   urls: [
-    { value: "https://shadcn.com" },
-    { value: "http://twitter.com/shadcn" },
+    { value: "https://onyx-rho-pink.vercel.app" },
+    { value: "http://twitter.com/r_mourey_jr" },
   ],
 }
 
@@ -125,7 +125,7 @@ export function ProfileForm() {
               </Select>
               <FormDescription>
                 You can manage verified email addresses in your{" "}
-                <Link href="/examples/forms">email settings</Link>.
+                <Link href="/account">email settings</Link>.
               </FormDescription>
               <FormMessage />
             </FormItem>
