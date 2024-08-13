@@ -16,11 +16,11 @@ complete Supabase SSR Auth and DB integration, Zod and YUP! validation, Tanstack
     - server actions
     - typed Auth & DB clients
     - readOnly userSession clients
-  - Postgres DB with CRUD functions  configured
+  - Postgres DB with CRUD functions configured
     - User account and profile management configured 
     - RBAC configured admin dashboard with data visualization, members administration and todo lists
     - Contact form with toast, Zod validation, server side table insert  
-- TanStack React Query Provider
+- TanStack React Query, Table, and Dev Tools
   - Demo SSR with Supabase DB & cache helpers 
 - YUP! & Zod validation and schemas
 - Shadcn-UI, Radix-UI primitives, Tailwind CSS
