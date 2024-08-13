@@ -9,7 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@ai-sdk/openai": "^0.0.40",
     "@ducanh2912/next-pwa": "^10.2.8",
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
@@ -40,7 +39,6 @@
     "@radix-ui/react-switch": "^1.0.3",
     "@radix-ui/react-tabs": "^1.0.4",
     "@radix-ui/react-toast": "^1.1.5",
-    "@rainbow-me/rainbowkit": "^1.1.2",
     "@supabase-cache-helpers/postgrest-react-query": "^1.4.0",
     "@supabase/auth-helpers-nextjs": "^0.9.0",
     "@supabase/auth-helpers-react": "^0.4.2",
@@ -52,7 +50,6 @@
     "@types/mdx": "^2.0.13",
     "@vercel/analytics": "^1.3.1",
     "@vercel/speed-insights": "^1.0.12",
-    "ai": "^3.2.43",
     "bech32": "^2.0.0",
     "class-variance-authority": "^0.7.0",
     "classnames": "^2.5.1",
@@ -70,8 +67,6 @@
     "next": "14.2.4",
     "next-compose-plugins": "^2.2.1",
     "next-themes": "^0.2.1",
-    "openai": "^4.53.2",
-    "pdf-lib": "^1.17.1",
     "prettier": "^2.8.8",
     "react": "^18",
     "react-day-picker": "^8.10.0",
