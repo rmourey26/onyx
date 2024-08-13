@@ -1,5 +1,4 @@
 'use client'
-import { useAccount, useDisconnect, useEnsAvatar, useEnsName } from 'wagmi'
 import { buttonVariants } from "@/components/ui/button" 
 import { cn } from '@/lib/utils'   
 import { useCallback, useEffect, useState } from 'react'
