@@ -67,6 +67,8 @@
     "next": "14.2.4",
     "next-compose-plugins": "^2.2.1",
     "next-themes": "^0.2.1",
+    "postcss-flexbugs-fixes": "^5.0.2",
+    "postcss-preset-env": "^10.0.0",
     "prettier": "^2.8.8",
     "react": "^18",
     "react-day-picker": "^8.10.0",
