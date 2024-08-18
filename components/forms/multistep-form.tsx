@@ -1,5 +1,6 @@
 "use client"
 
+import 'react' from "react"
 import { useState } from "react"
 import { Label } from "@/components/ui/label"
 import { Input } from "@/components/ui/input"
@@ -25,10 +26,10 @@ export default function Component() {
   const handlePrevious = () => {
     setCurrentStep(currentStep - 1)
   }
-  const handleInputChange = (e) => {
+  const handleInputChange = (e:React.SynthenticEvent) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
-  const handleSubmit = (e) => {
+  function handleSubmit = (e:React.SyntheticEvent) => {
     e.preventDefault()
     console.log(formData)
   }
