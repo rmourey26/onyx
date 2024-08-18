@@ -1,6 +1,6 @@
 "use client"
 
-import 'react' from "react"
+import React, { JSXElementConstructor, ReactElement, ReactNode } from "react";
 import { useState } from "react"
 import { Label } from "@/components/ui/label"
 import { Input } from "@/components/ui/input"
