@@ -27,6 +27,7 @@ export default function Component() {
     setCurrentStep(currentStep - 1)
   }
   const handleInputChange = (e:React.SyntheticEvent) => {
+const target = e.target as typeof e.target
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
   function handleSubmit = (e:React.SyntheticEvent) => {
