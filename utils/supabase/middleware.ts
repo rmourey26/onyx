@@ -15,15 +15,12 @@ export async function updateSession(request: NextRequest) {
     frame-ancestors 'none';
     upgrade-insecure-requests;
 `
-  // Replace newline characters and spaces
-  const contentSecurityPolicyHeaderValue = cspHeader
-    .replace(/\s{2,}/g, ' ')
-    .trim()
+ 
 const securityHeaders = [
   // https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP
   {
     key: 'Content-Security-Policy',
-    value: ContentSecurityPolicy.replace(/\n/g, ''),
+    value: cspHeader.replace(/\n/g, ''),
   },
   // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy
   {
@@ -88,11 +85,11 @@ let response = NextResponse.next({
           })
           requestHeaders.set(
     'Content-Security-Policy',
-    contentSecurityPolicyHeaderValue
+    securityHeaders
   )
 response.headers.set(
     'Content-Security-Policy',
-    contentSecurityPolicyHeaderValue
+    securityHeaders
   )
           response.cookies.set({
             name,
@@ -108,7 +105,7 @@ response.headers.set(
           })
 requestHeaders.set(
     'Content-Security-Policy',
-    contentSecurityPolicyHeaderValue
+    securityHeaders
   )
           response = NextResponse.next({
             request: {
@@ -117,7 +114,7 @@ requestHeaders.set(
           })
 response.headers.set(
     'Content-Security-Policy',
-    contentSecurityPolicyHeaderValue
+    securityHeaders
   )
           response.cookies.set({
             name,
