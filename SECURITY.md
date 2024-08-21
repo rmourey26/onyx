@@ -1,5 +1,5 @@
 # Security Policy
-I recently added a nonce driven CSP in /utils/supabase/middleware.ts based on NextJS docs. If any issues are found with the CSP or anywhere else in the app, please let me know. Thank you! 
+I recently added a nonce driven CSP in /utils/supabase/middleware.ts that's a work in progress. NextJS docs indicates the nonce should be passed at the page level in Script which I need to research more to figure out how to properly enable it within Onyx. Suggestions are welcome!
 
 ## Reporting a Vulnerability
 
