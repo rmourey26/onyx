@@ -7,33 +7,15 @@ import { redirect } from "next/navigation";
 type formData = {
     email: string;
     password: string;
+    confirm: string;
     username: string;
     role: string;
     status: string; 
 }
 
-export async function createMember(data:formData) {
-const supabase = await createSupbaseServerClient();
-
-try {
-
-const { data: members_table, error } = await supabase
-  .from('members_table')
-  .insert(
-    { email: data.email, password: data.password, username: data.username, role: data.role, status: data.status})
-  .select()
-
-const result = JSON.stringify(data)
-  return result;
-
-
-if (error) throw error
-      alert('Member Created!')
-    } catch (error) {
-      alert('Error updating the data!')
-    }
-}    
-
+export async function createMemberById(id: string) {
+	console.log("create member");
+}
 export async function updateMemberById(id: string) {
 	console.log("update member");
 }
