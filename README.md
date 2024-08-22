@@ -4,7 +4,7 @@
 </a>
 
 <a href="https://securityheaders.com/">
-  <img alt="Onyx security score image." src="https://quantumone.b-cdn.net/onyx-git/onyx-security-score.jpg">
+  <img alt="Onyx security score image." src="https://quantumone.b-cdn.net/onyx-git/onyx-security-score-ls.jpg">
   <h2 align="center">Onyx SecurityHeaders.com Score</h2>
 </a>
 
