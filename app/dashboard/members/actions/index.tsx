@@ -35,7 +35,8 @@ if (error) throw error
 }
 	console.log("create user");
 }
-      
+ 
+}     
 
 export async function updateMemberById(id: string) {
 	console.log("update member");
