@@ -32,11 +32,7 @@ if (error) throw error
     } catch (error) {
       alert('Error updating the data!')
     }
-}
-	console.log("create user");
-}
- 
-}     
+}    
 
 export async function updateMemberById(id: string) {
 	console.log("update member");
