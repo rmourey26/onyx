@@ -13,7 +13,7 @@ type formData = {
     status: string; 
 }
 
-export async function createMemberById(id: string) {
+export async function createMember() {
 	console.log("create member");
 }
 export async function updateMemberById(id: string) {
