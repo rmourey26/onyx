@@ -81,5 +81,5 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - @chensokheng
 
 
-##@ Tips/Support
+### Tips/Support
 <a href="https://www.buymeacoffee.com/rmoureyjr" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="51" width="217"></a>
