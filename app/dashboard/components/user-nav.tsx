@@ -29,7 +29,7 @@ import {
         <DropdownMenuContent className="w-56" align="end" forceMount>
           <DropdownMenuLabel className="font-normal">
             <div className="flex flex-col space-y-1">
-              <p className="text-sm font-medium leading-none">shadcn</p>
+              <p className="text-sm font-medium leading-none">onyx</p>
               <p className="text-xs leading-none text-muted-foreground">
                 e@onyx.com
               </p>
