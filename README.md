@@ -44,7 +44,7 @@ complete Supabase SSR Auth and DB integration, Zod and YUP! validation, Tanstack
 - More..
 
 ### API 
-- Rust serverless runtime and API
+- [Rust runtime for Vercel Serverless Functions](https://github.com/vercel-community/rust)
 
 ### Getting started with Onyx:
 - First, configure your environment
