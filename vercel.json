@@ -1,6 +1,6 @@
 {
   "functions": {
-    "/api/**/*.rs": {
+    "app/api/**/*.rs": {
       "runtime": "vercel-rust@4.0.8"
     }
   }
