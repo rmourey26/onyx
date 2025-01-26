@@ -11,7 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: 'https://onyx-rho-pink.vercel.app/contact',
       lastModified: new Date(),
-      changeFrequency: 'year',
+      changeFrequency: 'yearly',
       priority: 1,
     },
 
