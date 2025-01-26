@@ -14,5 +14,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'year',
       priority: 1,
     },
+
+   {
+      url: 'https://onyx-rho-pink.vercel.app/onboarding',
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.5,
+    },
   ]
 }
