@@ -15,10 +15,10 @@ export default async function IndexPage() {
             <section className="container mx-auto flex flex-1 flex-col items-center justify-center gap-6 pb-8 pt-6 px-4 py-12 md:px-6 md:py-10 lg:py-24">
       <div className="flex max-w-[980px] flex-col items-center gap-2">
         <h1 className="text-3xl font-extrabold leading-tight tracking-tighter md:text-4xl">
-          Onyx PWA MVP Template.
+          Onyx SaaS PWA Template.
         </h1>
         <p className="max-w-[700px] text-lg text-muted-foreground">
-         Secure, scalable, validated CRUD ops, Rust API runtime, and more.
+         Validated CRUD ops, user authentication + RBAC, maximum header security, Rust API runtime, TanStack, and more.  
         </p>
       </div>
       <div className="flex gap-4">
