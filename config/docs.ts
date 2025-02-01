@@ -23,6 +23,11 @@ export const docsConfig: DocsConfig = {
       title: "OpenAI",
       href: "/playground",
     },
+
+    { 
+      title: "Podcasts",
+      href: "/music",
+    },
     { 
       title: "RBAC",
       href: "/dashboard/members",
