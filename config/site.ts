@@ -23,6 +23,10 @@ export const siteConfig = {
       href: "/playground",
     },
     { 
+      title: "Podcasts",
+      href: "/music",
+    },
+    { 
       title: "RBAC",
       href: "/dashboard/members",
     },
