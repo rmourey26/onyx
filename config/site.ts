@@ -27,6 +27,10 @@ export const siteConfig = {
       href: "/music",
     },
     { 
+      title: "Blog",
+      href: "/blog",
+    },
+    { 
       title: "RBAC",
       href: "/dashboard/members",
     },
