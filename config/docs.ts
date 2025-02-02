@@ -29,6 +29,10 @@ export const docsConfig: DocsConfig = {
       href: "/music",
     },
     { 
+      title: "Blog",
+      href: "/blog",
+    },
+    { 
       title: "RBAC",
       href: "/dashboard/members",
     },
