@@ -1,3 +1,4 @@
+"use client"
 // app/checkout/page.tsx
 import { useState } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
