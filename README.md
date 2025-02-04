@@ -28,7 +28,7 @@ complete Supabase SSR Auth and DB integration, Zod and YUP! validation, Tanstack
     - Contact form with toast, Zod validation, server side table insert  
 - TanStack React Query, Table, and Dev Tools
   - Demo SSR with Supabase DB & cache helpers 
-- YUP! & Zod validation and schemas
+- Zod data validation, schemas, event handling.
 - Stripe (in progress, updating checkoutForm event handling with zod)
 - Shadcn-UI, Radix-UI primitives, Tailwind CSS
 - Markdown pages with Next/MDX - create page.mdx and layout.tsx for each markdown page
