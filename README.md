@@ -29,7 +29,7 @@ complete Supabase SSR Auth and DB integration, Zod and YUP! validation, Tanstack
 - TanStack React Query, Table, and Dev Tools
   - Demo SSR with Supabase DB & cache helpers 
 - YUP! & Zod validation and schemas
-- Stripe (in progress)
+- Stripe (in progress, updating checkoutForm event handling with zod)
 - Shadcn-UI, Radix-UI primitives, Tailwind CSS
 - Markdown pages with Next/MDX - create page.mdx and layout.tsx for each markdown page
 - Next-PWA
@@ -56,7 +56,7 @@ complete Supabase SSR Auth and DB integration, Zod and YUP! validation, Tanstack
     - NEXT_PUBLIC_SUPABASE_URL="Your supabase project URL"
     - SUPABASE_SERVIC_ROLE_KEY="Your supabase service role key"
     - NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_...
-    - STRIPE_SECRET_KEY=sk_test_...
+   - STRIPE_SECRET_KEY=sk_test_...
   - Ensure your Supabase tables match the tables and types found in '@/lib/supabase'.
   - Add authorized development and production URL's to Supabase URL config. 
 ### Run  
