@@ -1,0 +1,45 @@
+// app/checkout/CheckoutForm.tsx
+import { useStripe, useElements, PaymentElement } from '@stripe/react-stripe-js';
+
+export default function CheckoutForm() {
+      const stripe = useStripe();
+        const elements = useElements();
+
+          const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+                event.preventDefault();
+
+                    if (!stripe || !elements) {
+                              return;
+                    }
+
+                        const { error } = await stripe.confirmPayment({
+                                  elements,
+                                        confirmParams: {
+                                                    // Pass any additional confirmation parameters here
+                                        },
+                        });
+
+                            if (error) {
+                                      console.error('Payment failed:', error);
+                            } else {
+                                      // Payment succeeded, handle success logic
+                            }
+          };
+
+            return (
+                    <form onSubmit={handleSubmit}>
+                          <PaymentElement />
+                                <button type="submit" disabled={!stripe}>
+                                        Pay
+                                              </button>
+                                                  </form>
+            );
+}
+            )
+                            }
+                            }
+                                        }
+                        })
+                    }
+          }
+}
