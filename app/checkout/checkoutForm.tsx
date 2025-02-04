@@ -1,3 +1,4 @@
+"use client"
 // app/checkout/CheckoutForm.tsx
 import { useStripe, useElements, PaymentElement } from '@stripe/react-stripe-js';
 
