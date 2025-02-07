@@ -26,7 +26,7 @@ export const metadata: Metadata = {
 
 export default function MusicPage() {
   return (
-    <div class name="min-h-screen">
+    <div className="min-h-screen">
       <div className="md:hidden">
         <Image
           src="/examples/music-light.png"
