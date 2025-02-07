@@ -24,7 +24,7 @@ export function MobileNav() {
           variant="ghost"
           className="ml-0 px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden"
         >
-                    <Icons.logo className="h-5 w-5 mr-1" />
+                    <Icons.logo className="h-6 w-6 mr-1" />
 <span className="font-bold">{siteConfig.name} </span>
           <span className="sr-only">Toggle Menu</span>
         </Button>
@@ -35,7 +35,7 @@ export function MobileNav() {
           className="flex items-center"
           onOpenChange={setOpen}
         >
-          <Icons.logo className="mr-1 h-4 w-4" />
+          <Icons.logo className="mr-1 h-6 w-6" />
           <span className="font-bold">{siteConfig.name}</span>
         </MobileLink>
         <ScrollArea className="my-4 h-[calc(100vh-8rem)] pb-10 pl-6">
