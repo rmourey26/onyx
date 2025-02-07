@@ -11,7 +11,7 @@
 
 ### What is Onyx?
 - Onyx is a turnkey, full stack NextJS 14+ progressive web app written in Typescript that includes role based access control (RBAC),
-complete Supabase SSR Auth and DB integration, Zod and YUP! validation, Tanstack React Query, Rust serverless function runtime and API, Markdown pages with ability to insert React components, React Hook form, and more. Fork, customize, and deploy on Vercel or elsewhere to have your MVP up and running in a few days or less. Stack details are below. 
+complete Supabase SSR Auth and DB integration, Zod validation, Tanstack React Query, Rust serverless function runtime and API, Markdown pages with ability to insert React components, React Hook form, and more. Fork, customize, and deploy on Vercel or elsewhere to have your MVP up and running in a few days or less. Stack details are below. 
 
 ### Stack and Features
 - NextJS 14 App Router in Typescript 
@@ -29,13 +29,11 @@ complete Supabase SSR Auth and DB integration, Zod and YUP! validation, Tanstack
 - TanStack React Query, Table, and Dev Tools
   - Demo SSR with Supabase DB & cache helpers 
 - Zod data validation, schemas, event handling.
-- Stripe (in progress, updating checkoutForm event handling with zod)
 - Shadcn-UI, Radix-UI primitives, Tailwind CSS
 - Markdown pages with Next/MDX - create page.mdx and layout.tsx for each markdown page
 - Next-PWA
 - Next Compose Plugins  
 - React Hook Form
-- User profile at /account page
 - OpenAI playground UI
 - Onboarding, signIn/signUp pages
 - Podcast UI
