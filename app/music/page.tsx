@@ -152,6 +152,6 @@ export default function MusicPage() {
           </div>
         </div>
       </div>
-    <div/>
+    </div>
   )
 }
