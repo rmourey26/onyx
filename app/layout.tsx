@@ -1,4 +1,4 @@
-import type { Metadata, Viewport } from 'next'
+ import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from "@vercel/speed-insights/next"
@@ -37,9 +37,9 @@ export const metadata: Metadata = {
     },
   },
   referrer: 'origin-when-cross-origin',
-  keywords: ['NextJS 14 TypeScript', 'Supabase SSR', 'TanStack React Query', 'vercel', 'openai', 'MVP Template', 'Onyx template', 'Zod', 'Shadcn-UI', 'Tailwind CSS', 'SaaS', 'NextJS',
+  keywords: ['NextJS 14 TypeScript', 'Supabase SSR', 'TanStack React Query', 'vercel', 'openai', 'MVP Template', 'Onyx SaaS PWA template', 'Zod', 'Shadcn-UI', 'Tailwind CSS', 'SaaS', 'NextJS Supabase Postgres Tailwind TanStack', 'NextJS CSP',
              'PWA', 'NextJS SaaS PWA Template', 'CRUD ops', 'secure headers', 'NextJS templates with user authentication, RBAC, and CRUD ops', 'NextJS templates with data validation and database integration',
-            'Rust API runtime for vercel serverless functions'],
+            'Rust API runtime for vercel serverless functions', 'NextJS secure headers', 'NextJS NextMDX'],
   authors: [{ name: 'Robert Mourey Jr' }],
   creator: 'Robert Mourey Jr',
   publisher: 'Robert Mourey Jr', 
