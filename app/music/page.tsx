@@ -20,13 +20,13 @@ import { listenNowAlbums, madeForYouAlbums } from "./data/albums"
 import { playlists } from "./data/playlists"
 
 export const metadata: Metadata = {
-  title: "Music App",
-  description: "Example music app using the components.",
+  title: "Music and podcasts",
+  description: "Your music and podcast app.",
 }
 
 export default function MusicPage() {
   return (
-    <>
+    <div class name="min-h-screen">
       <div className="md:hidden">
         <Image
           src="/examples/music-light.png"
@@ -152,6 +152,6 @@ export default function MusicPage() {
           </div>
         </div>
       </div>
-    </>
+    <div/>
   )
 }
