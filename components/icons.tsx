@@ -31,8 +31,8 @@ export const Icons = {
     </svg>
   ),
   resendit: (props: LucideProps) => (
-    <svg width="100%" viewBox="0 0 612 360" enable-background="new 0 0 612 360" {...props}>
-     <path fill="currentColor" opacity="1.000000" stroke="none" 
+    <svg width="142" height="24" viewBox="0 0 612 103" {...props}>
+     <path fill="currentColor" opacity="1.000" stroke="none" 
 	d="
 M394.000000,361.000000 
 	C262.666687,361.000000 131.833389,361.000000 1.000070,361.000000 
