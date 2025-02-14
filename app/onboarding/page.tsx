@@ -9,7 +9,7 @@ import { AuthFormLegacy } from '@/app/auth-server-action/components/AuthFormLega
 
 export const metadata: Metadata = {
   title: "Onboarding",
-  description: "Onyx new customer onboarding",
+  description: "Resend-it new customer onboarding",
 }
 
 export default function OnboardingPage() {
