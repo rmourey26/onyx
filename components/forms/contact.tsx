@@ -45,7 +45,7 @@ export function Contact() {
      setIsLoading(true)   
      updateInqueries(data)
     toast({
-      title: "Thank you for contacting Onyx. We received your inquiry and will respond within 24 hours. You may navigate away from this page.",
+      title: "Thank you for contacting Resend-It. We received your inquiry and will respond within 24 hours. You may navigate away from this page.",
 
     });
 
