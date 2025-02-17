@@ -4,6 +4,8 @@ import { siteConfig } from "@/config/site"
 import { buttonVariants } from "@/components/ui/button"
 import { readUserSession } from "@/utils/actions";
 import Features from "@/components/features"
+import AnimatedInfographic from "@/components/animated-infographic"
+
 import { redirect } from "next/navigation";
 
 export default async function IndexPage() {
@@ -42,6 +44,7 @@ export default async function IndexPage() {
         </Link>
       </div>
    <Features/>
+   <AnimatedInfographic/>
     </section>
   )
 }
