@@ -3,7 +3,7 @@ import Link from "next/link"
 import { siteConfig } from "@/config/site"
 import { buttonVariants } from "@/components/ui/button"
 import { readUserSession } from "@/utils/actions";
-import { Features } from "@/components/features"
+import Features from "@/components/features"
 import { redirect } from "next/navigation";
 
 export default async function IndexPage() {
