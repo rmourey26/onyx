@@ -13,16 +13,16 @@ export default async function IndexPage() {
 		return redirect("/dashboard");
 	}
   return (
-            <section className="container mx-auto flex flex-1 flex-col items-center justify-center gap-6 pb-8 pt-6 px-4 py-12 md:px-6 md:py-10 lg:py-24">
-      <div className="flex max-w-[980px] flex-col items-center gap-2">
-        <h1 className="text-3xl font-extrabold leading-tight tracking-tighter md:text-4xl">
+            <section className="container mx-auto flex flex-1 flex-col items-center gap-6 pb-32 pt-20 sm:pt-40 sm:pb-24>
+      <div className="flex max-w-7xl flex-col px-4 md:px-6 lg:px-8" text-center gap-2">
+        <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold leading-tight tracking-tighter md:text-4xl mb-8">
           Packagings Paradigm Shift 
         </h1>
-        <p className="max-w-[700px] text-lg text-muted-foreground">
+        <p className="max-w-2xl text-lg text-muted-foreground mb-10 sm:text-xl">
          Sustainable, brandable, reusable with blockchain and AI technology under the hood - Resend-It. 
         </p>
       </div>
-     <Features/>
+     
       <div className="flex gap-4">
         <Link
           href={siteConfig.links.login}
@@ -41,6 +41,7 @@ export default async function IndexPage() {
           Sign Up
         </Link>
       </div>
+   <Features/>
     </section>
   )
 }
