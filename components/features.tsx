@@ -1,24 +1,24 @@
-import { Brain, Cloud, Shield, Zap } from "lucide-react"
+import { Bitcoin, Cloud, Shield, Zap } from "lucide-react"
 
 const features = [
   {
-    name: "AI-Powered Analytics",
-    description: "Harness the power of machine learning to derive actionable insights from your data.",
-    icon: Brain,
+    name: "Blockchain-AI Analytics",
+    description: "Harness the power of blockchain AI to derive actionable insights from your data.",
+    icon: Bitcoin,
   },
   {
-    name: "Cloud-Native Architecture",
-    description: "Scalable, resilient, and efficient solutions built for the modern cloud ecosystem.",
+    name: "Hybrid Architecture",
+    description: "Scalable, resilient, and efficient solutions built for the digital era",
     icon: Cloud,
   },
   {
     name: "Enterprise-Grade Security",
-    description: "State-of-the-art security measures to protect your most valuable assets.",
+    description: "State-of-the-art security measures to protect your most valuable assets now and into the quantum era.",
     icon: Shield,
   },
   {
     name: "High-Performance Systems",
-    description: "Optimized for speed and efficiency, our solutions deliver unparalleled performance.",
+    description: "Optimized for speed and efficiency, our solutions deliver unparalleled performance and energy efficiency.",
     icon: Zap,
   },
 ]
