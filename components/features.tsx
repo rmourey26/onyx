@@ -29,7 +29,7 @@ export default function Features() {
       <div className="mx-auto max-w-4xl text-center">
         <h2 className="font-extrabold leading-[1.1]">Cutting-Edge Solutions</h2>
         <p className="mt-4 text-muted-foreground">
-          Discover how Onyx can transform your business with our patented reusable packaging and blockchain platform.
+          Discover how Onyx can transform your business with our laser powered AI protocol and enterprise blockchain. 
         </p>
       </div>
       <div className="mx-auto grid max-w-5xl grid-cols-1 gap-8 md:grid-cols-2">
