@@ -26,9 +26,9 @@ const features = [
 export default function Features() {
   return (
     <section className="container space-y-16 py-24 md:py-32">
-      <div className="mx-auto max-w-[58rem] text-center">
-        <h2 className="font-bold text-3xl leading-[1.1] sm:text-3xl md:text-5xl">Cutting-Edge Solutions</h2>
-        <p className="mt-4 text-muted-foreground sm:text-lg">
+      <div className="mx-auto max-w-4xl text-center">
+        <h2 className="font-extrabold leading-[1.1]">Cutting-Edge Solutions</h2>
+        <p className="mt-4 text-muted-foreground">
           Discover how Onyx can transform your business with our patented reusable packaging and blockchain platform.
         </p>
       </div>
