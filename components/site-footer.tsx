@@ -6,12 +6,12 @@ export function SiteFooter() {
    
         <p className="text-balance text-center text-xs font-medium leading-loose text-muted-foreground">Copyright © {" "}
           <a
-            href={siteConfig.links.github}
+            href={siteConfig.links.resendit}
             target="_blank"
             rel="noreferrer"
             className="text-xs text-center font-medium"
           >
-            2024 Onyx. 
+            2025 Resend-It
           </a>
         </p>
     

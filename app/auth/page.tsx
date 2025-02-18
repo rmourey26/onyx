@@ -26,7 +26,7 @@ export default async function page() {
                 Welcome back!
               </h1>
               <p className="text-sm text-muted-foreground">
-               Login to your Onyx account.
+               Login to your Resend-It account.
               </p>
             </div>
             <AuthForm />

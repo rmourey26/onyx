@@ -24,8 +24,8 @@ import TeamSwitcher from "@/app/dashboard/components/team-switcher"
 import { UserNav } from "@/app/dashboard/components/user-nav"
 
 export const metadata: Metadata = {
-  title: "Onyx Dashboard",
-  description: "Manage your Onyx account and users.",
+  title: "Resend-It Dashboard",
+  description: "Manage your Resend-It account and users.",
 }
 
 export default function DashboardPage() {
