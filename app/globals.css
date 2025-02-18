@@ -34,10 +34,20 @@
 
     --radius: 0.5rem;
 
-    /* New color variables extracted from the Resend-It logo */
+    /* Brand color variables */
     --brand-green-dark: 153 46% 35%;
     --brand-green-medium: 153 46% 40%;
     --brand-green-light: 153 46% 45%;
+
+    /* Brand foreground colors */
+    --brand-foreground: 153 46% 40%;
+    --brand-card-foreground: 153 46% 35%;
+    --brand-popover-foreground: 153 46% 35%;
+    --brand-primary-foreground: 153 46% 95%;
+    --brand-secondary-foreground: 153 46% 35%;
+    --brand-muted-foreground: 153 46% 50%;
+    --brand-accent-foreground: 153 46% 35%;
+    --brand-destructive-foreground: 153 46% 95%;
   }
 
   .dark {
@@ -68,6 +78,21 @@
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
+
+    /* Adjust brand colors for dark mode */
+    --brand-green-dark: 153 46% 30%;
+    --brand-green-medium: 153 46% 35%;
+    --brand-green-light: 153 46% 40%;
+
+    /* Brand foreground colors for dark mode */
+    --brand-foreground: 153 46% 90%;
+    --brand-card-foreground: 153 46% 90%;
+    --brand-popover-foreground: 153 46% 90%;
+    --brand-primary-foreground: 153 46% 10%;
+    --brand-secondary-foreground: 153 46% 90%;
+    --brand-muted-foreground: 153 46% 70%;
+    --brand-accent-foreground: 153 46% 90%;
+    --brand-destructive-foreground: 153 46% 95%;
   }
 }
 
@@ -80,7 +105,7 @@
   }
 }
 
-/* New utility classes for the brand colors */
+/* Utility classes for brand colors */
 @layer utilities {
   .bg-brand-green-dark {
     background-color: hsl(var(--brand-green-dark));
@@ -99,6 +124,30 @@
   }
   .text-brand-green-light {
     color: hsl(var(--brand-green-light));
+  }
+  .text-brand-foreground {
+    color: hsl(var(--brand-foreground));
+  }
+  .text-brand-card-foreground {
+    color: hsl(var(--brand-card-foreground));
+  }
+  .text-brand-popover-foreground {
+    color: hsl(var(--brand-popover-foreground));
+  }
+  .text-brand-primary-foreground {
+    color: hsl(var(--brand-primary-foreground));
+  }
+  .text-brand-secondary-foreground {
+    color: hsl(var(--brand-secondary-foreground));
+  }
+  .text-brand-muted-foreground {
+    color: hsl(var(--brand-muted-foreground));
+  }
+  .text-brand-accent-foreground {
+    color: hsl(var(--brand-accent-foreground));
+  }
+  .text-brand-destructive-foreground {
+    color: hsl(var(--brand-destructive-foreground));
   }
 }
 
