@@ -31,7 +31,7 @@ export default async function IndexPage() {
           href={siteConfig.links.login}
           target="_blank"
           rel="noreferrer"
-          className={buttonVariants()}
+                    className={buttonVariants({ variant: "brand" })}
         >
           Login
         </Link>
