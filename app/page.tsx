@@ -44,7 +44,6 @@ export default async function IndexPage() {
           Sign Up
         </Link>
       </div>
-    <ProcessDiagram/>
    <Features/>
    <AnimatedInfographic/>
     </section>
