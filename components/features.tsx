@@ -25,14 +25,14 @@ const features = [
 
 export default function Features() {
   return (
-    <section className="container space-y-16 py-24 md:py-32">
-      <div className="mx-auto max-w-[58rem] text-center">
-        <h2 className="font-extrabold text-4xl leading-[1.1] sm:text-6xl md:text-4xl">Cutting-Edge Solutions</h2>
-        <p className="mt-4 text-muted-foreground sm:text-xl">
+    <section className="container space-y-16 py-16 md:py-24">
+      <div className="mx-auto max-w-4xl text-center">
+        <h2 className="font-extrabold leading-[1.1]">Cutting-Edge Solutions</h2>
+        <p className="mt-4 text-muted-foreground">
           Discover how Resend-It can transform your business with our patented reusable packaging and blockchain platform.
         </p>
       </div>
-      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 md:grid-cols-2">
+      <div className="mx-auto grid max-w-5xl grid-cols-1 gap-8 md:grid-cols-2">
         {features.map((feature) => (
           <div key={feature.name} className="relative overflow-hidden rounded-lg border bg-background p-8">
             <div className="flex items-center gap-4">
