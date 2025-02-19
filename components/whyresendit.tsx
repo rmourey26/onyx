@@ -4,6 +4,7 @@ import type React from "react"
 
 import { motion } from "framer-motion"
 import { Mail, GitBranch, Palette, DollarSign, type LucideIcon } from "lucide-react"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 
 interface Feature {
   icon: React.ReactElement<LucideIcon>
@@ -47,18 +48,25 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ icon, title, description, ind
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="bg-background text-foreground rounded-lg shadow-lg p-6 flex flex-col items-center text-center hover:shadow-xl dark:hover:bg-accent dark:shadow-2xl transition-all duration-300"
     >
-      <div className="text-primary mb-4">{icon}</div>
-      <h3 className="text-xl font-semibold mb-2">{title}</h3>
-      <p className="text-muted-foreground">{description}</p>
+      <Card className="h-full hover:shadow-lg transition-shadow duration-300">
+        <CardHeader>
+          <div className="flex items-center justify-center mb-4">
+            <div className="text-primary p-2 rounded-full bg-primary/10">{icon}</div>
+          </div>
+          <CardTitle className="text-xl font-semibold text-center">{title}</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <CardDescription className="text-center">{description}</CardDescription>
+        </CardContent>
+      </Card>
     </motion.div>
   )
 }
 
 const WhyResendIt: React.FC = () => {
   return (
-    <section className="py-16 ">
+    <section className="py-16 bg-muted">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-foreground">Why Resend-It?</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
