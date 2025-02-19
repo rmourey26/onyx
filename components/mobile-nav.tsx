@@ -34,7 +34,7 @@ export function MobileNav() {
           className="flex items-center"
           onOpenChange={setOpen}
         >
-          <Icons.resendit className="mr-1 h-6 w-6" />
+          <Icons.resendit className="mr-1 h-5 w-18" />
         </MobileLink>
         <ScrollArea className="my-4 h-[calc(100vh-8rem)] pb-10 pl-6">
           <div className="flex flex-col space-y-3">
