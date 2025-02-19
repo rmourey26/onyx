@@ -71,7 +71,7 @@ export function SiteFooter() {
                   variant: "ghost",
                 })}
               >
-                <Icons.twitter className="h-4 w-4 fill-current" />
+                <Icons.twitter className="h-4 w-4" />
                 <span className="sr-only">Twitter</span>
               </div>
             </Link>
@@ -86,7 +86,7 @@ export function SiteFooter() {
                   variant: "ghost",
                 })}
               >
-                <Icons.linkedin className="h-4 w-4 fill-current" />
+                <Icons.linkedin className="h-5 w-5" />
                 <span className="sr-only">LinkedIn</span>
               </div>
             </Link>
