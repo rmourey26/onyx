@@ -18,12 +18,12 @@ export default async function IndexPage() {
         <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold leading-tight tracking-tighter md:text-4xl mb-8">
           Onyx SaaS PWA Template
         </h1>
-        <p className="max-w-2xl text-lg text-muted-foreground mb-10 sm:text-xl">
+        <p className="max-w-2xl text-lg text-center text-muted-foreground mb-10 sm:text-xl">
          Secure, scalable, user authentication + RBAC, validated CRUD ops, Rust API runtime, TanStack, and more. 
         </p>
       </div>
 
-      <div className="flex gap-4">
+      <div className="relative gap-4">
         <Link
           href={siteConfig.links.login}
           target="_blank"
