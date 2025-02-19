@@ -24,7 +24,7 @@ export function MobileNav() {
           variant="ghost"
           className="ml-0 px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden"
         >
-                    <Icons.resendit className="h-5 w-18 mr-1" />
+                    <Icons.menu className="h-6 w-6 mr-2" />
           <span className="sr-only">Toggle Menu</span>
         </Button>
       </SheetTrigger>
