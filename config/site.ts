@@ -44,6 +44,6 @@ export const siteConfig = {
     github: "https://github.com/rmourey26/onyx",
     login: "https://onyx-rho-pink.vercel.app/auth",
     signup: "https://onyx-rho-pink.vercel.app/onboarding",
-    resendit: "https://resend-it.com",
+    resendit: "/",
   },
 }
