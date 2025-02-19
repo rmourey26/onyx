@@ -13,7 +13,7 @@ interface YouTubeID {
   youtubeID : string;
 }
 
-const youtubeID ="UC38fsAFWSN6MP1UZ-8tX_5w"
+const youtubeID ="UC38fsAFWSN6MP1UZ-8tX_5w" as unknown as strong;
 
 export default async function IndexPage() {
   const { data: userSession } = await readUserSession();
