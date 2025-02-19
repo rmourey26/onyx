@@ -28,8 +28,10 @@ export default async function IndexPage() {
           Packagings Paradigm Shift 
         </h1>
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/rq0lS7ZKYFQ?si=GTgF6H3Rr78LRA2z" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+           <div className="place-self-center max-w-[980px] aspect-video overflow-hidden rounded-lg shadow-lg ">
 
+<iframe width="100%" height="100%" src="https://www.youtube.com/embed/rq0lS7ZKYFQ?si=GTgF6H3Rr78LRA2z" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+</div>
         <p className="text-lg text-center text-muted-foreground sm:text-xl">
          Sustainable, brandable, reusable with blockchain and AI technology under the hood - Resend-It. 
         </p>
