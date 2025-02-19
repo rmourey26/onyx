@@ -47,7 +47,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ icon, title, description, ind
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="bg-background text-foreground rounded-lg shadow-lg dark:shadow-none p-6 flex flex-col items-center text-center hover:shadow-xl dark:hover:bg-accent transition-all duration-300"
+      className="bg-background text-foreground rounded-lg shadow-lg p-6 flex flex-col items-center text-center hover:shadow-xl dark:hover:bg-accent transition-all duration-300"
     >
       <div className="text-primary mb-4">{icon}</div>
       <h3 className="text-xl font-semibold mb-2">{title}</h3>
