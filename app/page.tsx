@@ -21,12 +21,12 @@ export default async function IndexPage() {
         <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold leading-tight tracking-tighter md:text-4xl mb-8">
           Packagings Paradigm Shift 
         </h1>
-        <p className="max-w-2xl text-lg text-muted-foreground mb-10 sm:text-xl">
+        <p className="max-w-2xl text-lg text-center text-muted-foreground mb-10 sm:text-xl">
          Sustainable, brandable, reusable with blockchain and AI technology under the hood - Resend-It. 
         </p>
       </div>
      
-      <div className="flex gap-4">
+      <div className="relative gap-4">
         <Link
           href={siteConfig.links.login}
           target="_blank"
