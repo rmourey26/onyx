@@ -13,11 +13,22 @@ export async function POST() {
     });
 
     if (error) {
-      return Response.json({ error }, { status: 500 });
+      // Type guard to ensure 'error' is an Error object
+      if (error instanceof Error) {
+        return Response.json({ error: error.message }, { status: 500 });
+      } else {
+        // Handle cases where 'error' is not an Error object (e.g., a string or object)
+        return Response.json({ error: String(error) }, { status: 500 });
+      }
     }
 
     return Response.json(data);
   } catch (error) {
-    return Response.json({ error }, { status: 500 });
+    // Type guard for the catch block 'error' as well.
+    if (error instanceof Error) {
+      return Response.json({ error: error.message }, { status: 500 });
+    } else {
+      return Response.json({ error: String(error) }, { status: 500 });
+    }
   }
 }
