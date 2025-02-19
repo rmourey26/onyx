@@ -28,7 +28,7 @@ export default async function IndexPage() {
           Packagings Paradigm Shift 
         </h1>
 
-           <div className="place-self-center max-w-6xl aspect-video overflow-hidden rounded-lg shadow-lg ">
+           <div className="place-self-center max-w-auto aspect-video overflow-hidden rounded-lg shadow-lg ">
 
 <iframe width="100%" height="100%" src="https://www.youtube.com/embed/rq0lS7ZKYFQ?si=GTgF6H3Rr78LRA2z" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
 </div>
