@@ -5,7 +5,7 @@ import { buttonVariants } from "@/components/ui/button"
 import { readUserSession } from "@/utils/actions";
 import Features from "@/components/features"
 import AnimatedInfographic from "@/components/animated-infographic"
-import ProcessDiagram from "@/components/process-diagram"
+import WhyResendIt from "@/components/whyresendit"
 
 import { redirect } from "next/navigation";
 
@@ -44,6 +44,7 @@ export default async function IndexPage() {
           Sign Up
         </Link>
       </div>
+      <WhyResendIt />
    <Features/>
    <AnimatedInfographic/>
     </section>
