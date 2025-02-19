@@ -17,7 +17,7 @@ export function SiteFooter() {
             <ul className="space-y-3 text-sm">
               <li>
                 <Link href="#" className="text-muted-foreground transition-colors hover:text-primary">
-                  Resend-It Rewards
+                  Rewards
                 </Link>
               </li>
               <li>
