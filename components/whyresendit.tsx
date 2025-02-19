@@ -1,83 +1,75 @@
 "use client"
 
 import type React from "react"
+
 import { motion } from "framer-motion"
-import { BitcoinIcon as Blockchain, Package, Palette, DollarSign } from "lucide-react"
+import { Mail, GitBranch, Palette, DollarSign, type LucideIcon } from "lucide-react"
 
-const InfoGraphicItem = ({
-  title,
-  description,
-  icon: Icon,
-  index,
-}: { title: string; description: string; icon: React.ElementType; index: number }) => (
-  <motion.div
-    className="flex flex-col items-center mb-8 group"
-    initial={{ opacity: 0, y: 20 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.5, delay: index * 0.2 }}
-    whileHover={{ scale: 1.05 }}
-  >
-    <motion.div
-      className="font-extrabold text-primary mb-2 flex items-center"
-      initial={{ scale: 0 }}
-      animate={{ scale: 1 }}
-      transition={{ delay: 0.2 + index * 0.2, type: "spring", stiffness: 100 }}
-    >
-      <Icon className="mr-2 text-primary" size={32} />
-      {title}
-    </motion.div>
-    <motion.div
-      className="text-center text-sm max-w-xs"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ delay: 0.4 + index * 0.2 }}
-    >
-      {description}
-    </motion.div>
-  </motion.div>
-)
+interface Feature {
+  icon: React.ReactElement<LucideIcon>
+  title: string
+  description: string
+}
 
-const WhyResendIt = () => {
-  const items = [
-    { title: "USPS-Compliant Reusable Mailers" , 
-      description: "Engineered to be machinable and to meet USPS size limits, ensuring easy returns with no extra hassle.", 
-      icon: Package },
-    {
-      title: "Smart Tracking with Blockchain",
-      description:"Our ReTrace system links each package to customers and orders, enabling seamless tracking and incentivized returns.",
-      icon: Blockchain,
-    },
-    {
-        title: "Custom Branding",
-        description: "Fully customizable with high-quality printing options to enhance your brand's sustainability story.",
-        icon: Palette,
-      },
-      {
-        title: "Lower Costs, Higher Impact",
-        description:
-          "Reduce shipping waste, minimize return processing fees, and meet sustainability goals without added complexity.",
-        icon: DollarSign,
-      },
-    
-  ]
+const features: Feature[] = [
+  {
+    icon: <Mail className="w-8 h-8" />,
+    title: "USPS-Compliant Reusable Mailers",
+    description:
+      "Engineered to be machinable and to meet USPS size limits, ensuring easy returns with no extra hassle.",
+  },
+  {
+    icon: <GitBranch className="w-8 h-8" />,
+    title: "Smart Tracking with Blockchain",
+    description:
+      "Our ReTrace system links each package to customers and orders, enabling seamless tracking and incentivized returns.",
+  },
+  {
+    icon: <Palette className="w-8 h-8" />,
+    title: "Custom Branding",
+    description: "Fully customizable with high-quality printing options to enhance your brand's sustainability story.",
+  },
+  {
+    icon: <DollarSign className="w-8 h-8" />,
+    title: "Lower Costs, Higher Impact",
+    description:
+      "Reduce shipping waste, minimize return processing fees, and meet sustainability goals without added complexity.",
+  },
+]
 
+interface FeatureCardProps extends Feature {
+  index: number
+}
+
+const FeatureCard: React.FC<FeatureCardProps> = ({ icon, title, description, index }) => {
   return (
-    <div className="bg-background text-foreground p-8 rounded-lg shadow-lg max-w-3xl mx-auto">
-      <motion.h2
-        className="font-extrabold text-center mb-8"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-      >
-        Why Resend-It?
-      </motion.h2>
-      <div className="space-y-8 md:space-y-0 md:grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {items.map((item, index) => (
-          <InfoGraphicItem key={index} title={item.title} description={item.description} icon={item.icon} index={index} />
-        ))}
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      className="bg-background text-foreground rounded-lg shadow-lg dark:shadow-none p-6 flex flex-col items-center text-center hover:shadow-xl dark:hover:bg-accent transition-all duration-300"
+    >
+      <div className="text-primary mb-4">{icon}</div>
+      <h3 className="text-xl font-semibold mb-2">{title}</h3>
+      <p className="text-muted-foreground">{description}</p>
+    </motion.div>
+  )
+}
+
+const WhyResendIt: React.FC = () => {
+  return (
+    <section className="py-16 bg-muted">
+      <div className="container mx-auto px-4">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-foreground">Why Resend-It?</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {features.map((feature, index) => (
+            <FeatureCard key={index} {...feature} index={index} />
+          ))}
+        </div>
       </div>
-    </div>
+    </section>
   )
 }
 
 export default WhyResendIt
+

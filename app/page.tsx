@@ -5,7 +5,7 @@ import { buttonVariants } from "@/components/ui/button"
 import { readUserSession } from "@/utils/actions";
 import Features from "@/components/features"
 import AnimatedInfographic from "@/components/animated-infographic"
-import WhyResendIt from "@/components/whyresendit"
+import WhyResendItWrapper from "@/components/whyresenditwrapper"
 
 import { redirect } from "next/navigation";
 
@@ -44,7 +44,7 @@ export default async function IndexPage() {
           Sign Up
         </Link>
       </div>
-      <WhyResendIt />
+      <WhyResendItWrapper />
    <Features/>
    <AnimatedInfographic/>
     </section>
