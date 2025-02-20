@@ -23,7 +23,7 @@ export default async function IndexPage() {
         </p>
       </div>
 
-      <div className="relative gap-4">
+      <div className="flex gap-6">
         <Link
           href={siteConfig.links.login}
           target="_blank"
