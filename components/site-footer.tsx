@@ -11,7 +11,7 @@ export function SiteFooter() {
          <Link href="/" target="_blank"
               rel="noreferrer" className="ml-0">
           <Icons.logo className="h-6 w-6" />
-          <span className="inline-block font-bold"{siteConfig.name}</span>
+          <span className="inline-block font-bold">{siteConfig.name}</span>
         </Link>
           <p className="text-sm text-muted-foreground">Pioneering real world asset solutions for the digital age.</p>
         </div>
