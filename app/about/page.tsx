@@ -125,21 +125,21 @@ export default function AboutPage() {
 
 const teamMembers = [
   {
-    name: "Jane Doe",
-    role: "CEO & Founder",
-    bio: "Visionary leader with 15+ years of experience in tech innovation.",
+    name: "Cody Clark",
+    role: "CEO/Co-Founder",
+    bio: "Strategic leader with a decade of experience in revenue growth, client acquisition, and partnerships. Proven in negotiations, market expansion, and driving success. Passionate about sustainability and climate change initiatives.",
     avatar: "/placeholder.svg?height=100&width=100",
   },
   {
-    name: "John Smith",
-    role: "CTO",
-    bio: "Tech guru passionate about creating cutting-edge solutions.",
+    name: "Matt Dye",
+    role: "CAO/Co-Founder",
+    bio: "Former Big 4 accountant turned ecommerce brand owner. 10 years experience with starting, growing and selling ecommerce stores. Very passionate about sustainability and climate change.",
     avatar: "/placeholder.svg?height=100&width=100",
   },
   {
-    name: "Emily Brown",
-    role: "Head of Design",
-    bio: "Creative mind behind our stunning user interfaces and experiences.",
+    name: "Stacey Feeley",
+    role: "Co-Founder",
+    bio: "A seasoned entrepreneur deeply committed to social responsibility and enviromental initiatives. With a history of launching and scaling  startups, she leads biz dev through innovative ventures.",
     avatar: "/placeholder.svg?height=100&width=100",
   },
 ]
