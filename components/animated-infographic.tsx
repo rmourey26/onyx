@@ -69,26 +69,28 @@ const InfoGraphicItem = ({
 
 const AnimatedInfographic = () => {
   const items = [
+    {
+      percentage: 84,
+      text: "Loyal to brands with similar values.",
+      icon: Heart,
+    },
     { 
       percentage: 70, 
       text: "Pay a premium for sustainable packaging.", 
       icon: Leaf 
-    },
-    { 
-      percentage: 64,
-      text: "Alter behavior via incentives and rewards",
-      icon: AwardIcon,
     },
     {
       percentage: 66,
       text: "Ease of use significant factor.",
       icon: Recycle,
     },
-    {
-      percentage: 84,
-      text: "Loyal to brands with similar values.",
-      icon: Heart,
+    { 
+      percentage: 64,
+      text: "Alter behavior via incentives and rewards",
+      icon: AwardIcon,
     },
+    
+    
     
 
   ]
