@@ -26,7 +26,7 @@ export default function AboutPage() {
           About Our Company
         </motion.h1>
         <p className="text-xl text-muted-foreground">
-          We're on a mission to revolutionize the industry with innovative solutions.
+          We&#39;re on a mission to revolutionize the industry with innovative solutions.
         </p>
       </motion.section>
 
