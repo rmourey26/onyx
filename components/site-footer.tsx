@@ -1,5 +1,7 @@
 import Link from "next/link"
-import { Github, Twitter, Linkedin } from "lucide-react"
+import { siteConfig } from "@/config/site"
+import { buttonVariants } from "@/components/ui/button"
+import { Icons } from "@/components/icons"
 
 export function SiteFooter() {
   return (
@@ -44,26 +46,50 @@ export function SiteFooter() {
             <h3 className="text-sm font-medium">Connect</h3>
             <div className="flex space-x-4">
               <Link
-                href="https://github.com/resendit"
-                className="text-muted-foreground transition-colors hover:text-primary"
+                href={siteConfig.links.github}
+                target="_blank"
+                rel="noreferrer"
               >
-                <Github className="h-5 w-5" />
-                <span className="sr-only">GitHub</span>
+                <div
+                  className={buttonVariants({
+                    size: "icon",
+                    variant: "ghost",
+                  })}
+                >
+                  <Icons.gitHub className="h-5 w-5" />
+                  <span className="sr-only">GitHub</span>
+                </div>
               </Link>
               <Link
-                href="https://twitter.com/reaend-it"
-                className="text-muted-foreground transition-colors hover:text-primary"
+              href={siteConfig.links.twitter}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <div
+                className={buttonVariants({
+                  size: "icon",
+                  variant: "ghost",
+                })}
               >
-                <Twitter className="h-5 w-5" />
+                <Icons.twitter className="h-4 w-4 fill-current" />
                 <span className="sr-only">Twitter</span>
-              </Link>
-              <Link
-                href="https://linkedin.com/company/resend-it"
-                className="text-muted-foreground transition-colors hover:text-primary"
+              </div>
+            </Link>
+            <Link
+              href={siteConfig.links.linkedin}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <div
+                className={buttonVariants({
+                  size: "icon",
+                  variant: "ghost",
+                })}
               >
-                <Linkedin className="h-5 w-5" />
+                <Icons.linkedin className="h-4 w-4 fill-current" />
                 <span className="sr-only">LinkedIn</span>
-              </Link>
+              </div>
+            </Link>
             </div>
           </div>
         </div>

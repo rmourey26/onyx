@@ -40,10 +40,12 @@ export const siteConfig = {
     },
   ],
   links: {
-    twitter: "https://twitter.com/r_mourey_jr",
-    github: "https://github.com/rmourey26/onyx",
+    twitter: "https://twitter.com/resend-it",
+    github: "https://github.com/resend-it",
     login: "https://onyx-rho-pink.vercel.app/auth",
     signup: "https://onyx-rho-pink.vercel.app/onboarding",
     resendit: "/",
+    linkedin: "https://linkedin.com/in/resend-it",
+
   },
 }
