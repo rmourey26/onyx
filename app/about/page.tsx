@@ -134,14 +134,27 @@ const teamMembers = [
     name: "Matt Dye",
     role: "CAO/Co-Founder",
     bio: "Former Big 4 accountant turned ecommerce brand owner. 10 years experience with starting, growing and selling ecommerce stores. Very passionate about sustainability and climate change.",
-    avatar: "/placeholder.svg?height=100&width=100",
+    avatar: "https://quantumone.b-cdn.net/onyx/matt_pic.jpg",
   },
   {
     name: "Stacey Feeley",
     role: "Co-Founder",
     bio: "A seasoned entrepreneur deeply committed to social responsibility and enviromental initiatives. With a history of launching and scaling  startups, she leads biz dev through innovative ventures.",
-    avatar: "/placeholder.svg?height=100&width=100",
+    avatar: "https://quantumone.b-cdn.net/onyx/Stacey_39352.jpg",
   },
+  {
+    name: "Melissa Till",
+    role: "Co-Founder",
+    bio: "20+ yrs of product launch and market development with an emphasis on Innovation that enhances the customer experience and builds brand loyalty.",
+    avatar: "https://quantumone.b-cdn.net/onyx/2013-11-11_10.31.16.jpg",
+  },
+  {
+    name: "Guiliana Schwab",
+    role: "Co-Founder",
+    bio: "An entreprenuer and expert in product design. Giuliana has helped multiple brands to create and execute new and innovative ideas in the marketplace.",
+    avatar: "https://quantumone.b-cdn.net/onyx/Giuliana_39351.jpg",
+  },
+  
 ]
 
 const values = [
