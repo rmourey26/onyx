@@ -26,8 +26,8 @@ export const siteConfig = {
   links: {
     twitter: "https://twitter.com/resend-it",
     github: "https://github.com/resend-it",
-    login: "https://onyx-rho-pink.vercel.app/auth",
-    signup: "https://onyx-rho-pink.vercel.app/onboarding",
+    login: "https://onyx-s2rm-git-resendit-rmourey26s-projects.vercel.app/auth",
+    signup: "https://onyx-s2rm-git-resendit-rmourey26s-projects.vercel.app/onboarding",
     resendit: "/",
     linkedin: "https://linkedin.com/in/resend-it",
 
