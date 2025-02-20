@@ -45,6 +45,6 @@ export const siteConfig = {
     login: "https://onyx-rho-pink.vercel.app/auth",
     signup: "https://onyx-rho-pink.vercel.app/onboarding",
     linkedin:
-"https://linkedin.com",
+"https://linkedin.com/in/robertmoureyjr",
   },
 }
