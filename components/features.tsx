@@ -1,6 +1,6 @@
 "use client"
 
-import { Bitcoin, Cloud, Shield, Zap } from 'lucide-react'
+import { BitcoinIcon, Cloud, Shield, Zap } from 'lucide-react'
 import { motion } from "framer-motion"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
@@ -8,7 +8,7 @@ const features = [
   {
     name: "Blockchain-AI Analytics",
     description: "Harness the power of blockchain AI to derive actionable insights from your data.",
-    icon: Bitcoin,
+    icon: BitcoinIcon,
   },
   {
     name: "Hybrid Architecture",

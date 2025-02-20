@@ -2,7 +2,7 @@
 
 import React from "react"
 import { motion, useAnimation } from "framer-motion"
-import { Leaf, Recycle, Heart } from "lucide-react"
+import { Leaf, Recycle, Heart, AwardIcon } from "lucide-react"
 import { useInView } from "react-intersection-observer"
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -69,23 +69,34 @@ const InfoGraphicItem = ({
 
 const AnimatedInfographic = () => {
   const items = [
-    { percentage: 70, text: "of consumers are willing to pay a premium for sustainable packaging.", icon: Leaf },
+    { 
+      percentage: 70, 
+      text: "Pay a premium for sustainable packaging.", 
+      icon: Leaf 
+    },
+    { 
+      percentage: 64,
+      text: "Alter behavior via incentives and rewards",
+      icon: AwardIcon,
+    },
     {
       percentage: 66,
-      text: "of consumers indicate they would return reusable packaging if businesses made it easy.",
+      text: "Ease of use significant factor.",
       icon: Recycle,
     },
     {
       percentage: 84,
-      text: "of consumers are more inclined to be loyal to a brand that shares its values.",
+      text: "Loyal to brands with similar values.",
       icon: Heart,
     },
+    
+
   ]
 
   return (
     <Card className="w-full max-w-4xl mx-auto">
       <CardHeader>
-        <CardTitle className="text-2xl font-bold text-center">Untapped Potential in Packaging</CardTitle>
+        <CardTitle className="text-3xl md:text-4xl font-bold text-center">Untapped Consumers</CardTitle>
       </CardHeader>
       <CardContent>
         <div className="space-y-8 md:space-y-0 md:grid md:grid-cols-2 lg:grid-cols-3 gap-8">
