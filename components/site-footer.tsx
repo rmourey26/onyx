@@ -10,7 +10,7 @@ export function SiteFooter() {
         <div className="flex-1 space-y-4">
          <Link href="/" target="_blank"
               rel="noreferrer" className="ml-0">
-          <Icons.resendit className="h-4 w-16" />
+          <Icons.resendit className="h-5 w-16" />
 
         </Link>
           <p className="text-sm text-muted-foreground">Pioneering supply chain solutions for the digital age.</p>
