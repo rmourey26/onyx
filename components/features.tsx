@@ -1,9 +1,13 @@
-import { Bitcoin, Cloud, Shield, Zap } from "lucide-react"
+"use client"
+
+import { Bitcoin, Cloud, Shield, Zap } from 'lucide-react'
+import { motion } from "framer-motion"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
 const features = [
   {
-    name: "Blockchain AI Analytics",
-    description: "Harness the power of blockchain and AI to derive actionable insights from your data.",
+    name: "Blockchain-AI Analytics",
+    description: "Harness the power of blockchain AI to derive actionable insights from your data.",
     icon: Bitcoin,
   },
   {
@@ -26,21 +30,37 @@ const features = [
 export default function Features() {
   return (
     <section className="container space-y-16 py-24 md:py-32">
-      <div className="mx-auto max-w-4xl text-center">
-        <h2 className="font-extrabold leading-[1.1]">Cutting-Edge Solutions</h2>
+      <motion.div 
+        className="mx-auto max-w-4xl text-center"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <h2 className="text-3xl font-extrabold leading-[1.1] sm:text-4xl md:text-5xl">Cutting-Edge Solutions</h2>
         <p className="mt-4 text-muted-foreground">
-          Discover how Onyx can transform your business with our laser powered AI protocol and enterprise blockchain. 
+          Discover how Resend-It can transform your business with our patented reusable packaging and blockchain platform.
         </p>
-      </div>
+      </motion.div>
       <div className="mx-auto grid max-w-5xl grid-cols-1 gap-8 md:grid-cols-2">
-        {features.map((feature) => (
-          <div key={feature.name} className="relative overflow-hidden rounded-lg border bg-background p-8">
-            <div className="flex items-center gap-4">
-              <feature.icon className="h-8 w-8" />
-              <h3 className="font-bold">{feature.name}</h3>
-            </div>
-            <p className="mt-2 text-muted-foreground">{feature.description}</p>
-          </div>
+        {features.map((feature, index) => (
+          <motion.div
+            key={feature.name}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+          >
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-4">
+                  <feature.icon className="h-8 w-8" />
+                  {feature.name}
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">{feature.description}</p>
+              </CardContent>
+            </Card>
+          </motion.div>
         ))}
       </div>
     </section>
