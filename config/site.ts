@@ -11,28 +11,12 @@ export const siteConfig = {
     },
 
     { 
-      title: "Account",
-      href: "/account",
-    },
-    { 
-      title: "Dashboard",
-      href: "/dashboard",
-    },
-    { 
-      title: "OpenAI",
-      href: "/playground",
-    },
-    { 
-      title: "Podcasts",
-      href: "/music",
+      title: "About",
+      href: "/about",
     },
     { 
       title: "Blog",
       href: "/blog",
-    },
-    { 
-      title: "RBAC",
-      href: "/dashboard/members",
     },
     {
       title: "Contact",
