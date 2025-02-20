@@ -128,7 +128,7 @@ const teamMembers = [
     name: "Cody Clark",
     role: "CEO/Co-Founder",
     bio: "Strategic leader with a decade of experience in revenue growth, client acquisition, and partnerships. Proven in negotiations, market expansion, and driving success. Passionate about sustainability and climate change initiatives.",
-    avatar: "/placeholder.svg?height=100&width=100",
+    avatar: "https://quantumone.b-cdn.net/onyx/CodyClark-prof.png",
   },
   {
     name: "Matt Dye",
