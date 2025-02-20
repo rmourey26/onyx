@@ -8,8 +8,8 @@ export function SiteFooter() {
     <footer className="border-t">
       <div className="container flex flex-col gap-8 py-8 md:flex-row md:py-12">
         <div className="flex-1 space-y-4">
-         <Link className="flex items-center" href="/" target="_blank"
-              rel="noreferrer" className="ml-0">
+         <Link className="ml-0 flex items-center" href="/" target="_blank"
+              rel="noreferrer">
           <Icons.logo className="h-6 w-6" />
           <span className="inline-block font-bold">{siteConfig.name}</span>
         </Link>
