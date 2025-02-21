@@ -25,7 +25,7 @@ export default function CTA() {
             className="text-3xl font-extrabold text-gray-900 dark:text-white sm:text-4xl"
           >
             <span className="block">Ready for the movement?</span>
-            <span className="block text-brand-green-medium dark:text-brand-green-light">Book a meeting today!.</span>
+            <span className="block text-brand-green-medium dark:text-brand-green-light">Book a demo today!</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -33,7 +33,7 @@ export default function CTA() {
             transition={{ delay: 0.4, duration: 0.5 }}
             className="mt-4 text-lg leading-6 text-gray-600 dark:text-gray-300"
           >
-            Discover how Resend-It is rethinking e-commerce business models. 
+            Discover how Resend-It is redefining e-commerce.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
