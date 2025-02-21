@@ -54,7 +54,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ icon, title, description, ind
       <Card className="h-full hover:shadow-lg transition-shadow duration-300">
         <CardHeader>
           <div className="flex items-center justify-center mb-4">
-            <div className="text-primary p-2 rounded-full bg-brand-green-medium/10">{icon}</div>
+            <div className="text-primary p-2 rounded-full bg-primary/10">{icon}</div>
           </div>
           <CardTitle className="text-xl font-semibold text-center">{title}</CardTitle>
         </CardHeader>
