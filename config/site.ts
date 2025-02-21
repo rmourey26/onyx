@@ -34,6 +34,10 @@ export const siteConfig = {
       title: "RBAC",
       href: "/dashboard/members",
     },
+    { 
+      title: "About",
+      href: "/about",
+    },
     {
       title: "Contact",
       href: "/contact",
