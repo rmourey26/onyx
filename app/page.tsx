@@ -6,6 +6,7 @@ import { readUserSession } from "@/utils/actions";
 import Features from "@/components/features"
 import AnimatedInfographic from "@/components/animated-infographic"
 import WhyResendItWrapper from "@/components/whyresenditwrapper"
+import CTA from "@/components/cta";
 
 import { redirect } from "next/navigation";
 
@@ -24,7 +25,7 @@ export default async function IndexPage() {
   return (
             <section className="container max-w-7xl mx-auto flex flex-1 flex-col space-y-16 items-center gap-6 pb-32 pt-20 sm:pt-40 sm:pb-24">
       <div className="flex mx-auto flex-col px-4 md:px-6 lg:px-8 items-center text-center gap-2">
-        <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold leading-tight tracking-tighter md:text-4xl mb-8">
+        <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold leading-tight tracking-tighter md:text-4xl mb-4">
           Packagings Paradigm Shift 
         </h1>
 
@@ -36,27 +37,9 @@ export default async function IndexPage() {
          Sustainable, brandable, reusable with blockchain and AI technology under the hood.  
         </p>
       </div>
-     
-      <div className="flex gap-6">
-        <Link
-          href={siteConfig.links.login}
-          target="_blank"
-          rel="noreferrer"
-                    className={buttonVariants({ variant: "brand" })}
-        >
-          Login
-        </Link>
-        <Link
-          target="_blank"
-          rel="noreferrer"
-          href={siteConfig.links.signup}
-          className={buttonVariants({ variant: "outline" })}
-        >
-          Sign Up
-        </Link>
-      </div>
+       <CTA/>
       <WhyResendItWrapper />
-   <Features/>
+     <Features/>
    <AnimatedInfographic/>
     </section>
   )

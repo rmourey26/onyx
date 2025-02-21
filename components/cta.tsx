@@ -1,20 +1,57 @@
+"use client"
+
+import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 
 export default function CTA() {
   return (
-    <section className="border-t">
-      <div className="container flex flex-col items-center gap-4 py-24 text-center md:py-32">
-        <h2 className="font-extrabold text-3xl leading-[1.1] sm:text-3xl md:text-5xl">
-          Ready to join the movement?
-        </h2>
-        <p className="max-w-[42rem] leading-normal text-muted-foreground sm:text-xl sm:leading-8">
-          Resend-It is the only reusable packaging company leveraging blockchain and AI technologies to incentivize consumers and streamline supply chains.  
-        </p>
-        <Button className="mt-4">
-          Get Started Today
-        </Button>
+    <motion.section
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="bg-gray-50 dark:bg-gray-900"
+    >
+      <div className="container mx-auto px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.2, duration: 0.5 }}
+          className="max-w-4xl mx-auto text-center"
+        >
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.5 }}
+            className="text-3xl font-extrabold text-gray-900 dark:text-white sm:text-4xl"
+          >
+            <span className="block">Ready for the movement?</span>
+            <span className="block text-brand-green-medium dark:text-brand-green-light">Book a meeting today!.</span>
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.5 }}
+            className="mt-4 text-lg leading-6 text-gray-600 dark:text-gray-300"
+          >
+            Discover how Resend-It is rethinking e-commerce business models. 
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5, duration: 0.5 }}
+            className="mt-8 flex justify-center"
+          >
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Button size="lg" className="px-8 py-3 text-lg font-semibold">
+                Get started
+              </Button>
+            </motion.div>
+          </motion.div>
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   )
 }
+
+
 
