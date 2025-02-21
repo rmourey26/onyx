@@ -68,7 +68,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ icon, title, description, ind
 
 const WhyResendIt: React.FC = () => {
   return (
-    <section className="py-16 bg-muted">
+    <section className="py-16 bg-card-foreground">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-foreground">Why Resend-It?</h2>
    
