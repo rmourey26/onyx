@@ -1,6 +1,6 @@
 "use client"
 
-import { Bitcoin, Cloud, Shield, Zap } from 'lucide-react'
+import { BitcoinIcon, Cloud, Shield, Zap } from 'lucide-react'
 import { motion } from "framer-motion"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
@@ -8,7 +8,7 @@ const features = [
   {
     name: "Blockchain-AI Analytics",
     description: "Harness the power of blockchain AI to derive actionable insights from your data.",
-    icon: Bitcoin,
+    icon: BitcoinIcon,
   },
   {
     name: "Hybrid Architecture",
@@ -36,9 +36,9 @@ export default function Features() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <h2 className="font-extrabold leading-[1.1]">Cutting-Edge Solutions</h2>
+        <h2 className="text-3xl font-extrabold leading-[1.1] sm:text-4xl md:text-5xl">Cutting-Edge Solutions</h2>
         <p className="mt-4 text-muted-foreground">
-          Discover how Onyx can transform your business our quantum inspired AI protocol and enterprise grade blockchain.
+          Discover how Resend-It can transform your business with our patented reusable packaging and blockchain platform.
         </p>
       </motion.div>
       <div className="mx-auto grid max-w-5xl grid-cols-1 gap-8 md:grid-cols-2">
