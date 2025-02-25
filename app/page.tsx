@@ -5,6 +5,9 @@ import { buttonVariants } from "@/components/ui/button"
 import { readUserSession } from "@/utils/actions";
 import Features from "@/components/features"
 import { redirect } from "next/navigation";
+import CTA from "@/components/cta";
+import AnimatedInfographic from "@/components/animated-infographic";
+import WhyOnyxWrapper from "@/components/whyonyxwrapper";
 
 export default async function IndexPage() {
   const { data: userSession } = await readUserSession();
@@ -41,7 +44,11 @@ export default async function IndexPage() {
           Sign Up
         </Link>
       </div>
+      <AnimatedInfographic />
    <Features/>
+   <WhyOnyxWrapper />
+   <CTA />
+
     </section>
   )
 }
