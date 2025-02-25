@@ -55,7 +55,7 @@ export default function AuthForm() {
 				});
 			} else {
 				toast({
-					title: "Successfully login 🎉",
+					title: "Successful login 🎉",
 				});
 			}
 		});
