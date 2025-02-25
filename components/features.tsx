@@ -38,7 +38,7 @@ export default function Features() {
       >
         <h2 className="text-3xl font-extrabold leading-[1.1] sm:text-4xl md:text-5xl">Cutting-Edge Solutions</h2>
         <p className="mt-4 text-muted-foreground">
-          Discover how Resend-It can transform your business with our patented reusable packaging and blockchain platform.
+          Discover how Onyx can transform your business with our patented reusable packaging and blockchain platform.
         </p>
       </motion.div>
       <div className="mx-auto grid max-w-5xl grid-cols-1 gap-8 md:grid-cols-2">
