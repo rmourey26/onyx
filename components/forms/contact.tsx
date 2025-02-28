@@ -122,7 +122,7 @@ export function Contact() {
                                 variant="outline"
                         >
                                 Send Message
-                                <ChevronRight/>
+                                <ChevronRight className="ml-2 h-4 w-4"/>
    </Button>
                                 </form>
                         </Form>
