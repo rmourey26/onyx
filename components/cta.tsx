@@ -3,8 +3,10 @@
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { useState } from 'react' 
 
 export default function CTA() {
+  const [isLoading, setIsLoading] = useState<boolean>(false)
   return (
     <section className="bg-gray-50 dark:bg-gray-900 py-12 sm:py-16 lg:py-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
