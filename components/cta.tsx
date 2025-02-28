@@ -45,7 +45,8 @@ export default function CTA() {
                 className="mt-8 flex justify-center"
               >
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                  <Button size="lg" className="px-8 py-3 text-lg font-semibold">
+                  <Button size="lg"
+            disabled={isLoading} className="px-8 py-3 text-lg font-semibold">
                     Get started
                   </Button>
                 </motion.div>
