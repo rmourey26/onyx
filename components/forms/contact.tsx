@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { Icons } from "@/components/icons"
+import { ChevronRight } from 'lucide-react'
 import { Button } from "@/components/ui/button";
 import {
         Form,
@@ -120,10 +121,8 @@ export function Contact() {
                                 className="w-full flex items-center gap-2"
                                 variant="outline"
                         >
-                                Send{" "}
-                                <AiOutlineLoading3Quarters
-                                        className={cn(" animate-spin", { hidden: !isLoading })}
-                                />
+                                Send Message
+                                <ChevronRight/>
    </Button>
                                 </form>
                         </Form>
