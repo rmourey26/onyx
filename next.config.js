@@ -13,7 +13,7 @@ const ContentSecurityPolicy = `
   media-src *.supabase.co quantumone.b-cdn.net *.unsplash.com youtube.com;
   connect-src *;
   font-src 'self' googleapis.com;
-  frame-src *.supabase.co youtube.com;
+  frame-src *.supabase.co youtube.com quantumone.b-cdn.net;
   object-src 'none';
   base-uri 'self';
   form-action 'self';
