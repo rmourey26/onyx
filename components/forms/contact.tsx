@@ -3,6 +3,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
+import { useRouter } from 'next/navigation';
 import { Icons } from "@/components/icons"
 import { ChevronRight } from 'lucide-react'
 import { Button } from "@/components/ui/button";
@@ -46,13 +47,15 @@ export function Contact() {
      setIsLoading(true)   
      updateInqueries(data)
     toast({
-      title: "Thank you for contacting Onyx. We received your inquiry and will respond within 24 hours. You may navigate away from this page.",
+      title: "Thank you for contacting Onyx. We received your inquiry and will respond within 24 hours.",
 
     });
 
     setTimeout(() => {
       setIsLoading(false)
     }, 3000)
+  
+  router.push('/')
 
   }
 
