@@ -33,7 +33,7 @@ type ContactValues = z.infer<typeof ContactSchema>
 export function Contact() {
         const [isPending, startTransition] = useTransition();
   const [isLoading, setIsLoading] = useState<boolean>(false)
-
+const router = useRouter();
         const form = useForm<z.infer<typeof ContactSchema>>({
                 resolver: zodResolver(ContactSchema),
                 defaultValues: {
