@@ -55,7 +55,7 @@ if (error)	{
 		});
 } else {
 				toast({
-					title: "Successfully login 🎉",
+					title: "Successful login 🎉",
 				});
 			}
 		});
