@@ -3,7 +3,7 @@ import Link from "next/link"
 import { siteConfig } from "@/config/site"
 import { buttonVariants } from "@/components/ui/button"
 import { readUserSession } from "@/utils/actions";
-import Features from "@/components/features"
+import Featurez from "@/components/features"
 import { redirect } from "next/navigation";
 import CTA from "@/components/cta";
 import AnimatedInfographic from "@/components/animated-infographic";
@@ -46,7 +46,7 @@ export default async function IndexPage() {
         </Link>
       </div>
       <AnimatedInfographic />
-   <Features/>
+   <Featurez/>
    <WhyOnyxWrapper />
    <CTA />
 
