@@ -1,7 +1,7 @@
 "use client"
 
 import type React from "react"
-import { BitcoinIcon, Cloud, Shield, Zap, type LucidIcon } from 'lucide-react'
+import { BitcoinIcon, Cloud, Shield, Zap, type LucideIcon } from 'lucide-react'
 import { motion } from "framer-motion"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import Link from "next/link"
