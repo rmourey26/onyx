@@ -23,7 +23,9 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
     password: z.string().min(1, { message: "Password can not be empty" }),
   });
   
-  const [isLoading, setIsLoading] = React.useState<boolean>(false)
+    const [isGitHubLoading, setIsGitHubLoading] = React.useState<boolean>(false);
+
+const [isLoading, setIsLoading] = React.useState<boolean>(false)
   const [isPending, startTransition] = React.useTransition();
   
   const form = useForm<z.infer<typeof LoginSchema>>({
