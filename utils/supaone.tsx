@@ -1,5 +1,7 @@
 import { createServerClient, type CookieOptions } from "@supabase/ssr";
 import { cookies } from "next/headers";
+import type { Database } from '@/lib/supabase'
+import type { TypedSupabaseClient } from '@/utils/typed-supabase-client'
 
 export async function createSupbaseServerClientReadOnly() {
 	const cookieStore = cookies();
@@ -20,7 +22,7 @@ export async function createSupbaseServerClientReadOnly() {
 export async function createSupbaseServerClient() {
 	const cookieStore = cookies();
 
-	return createServerClient(
+	return createServerClient<Database>(
 		process.env.NEXT_PUBLIC_SUPABASE_URL!,
 		process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
 		{
