@@ -1,5 +1,5 @@
 "use client";
-import { logout } from "@/app/auth/actions";
+import { signOut } from "@/app/auth/actions";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import React, { useTransition } from "react";
@@ -9,7 +9,7 @@ export default function SignOut() {
 	const [isPending, startTransition] = useTransition();
 	const onSubmit = async () => {
 		startTransition(async () => {
-			await logout();
+			await signOut();
 		});
 	};
 
