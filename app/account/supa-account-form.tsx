@@ -6,6 +6,7 @@ import useSupabaseBrowser from '@/utils/supabase-browser'
 import { type User } from '@supabase/supabase-js'
 import Avatar from './avatar'
 import { Input } from '@/components/ui/input'
+import { signOut } from '@/app/auth/actions'
 
 export default function AccountForm({ user }: { user: User | null }) {
   const supabase = useSupabaseBrowser()
@@ -156,8 +157,8 @@ const languages = [
         </div>
 
       <div className="flex flex-col w-full mb-2">
-        <form className="space-y-8 items-center" action="/auth/signout" method="post">
-          <button           className={buttonVariants({ variant: "outline" })} type="submit">
+        <form className="space-y-8 items-center" method="post">
+          <button           className={buttonVariants({ variant: "outline" })} type="submit" formAction={sign Out}>
             Sign out
           </button>
         </form>
