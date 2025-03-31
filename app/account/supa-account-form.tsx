@@ -158,7 +158,7 @@ const languages = [
 
       <div className="flex flex-col w-full mb-2">
         <form className="space-y-8 items-center" method="post">
-          <button           className={buttonVariants({ variant: "outline" })} type="submit" formAction={sign Out}>
+          <button           className={buttonVariants({ variant: "outline" })} type="submit" formAction={signOut}>
             Sign out
           </button>
         </form>
