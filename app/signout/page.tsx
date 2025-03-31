@@ -1,4 +1,4 @@
-import { logout } from "@/app/auth/actions";
+import { signOut } from "@/app/auth/actions";
 import SignOut from "@/app/dashboard/(dashboard)/components/SignOut";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
