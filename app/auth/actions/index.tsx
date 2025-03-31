@@ -115,7 +115,7 @@ if (data.url) {
   redirect(data.url)
  }
 }
-export async function logout() {
+export async function signOut() {
         const supabase = await createSupbaseServerClient();
 
 supabase.auth.onAuthStateChange((event, session) => {
