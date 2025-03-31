@@ -1,7 +1,7 @@
 import { type EmailOtpType } from '@supabase/supabase-js';
 import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
-import { createSupabaseServerClient } from '@/lib/supaone';
+import { createSupabaseServerClient } from '@/utils/supaone';
 
 export const dynamic = 'force-dynamic';
 
