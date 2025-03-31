@@ -1,7 +1,7 @@
 import { type EmailOtpType } from '@supabase/supabase-js';
 import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
-import { createSupabaseServerClient } from '@/utils/supaone';
+import { createSupbaseServerClient } from '@/utils/supaone';
 
 export const dynamic = 'force-dynamic';
 
@@ -16,7 +16,7 @@ export async function GET(request: NextRequest) {
   const token_hash = code ?? token_hash_searchParam;
 
   if (token_hash && type) {
-    const supabase = await createSupabaseServerClient();
+    const supabase = await createSupbaseServerClient();
 
     const { data } = await supabase.auth.verifyOtp({
       type,
