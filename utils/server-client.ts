@@ -2,7 +2,7 @@ import 'server-only';
 import { cache } from 'react';
 import { createServerClient } from '@supabase/ssr';
 import { cookies } from 'next/headers';
-import { type Database } from '@/types/database';
+import { Database } from '@/lib/supabase'
 import { useQuery } from '@supabase-cache-helpers/postgrest-react-query'
 
 // Define a function to create a Supabase client for server-side operations
