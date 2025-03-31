@@ -18,13 +18,8 @@ const
  supabaseAnonKey = process.env.SUPABASE_ANON_KEY!;
 const
  supabaseClient = createClient(supabaseUrl, supabaseAnonKey);
-export
- 
-async
- 
-function
- 
-GET
+
+export async function GET
 (
 req: Request
 ) 
