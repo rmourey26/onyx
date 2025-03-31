@@ -1,4 +1,4 @@
-app/auth/callback/route.ts
+//app/auth/callback/route.ts
 
 import
  { NextResponse } 
