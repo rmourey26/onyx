@@ -36,8 +36,7 @@ export default async function MeetingsPage(meetings: Meeting) {
         <p>You have no scheduled meetings.</p>
       ) : (
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {meetings.map((meeting: { id: Key | null | undefined; summary: string | number | bigint | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode> | null | undefined; start_time: string | number | Date; description: string | number | bigint | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode> | null | undefined; meet_link: string | undefined }) => (
-            <Card key={meeting.id}>
+          {meetings.map((meeting) => (
               <CardHeader>
                 <CardTitle>{meeting.summary}</CardTitle>
                 <CardDescription>{new Date(meeting.start_time).toLocaleString()}</CardDescription>
