@@ -30,15 +30,36 @@ export async function getMeetings(userId: string) {
   const supabase = createSupbaseServerClient()
   const { data, error } = await (await supabase)
     .from("meetings")
-    .select("*")
+    .select("*", {count: "exact"})
     .eq("user_id", userId)
     .order("start_time", { ascending: true })
 
   if (error) {
     return { error: error.message }
   }
+  if (data && data.length === 0) {
+    console.log(`Table '${tableName}' is empty.`);
+  } else {
+    console.log(`Table '${tableName}' has ${data?.length} rows.`);
+    return { meetings: data }
+  }
+}
 
-  return { meetings: data }
+export async function checkMeetingCount(meeting: Meeting) {
+  const { data, error } = await supabase
+    .from(meetings)
+    .select("*", { count: "exact" });
+
+  if (error) {
+    console.error("Error fetching data:", error);
+    return;
+  }
+
+  if (data && data.length === 0) {
+    console.log(`Table '${tableName}' is empty.`);
+  } else {
+    console.log(`Table '${tableName}' has ${data?.length} rows.`);
+  }
 }
 
 export async function updateMeeting(meeting: Meeting) {
