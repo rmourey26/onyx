@@ -4,18 +4,25 @@ import { redirect } from "next/navigation"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import type { Meeting } from "@/lib/db-actions"
+import { Key, ReactElement, JSXElementConstructor, ReactNode, ReactPortal, AwaitedReactNode } from "react"
+import type { User, UserResponse,  } from "@supabase/supabase-js"
 
-export default async function MeetingsPage() {
+
+
+
+export default async function MeetingsPage(meetings: Meeting) {
   const supabase = createSupbaseServerClient()
   const {
-    data: { session },
-  } = await (await supabase).auth.getSession()
+    data: { user: User },
+  } = await (await supabase).auth.getUser()
 
-  if (!session) {
+  if (!User) {
     redirect("/login")
   }
+  
 
-  const { meetings, error } = await getMeetings(session.user.id)
+  let {meetings: Meeting , error } = await getMeetings(User.id, meetings )
 
   if (error) {
     return <div>Error: {error}</div>
@@ -24,11 +31,12 @@ export default async function MeetingsPage() {
   return (
     <div className="container mx-auto py-8">
       <h1 className="text-3xl font-bold mb-6">Your Meetings</h1>
-      {meetings.length === 0 ? (
+  
+      {!meetings || meetings.length === 0 ? (
         <p>You have no scheduled meetings.</p>
       ) : (
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {meetings.map((meeting) => (
+          {meetings.map((meeting: { id: Key | null | undefined; summary: string | number | bigint | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode> | null | undefined; start_time: string | number | Date; description: string | number | bigint | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode> | null | undefined; meet_link: string | undefined }) => (
             <Card key={meeting.id}>
               <CardHeader>
                 <CardTitle>{meeting.summary}</CardTitle>

@@ -26,8 +26,15 @@ export async function createMeeting(meeting: Meeting) {
   return { meeting: data }
 }
 
-export async function getMeetings(userId: string) {
+export async function getMeetings(userId: string, meetings: Meeting) {
   const supabase = createSupbaseServerClient()
+  
+  const { data: {user}, error: userError } = (await supabase).auth.getUser()
+
+  if (userError || !user ) {
+    return {error: 'Unauthorized', meetings: []}
+  }
+
   const { data, error } = await (await supabase)
     .from("meetings")
     .select("*", {count: "exact"})
