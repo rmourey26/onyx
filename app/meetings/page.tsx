@@ -29,6 +29,7 @@ export default async function MeetingsPage(meetings: Meeting) {
   }
 
   return (
+    <>
     <div className="container mx-auto py-8">
       <h1 className="text-3xl font-bold mb-6">Your Meetings</h1>
   
@@ -57,6 +58,7 @@ export default async function MeetingsPage(meetings: Meeting) {
         <Link href="/">Back to Home</Link>
       </Button>
     </div>
+    </>
   )
 }
 
