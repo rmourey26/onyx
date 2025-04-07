@@ -25,7 +25,7 @@ import {
     PopoverTrigger,
 } from "@/components/ui/popover";
 import { toast } from "@/components/ui/use-toast";
-import { cn } from "@/lib/utils"; // Assuming you have this utility from Shadcn setup
+import { cn } from "@/lib/utils";
 import { scheduleMeetingSchema, ScheduleMeetingData } from "@/lib/schemas/schemas";
 import { createMeeting } from "@/app/schedule/actions"; // Server Action (see below)
 import { useState } from "react";
@@ -55,7 +55,7 @@ export function ScheduleForm() {
                 title: "Meeting Scheduled!",
                 description: (
                     <p>
-                        Your meeting "{data.summary}" is scheduled.
+                        Your meeting {data.summary} is scheduled.
                         <br />
                         <a
                             href={result.meetLink}
