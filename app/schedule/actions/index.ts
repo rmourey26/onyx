@@ -1,7 +1,7 @@
 // app/schedule/actions
 'use server';
 
-import { createSupbaseServerClient } from '@/lib/supaone';
+import { createSupbaseServerClient } from '@/utils/supaone';
 import { cookies } from 'next/headers';
 import { google } from 'googleapis';
 import { scheduleMeetingSchema, ScheduleMeetingData } from '@/lib//schemas/schemas';
