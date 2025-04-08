@@ -4,7 +4,7 @@
 import { createSupbaseServerClient } from '@/utils/supaone';
 import { cookies } from 'next/headers';
 import { google } from 'googleapis';
-import { scheduleMeetingSchema, ScheduleMeetingData } from '@/lib//schemas/schemas';
+import { scheduleMeetingSchema, ScheduleMeetingData } from '@/lib/schemas/schemas';
 
 // --- Google API ---
 // This is highly simplified and requires some added logic to obtain session info. Coming soon. 
