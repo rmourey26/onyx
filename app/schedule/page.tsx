@@ -23,7 +23,7 @@ export default async function SchedulePage() {
     const { data: { user } } = await supabase.auth.getUser();
 
     if (!user) {
-        redirect('/login'); // Redirect to login if not authenticated
+        redirect('/auth'); // Redirect to login if not authenticated
     }
 
     // Optional: Fetch existing meetings for display
