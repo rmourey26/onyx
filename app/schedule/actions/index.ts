@@ -1,14 +1,14 @@
 // app/schedule/actions
 'use server';
 
-import { createServerClient } from '@supabase/ssr';
+import { createSupbaseServerClient } from '@/lib/supaone';
 import { cookies } from 'next/headers';
 import { google } from 'googleapis';
 import { scheduleMeetingSchema, ScheduleMeetingData } from '@/lib//schemas/schemas';
 
-// --- Google API Helper ---
-// This is highly simplified. A real implementation needs robust OAuth handling.
-// It assumes you have stored the user's refresh token securely after OAuth flow.
+// --- Google API ---
+// This is highly simplified and requires some added logic to obtain session info. Coming soon. 
+
 async function getGoogleAuthClient(userId: string) {
     // 1. Fetch user's stored refresh token from your DB (e.g., a separate 'user_credentials' table)
     // const refreshToken = await fetchRefreshTokenFromDb(userId);
