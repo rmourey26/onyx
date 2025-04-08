@@ -36,7 +36,7 @@ async function getGoogleAuthClient(userId: string) {
 // --- Server Action ---
 export async function createMeeting(formData: ScheduleMeetingData): Promise<{ success: boolean; meetLink?: string; error?: string }> {
     const cookieStore = cookies();
-    const supabase = createClient()
+    const supabase = createClient(cookieStore)
 
     // 1. Get User Session
     const { data: { session }, error: sessionError } = await supabase.auth.getSession();
