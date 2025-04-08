@@ -1,7 +1,7 @@
 // app/schedule/actions
 'use server';
 
-import { createSupbaseServerClient } from '@/utils/supaone';
+import { createClient } from '@/utils/supa-server-actions';
 import { cookies } from 'next/headers';
 import { google } from 'googleapis';
 import { scheduleMeetingSchema, ScheduleMeetingData } from '@/lib/schemas/schemas';
@@ -36,7 +36,7 @@ async function getGoogleAuthClient(userId: string) {
 // --- Server Action ---
 export async function createMeeting(formData: ScheduleMeetingData): Promise<{ success: boolean; meetLink?: string; error?: string }> {
     const cookieStore = cookies();
-    const supabase = createSupbaseServerClient()
+    const supabase = createClient()
 
     // 1. Get User Session
     const { data: { session }, error: sessionError } = await supabase.auth.getSession();
