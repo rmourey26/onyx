@@ -36,18 +36,7 @@ async function getGoogleAuthClient(userId: string) {
 // --- Server Action ---
 export async function createMeeting(formData: ScheduleMeetingData): Promise<{ success: boolean; meetLink?: string; error?: string }> {
     const cookieStore = cookies();
-    const supabase = createServerClient(
-        process.env.NEXT_PUBLIC_SUPABASE_URL!,
-        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-        {
-            cookies: {
-                get(name: string) {
-                    return cookieStore.get(name)?.value;
-                },
-                // Set/Remove needed if the action modifies auth state
-            },
-        }
-    );
+    const supabase = createSupbaseServerClient()
 
     // 1. Get User Session
     const { data: { session }, error: sessionError } = await supabase.auth.getSession();
@@ -115,7 +104,7 @@ export async function createMeeting(formData: ScheduleMeetingData): Promise<{ su
 
 
         // 5. Save Meeting Details to Supabase DB
-        const { error: dbError } = await supabase
+        const { error } = await supabase
             .from('meetings')
             .insert({
                 user_id: userId,
@@ -127,8 +116,8 @@ export async function createMeeting(formData: ScheduleMeetingData): Promise<{ su
                 google_event_id: eventId,
             });
 
-        if (dbError) {
-            console.error("Supabase DB insert error:", dbError);
+        if (error) {
+            console.error("Supabase DB insert error:", error);
             // Optional: Try to delete the Google Calendar event if DB save fails (rollback)
             try {
                 await calendar.events.delete({ calendarId: 'primary', eventId: eventId });
