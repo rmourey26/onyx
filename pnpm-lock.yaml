@@ -119,6 +119,9 @@ importers:
       '@tanstack/react-table':
         specifier: ^8.19.3
         version: 8.19.3(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      '@types/google-one-tap':
+        specifier: ^1.2.6
+        version: 1.2.6
       '@types/mdx':
         specifier: ^2.0.13
         version: 2.0.13
@@ -158,6 +161,9 @@ importers:
       google-auth-library:
         specifier: ^9.15.1
         version: 9.15.1
+      google-one-tap:
+        specifier: ^1.0.6
+        version: 1.0.6
       googleapis:
         specifier: ^148.0.0
         version: 148.0.0
@@ -2381,6 +2387,9 @@ packages:
   '@types/estree@1.0.5':
     resolution: {integrity: sha512-/kYRxGDLWzHOB7q+wtSUQlFrtcdUccpfy+X+9iMBpHK8QLLhx2wIPYuS5DYtR9Wa/YlZAbIovy7qVdB1Aq6Lyw==}
 
+  '@types/google-one-tap@1.2.6':
+    resolution: {integrity: sha512-REmJsXVHvKb/sgI8DF+7IesMbDbcsEokHBqxU01ENZ8d98UPWdRLhUCtxEm9bhNFFg6PJGy7PNFdvovp0hK3jA==}
+
   '@types/hast@2.3.10':
     resolution: {integrity: sha512-McWspRw8xx8J9HurkVBfYj0xKoE25tOFlHGdx4MJ5xORQrMGZNqJhVQWaIbm6Oyla5kYOXtDiopzKRJzEOkwJw==}
 
@@ -3662,6 +3671,9 @@ packages:
   google-logging-utils@0.0.2:
     resolution: {integrity: sha512-NEgUnEcBiP5HrPzufUkBzJOD/Sxsco3rLNo1F1TNf7ieU8ryUzBhqba8r756CjLX7rn3fHl6iLEwPYuqpoKgQQ==}
     engines: {node: '>=14'}
+
+  google-one-tap@1.0.6:
+    resolution: {integrity: sha512-sgusL6AmYCsTW/WVpJK0zxsjelPqJt/+3yNj4yHZTJOrHEDO251SR9xbTNB4wYK7nCM86/RaQdsD+8yUNQSQeQ==}
 
   googleapis-common@7.2.0:
     resolution: {integrity: sha512-/fhDZEJZvOV3X5jmD+fKxMqma5q2Q9nZNSF3kn1F18tpxmA86BcTxAGBQdM0N89Z3bEaIs+HVznSmFJEAmMTjA==}
@@ -8271,6 +8283,8 @@ snapshots:
 
   '@types/estree@1.0.5': {}
 
+  '@types/google-one-tap@1.2.6': {}
+
   '@types/hast@2.3.10':
     dependencies:
       '@types/unist': 2.0.10
@@ -9783,6 +9797,8 @@ snapshots:
       - supports-color
 
   google-logging-utils@0.0.2: {}
+
+  google-one-tap@1.0.6: {}
 
   googleapis-common@7.2.0:
     dependencies:
