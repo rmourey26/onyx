@@ -189,39 +189,45 @@ export type Database = {
           description: string | null
           id: string
           is_active: boolean | null
+          max_tokens: number | null
           model_id: string | null
           name: string
           parameters: Json | null
           system_prompt: string | null
+          temperature: number | null
           tools: Json | null
           updated_at: string | null
-          user_id: string | null
+          user_id: string
         }
         Insert: {
           created_at?: string | null
           description?: string | null
           id?: string
           is_active?: boolean | null
+          max_tokens?: number | null
           model_id?: string | null
           name: string
           parameters?: Json | null
           system_prompt?: string | null
+          temperature?: number | null
           tools?: Json | null
           updated_at?: string | null
-          user_id?: string | null
+          user_id?: string
         }
         Update: {
           created_at?: string | null
           description?: string | null
           id?: string
           is_active?: boolean | null
+          max_tokens?: number | null
           model_id?: string | null
           name?: string
           parameters?: Json | null
           system_prompt?: string | null
+          temperature?: number | null
           tools?: Json | null
           updated_at?: string | null
-          user_id?: string | null
+          user_id?: string
         }
         Relationships: [
           {
@@ -237,37 +243,34 @@ export type Database = {
         Row: {
           agent_id: string | null
           analysis_type: string
-          created_at: string | null
+          created_at: string
           id: string
           metadata: Json | null
           results: Json
           source_id: string
           source_type: string
-          updated_at: string | null
           user_id: string | null
         }
         Insert: {
           agent_id?: string | null
           analysis_type: string
-          created_at?: string | null
+          created_at?: string
           id?: string
           metadata?: Json | null
           results: Json
           source_id: string
           source_type: string
-          updated_at?: string | null
           user_id?: string | null
         }
         Update: {
           agent_id?: string | null
           analysis_type?: string
-          created_at?: string | null
+          created_at?: string
           id?: string
           metadata?: Json | null
           results?: Json
           source_id?: string
           source_type?: string
-          updated_at?: string | null
           user_id?: string | null
         }
         Relationships: [
@@ -332,7 +335,7 @@ export type Database = {
           start_time: string | null
           status: string | null
           updated_at: string | null
-          user_id: string | null
+          user_id: string
           workflow_id: string | null
         }
         Insert: {
@@ -344,7 +347,7 @@ export type Database = {
           start_time?: string | null
           status?: string | null
           updated_at?: string | null
-          user_id?: string | null
+          user_id?: string
           workflow_id?: string | null
         }
         Update: {
@@ -356,7 +359,7 @@ export type Database = {
           start_time?: string | null
           status?: string | null
           updated_at?: string | null
-          user_id?: string | null
+          user_id?: string
           workflow_id?: string | null
         }
         Relationships: [
@@ -380,7 +383,7 @@ export type Database = {
           trigger_config: Json | null
           trigger_type: string | null
           updated_at: string | null
-          user_id: string | null
+          user_id: string
         }
         Insert: {
           created_at?: string | null
@@ -392,7 +395,7 @@ export type Database = {
           trigger_config?: Json | null
           trigger_type?: string | null
           updated_at?: string | null
-          user_id?: string | null
+          user_id?: string
         }
         Update: {
           created_at?: string | null
@@ -404,7 +407,7 @@ export type Database = {
           trigger_config?: Json | null
           trigger_type?: string | null
           updated_at?: string | null
-          user_id?: string | null
+          user_id?: string
         }
         Relationships: []
       }
@@ -524,7 +527,7 @@ export type Database = {
           subject: string
           type: string
           updated_at: string | null
-          user_id: string | null
+          user_id: string
         }
         Insert: {
           completed_date?: string | null
@@ -542,7 +545,7 @@ export type Database = {
           subject: string
           type: string
           updated_at?: string | null
-          user_id?: string | null
+          user_id?: string
         }
         Update: {
           completed_date?: string | null
@@ -560,7 +563,7 @@ export type Database = {
           subject?: string
           type?: string
           updated_at?: string | null
-          user_id?: string | null
+          user_id?: string
         }
         Relationships: [
           {
@@ -607,7 +610,7 @@ export type Database = {
           provider: string
           refresh_token: string | null
           updated_at: string | null
-          user_id: string | null
+          user_id: string
         }
         Insert: {
           access_token?: string | null
@@ -622,7 +625,7 @@ export type Database = {
           provider: string
           refresh_token?: string | null
           updated_at?: string | null
-          user_id?: string | null
+          user_id?: string
         }
         Update: {
           access_token?: string | null
@@ -637,7 +640,7 @@ export type Database = {
           provider?: string
           refresh_token?: string | null
           updated_at?: string | null
-          user_id?: string | null
+          user_id?: string
         }
         Relationships: []
       }
@@ -659,7 +662,7 @@ export type Database = {
           status: string | null
           tags: string[] | null
           updated_at: string | null
-          user_id: string | null
+          user_id: string
         }
         Insert: {
           address?: string | null
@@ -678,7 +681,7 @@ export type Database = {
           status?: string | null
           tags?: string[] | null
           updated_at?: string | null
-          user_id?: string | null
+          user_id?: string
         }
         Update: {
           address?: string | null
@@ -697,7 +700,7 @@ export type Database = {
           status?: string | null
           tags?: string[] | null
           updated_at?: string | null
-          user_id?: string | null
+          user_id?: string
         }
         Relationships: [
           {
@@ -844,7 +847,7 @@ export type Database = {
           source_id: string | null
           source_type: string
           updated_at: string | null
-          user_id: string | null
+          user_id: string
           vector_data: string | null
         }
         Insert: {
@@ -857,7 +860,7 @@ export type Database = {
           source_id?: string | null
           source_type: string
           updated_at?: string | null
-          user_id?: string | null
+          user_id?: string
           vector_data?: string | null
         }
         Update: {
@@ -870,7 +873,7 @@ export type Database = {
           source_id?: string | null
           source_type?: string
           updated_at?: string | null
-          user_id?: string | null
+          user_id?: string
           vector_data?: string | null
         }
         Relationships: []
@@ -885,7 +888,7 @@ export type Database = {
           name: string
           tool_type: string
           updated_at: string | null
-          user_id: string | null
+          user_id: string
         }
         Insert: {
           configuration: Json
@@ -896,7 +899,7 @@ export type Database = {
           name: string
           tool_type: string
           updated_at?: string | null
-          user_id?: string | null
+          user_id?: string
         }
         Update: {
           configuration?: Json
@@ -907,7 +910,7 @@ export type Database = {
           name?: string
           tool_type?: string
           updated_at?: string | null
-          user_id?: string | null
+          user_id?: string
         }
         Relationships: []
       }
@@ -986,7 +989,7 @@ export type Database = {
           start_time: string
           summary: string
           updated_at?: string | null
-          user_id: string
+          user_id?: string
         }
         Update: {
           created_at?: string | null
@@ -1066,7 +1069,7 @@ export type Database = {
           profile_id?: string | null
           token_id?: string | null
           tx_hash?: string | null
-          user_id: string
+          user_id?: string
         }
         Update: {
           created_at?: string
@@ -1529,7 +1532,7 @@ export type Database = {
           metadata: Json | null
           name: string
           updated_at: string | null
-          user_id: string | null
+          user_id: string
         }
         Insert: {
           created_at?: string | null
@@ -1540,7 +1543,7 @@ export type Database = {
           metadata?: Json | null
           name: string
           updated_at?: string | null
-          user_id?: string | null
+          user_id?: string
         }
         Update: {
           created_at?: string | null
@@ -1551,7 +1554,7 @@ export type Database = {
           metadata?: Json | null
           name?: string
           updated_at?: string | null
-          user_id?: string | null
+          user_id?: string
         }
         Relationships: []
       }
