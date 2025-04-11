@@ -10,15 +10,20 @@ import { scheduleMeetingSchema, ScheduleMeetingData } from '@/lib/schemas/schema
 // This is highly simplified and requires some added logic to obtain session info. Coming soon. 
 
 async function getGoogleAuthClient(userId: string) {
-    // 1. Fetch user's stored refresh token from your DB (e.g., a separate 'user_credentials' table)
-    // const refreshToken = await fetchRefreshTokenFromDb(userId);
-    const refreshToken = "STORED_REFRESH_TOKEN"; // Placeholder
 
-    if (!refreshToken) {
+  const requestUrl = new URL(request.url);
+  const refreshToken = requestUrl.searchParams.get("refreshToken");
+
+ if (!refreshToken) {
         throw new Error("User not authenticated with Google or refresh token missing.");
     }
+  
+  if (refreshToken) {
+    const cookieStore = cookies();
+    const supabase = createClient(cookieStore);
+    await supabase.auth.exchangeCodeForSession(refreshToken);
 
-    const oauth2Client = new google.auth.OAuth2(
+const oauth2Client = new google.auth.OAuth2(
         process.env.GOOGLE_CLIENT_ID,
         process.env.GOOGLE_CLIENT_SECRET,
         process.env.GOOGLE_REDIRECT_URI
@@ -32,6 +37,13 @@ async function getGoogleAuthClient(userId: string) {
 
     return oauth2Client;
 }
+  }
+
+    // 1. Fetch user's stored refresh token from your DB (e.g., a separate 'user_credentials' table)
+    // const refreshToken = await fetchRefreshTokenFromDb(userId);
+    const refreshToken = "STORED_REFRESH_TOKEN"; // Placeholder
+
+
 
 // --- Server Action ---
 export async function createMeeting(formData: ScheduleMeetingData): Promise<{ success: boolean; meetLink?: string; error?: string }> {
