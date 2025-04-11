@@ -41,7 +41,7 @@ const oauth2Client = new google.auth.OAuth2(
 
     // 1. Fetch user's stored refresh token from your DB (e.g., a separate 'user_credentials' table)
     // const refreshToken = await fetchRefreshTokenFromDb(userId);
-    const refreshToken = "STORED_REFRESH_TOKEN"; // Placeholder
+    // const refreshToken = "STORED_REFRESH_TOKEN"; // Placeholder
 
 
 
