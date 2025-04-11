@@ -5,39 +5,43 @@ import { createClient } from '@/utils/supa-server-actions';
 import { cookies } from 'next/headers';
 import { google } from 'googleapis';
 import { scheduleMeetingSchema, ScheduleMeetingData } from '@/lib/schemas/schemas';
+import { type NextRequest, NextResponse } from 'next/server';
 
 // --- Google API ---
 // This is highly simplified and requires some added logic to obtain session info. Coming soon. 
 
-async function getGoogleAuthClient(userId: string) {
+async function getGoogleAuthClient(userId: string, request: NextRequest) {
 
   const requestUrl = new URL(request.url);
   const refreshToken = requestUrl.searchParams.get("refreshToken");
+  const cookieStore = cookies();
+    const supabase = createClient(cookieStore);
+    await supabase.auth.exchangeCodeForSession(refreshToken);
+
 
  if (!refreshToken) {
         throw new Error("User not authenticated with Google or refresh token missing.");
     }
   
   if (refreshToken) {
-    const cookieStore = cookies();
-    const supabase = createClient(cookieStore);
-    await supabase.auth.exchangeCodeForSession(refreshToken);
 
 const oauth2Client = new google.auth.OAuth2(
         process.env.GOOGLE_CLIENT_ID,
         process.env.GOOGLE_CLIENT_SECRET,
         process.env.GOOGLE_REDIRECT_URI
     );
+ 
+oauth2Client.setCredentials({ refresh_token: refreshToken });
 
-    oauth2Client.setCredentials({ refresh_token: refreshToken });
+return oauth2Client;
+}
+
+    
 
     // Optional: Refresh access token if needed (googleapis library might handle this)
     // const { token } = await oauth2Client.getAccessToken();
     // oauth2Client.setCredentials({ access_token: token });
 
-    return oauth2Client;
-}
-  }
 
     // 1. Fetch user's stored refresh token from your DB (e.g., a separate 'user_credentials' table)
     // const refreshToken = await fetchRefreshTokenFromDb(userId);
