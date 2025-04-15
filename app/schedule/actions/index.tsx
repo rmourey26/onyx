@@ -5,18 +5,26 @@ import { createClient } from '@/utils/supa-server-actions';
 import { cookies } from 'next/headers';
 import { google } from 'googleapis';
 import { scheduleMeetingSchema, ScheduleMeetingData } from '@/lib/schemas/schemas';
-import { type NextRequest, NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
+import {type AuthTokenResponse, AuthSession, User } from '@supabase/supabase-js';
+import { signInWithGoogle } from '@/app/auth/actions'
 
+export const dynamic = 'force-dynamic';
 // --- Google API ---
 // This is highly simplified and requires some added logic to obtain session info. Coming soon. 
 
-async function getGoogleAuthClient(userId: string, request: NextRequest) {
+async function getGoogleAuthClient(userId:string) {
+    const cookieStore = cookies();
+    const supabase = createClient(cookieStore)
 
-  const requestUrl = new URL(request.url);
-  const refreshToken = requestUrl.searchParams.get("refreshToken");
-  const cookieStore = cookies();
-    const supabase = createClient(cookieStore);
-    await supabase.auth.exchangeCodeForSession(refreshToken);
+    // 1. Get User Session
+    const { data: { session }, error: sessionError } = await supabase.auth.getSession();
+    if (sessionError || !session?.user) {
+        console.error("Authentication error:", sessionError);
+        return { success: false, error: 'User not authenticated.' };
+    }
+    
+    const refreshToken = session.provider_refresh_token
 
 
  if (!refreshToken) {
@@ -34,6 +42,7 @@ const oauth2Client = new google.auth.OAuth2(
 oauth2Client.setCredentials({ refresh_token: refreshToken });
 
 return oauth2Client;
+}
 }
 
     
