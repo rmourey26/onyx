@@ -1,99 +1,110 @@
-"use server"
+import { google } from 'googleapis';
+import { GaxiosError } from 'gaxios'; // Part of googleapis
 
-import { type calendar_v3, google } from "googleapis"
-import { oauth2Client, setCredentials } from "./google-auth"
+// Configure the Google OAuth2 client
+const oauth2Client = new google.auth.OAuth2(
+  process.env.GOOGLE_CLIENT_ID,
+  process.env.GOOGLE_CLIENT_SECRET
+  // No redirect URI needed here as we are using a refresh token
+);
 
-export interface MeetingDetails {
-  summary: string
-  description: string
-  startTime: Date
-  endTime: Date
-  attendees: string[]
-  timeZone?: string
+// Set the credentials using the owner's refresh token
+// This allows the server to make API calls on the owner's behalf
+oauth2Client.setCredentials({
+  refresh_token: process.env.GOOGLE_OWNER_REFRESH_TOKEN,
+});
+
+// Create a Google Calendar API client instance
+const calendar = google.calendar({ version: 'v3', auth: oauth2Client });
+
+// Define the owner's calendar ID from environment variables
+const OWNER_CALENDAR_ID = process.env.GOOGLE_OWNER_CALENDAR_ID || 'primary';
+
+interface CreateEventOptions {
+  summary: string;
+  description: string;
+  startTime: string; // ISO 8601 format (e.g., '2025-05-20T10:00:00-04:00')
+  endTime: string;   // ISO 8601 format
+  attendeeEmail: string; // Email of the user scheduling the meeting
+  attendeeName?: string; // Optional name of the user
 }
 
-export async function createMeetingWithGoogleMeet(details: MeetingDetails, tokens?: any) {
-  const { summary, description, startTime, endTime, attendees, timeZone = "America/New_York" } = details
-
-  // If tokens are provided, set them
-  if (tokens) {
-    await setCredentials(tokens)
-  }
-
-  // Initialize the Calendar API client
-  const calendar = google.calendar({ version: "v3", auth: oauth2Client })
+/**
+ * Creates an event on the app owner's Google Calendar.
+ */
+export async function createGoogleCalendarEvent({
+  summary,
+  description,
+  startTime,
+  endTime,
+  attendeeEmail,
+  attendeeName,
+}: CreateEventOptions) {
+  console.log(`Attempting to create event for ${attendeeEmail} from ${startTime} to ${endTime}`);
 
   try {
-    const event: calendar_v3.Schema$Event = {
-      summary,
-      description,
+    const event = {
+      summary: summary,
+      description: description,
       start: {
-        dateTime: startTime.toISOString(),
-        timeZone,
+        dateTime: startTime,
+        // Optional: Specify the time zone, otherwise it uses calendar's default
+        // timeZone: 'America/New_York',
       },
       end: {
-        dateTime: endTime.toISOString(),
-        timeZone,
+        dateTime: endTime,
+        // timeZone: 'America/New_York',
       },
-      attendees: attendees.map((email) => ({ email })),
-      conferenceData: {
-        createRequest: {
-          requestId: `meet-${Date.now()}`,
-          conferenceSolutionKey: {
-            type: "hangoutsMeet",
-          },
-        },
-      },
-    }
+      // Add the user who scheduled the meeting as an attendee
+      attendees: [
+        { email: attendeeEmail, displayName: attendeeName },
+        // Optionally add the owner explicitly if needed, though they are the organizer
+        // { email: OWNER_CALENDAR_ID } // Only if OWNER_CALENDAR_ID is an email
+      ],
+      // Send notifications to attendees
+      sendNotifications: true,
+      // Optional: Add conference data (e.g., Google Meet link)
+      // conferenceData: {
+      //   createRequest: {
+      //     requestId: `meet-${Date.now()}`, // Unique request ID
+      //     conferenceSolutionKey: { type: 'hangoutsMeet' },
+      //   },
+      // },
+    };
 
     const response = await calendar.events.insert({
-      calendarId: "primary",
-      conferenceDataVersion: 1,
+      calendarId: OWNER_CALENDAR_ID,
       requestBody: event,
-      sendUpdates: "all",
-    })
+      // conferenceDataVersion: 1, // Required if adding conferenceData
+    });
 
-    return {
-      success: true,
-      eventId: response.data.id,
-      meetLink: response.data.hangoutLink,
-      htmlLink: response.data.htmlLink,
+    console.log('Google Calendar Event created: %s', response.data.htmlLink);
+    return { success: true, eventId: response.data.id, link: response.data.htmlLink };
+
+  } catch (error: unknown) {
+    console.error('Error creating Google Calendar event:');
+    if (error instanceof GaxiosError) {
+        console.error('Gaxios Error:', error.response?.status, error.response?.data);
+    } else if (error instanceof Error) {
+         console.error(error.message);
+    } else {
+        console.error('An unknown error occurred', error);
     }
-  } catch (error) {
-    console.error("Error creating meeting:", error)
-    return {
-      success: false,
-      error: error instanceof Error ? error.message : "Unknown error",
+
+    // More specific error handling
+    if (error instanceof GaxiosError && error.response?.status === 401) {
+       console.error('Authentication error: Check Google credentials (Refresh Token might be expired or invalid).');
+       return { success: false, error: 'Authentication error with Google Calendar.' };
     }
+     if (error instanceof GaxiosError && error.response?.status === 403) {
+        console.error('Permission error: Ensure the Calendar API is enabled and the refresh token has the correct scope (calendar.events).');
+       return { success: false, error: 'Permission error with Google Calendar.' };
+    }
+    if (error instanceof GaxiosError && error.response?.status === 400) {
+        console.error('Bad Request: Check event data format (dates, emails etc).', error.response?.data?.error?.errors);
+       return { success: false, error: `Invalid meeting data: ${error.response?.data?.error?.message || 'Check input format.'}` };
+    }
+
+    return { success: false, error: 'Failed to create Google Calendar event.' };
   }
 }
-
-export async function listUpcomingEvents(tokens: any, maxResults = 10) {
-  // Set the credentials
-  await setCredentials(tokens)
-
-  // Initialize the Calendar API client
-  const calendar = google.calendar({ version: "v3", auth: oauth2Client })
-
-  try {
-    const response = await calendar.events.list({
-      calendarId: "primary",
-      timeMin: new Date().toISOString(),
-      maxResults,
-      singleEvents: true,
-      orderBy: "startTime",
-    })
-
-    return {
-      success: true,
-      events: response.data.items,
-    }
-  } catch (error) {
-    console.error("Error listing events:", error)
-    return {
-      success: false,
-      error: error instanceof Error ? error.message : "Unknown error",
-    }
-  }
-}
-
