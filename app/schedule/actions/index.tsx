@@ -1,166 +1,134 @@
-// app/schedule/actions
 'use server';
 
-import { createClient } from '@/utils/supa-server-actions';
-import { cookies } from 'next/headers';
-import { google } from 'googleapis';
-import { scheduleMeetingSchema, ScheduleMeetingData } from '@/lib/schemas/schemas';
-import { NextRequest, NextResponse } from 'next/server';
-import {type AuthTokenResponse, AuthSession, User } from '@supabase/supabase-js';
-import { signInWithGoogle } from '@/app/auth/actions'
+import { createActionClient } from '@/lib/supabase/action';
+import { createGoogleCalendarEvent } from '@/lib/google';
+import { revalidatePath } from 'next/cache';
+import { Database } from '@/lib/database.types';
+import { z } from 'zod'; // For input validation
 
-// const dynamic = 'force-dynamic';
-// --- Google API ---
-// This is highly simplified and requires some added logic to obtain session info. Coming soon. 
-
-async function getGoogleAuthClient(userId:string) {
-    const cookieStore = cookies();
-    const supabase = createClient(cookieStore)
-
-    // 1. Get User Session
-    const { data: { session }, error: sessionError } = await supabase.auth.getSession();
-    if (sessionError || !session?.user) {
-        console.error("Authentication error:", sessionError);
-        return { success: false, error: 'User not authenticated.' };
-    }
-    
-    const refreshToken = session.provider_refresh_token
+// Define schema for form data validation
+const scheduleSchema = z.object({
+  startTime: z.string().datetime({ message: 'Invalid start date/time format.' }),
+  endTime: z.string().datetime({ message: 'Invalid end date/time format.' }),
+  userEmail: z.string().email({ message: 'Invalid user email.' }),
+  userName: z.string().min(1, { message: 'User name cannot be empty.' }),
+  summary: z.string().min(1, { message: 'Meeting summary cannot be empty.' }),
+  description: z.string().optional(),
+});
 
 
- if (!refreshToken) {
-        throw new Error("User not authenticated with Google or refresh token missing.");
-    }
-  
-  if (refreshToken) {
-
-const oauth2Client = new google.auth.OAuth2(
-        process.env.GOOGLE_CLIENT_ID,
-        process.env.GOOGLE_CLIENT_SECRET,
-        process.env.GOOGLE_REDIRECT_URI
-    );
- 
-oauth2Client.setCredentials({ refresh_token: refreshToken });
-
-return oauth2Client;
-}
+// Define the state structure returned by the action
+interface ActionResult {
+    message: string | null;
+    error: string | null;
+    success: boolean;
+    googleEventLink?: string | null;
 }
 
-    
+export async function scheduleMeetingAction(
+  prevState: ActionResult, // Previous state from useFormState
+  formData: FormData
+): Promise<ActionResult> {
 
-    // Optional: Refresh access token if needed (googleapis library might handle this)
-    // const { token } = await oauth2Client.getAccessToken();
-    // oauth2Client.setCredentials({ access_token: token });
+  const supabase = createActionClient(); // Use action client
+
+  // 1. Check Authentication
+  const { data: { user }, error: authError } = await supabase.auth.getUser();
+  if (authError || !user) {
+    console.error('Authentication error in server action:', authError);
+    return { success: false, message: null, error: 'You must be logged in to schedule a meeting.' };
+  }
+
+   // 2. Validate Form Data
+   const rawData = {
+       startTime: formData.get('startTime'),
+       endTime: formData.get('endTime'),
+       userEmail: formData.get('userEmail'),
+       userName: formData.get('userName'),
+       summary: formData.get('summary'),
+       description: formData.get('description'),
+   };
+
+   const validationResult = scheduleSchema.safeParse(rawData);
+
+   if (!validationResult.success) {
+       console.error("Form validation failed:", validationResult.error.flatten().fieldErrors);
+       // Combine Zod error messages
+       const errorMessages = Object.values(validationResult.error.flatten().fieldErrors)
+           .map(errors => errors?.join('. '))
+           .filter(Boolean) // Remove undefined/null entries
+           .join(' ');
+       return { success: false, message: null, error: errorMessages || 'Invalid form data.' };
+   }
+
+   const validatedData = validationResult.data;
+
+  // Basic check: User email from form should match logged-in user
+  // (This is a basic security measure)
+  if (validatedData.userEmail !== user.email) {
+      console.error(`Security Alert: Form email (${validatedData.userEmail}) does not match authenticated user (${user.email})`);
+      return { success: false, message: null, error: 'User email mismatch.' };
+  }
 
 
-    // 1. Fetch user's stored refresh token from your DB (e.g., a separate 'user_credentials' table)
-    // const refreshToken = await fetchRefreshTokenFromDb(userId);
-    // const refreshToken = "STORED_REFRESH_TOKEN"; // Placeholder
+  try {
+    // 3. Create Google Calendar Event
+    const calendarResult = await createGoogleCalendarEvent({
+      startTime: validatedData.startTime,
+      endTime: validatedData.endTime,
+      attendeeEmail: validatedData.userEmail,
+      attendeeName: validatedData.userName,
+      summary: validatedData.summary,
+      description: validatedData.description || `Scheduled by ${validatedData.userEmail}`,
+    });
 
-
-
-// --- Server Action ---
-export async function createMeeting(formData: ScheduleMeetingData): Promise<{ success: boolean; meetLink?: string; error?: string }> {
-    const cookieStore = cookies();
-    const supabase = createClient(cookieStore)
-
-    // 1. Get User Session
-    const { data: { session }, error: sessionError } = await supabase.auth.getSession();
-    if (sessionError || !session?.user) {
-        console.error("Authentication error:", sessionError);
-        return { success: false, error: 'User not authenticated.' };
+    if (!calendarResult.success || !calendarResult.eventId) {
+      console.error("Failed to create Google Calendar event:", calendarResult.error);
+      return { success: false, message: null, error: calendarResult.error || 'Failed to create Google Calendar event.' };
     }
-    const userId = session.user.id;
 
-    // 2. Validate Form Data
-    const validationResult = scheduleMeetingSchema.safeParse(formData);
-    if (!validationResult.success) {
-        console.error("Validation errors:", validationResult.error.flatten().fieldErrors);
-        // Return specific validation errors if needed
-        return { success: false, error: 'Invalid form data.' };
+    console.log(`Google Event created: ${calendarResult.eventId}, Link: ${calendarResult.link}`);
+
+    // 4. (Optional but Recommended) Store meeting info in your Supabase DB
+    // Create a 'meetings' table in Supabase first
+    // Columns: id (uuid, pk), user_id (uuid, fk to auth.users), start_time (timestampz),
+    //          end_time (timestampz), google_event_id (text), created_at (timestampz, default now())
+    const { error: dbError } = await supabase
+      .from('meetings') // Replace 'meetings' with your actual table name
+      .insert({
+        user_id: user.id,
+        start_time: validatedData.startTime,
+        end_time: validatedData.endTime,
+        google_event_id: calendarResult.eventId,
+        // You might want to store the summary/description/attendee email here too
+      });
+
+    if (dbError) {
+      // Log the error, but maybe don't fail the whole operation if calendar event succeeded
+      console.error('Error saving meeting to database:', dbError);
+      // You might decide whether to return an error here or just log it
+      // return { success: false, message: null, error: 'Failed to save meeting record.' };
+    } else {
+       console.log("Meeting details saved to database.");
     }
-    const { summary, description, startTime, endTime } = validationResult.data;
 
+    // 5. Revalidate the path if needed (e.g., if displaying a list of scheduled meetings)
+    // revalidatePath('/schedule');
 
-    try {
-        // 3. Authenticate with Google
-        const auth = await getGoogleAuthClient(userId); // Needs proper implementation
-        const calendar = google.calendar({ version: 'v3', auth });
+    // 6. Return success state
+    return {
+        success: true,
+        message: 'Meeting scheduled successfully! Check your email for the invite.',
+        error: null,
+        googleEventLink: calendarResult.link,
+    };
 
-        // 4. Create Google Calendar Event with Meet Link
-        const event = {
-            summary: summary,
-            description: description,
-            start: {
-                dateTime: startTime.toISOString(),
-                timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone, // Use user's timezone
-            },
-            end: {
-                dateTime: endTime.toISOString(),
-                timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-            },
-            // Crucial part for Google Meet link generation
-            conferenceData: {
-                createRequest: {
-                    requestId: `meet-${userId}-${Date.now()}`, // Unique ID for the request
-                    conferenceSolutionKey: {
-                        type: 'hangoutsMeet' // Use 'hangoutsMeet' for Google Meet
-                    }
-                }
-            },
-            // Optional: Add attendees, reminders etc.
-            // attendees: [{ email: 'user@example.com' }],
-        };
-
-        const createdEvent = await calendar.events.insert({
-            calendarId: 'primary', // Use the user's primary calendar
-            requestBody: event,
-            conferenceDataVersion: 1, // Required when creating conference data
-        });
-
-        const meetLink = createdEvent.data.hangoutLink;
-        const eventId = createdEvent.data.id;
-
-        if (!meetLink || !eventId) {
-            throw new Error('Google Calendar event created, but Meet link or Event ID missing.');
-        }
-
-        console.log("Google Meet Link:", meetLink);
-        console.log("Google Calendar Event ID:", eventId);
-
-
-        // 5. Save Meeting Details to Supabase DB
-        const { error } = await supabase
-            .from('meetings')
-            .insert({
-                user_id: userId,
-                summary: summary,
-                description: description,
-                start_time: startTime.toISOString(),
-                end_time: endTime.toISOString(),
-                google_meet_link: meetLink,
-                google_event_id: eventId,
-            });
-
-        if (error) {
-            console.error("Supabase DB insert error:", error);
-            // Optional: Try to delete the Google Calendar event if DB save fails (rollback)
-            try {
-                await calendar.events.delete({ calendarId: 'primary', eventId: eventId });
-                console.log("Rolled back Google Calendar event.");
-            } catch (deleteError) {
-                console.error("Failed to rollback Google Calendar event:", deleteError);
-            }
-            return { success: false, error: 'Failed to save meeting to database.' };
-        }
-
-        return { success: true, meetLink: meetLink };
-
-    } catch (error: any) {
-        console.error('Error creating Google Meet/Calendar event:', error);
-        // Handle specific Google API errors (e.g., insufficient permissions, token expiry)
-        if (error.response?.data?.error?.message) {
-             return { success: false, error: `Google API Error: ${error.response.data.error.message}` };
-        }
-        return { success: false, error: error.message || 'An unexpected error occurred during scheduling.' };
-    }
+  } catch (error) {
+    console.error('Unexpected error in scheduleMeetingAction:', error);
+     let errorMessage = 'An unexpected error occurred while scheduling.';
+     if (error instanceof Error) {
+         errorMessage = error.message;
+     }
+    return { success: false, message: null, error: errorMessage };
+  }
 }
