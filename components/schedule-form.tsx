@@ -33,7 +33,7 @@ function SubmitButton() {
   );
 }
 
-export default function ScheduleForm({ userEmail, userName }: ScheduleFormProps) {
+export function ScheduleForm({ userEmail, userName }: ScheduleFormProps) {
   // Use useFormState to handle form submission results from the Server Action
   const [state, formAction] = useFormState(scheduleMeetingAction, initialState);
 
