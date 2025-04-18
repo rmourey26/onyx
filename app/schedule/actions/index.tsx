@@ -1,7 +1,7 @@
 'use server';
 
 import { createActionClient } from '@/lib/supabase/action';
-import { createGoogleCalendarEvent } from '@/lib/google';
+import { createGoogleCalendarEvent } from '@/lib/calendar-service';
 import { revalidatePath } from 'next/cache';
 import { Database } from '@/lib/supabase';
 import { z } from 'zod'; // For input validation
