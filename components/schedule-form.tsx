@@ -1,239 +1,135 @@
-// components/schedule-form.tsx
 'use client';
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { format } from "date-fns";
-import { CalendarIcon } from "lucide-react";
+import { useState } from 'react';
+import { scheduleMeetingAction } from '@/app/schedule/actions'; // We'll create this Server Action
+import { useFormState, useFormStatus } from 'react-dom';
+import { formatISO, addHours } from 'date-fns'; // Using date-fns
 
-import { Button } from "@/components/ui/button";
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { Calendar } from "@/components/ui/calendar";
-import {
-    Popover,
-    PopoverContent,
-    PopoverTrigger,
-} from "@/components/ui/popover";
-import { toast } from "@/components/ui/use-toast";
-import { cn } from "@/lib/utils";
-import { scheduleMeetingSchema, ScheduleMeetingData } from "@/lib/schemas/schemas";
-import { scheduleMeetingAction } from "@/app/schedule/actions"; // Server Action (see below)
-import { useState } from "react";
-
-export function ScheduleForm() {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const form = useForm<ScheduleMeetingData>({
-    resolver: zodResolver(scheduleMeetingSchema),
-    defaultValues: {
-      summary: "",
-      description: "",
-      // Set default times if needed, e.g., start time 1 hour from now
-      startTime: new Date(Date.now() + 60 * 60 * 1000),
-      endTime: new Date(Date.now() + 2 * 60 * 60 * 1000),
-    },
-  });
-
-  async function onSubmit(data: ScheduleMeetingData) {
-    setIsSubmitting(true);
-    console.log("Form Data:", data); // Log data before sending
-
-    try {
-        const result = await scheduleMeetingAction(data); // Call server action
-
-        if (result.success && result.meetLink) {
-            toast({
-                title: "Meeting Scheduled!",
-                description: (
-                    <p>
-                        Your meeting {data.summary} is scheduled.
-                        <br />
-                        <a
-                            href={result.meetLink}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="underline"
-                        >
-                            Join Google Meet
-                        </a>
-                    </p>
-                ),
-            });
-            form.reset(); // Reset form on success
-        } else {
-            console.error("Failed to create meeting:", result.error);
-            toast({
-                variant: "destructive",
-                title: "Scheduling Failed",
-                description: result.error || "Could not create the Google Meet link or save the meeting.",
-            });
-        }
-    } catch (error) {
-        console.error("Error submitting form:", error);
-        toast({
-            variant: "destructive",
-            title: "Uh oh! Something went wrong.",
-            description: "There was a problem with your request.",
-        });
-    } finally {
-        setIsSubmitting(false);
-    }
+interface ScheduleFormProps {
+  userEmail: string;
+  userName: string;
 }
 
+// Initial state for the useFormState hook
+const initialState: { message: string | null; error: string | null; success: boolean } = {
+  message: null,
+  error: null,
+  success: false,
+};
 
-  // Helper to combine Date and Time (since Calendar only picks date)
-  // You might need separate Time pickers or a combined DateTime picker component
-  const handleDateTimeChange = (field: "startTime" | "endTime", date: Date | undefined) => {
-    if (!date) return;
-    // This is basic - assumes you want to keep the existing time or set a default
-    // A real implementation needs a time input as well.
-    const currentFieldValue = form.getValues(field);
-    const newDate = new Date(date);
-    newDate.setHours(currentFieldValue.getHours());
-    newDate.setMinutes(currentFieldValue.getMinutes());
-    form.setValue(field, newDate, { shouldValidate: true });
+function SubmitButton() {
+  const { pending } = useFormStatus();
+  return (
+    <button
+      type="submit"
+      aria-disabled={pending}
+      disabled={pending}
+      className={`px-6 py-2 rounded ${
+        pending ? 'bg-gray-400 cursor-not-allowed' : 'bg-green-500 hover:bg-green-600 text-white'
+      }`}
+    >
+      {pending ? 'Scheduling...' : 'Schedule Meeting'}
+    </button>
+  );
+}
+
+export default function ScheduleForm({ userEmail, userName }: ScheduleFormProps) {
+  // Use useFormState to handle form submission results from the Server Action
+  const [state, formAction] = useFormState(scheduleMeetingAction, initialState);
+
+  // Simple state for date and time - consider using a date picker library for better UX
+  const [date, setDate] = useState('');
+  const [time, setTime] = useState('');
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    if (!date || !time) {
+      alert('Please select both a date and a time.');
+      return;
+    }
+
+    // Construct ISO 8601 datetime strings
+    // WARNING: This assumes the user's browser timezone. For robustness,
+    // handle timezones explicitly (e.g., ask user or use owner's timezone).
+    // Example: '2025-05-20T10:00:00' (adjust based on input type='time')
+    const startDateTime = new Date(`${date}T${time}`);
+    if (isNaN(startDateTime.getTime())) {
+       alert('Invalid date or time selected.');
+       return;
+    }
+
+    // Assume a 1-hour meeting duration
+    const endDateTime = addHours(startDateTime, 1);
+
+    // Format for Google Calendar API (ISO 8601)
+    const startTimeISO = formatISO(startDateTime);
+    const endTimeISO = formatISO(endDateTime);
+
+    // Create FormData to pass to the server action
+    const formData = new FormData();
+    formData.append('startTime', startTimeISO);
+    formData.append('endTime', endTimeISO);
+    formData.append('userEmail', userEmail);
+    formData.append('userName', userName);
+    formData.append('summary', `Meeting with ${userName}`); // Customize summary
+    formData.append('description', `Scheduled via App by ${userEmail}`); // Customize description
+
+    // Trigger the server action
+    formAction(formData);
   };
 
 
   return (
-    <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-        {/* Summary Field */}
-        <FormField
-          control={form.control}
-          name="summary"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Meeting Summary</FormLabel>
-              <FormControl>
-                <Input placeholder="Quick Sync" {...field} />
-              </FormControl>
-              <FormDescription>
-                This will be the title of the meeting.
-              </FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+    <form onSubmit={handleSubmit} className="space-y-4">
+      {/* Display messages from server action */}
+      {state?.message && (
+        <p className={`p-3 rounded ${state.success ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
+          {state.message}
+        </p>
+      )}
+       {state?.error && (
+        <p className="p-3 rounded bg-red-100 text-red-800">
+          Error: {state.error}
+        </p>
+      )}
 
-        {/* Description Field */}
-        <FormField
-          control={form.control}
-          name="description"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Description (Optional)</FormLabel>
-              <FormControl>
-                <Input placeholder="Discuss project updates..." {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
+      <div>
+        <label htmlFor="date" className="block text-sm font-medium text-gray-700">
+          Select Date:
+        </label>
+        <input
+          type="date"
+          id="date"
+          name="date"
+          value={date}
+          onChange={(e) => setDate(e.target.value)}
+          required
+          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm p-2"
+          // Set min date to today
+          min={new Date().toISOString().split('T')[0]}
         />
+      </div>
 
-        {/* Start Time Field (Using Shadcn Date Picker - needs time input too) */}
-        <FormField
-          control={form.control}
-          name="startTime"
-          render={({ field }) => (
-            <FormItem className="flex flex-col">
-              <FormLabel>Start Time</FormLabel>
-              <Popover>
-                <PopoverTrigger asChild>
-                  <FormControl>
-                    <Button
-                      variant={"outline"}
-                      className={cn(
-                        "w-[240px] pl-3 text-left font-normal",
-                        !field.value && "text-muted-foreground"
-                      )}
-                    >
-                      {field.value ? (
-                        format(field.value, "PPP HH:mm") // Format including time
-                      ) : (
-                        <span>Pick a date and time</span>
-                      )}
-                      <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
-                    </Button>
-                  </FormControl>
-                </PopoverTrigger>
-                <PopoverContent className="w-auto p-0" align="start">
-                  <Calendar
-                    mode="single"
-                    selected={field.value}
-                    onSelect={(date) => handleDateTimeChange("startTime", date)}
-                    disabled={(date) => date < new Date(new Date().setHours(0,0,0,0))} // Disable past dates
-                    initialFocus
-                  />
-                  {/* Add Time Picker component here */}
-                </PopoverContent>
-              </Popover>
-               <FormDescription>
-                 Select the start date & time. (Time input needed separately).
-              </FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
+      <div>
+        <label htmlFor="time" className="block text-sm font-medium text-gray-700">
+          Select Time: (e.g., 09:00 AM)
+        </label>
+        <input
+          type="time"
+          id="time"
+          name="time"
+          value={time}
+          onChange={(e) => setTime(e.target.value)}
+          required
+          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm p-2"
+          // Consider adding time constraints (e.g., step="3600" for hourly slots)
         />
+      </div>
 
-        {/* End Time Field (Similar to Start Time) */}
-         <FormField
-          control={form.control}
-          name="endTime"
-          render={({ field }) => (
-            <FormItem className="flex flex-col">
-              <FormLabel>End Time</FormLabel>
-              <Popover>
-                 <PopoverTrigger asChild>
-                   <FormControl>
-                    <Button
-                      variant={"outline"}
-                      className={cn(
-                        "w-[240px] pl-3 text-left font-normal",
-                        !field.value && "text-muted-foreground"
-                      )}
-                    >
-                      {field.value ? (
-                        format(field.value, "PPP HH:mm")
-                      ) : (
-                        <span>Pick a date and time</span>
-                      )}
-                      <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
-                    </Button>
-                  </FormControl>
-                </PopoverTrigger>
-                <PopoverContent className="w-auto p-0" align="start">
-                  <Calendar
-                    mode="single"
-                    selected={field.value}
-                    onSelect={(date) => handleDateTimeChange("endTime", date)}
-                    disabled={(date) => date < form.getValues("startTime")} // Disable before start time
-                    initialFocus
-                  />
-                   {/* Add Time Picker component here */}
-                </PopoverContent>
-              </Popover>
-               <FormDescription>
-                 Select the end date & time. (Time input needed separately).
-              </FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+       {/* Hidden fields for user email and name are passed via FormData now */}
 
-        <Button type="submit" disabled={isSubmitting}>
-            {isSubmitting ? "Scheduling..." : "Schedule Meeting"}
-        </Button>
-      </form>
-    </Form>
+      <SubmitButton />
+    </form>
   );
 }
