@@ -43,7 +43,7 @@ export default async function SchedulePage() {
                     </CardDescription>
                 </CardHeader>
                 <CardContent>
-                    <ScheduleForm />
+                    <ScheduleForm userEmail={user.email!} userName={user.user_metadata?.full_name || user.email!} />
                 </CardContent>
             </Card>
             {/* Toaster must be included in your layout or page for toasts to work */}
