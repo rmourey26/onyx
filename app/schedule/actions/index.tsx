@@ -3,7 +3,7 @@
 import { createActionClient } from '@/lib/supabase/action';
 import { createGoogleCalendarEvent } from '@/lib/google';
 import { revalidatePath } from 'next/cache';
-import { Database } from '@/lib/database.types';
+import { Database } from '@/lib/supabase';
 import { z } from 'zod'; // For input validation
 
 // Define schema for form data validation
