@@ -27,7 +27,7 @@ import {
 import { toast } from "@/components/ui/use-toast";
 import { cn } from "@/lib/utils";
 import { scheduleMeetingSchema, ScheduleMeetingData } from "@/lib/schemas/schemas";
-import { createMeeting } from "@/app/schedule/actions"; // Server Action (see below)
+import { scheduleMeetingAction } from "@/app/schedule/actions"; // Server Action (see below)
 import { useState } from "react";
 
 export function ScheduleForm() {
@@ -48,7 +48,7 @@ export function ScheduleForm() {
     console.log("Form Data:", data); // Log data before sending
 
     try {
-        const result = await createMeeting(data); // Call server action
+        const result = await scheduleMeetingAction(data); // Call server action
 
         if (result.success && result.meetLink) {
             toast({
