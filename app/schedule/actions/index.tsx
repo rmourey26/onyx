@@ -9,7 +9,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import {type AuthTokenResponse, AuthSession, User } from '@supabase/supabase-js';
 import { signInWithGoogle } from '@/app/auth/actions'
 
-export const dynamic = 'force-dynamic';
+// const dynamic = 'force-dynamic';
 // --- Google API ---
 // This is highly simplified and requires some added logic to obtain session info. Coming soon. 
 
