@@ -4,7 +4,7 @@ import { createServerActionClient, type CookieOptions } from '@supabase/ssr';
 import { cookies } from 'next/headers';
 import { Database } from '@/lib/supabase';
 
-export function createActionClient() {
+export async function createActionClient() {
   const cookieStore = cookies();
 
   return createServerActionClient<Database>(
