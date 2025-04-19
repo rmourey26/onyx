@@ -1,13 +1,13 @@
 'use server'; // Ensure this runs only on the server
 
-import { createServerActionClient, type CookieOptions } from '@supabase/ssr';
+import { createServerClient, type CookieOptions } from '@supabase/ssr';
 import { cookies } from 'next/headers';
 import { Database } from '@/lib/supabase';
 
 export async function createActionClient() {
   const cookieStore = cookies();
 
-  return createServerActionClient<Database>(
+  return createServerClient<Database>(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
     {
