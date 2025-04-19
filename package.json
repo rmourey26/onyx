@@ -59,6 +59,7 @@
     "date-fns": "^3.3.1",
     "eventemitter3": "^5.0.1",
     "framer-motion": "^10.18.0",
+    "gaxios": "^6.7.1",
     "google-auth-library": "^9.15.1",
     "google-one-tap": "^1.0.6",
     "googleapis": "^148.0.0",
