@@ -8,7 +8,7 @@ import { getCountryById } from '@/queries/country-by-id'
 export default async function CountryPage({ params }: { params: { id: number } }) {
   const queryClient = new QueryClient()
   const cookieStore = cookies()
-  const supabase = useSupabaseServer(cookieStore)
+  const supabase = await useSupabaseServer(cookieStore)
 
   await prefetchQuery(queryClient, getCountryById(supabase, params.id))
 
