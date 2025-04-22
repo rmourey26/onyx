@@ -1,153 +1,194 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@import "tw-animate-css";
 
-@layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+@custom-variant dark (&:is(.dark *));
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+:root {
+  /* Base colors derived from the ResendIt logo */
+  --resend-green: 142 70% 45%;
+  --resend-black: 0 0% 10%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+  /* Main colors */
+  --background: 0 0% 100%;
+  --foreground: var(--resend-black);
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+  /* Card colors */
+  --card: 0 0% 100%;
+  --card-foreground: var(--resend-black);
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+  /* Popover colors */
+  --popover: 0 0% 100%;
+  --popover-foreground: var(--resend-black);
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+  /* Primary colors - using the ResendIt green */
+  --primary: var(--resend-green);
+  --primary-foreground: 0 0% 100%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+  /* Secondary colors */
+  --secondary: 0 0% 96%;
+  --secondary-foreground: var(--resend-black);
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+  /* Muted colors */
+  --muted: 0 0% 96%;
+  --muted-foreground: 0 0% 45%;
 
-    --radius: 0.5rem;
+  /* Accent colors - a lighter version of the ResendIt green */
+  --accent: 142 50% 96%;
+  --accent-foreground: var(--resend-green);
 
-    /* Brand color variables */
-    --brand-green-dark: 153 46% 35%;
-    --brand-green-medium: 153 46% 40%;
-    --brand-green-light: 153 46% 45%;
+  /* Destructive colors */
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
 
-    /* Brand foreground colors */
-    --brand-foreground: 153 46% 40%;
-    --brand-card-foreground: 153 46% 35%;
-    --brand-popover-foreground: 153 46% 35%;
-    --brand-primary-foreground: 153 46% 95%;
-    --brand-secondary-foreground: 153 46% 35%;
-    --brand-muted-foreground: 153 46% 50%;
-    --brand-accent-foreground: 153 46% 35%;
-    --brand-destructive-foreground: 153 46% 95%;
-  }
+  /* Border, input, and ring colors */
+  --border: 0 0% 90%;
+  --input: 0 0% 90%;
+  --ring: var(--resend-green);
 
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+  /* Chart colors */
+  --chart-1: var(--resend-green);
+  --chart-2: 142 40% 60%;
+  --chart-3: 142 30% 75%;
+  --chart-4: 170 70% 45%;
+  --chart-5: 200 70% 45%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+  /* Border radius */
+  --radius: 0.625rem;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+  /* Sidebar colors */
+  --sidebar: 0 0% 98%;
+  --sidebar-foreground: var(--resend-black);
+  --sidebar-primary: var(--resend-green);
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 142 50% 96%;
+  --sidebar-accent-foreground: var(--resend-green);
+  --sidebar-border: 0 0% 90%;
+  --sidebar-ring: var(--resend-green);
+}
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+.dark {
+  /* Dark mode colors derived from the ResendIt logo */
+  --background: 0 0% 10%;
+  --foreground: 0 0% 98%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+  /* Card colors */
+  --card: 0 0% 15%;
+  --card-foreground: 0 0% 98%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+  /* Popover colors */
+  --popover: 0 0% 15%;
+  --popover-foreground: 0 0% 98%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+  /* Primary colors - using the ResendIt green */
+  --primary: var(--resend-green);
+  --primary-foreground: 0 0% 100%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+  /* Secondary colors */
+  --secondary: 0 0% 20%;
+  --secondary-foreground: 0 0% 98%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+  /* Muted colors */
+  --muted: 0 0% 20%;
+  --muted-foreground: 0 0% 65%;
 
-    /* Adjust brand colors for dark mode */
-    --brand-green-dark: 153 46% 30%;
-    --brand-green-medium: 153 46% 35%;
-    --brand-green-light: 153 46% 40%;
+  /* Accent colors - a darker version of the ResendIt green */
+  --accent: 142 30% 20%;
+  --accent-foreground: var(--resend-green);
 
-    /* Brand foreground colors for dark mode */
-    --brand-foreground: 153 46% 90%;
-    --brand-card-foreground: 153 46% 90%;
-    --brand-popover-foreground: 153 46% 90%;
-    --brand-primary-foreground: 153 46% 10%;
-    --brand-secondary-foreground: 153 46% 90%;
-    --brand-muted-foreground: 153 46% 70%;
-    --brand-accent-foreground: 153 46% 90%;
-    --brand-destructive-foreground: 153 46% 95%;
-  }
+  /* Destructive colors */
+  --destructive: 0 70% 50%;
+  --destructive-foreground: 0 0% 100%;
+
+  /* Border, input, and ring colors */
+  --border: 0 0% 25%;
+  --input: 0 0% 25%;
+  --ring: var(--resend-green);
+
+  /* Chart colors */
+  --chart-1: var(--resend-green);
+  --chart-2: 142 60% 50%;
+  --chart-3: 142 40% 60%;
+  --chart-4: 170 60% 50%;
+  --chart-5: 200 60% 50%;
+
+  /* Sidebar colors */
+  --sidebar: 0 0% 15%;
+  --sidebar-foreground: 0 0% 98%;
+  --sidebar-primary: var(--resend-green);
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 142 30% 20%;
+  --sidebar-accent-foreground: var(--resend-green);
+  --sidebar-border: 0 0% 25%;
+  --sidebar-ring: var(--resend-green);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
 }
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-border outline-ring/50;
   }
   body {
     @apply bg-background text-foreground;
   }
 }
 
-/* Utility classes for brand colors */
+/* Custom utility classes for ResendIt branding */
 @layer utilities {
-  .bg-brand-green-dark {
-    background-color: hsl(var(--brand-green-dark));
+  .resend-gradient {
+    background: linear-gradient(135deg, hsl(var(--resend-green)), hsl(170, 70%, 45%));
   }
-  .bg-brand-green-medium {
-    background-color: hsl(var(--brand-green-medium));
+
+  .resend-border {
+    border: 2px solid hsl(var(--resend-green));
   }
-  .bg-brand-green-light {
-    background-color: hsl(var(--brand-green-light));
+
+  .resend-shadow {
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
   }
-  .text-brand-green-dark {
-    color: hsl(var(--brand-green-dark));
-  }
-  .text-brand-green-medium {
-    color: hsl(var(--brand-green-medium));
-  }
-  .text-brand-green-light {
-    color: hsl(var(--brand-green-light));
-  }
-  .text-brand-foreground {
-    color: hsl(var(--brand-foreground));
-  }
-  .text-brand-card-foreground {
-    color: hsl(var(--brand-card-foreground));
-  }
-  .text-brand-popover-foreground {
-    color: hsl(var(--brand-popover-foreground));
-  }
-  .text-brand-primary-foreground {
-    color: hsl(var(--brand-primary-foreground));
-  }
-  .text-brand-secondary-foreground {
-    color: hsl(var(--brand-secondary-foreground));
-  }
-  .text-brand-muted-foreground {
-    color: hsl(var(--brand-muted-foreground));
-  }
-  .text-brand-accent-foreground {
-    color: hsl(var(--brand-accent-foreground));
-  }
-  .text-brand-destructive-foreground {
-    color: hsl(var(--brand-destructive-foreground));
+
+  .resend-circle {
+    border-radius: 50%;
+    background-color: hsl(var(--resend-green));
+    color: white;
   }
 }
 
