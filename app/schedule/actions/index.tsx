@@ -5,6 +5,7 @@ import { createGoogleCalendarEvent } from '@/lib/calendar-service';
 import { revalidatePath } from 'next/cache';
 import { Database } from '@/lib/supabase';
 import { z } from 'zod';
+import { cookies } from 'next/headers';
 import { formatISO, isPast } from 'date-fns'; // Import formatISO here
 
 // --- Updated Zod Schema for Server Action ---
@@ -47,7 +48,8 @@ export async function scheduleMeetingAction(
   formData: FormData
 ): Promise<ActionResult> {
 
-  const supabase = createClient();
+ const cookieStore = cookies();
+ const supabase = createClient(cookieStore);
 
   // 1. Check Authentication
   const { data: { user }, error: authError } = await supabase.auth.getUser();
