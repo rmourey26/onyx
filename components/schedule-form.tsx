@@ -55,7 +55,7 @@ function SubmitButton({ disabled }: { disabled: boolean }) {
   );
 }
 
-export default function ScheduleForm({ userEmail, userName }: ScheduleFormProps) {
+export function ScheduleForm({ userEmail, userName }: ScheduleFormProps) {
   const [state, formAction] = useFormState(scheduleMeetingAction, initialState);
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined);
   const [selectedTimeSlot, setSelectedTimeSlot] = useState<string | undefined>(undefined); // e.g., "09:00"
