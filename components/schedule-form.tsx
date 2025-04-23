@@ -4,7 +4,6 @@ import { useState, useMemo } from 'react';
 import { scheduleMeetingAction } from '@/app/schedule/actions';
 import { useFormState, useFormStatus } from 'react-dom';
 import { DayPicker } from 'react-day-picker';
-import 'react-day-picker/dist/style.css'; // Import DayPicker styles
 import {
     format,
     formatISO,
