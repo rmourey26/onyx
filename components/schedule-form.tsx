@@ -82,7 +82,7 @@ function SubmitButton({ disabled }: { disabled: boolean }) {
   );
 }
 
-export default function ScheduleForm({ userEmail, userName }: ScheduleFormProps) {
+export function ScheduleForm({ userEmail, userName }: ScheduleFormProps) {
   // Server action state
   const [serverState, formAction] = useFormState(scheduleMeetingAction, initialState);
   // Component state
