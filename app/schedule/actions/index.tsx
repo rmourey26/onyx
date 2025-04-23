@@ -1,21 +1,36 @@
 'use server';
 
-import { createClient } from "@/utils/supa-server-actions";
-
+import { createClient } from '@/utils/supa-server-actions';
 import { createGoogleCalendarEvent } from '@/lib/calendar-service';
-import {cookies} from "next/headers"
 import { revalidatePath } from 'next/cache';
 import { Database } from '@/lib/supabase';
-import { z } from 'zod'; // For input validation
+import { z } from 'zod';
+import { formatISO, isPast } from 'date-fns'; // Import formatISO here
 
-// Define schema for form data validation
+// --- Updated Zod Schema for Server Action ---
 const scheduleSchema = z.object({
-  startTime: z.string().datetime({ message: 'Invalid start date/time format.' }),
-  endTime: z.string().datetime({ message: 'Invalid end date/time format.' }),
+  // Coerce the incoming string from FormData into a Date object
+  // The Date constructor used by coerce handles various ISO 8601 formats
+  startTime: z.coerce.date({
+      // Provide a clearer error message if coercion fails
+      errorMap: (issue, ctx) => ({ message: 'Invalid format for start date/time.' })
+    })
+    // Add refinements directly to the coerced Date object
+    .refine(date => !isPast(date), {
+        message: "The selected start time appears to be in the past.",
+    }),
+  endTime: z.coerce.date({
+      errorMap: (issue, ctx) => ({ message: 'Invalid format for end date/time.' })
+  }),
   userEmail: z.string().email({ message: 'Invalid user email.' }),
   userName: z.string().min(1, { message: 'User name cannot be empty.' }),
   summary: z.string().min(1, { message: 'Meeting summary cannot be empty.' }),
   description: z.string().optional(),
+})
+// Refine the relationship between the coerced Date objects
+.refine(data => data.endTime > data.startTime, {
+    message: "End time must be after start time.",
+    path: ["endTime"], // Target the error message correctly
 });
 
 
@@ -28,22 +43,22 @@ interface ActionResult {
 }
 
 export async function scheduleMeetingAction(
-  prevState: ActionResult, // Previous state from useFormState
+  prevState: ActionResult,
   formData: FormData
 ): Promise<ActionResult> {
 
-  const cookieStore = cookies()
-  const supabase = createClient(cookieStore)   
+  const supabase = createClient();
 
   // 1. Check Authentication
   const { data: { user }, error: authError } = await supabase.auth.getUser();
   if (authError || !user) {
     console.error('Authentication error in server action:', authError);
-    return { success: false, message: null, error: 'You must be logged in to schedule a meeting.' };
+    return { success: false, message: null, error: 'You must be logged in to schedule a meeting.', googleEventLink: null };
   }
 
-   // 2. Validate Form Data
+   // 2. Validate Form Data (using the updated schema with coerce)
    const rawData = {
+       // Extract raw strings from FormData for Zod to coerce
        startTime: formData.get('startTime'),
        endTime: formData.get('endTime'),
        userEmail: formData.get('userEmail'),
@@ -52,33 +67,35 @@ export async function scheduleMeetingAction(
        description: formData.get('description'),
    };
 
+   // safeParse will attempt to coerce startTime and endTime strings into Date objects
    const validationResult = scheduleSchema.safeParse(rawData);
 
    if (!validationResult.success) {
-       console.error("Form validation failed:", validationResult.error.flatten().fieldErrors);
+       console.error("Server validation failed:", validationResult.error.flatten());
        // Combine Zod error messages
        const errorMessages = Object.values(validationResult.error.flatten().fieldErrors)
            .map(errors => errors?.join('. '))
-           .filter(Boolean) // Remove undefined/null entries
+           .filter(Boolean)
            .join(' ');
-       return { success: false, message: null, error: errorMessages || 'Invalid form data.' };
+       return { success: false, message: null, error: errorMessages || 'Invalid form data provided.', googleEventLink: null };
    }
 
+   // --- IMPORTANT: validationResult.data now contains actual Date objects ---
    const validatedData = validationResult.data;
 
-  // Basic check: User email from form should match logged-in user
-  // (This is a basic security measure)
-  if (validatedData.userEmail !== user.email) {
-      console.error(`Security Alert: Form email (${validatedData.userEmail}) does not match authenticated user (${user.email})`);
-      return { success: false, message: null, error: 'User email mismatch.' };
-  }
+   // 3. Basic check: User email from form should match logged-in user
+   if (validatedData.userEmail !== user.email) {
+       console.error(`Security Alert: Form email (${validatedData.userEmail}) does not match authenticated user (${user.email})`);
+       return { success: false, message: null, error: 'User email mismatch.', googleEventLink: null };
+   }
 
 
   try {
-    // 3. Create Google Calendar Event
+    // 4. Create Google Calendar Event
+    //    Format the validated Date objects back into ISO strings for the Google API call
     const calendarResult = await createGoogleCalendarEvent({
-      startTime: validatedData.startTime,
-      endTime: validatedData.endTime,
+      startTime: formatISO(validatedData.startTime), // Format Date -> ISO String
+      endTime: formatISO(validatedData.endTime),     // Format Date -> ISO String
       attendeeEmail: validatedData.userEmail,
       attendeeName: validatedData.userName,
       summary: validatedData.summary,
@@ -87,38 +104,39 @@ export async function scheduleMeetingAction(
 
     if (!calendarResult.success || !calendarResult.eventId) {
       console.error("Failed to create Google Calendar event:", calendarResult.error);
-      return { success: false, message: null, error: calendarResult.error || 'Failed to create Google Calendar event.' };
+      // Pass specific Google error back if available
+      const errorMessage = calendarResult.error || 'Failed to create Google Calendar event.';
+      return { success: false, message: null, error: errorMessage, googleEventLink: null };
     }
 
     console.log(`Google Event created: ${calendarResult.eventId}, Link: ${calendarResult.link}`);
 
-    // 4. (Optional but Recommended) Store meeting info in your Supabase DB
-    // Create a 'meetings' table in Supabase first
-    // Columns: id (uuid, pk), user_id (uuid, fk to auth.users), start_time (timestampz),
-    //          end_time (timestampz), google_event_id (text), created_at (timestampz, default now())
+    // 5. Store meeting info in Supabase DB
+    //    Pass the validated Date objects directly to the Supabase client.
+    //    It typically handles conversion to 'timestamptz' correctly.
     const { error: dbError } = await supabase
-      .from('meetings') // Replace 'meetings' with your actual table name
+      .from('meetings')
       .insert({
         user_id: user.id,
-        start_time: validatedData.startTime,
-        end_time: validatedData.endTime,
+        start_time: validatedData.startTime, // Pass Date object
+        end_time: validatedData.endTime,     // Pass Date object
         google_event_id: calendarResult.eventId,
-        // You might want to store the summary/description/attendee email here too
+        summary: validatedData.summary,
       });
 
     if (dbError) {
-      // Log the error, but maybe don't fail the whole operation if calendar event succeeded
+      // Log the error, but don't necessarily fail if calendar event succeeded
       console.error('Error saving meeting to database:', dbError);
-      // You might decide whether to return an error here or just log it
-      // return { success: false, message: null, error: 'Failed to save meeting record.' };
+      // Optional: Return a partial success message or specific DB error
+      // return { success: false, message: null, error: 'Meeting scheduled, but failed to save record.', googleEventLink: calendarResult.link };
     } else {
        console.log("Meeting details saved to database.");
     }
 
-    // 5. Revalidate the path if needed (e.g., if displaying a list of scheduled meetings)
+    // 6. Revalidate the path if needed
     // revalidatePath('/schedule');
 
-    // 6. Return success state
+    // 7. Return success state
     return {
         success: true,
         message: 'Meeting scheduled successfully! Check your email for the invite.',
@@ -132,6 +150,6 @@ export async function scheduleMeetingAction(
      if (error instanceof Error) {
          errorMessage = error.message;
      }
-    return { success: false, message: null, error: errorMessage };
+    return { success: false, message: null, error: errorMessage, googleEventLink: null };
   }
 }
