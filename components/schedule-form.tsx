@@ -1,9 +1,22 @@
 'use client';
 
-import { useState } from 'react';
-import { scheduleMeetingAction } from '@/app/schedule/actions'; // We'll create this Server Action
+import { useState, useMemo } from 'react';
+import { scheduleMeetingAction } from '@/app/schedule/actions';
 import { useFormState, useFormStatus } from 'react-dom';
-import { formatISO, addHours } from 'date-fns'; // Using date-fns
+import { DayPicker } from 'react-day-picker';
+import 'react-day-picker/dist/style.css'; // Import DayPicker styles
+import {
+    format,
+    formatISO,
+    addMinutes,
+    setHours,
+    setMinutes,
+    setSeconds,
+    setMilliseconds,
+    isPast,
+    isSameDay,
+    startOfDay
+} from 'date-fns';
 
 interface ScheduleFormProps {
   userEmail: string;
@@ -17,15 +30,25 @@ const initialState: { message: string | null; error: string | null; success: boo
   success: false,
 };
 
-function SubmitButton() {
+// --- Time Slot Configuration ---
+const MEETING_DURATION_MINUTES = 60; // e.g., 1 hour meetings
+const AVAILABLE_HOURS_START = 9; // 9 AM
+const AVAILABLE_HOURS_END = 17; // 5 PM (exclusive)
+// -----------------------------
+
+function SubmitButton({ disabled }: { disabled: boolean }) {
   const { pending } = useFormStatus();
+  const isDisabled = pending || disabled; // Disable if pending or explicitly disabled
+
   return (
     <button
       type="submit"
-      aria-disabled={pending}
-      disabled={pending}
-      className={`px-6 py-2 rounded ${
-        pending ? 'bg-gray-400 cursor-not-allowed' : 'bg-green-500 hover:bg-green-600 text-white'
+      aria-disabled={isDisabled}
+      disabled={isDisabled}
+      className={`px-6 py-2 rounded text-white font-semibold ${
+        isDisabled
+          ? 'bg-gray-400 cursor-not-allowed'
+          : 'bg-green-500 hover:bg-green-600'
       }`}
     >
       {pending ? 'Scheduling...' : 'Schedule Meeting'}
@@ -33,38 +56,75 @@ function SubmitButton() {
   );
 }
 
-export function ScheduleForm({ userEmail, userName }: ScheduleFormProps) {
-  // Use useFormState to handle form submission results from the Server Action
+export default function ScheduleForm({ userEmail, userName }: ScheduleFormProps) {
   const [state, formAction] = useFormState(scheduleMeetingAction, initialState);
+  const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined);
+  const [selectedTimeSlot, setSelectedTimeSlot] = useState<string | undefined>(undefined); // e.g., "09:00"
 
-  // Simple state for date and time - consider using a date picker library for better UX
-  const [date, setDate] = useState('');
-  const [time, setTime] = useState('');
+  // --- Time Slot Generation ---
+  // Note: This generates predefined slots. Real-world scenarios should
+  // check the owner's actual availability using Google Calendar API (freebusy query).
+  const availableTimeSlots = useMemo(() => {
+    if (!selectedDate) return [];
 
+    const slots: string[] = [];
+    const today = startOfDay(new Date()); // Use startOfDay for consistent comparison
+    const selectedDayStart = startOfDay(selectedDate);
+
+    for (let hour = AVAILABLE_HOURS_START; hour < AVAILABLE_HOURS_END; hour++) {
+      // Create a potential start time for the slot on the selected date
+      const slotStartTime = setMilliseconds(setSeconds(setMinutes(setHours(selectedDate, hour), 0), 0), 0);
+
+      // Basic check: Don't show slots that have already passed today
+      if (isSameDay(selectedDayStart, today) && isPast(slotStartTime)) {
+          continue;
+      }
+
+      slots.push(format(slotStartTime, 'HH:mm')); // Format as "09:00", "10:00", etc.
+    }
+    return slots;
+  }, [selectedDate]);
+  // -----------------------------
+
+  // Reset time slot if the date changes
+  const handleDateSelect = (date: Date | undefined) => {
+    setSelectedDate(date);
+    setSelectedTimeSlot(undefined); // Reset time slot when date changes
+  };
+
+  // Handle form submission prep
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    if (!date || !time) {
-      alert('Please select both a date and a time.');
+    if (!selectedDate || !selectedTimeSlot) {
+      alert('Please select both a date and a time slot.');
       return;
     }
 
-    // Construct ISO 8601 datetime strings
-    // WARNING: This assumes the user's browser timezone. For robustness,
-    // handle timezones explicitly (e.g., ask user or use owner's timezone).
-    // Example: '2025-05-20T10:00:00' (adjust based on input type='time')
-    const startDateTime = new Date(`${date}T${time}`);
+    // --- Construct ISO DateTimes ---
+    const [hour, minute] = selectedTimeSlot.split(':').map(Number);
+    let startDateTime = setHours(selectedDate, hour);
+    startDateTime = setMinutes(startDateTime, minute);
+    startDateTime = setSeconds(startDateTime, 0);
+    startDateTime = setMilliseconds(startDateTime, 0);
+
     if (isNaN(startDateTime.getTime())) {
-       alert('Invalid date or time selected.');
+       alert('Invalid date or time combination.');
        return;
     }
 
-    // Assume a 1-hour meeting duration
-    const endDateTime = addHours(startDateTime, 1);
+    // Basic check: Ensure the selected slot hasn't passed (double-check)
+    if (isPast(startDateTime)) {
+      alert('The selected time slot has already passed. Please select a future time.');
+      return;
+    }
 
-    // Format for Google Calendar API (ISO 8601)
+    const endDateTime = addMinutes(startDateTime, MEETING_DURATION_MINUTES);
+
+    // Format for Google Calendar API and Server Action (ISO 8601)
     const startTimeISO = formatISO(startDateTime);
     const endTimeISO = formatISO(endDateTime);
+    // -----------------------------
 
     // Create FormData to pass to the server action
     const formData = new FormData();
@@ -73,63 +133,125 @@ export function ScheduleForm({ userEmail, userName }: ScheduleFormProps) {
     formData.append('userEmail', userEmail);
     formData.append('userName', userName);
     formData.append('summary', `Meeting with ${userName}`); // Customize summary
-    formData.append('description', `Scheduled via App by ${userEmail}`); // Customize description
+    formData.append('description', `Scheduled via App by ${userEmail} for ${format(startDateTime, 'PPP p')}`); // Add formatted time to description
 
     // Trigger the server action
     formAction(formData);
   };
 
+  // Determine if the submit button should be disabled
+  const isSubmitDisabled = !selectedDate || !selectedTimeSlot;
+
+  // CSS for DayPicker (can customize further)
+  const css = `
+    .rdp {
+      --rdp-cell-size: 40px;
+      --rdp-accent-color: #16a34a; /* green-600 */
+      --rdp-background-color: #dcfce7; /* green-100 */
+      /* Switch selected colors */
+      --rdp-accent-color-dark: #15803d; /* green-700 */
+      --rdp-background-color-dark: #bbf7d0; /* green-200 */
+      /* today button */
+      --rdp-today-color: #ea580c; /* orange-600 */
+      margin: 1em 0;
+      border: 1px solid #e5e7eb; /* gray-200 */
+      border-radius: 0.375rem; /* rounded-md */
+      padding: 0.5rem;
+    }
+    .rdp-caption {
+        border-bottom: 1px solid #e5e7eb; /* gray-200 */
+        padding-bottom: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+    .rdp-head_cell {
+        font-weight: 600; /* font-semibold */
+        font-size: 0.875rem; /* text-sm */
+    }
+    .rdp-button:hover:not([disabled]):not(.rdp-day_selected) {
+        background-color: #f3f4f6; /* gray-100 */
+    }
+    .rdp-day_selected, .rdp-day_selected:hover {
+       background-color: var(--rdp-accent-color);
+       color: white;
+    }
+    .rdp-day_today {
+      font-weight: bold;
+      color: var(--rdp-today-color);
+    }
+    .rdp-day_disabled {
+       color: #9ca3af; /* gray-400 */
+    }
+  `;
+
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
+    <form onSubmit={handleSubmit} className="space-y-6 max-w-md">
       {/* Display messages from server action */}
       {state?.message && (
-        <p className={`p-3 rounded ${state.success ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
+        <p className={`p-3 rounded text-sm ${state.success ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
           {state.message}
+          {state.success && state.googleEventLink && (
+             <a href={state.googleEventLink} target="_blank" rel="noopener noreferrer" className="ml-2 underline font-semibold">View Event</a>
+          )}
         </p>
       )}
        {state?.error && (
-        <p className="p-3 rounded bg-red-100 text-red-800">
+        <p className="p-3 rounded bg-red-100 text-red-800 text-sm">
           Error: {state.error}
         </p>
       )}
 
+      {/* Date Selection */}
       <div>
-        <label htmlFor="date" className="block text-sm font-medium text-gray-700">
-          Select Date:
-        </label>
-        <input
-          type="date"
-          id="date"
-          name="date"
-          value={date}
-          onChange={(e) => setDate(e.target.value)}
-          required
-          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm p-2"
-          // Set min date to today
-          min={new Date().toISOString().split('T')[0]}
-        />
+         <h3 className="text-lg font-semibold mb-2 text-gray-800">1. Select a Date</h3>
+         <style>{css}</style> {/* Inject DayPicker CSS */}
+         <DayPicker
+            mode="single"
+            required
+            selected={selectedDate}
+            onSelect={handleDateSelect}
+            fromDate={new Date()} // Disable past dates
+            disabled={[
+                // Example: Disable weekends
+                // (day) => day.getDay() === 0 || day.getDay() === 6
+            ]}
+            footer={selectedDate ? `Selected date: ${format(selectedDate, 'PPP')}` : 'Please pick a day.'}
+            className="bg-white rounded-md shadow" // Add basic container styling
+         />
       </div>
 
-      <div>
-        <label htmlFor="time" className="block text-sm font-medium text-gray-700">
-          Select Time: (e.g., 09:00 AM)
-        </label>
-        <input
-          type="time"
-          id="time"
-          name="time"
-          value={time}
-          onChange={(e) => setTime(e.target.value)}
-          required
-          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm p-2"
-          // Consider adding time constraints (e.g., step="3600" for hourly slots)
-        />
+      {/* Time Slot Selection */}
+      {selectedDate && (
+        <div>
+          <h3 className="text-lg font-semibold mb-2 text-gray-800">2. Select a Time Slot</h3>
+          {availableTimeSlots.length > 0 ? (
+             <div className="grid grid-cols-3 sm:grid-cols-4 gap-2">
+               {availableTimeSlots.map((slot) => (
+                 <button
+                   key={slot}
+                   type="button" // Important: Prevent form submission on click
+                   onClick={() => setSelectedTimeSlot(slot)}
+                   className={`p-2 border rounded text-center text-sm font-medium transition-colors duration-150 ease-in-out ${
+                     selectedTimeSlot === slot
+                       ? 'bg-green-600 text-white border-green-700 ring-2 ring-green-300'
+                       : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-100 hover:border-gray-400'
+                   }`}
+                 >
+                   {slot}
+                 </button>
+               ))}
+             </div>
+          ) : (
+              <p className="text-gray-500 italic">No available time slots for the selected date based on predefined hours.</p>
+          )}
+
+        </div>
+      )}
+
+      {/* Submit Button */}
+      <div className="pt-4">
+         <SubmitButton disabled={isSubmitDisabled} />
       </div>
-
-       {/* Hidden fields for user email and name are passed via FormData now */}
-
-      <SubmitButton />
     </form>
   );
 }
