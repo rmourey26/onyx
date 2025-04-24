@@ -37,7 +37,7 @@ supabase.auth.onAuthStateChange((event, session) => {
 })
 
 const
- { user, session, error } = 
+ { data, error } = 
 await
  supabase.auth.signInWithOAuth({
     
