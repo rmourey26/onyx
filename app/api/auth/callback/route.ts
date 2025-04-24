@@ -8,19 +8,10 @@ import
  { createClient } from '@/utils/supa-server-actions'
 ;
 
-import { cookies } from 'next/headers'
+import { cookies } from 'next/headers';
 
-export
- 
-async
- 
-function
- 
-GET
-(
-req: Request
-) 
-{
+
+export async function GET(req: Request) {
   
 const
  { searchParams } = 
