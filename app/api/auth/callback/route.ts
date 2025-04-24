@@ -24,7 +24,7 @@ const { data: { user }, error: userError } = await supabase.auth.getUser();
   
 // Store the refresh token in the user_tokens table
 
-const { error: tokenError | null } = await supabase
+const { error: tokenError } = await supabase
     .from('user_tokens')
     .upsert({ user_id: user.id, refresh_token: refreshToken});
  
