@@ -5,7 +5,7 @@ import { cookies } from 'next/headers';
 
 export async function GET(req: Request) {
   
- const { searchParams } = newURL(req.url);
+ const { searchParams } = new URL(req.url);
  const accessToken = searchParams.get('access_token');
  const refreshToken = searchParams.get('refresh_token');
   
@@ -34,7 +34,7 @@ const { error: tokenError } = await supabase
   }
  else {
   
-  return NextResponse.redirect(newURL('/', process.env.NEXT_PUBLIC_BASE_URL)); 
+  return NextResponse.redirect(new URL('/', process.env.NEXT_PUBLIC_BASE_URL)); 
 // Adjust the redirect URL as necessary
  }
 }
