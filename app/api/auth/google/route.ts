@@ -13,6 +13,8 @@ from
 
 import { cookies } from 'next/headers'
 
+import { signInWithGoogle } from '@/app/auth/actions' 
+
 export async function GET(request: Request) {
 
 const cookieStore = cookies();
@@ -45,16 +47,7 @@ const { searchParams, origin } = new URL(request.url)
 const
  { data, error } = 
 await
- supabase.auth.signInWithOAuth({
-    
-provider
-: 
-'google'
-,
-options: {
-    redirectTo: 'http://onyx-rho-pink.vercel.app/api/auth/callback',
-  },
-  });
+ supabase.auth.signInWithGoogle()
   
 if
  (error) {
