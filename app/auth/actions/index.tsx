@@ -27,7 +27,7 @@ export async function loginWithEmailAndPassword(data: {
         return JSON.stringify(result);
 }
 
-/*
+
 export async function signInWithGoogle() {
 
      const supabase = await createSupbaseServerClient();  
@@ -49,7 +49,11 @@ supabase.auth.onAuthStateChange((event, session) => {
     const { data, error } = await supabase.auth.signInWithOAuth({
     provider: 'google',
     options: {
-       redirectTo: '/auth/callback',
+       redirectTo: `${process.env.NEXT_PUBLIC_SITE_URL}/auth/callback`,
+       queryParams: {
+         access_type: 'offline',
+         prompt: 'consent',
+       },
     },
   })
 
@@ -57,7 +61,8 @@ if (data.url) {
   redirect(data.url)
  }
 }
- */
+
+/*
 
 export async function signInWithGoogle(): Promise<{ error?: string; url?: string }> {
   try {
@@ -96,6 +101,8 @@ export async function signInWithGoogle(): Promise<{ error?: string; url?: string
     return { error: error instanceof Error ? error.message : "An unknown error occurred" }
   }
 }
+
+*/
 
 export async function signInWithGithub() {
 
