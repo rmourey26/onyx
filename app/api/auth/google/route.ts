@@ -13,7 +13,7 @@ from
 
 import { cookies } from 'next/headers'
 
-export async function GET() {
+export async function GET(request: Request) {
 
 const cookieStore = cookies();
 
@@ -35,6 +35,12 @@ supabase.auth.onAuthStateChange((event, session) => {
     window.localStorage.removeItem('oauth_provider_refresh_token')
   }
 })
+
+const { searchParams, origin } = new URL(request.url)
+  const code = searchParams.get('code')
+  // if "next" is in param, use it as the redirect URL
+  const next = searchParams.get('next') ?? '/'
+
 
 const
  { data, error } = 
@@ -65,7 +71,7 @@ status
   
 if (data.url) {
   return
- NextResponse.redirect(data.url); 
+ NextResponse.redirect(`${origin}${next}`)
 // Adjust the redirect URL as necessary
 }
   
