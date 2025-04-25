@@ -46,7 +46,7 @@ provider
 'google'
 ,
 options: {
-    redirectTo: 'http://onyx-rho-pink.vercel.app/auth/callback',
+    redirectTo: 'http://onyx-rho-pink.vercel.app/api/auth/callback',
   },
   });
   
