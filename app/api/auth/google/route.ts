@@ -65,7 +65,7 @@ status
   
 if (data.url) {
   return
- NextResponse.redirect(data?.url); 
+ NextResponse.redirect(data.url); 
 // Adjust the redirect URL as necessary
 }
   
