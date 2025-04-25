@@ -46,8 +46,16 @@ const { searchParams, origin } = new URL(request.url)
 
 const
  { data, error } = 
-await
- supabase.auth.signInWithGoogle()
+await supabase.auth.signInWithOAuth({
+  provider: 'google',
+  options: {
+    queryParams: {
+      access_type: 'offline',
+      prompt: 'consent',
+    },
+    redirectTo: process.env.GOOGLE_REDIRECT_URI,
+  },
+})
   
 if
  (error) {
