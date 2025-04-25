@@ -45,6 +45,9 @@ provider
 : 
 'google'
 ,
+options: {
+    redirectTo: 'http://onyx-rho-pink.vercel.app/auth/callback',
+  },
   });
   
 if
@@ -53,18 +56,19 @@ if
 return
  NextResponse.json({ 
 error
-: error.message }, { 
+: error?.message }, { 
 status
 : 
 401
  });
   }
   
-// Redirect to the callback URL after successful authentication
-
-  
-return
- NextResponse.redirect(new URL('/', process.env.NEXT_PUBLIC_BASE_URL)); 
+if (data.url) {
+  return
+ NextResponse.redirect(data?.url); 
 // Adjust the redirect URL as necessary
+}
+  
+
 
 }
