@@ -48,6 +48,7 @@ export const siteConfig = {
     github: "https://github.com/rmourey26/onyx",
     login: "https://onyx-rho-pink.vercel.app/auth",
     signup: "https://onyx-rho-pink.vercel.app/onboarding",
+    contact: "/contact",
     linkedin:
 "https://linkedin.com/in/robertmoureyjr",
   },
