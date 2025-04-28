@@ -5,7 +5,7 @@ import { buttonVariants } from "@/components/ui/button"
 import { readUserSession } from "@/utils/actions";
 import Featurez from "@/components/features"
 import { redirect } from "next/navigation";
-import CTA from "@/components/cta";
+import Cta from "@/components/cta";
 import AnimatedInfographic from "@/components/animated-infographic";
 import WhyOnyxWrapper from "@/components/whyonyxwrapper";
 
@@ -27,7 +27,7 @@ export default async function IndexPage() {
          Secure user authentication + RBAC, Zod validated Supabase Postgres DB CRUD ops, Rust serverless API runtime, TanStack queries with Supabase cache helpers, Resend, SID.ai, NextMDX, admin dashboard, and more. Onboard users and receive inquiries immediately. 
         </p>
       </div>
-
+      <Cta />
       <div className="flex gap-6 mb-8">
         <Link
           href={siteConfig.links.login}
@@ -50,8 +50,6 @@ export default async function IndexPage() {
       <AnimatedInfographic />
    <Featurez/>
    <WhyOnyxWrapper />
-   <CTA />
-
     </section>
   )
 }
