@@ -8,6 +8,7 @@ import { redirect } from "next/navigation";
 import Cta from "@/components/cta";
 import AnimatedInfographic from "@/components/animated-infographic";
 import WhyOnyxWrapper from "@/components/whyonyxwrapper";
+import PrismContainer from "@/components/prism-container"
 
 export default async function IndexPage() {
   const { data: userSession } = await readUserSession();
@@ -23,6 +24,7 @@ export default async function IndexPage() {
         <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold leading-tight tracking-tighter md:text-6xl text-center">
           Onyx SaaS PWA Template
         </h1>
+        <PrismContainer />
         <p className="max-w-3xl text-lg lg:text-xl xs:text-justify text-muted-foreground">
          Secure user authentication + RBAC, Zod validated Supabase Postgres DB CRUD ops, Rust serverless API runtime, TanStack queries with Supabase cache helpers, Resend, SID.ai, NextMDX, admin dashboard, and more. Onboard users and receive inquiries immediately. 
         </p>

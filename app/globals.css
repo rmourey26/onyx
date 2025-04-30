@@ -1,76 +1,258 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
- 
+
+/* High-Tech Theme Variables */
+:root {
+  /* Base colors */
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 10, 26, 46; /* Arctic midnight blue */
+  --background-end-rgb: 5, 10, 20; /* Deep space black */
+
+  /* High-tech theme colors */
+  --tech-blue-100: 224, 242, 254;
+  --tech-blue-200: 186, 230, 253;
+  --tech-blue-300: 125, 211, 252;
+  --tech-blue-400: 56, 189, 248;
+  --tech-blue-500: 14, 165, 233;
+  --tech-blue-600: 2, 132, 199;
+  --tech-blue-700: 3, 105, 161;
+  --tech-blue-800: 7, 89, 133;
+  --tech-blue-900: 12, 74, 110;
+
+  --tech-cyan-500: 6, 182, 212;
+  --tech-cyan-600: 8, 145, 178;
+
+  --tech-indigo-500: 99, 102, 241;
+  --tech-indigo-600: 79, 70, 229;
+
+  --tech-purple-500: 139, 92, 246;
+  --tech-purple-600: 124, 58, 237;
+
+  --tech-green-500: 16, 185, 129;
+  --tech-green-600: 5, 150, 105;
+
+  /* Glow effects */
+  --glow-blue: 0 0 10px rgba(56, 189, 248, 0.5), 0 0 20px rgba(56, 189, 248, 0.3);
+  --glow-cyan: 0 0 10px rgba(6, 182, 212, 0.5), 0 0 20px rgba(6, 182, 212, 0.3);
+  --glow-indigo: 0 0 10px rgba(99, 102, 241, 0.5), 0 0 20px rgba(99, 102, 241, 0.3);
+  --glow-purple: 0 0 10px rgba(139, 92, 246, 0.5), 0 0 20px rgba(139, 92, 246, 0.3);
+  --glow-green: 0 0 10px rgba(16, 185, 129, 0.5), 0 0 20px rgba(16, 185, 129, 0.3);
+
+  /* Holographic effects */
+  --holographic-gradient: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.2) 25%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0.2) 75%,
+    rgba(255, 255, 255, 0.1) 100%
+  );
+
+  /* Aurora effects */
+  --aurora-gradient: linear-gradient(
+    to bottom,
+    rgba(10, 26, 46, 0) 0%,
+    rgba(64, 196, 255, 0.2) 50%,
+    rgba(10, 26, 46, 0) 100%
+  );
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(to bottom, rgb(var(--background-start-rgb)), rgb(var(--background-end-rgb))) fixed;
+}
+
+/* Shadcn UI Theme */
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
- 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
- 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
- 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
- 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
- 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
- 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
- 
-    --radius: 0.5rem;
-  }
- 
-  .dark {
-    --background: 222.2 84% 4.9%;
+    --background: 222 47% 11%;
     --foreground: 210 40% 98%;
- 
-    --card: 222.2 84% 4.9%;
+    --card: 222 47% 11%;
     --card-foreground: 210 40% 98%;
- 
-    --popover: 222.2 84% 4.9%;
+    --popover: 222 47% 11%;
     --popover-foreground: 210 40% 98%;
- 
-    --primary: 210 40% 98%;
+    --primary: 196 100% 50%;
     --primary-foreground: 222.2 47.4% 11.2%;
- 
     --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
- 
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
- 
-    --accent: 217.2 32.6% 17.5%;
+    --accent: 196 100% 50%;
     --accent-foreground: 210 40% 98%;
- 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
- 
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --ring: 196 100% 50%;
+    --radius: 0.5rem;
   }
 }
- 
+
 @layer base {
   * {
     @apply border-border;
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+/* High-Tech UI Components */
+@layer components {
+  /* Glowing elements */
+  .glow-blue {
+    box-shadow: var(--glow-blue);
+  }
+
+  .glow-cyan {
+    box-shadow: var(--glow-cyan);
+  }
+
+  .glow-indigo {
+    box-shadow: var(--glow-indigo);
+  }
+
+  .glow-purple {
+    box-shadow: var(--glow-purple);
+  }
+
+  .glow-green {
+    box-shadow: var(--glow-green);
+  }
+
+  /* Text with glow effect */
+  .text-glow-blue {
+    text-shadow: 0 0 5px rgba(56, 189, 248, 0.7);
+  }
+
+  .text-glow-cyan {
+    text-shadow: 0 0 5px rgba(6, 182, 212, 0.7);
+  }
+
+  /* Holographic panels */
+  .panel-holographic {
+    background: rgba(10, 26, 46, 0.7);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(64, 196, 255, 0.3);
+    border-radius: 0.5rem;
+    box-shadow: 0 0 15px rgba(64, 196, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .panel-holographic::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(64, 196, 255, 0.8), transparent);
+    animation: scan-line 2s linear infinite;
+  }
+
+  /* Tech borders */
+  .border-tech {
+    border: 1px solid rgba(64, 196, 255, 0.3);
+    border-radius: 0.25rem;
+    position: relative;
+  }
+
+  .border-tech::after {
+    content: "";
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+    border-radius: 0.25rem;
+    background: linear-gradient(90deg, rgba(64, 196, 255, 0.5), transparent, rgba(64, 196, 255, 0.5));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+
+  .border-tech:hover::after {
+    opacity: 1;
+  }
+
+  /* Arctic aurora background */
+  .bg-aurora {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .bg-aurora::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--aurora-gradient);
+    opacity: 0.5;
+    animation: aurora-wave 8s ease-in-out infinite alternate;
+    pointer-events: none;
+    z-index: -1;
+  }
+}
+
+/* Animations */
+@keyframes scan-line {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes aurora-wave {
+  0% {
+    transform: translateY(-30%) scaleY(1.5);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translateY(-35%) scaleY(1.7);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(-30%) scaleY(1.5);
+    opacity: 0.3;
+  }
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Responsive utilities */
+@layer utilities {
+  .tech-container {
+    @apply container mx-auto px-4 py-8;
+  }
+
+  .tech-grid {
+    @apply grid gap-6;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+
+  .tech-card {
+    @apply panel-holographic p-6;
+  }
+
+  .tech-button {
+    @apply bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded transition-all duration-200 glow-blue;
+  }
+
+  .tech-input {
+    @apply bg-gray-800 border border-gray-700 text-white rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent;
   }
 }

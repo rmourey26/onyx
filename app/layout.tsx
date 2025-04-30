@@ -128,6 +128,16 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <ReactQueryClientProvider>
     <html lang="en" suppressHydrationWarning>
+    <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+            // Prevent FOUC (Flash of Unstyled Content)
+            document.documentElement.classList.add('dark');
+          `,
+          }}
+        />
+      </head>
       <body className={cn(
             "min-h-screen bg-background font-sans antialiased",
             fontSans.variable
@@ -135,7 +145,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         >
 <ThemeProvider
             attribute="class"
-            defaultTheme="system"
+            defaultTheme="dark"
             enableSystem
             disableTransitionOnChange
           >
