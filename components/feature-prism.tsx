@@ -585,4 +585,723 @@ function HolographicIcon({ type, color, scale = 0.3, position = [0, 0, 0], rotat
               </mesh>
               <mesh position={[0.6, 0, 0]}>
                 <torusGeometry args={[0.3, 0.1, 16, 32]} />
-                <meshPhysical
+                <meshPhysicalMaterial
+                  color={color}
+                  emissive={color}
+                  emissiveIntensity={0.8}
+                  transparent
+                  opacity={0.8}
+                  metalness={0.5}
+                  roughness={0.2}
+                  clearcoat={1}
+                />
+              </mesh>
+              <mesh>
+                <cylinderGeometry args={[0.1, 0.1, 1.2, 8]} rotation={[0, 0, Math.PI / 2]} />
+                <meshPhysicalMaterial
+                  color={color}
+                  emissive={color}
+                  emissiveIntensity={0.8}
+                  transparent
+                  opacity={0.8}
+                  metalness={0.5}
+                  roughness={0.2}
+                  clearcoat={1}
+                />
+              </mesh>
+            </group>
+            <mesh scale={1.1}>
+              <sphereGeometry args={[1, 8, 8]} />
+              <meshBasicMaterial color={color} transparent opacity={0.1} wireframe side={THREE.BackSide} />
+            </mesh>
+          </group>
+        )
+      case "Gear":
+        return (
+          <group ref={groupRef} position={position} rotation={rotation} scale={scale}>
+            <group ref={glitchRef}>
+              <mesh>
+                <cylinderGeometry args={[0.8, 0.8, 0.2, 16]} />
+                <meshPhysicalMaterial
+                  ref={materialRef}
+                  color={color}
+                  emissive={color}
+                  emissiveIntensity={0.8}
+                  transparent
+                  opacity={0.8}
+                  metalness={0.5}
+                  roughness={0.2}
+                  clearcoat={1}
+                />
+              </mesh>
+              {Array.from({ length: 8 }).map((_, i) => {
+                const angle = (i / 8) * Math.PI * 2
+                const x = Math.cos(angle) * 0.8
+                const y = Math.sin(angle) * 0.8
+                return (
+                  <mesh key={i} position={[x, y, 0]}>
+                    <boxGeometry args={[0.2, 0.2, 0.2]} />
+                    <meshPhysicalMaterial
+                      color={color}
+                      emissive={color}
+                      emissiveIntensity={0.8}
+                      transparent
+                      opacity={0.8}
+                      metalness={0.5}
+                      roughness={0.2}
+                      clearcoat={1}
+                    />
+                  </mesh>
+                )
+              })}
+            </group>
+            <mesh scale={1.1} rotation={[0, Math.PI / 8, 0]}>
+              <cylinderGeometry args={[0.88, 0.88, 0.22, 16]} />
+              <meshBasicMaterial color={color} transparent opacity={0.2} wireframe side={THREE.BackSide} />
+            </mesh>
+          </group>
+        )
+      case "Database":
+        return (
+          <group ref={groupRef} position={position} rotation={rotation} scale={scale}>
+            <group ref={glitchRef}>
+              <mesh position={[0, 0.4, 0]}>
+                <cylinderGeometry args={[0.5, 0.5, 0.3, 16]} />
+                <meshPhysicalMaterial
+                  ref={materialRef}
+                  color={color}
+                  emissive={color}
+                  emissiveIntensity={0.8}
+                  transparent
+                  opacity={0.8}
+                  metalness={0.5}
+                  roughness={0.2}
+                  clearcoat={1}
+                />
+              </mesh>
+              <mesh>
+                <cylinderGeometry args={[0.5, 0.5, 0.3, 16]} />
+                <meshPhysicalMaterial
+                  color={color}
+                  emissive={color}
+                  emissiveIntensity={0.8}
+                  transparent
+                  opacity={0.8}
+                  metalness={0.5}
+                  roughness={0.2}
+                  clearcoat={1}
+                />
+              </mesh>
+              <mesh position={[0, -0.4, 0]}>
+                <cylinderGeometry args={[0.5, 0.5, 0.3, 16]} />
+                <meshPhysicalMaterial
+                  color={color}
+                  emissive={color}
+                  emissiveIntensity={0.8}
+                  transparent
+                  opacity={0.8}
+                  metalness={0.5}
+                  roughness={0.2}
+                  clearcoat={1}
+                />
+              </mesh>
+              <mesh>
+                <cylinderGeometry args={[0.1, 0.1, 1.2, 8]} />
+                <meshPhysicalMaterial
+                  color="#ffffff"
+                  emissive="#ffffff"
+                  emissiveIntensity={0.5}
+                  transparent
+                  opacity={0.9}
+                  metalness={0.8}
+                  roughness={0.2}
+                />
+              </mesh>
+            </group>
+            <mesh scale={1.1}>
+              <cylinderGeometry args={[0.55, 0.55, 1.3, 16]} />
+              <meshBasicMaterial color={color} transparent opacity={0.1} wireframe side={THREE.BackSide} />
+            </mesh>
+          </group>
+        )
+      default:
+        return (
+          <group ref={groupRef} position={position} rotation={rotation} scale={scale}>
+            <mesh ref={glitchRef}>
+              <sphereGeometry args={[0.5, 16, 16]} />
+              <meshPhysicalMaterial
+                ref={materialRef}
+                color={color}
+                emissive={color}
+                emissiveIntensity={0.8}
+                transparent
+                opacity={0.8}
+                metalness={0.5}
+                roughness={0.2}
+                clearcoat={1}
+              />
+            </mesh>
+            <mesh scale={1.1}>
+              <sphereGeometry args={[0.55, 8, 8]} />
+              <meshBasicMaterial color={color} transparent opacity={0.2} wireframe side={THREE.BackSide} />
+            </mesh>
+          </group>
+        )
+    }
+  }
+
+  return renderHolographicIcon()
+}
+
+// Enhanced Cosmic Trail Effect
+function EnhancedCosmicTrail({ target, active, color }) {
+  const trailRef = useRef()
+  const trailMaterialRef = useRef()
+
+  useFrame(() => {
+    if (trailMaterialRef.current) {
+      trailMaterialRef.current.opacity = active
+        ? THREE.MathUtils.lerp(trailMaterialRef.current.opacity, 0.7, 0.1)
+        : THREE.MathUtils.lerp(trailMaterialRef.current.opacity, 0, 0.05)
+    }
+  })
+
+  return (
+    <Trail
+      ref={trailRef}
+      width={3.0} // Wider for more visibility
+      length={20} // Longer for more ray-like appearance
+      color={color}
+      attenuation={(t) => (1 - t) ** 2.5} // Sharper attenuation for ray-like effect
+      target={target}
+    >
+      <meshBasicMaterial ref={trailMaterialRef} transparent opacity={0} blending={THREE.AdditiveBlending} />
+    </Trail>
+  )
+}
+
+// Enhanced Northern Lights Effect
+function EnhancedNorthernLights({ active, intensity = 1 }) {
+  const count = 200 // Increased particle count
+  const pointsRef = useRef()
+  const materialRef = useRef()
+
+  // Create points for northern lights effect
+  const [positions, colors, sizes] = useMemo(() => {
+    const positions = new Float32Array(count * 3)
+    const colors = new Float32Array(count * 3)
+    const sizes = new Float32Array(count)
+
+    for (let i = 0; i < count; i++) {
+      const i3 = i * 3
+      positions[i3] = (Math.random() - 0.5) * 25 // Wider spread
+      positions[i3 + 1] = (Math.random() - 0.5) * 15
+      positions[i3 + 2] = (Math.random() - 0.5) * 25
+
+      // Create gradient colors with more vibrant hues
+      const t = Math.random()
+      if (t < 0.33) {
+        colors[i3] = 0.1
+        colors[i3 + 1] = 0.9 // Brighter green
+        colors[i3 + 2] = 0.4
+      } else if (t < 0.66) {
+        colors[i3] = 0.6
+        colors[i3 + 1] = 0.2
+        colors[i3 + 2] = 0.9 // Brighter purple
+      } else {
+        colors[i3] = 0.2
+        colors[i3 + 1] = 0.6
+        colors[i3 + 2] = 1.0 // Brighter blue
+      }
+
+      // Vary particle sizes using golden ratio
+      sizes[i] = 0.5 + (Math.random() * 1.5) / PHI
+    }
+
+    return [positions, colors, sizes]
+  }, [count])
+
+  // Animate the northern lights
+  useFrame(({ clock }) => {
+    if (pointsRef.current && materialRef.current) {
+      const time = clock.getElapsedTime() * 0.2
+
+      const positions = pointsRef.current.geometry.attributes.position.array
+
+      for (let i = 0; i < count; i++) {
+        const i3 = i * 3
+
+        // Create more dynamic wave-like motion using golden ratio
+        positions[i3 + 1] =
+          Math.sin(time + positions[i3] * 0.1) * 3 +
+          Math.sin(time * 0.8 + positions[i3 + 2] * 0.1) * 3 +
+          Math.sin(time * PHI + positions[i3] * 0.05) * 2 // Additional wave with golden ratio timing
+      }
+
+      pointsRef.current.geometry.attributes.position.needsUpdate = true
+
+      // Adjust opacity based on active state with higher base visibility
+      materialRef.current.opacity = active
+        ? THREE.MathUtils.lerp(materialRef.current.opacity, 0.9 * intensity, 0.05)
+        : THREE.MathUtils.lerp(materialRef.current.opacity, 0.2, 0.05) // Keep some visibility even when not active
+    }
+  })
+
+  return (
+    <points ref={pointsRef}>
+      <bufferGeometry>
+        <bufferAttribute attach="attributes-position" count={count} array={positions} itemSize={3} />
+        <bufferAttribute attach="attributes-color" count={count} array={colors} itemSize={3} />
+        <bufferAttribute attach="attributes-size" count={count} array={sizes} itemSize={1} />
+      </bufferGeometry>
+      <pointsMaterial
+        ref={materialRef}
+        size={1.0} // Larger base size
+        transparent
+        opacity={0.2} // Start with some visibility
+        vertexColors
+        blending={THREE.AdditiveBlending}
+        sizeAttenuation
+      />
+    </points>
+  )
+}
+
+// Hexagonal face component with golden ratio proportions and pulsating inner light
+function HexagonalFace({ index, position, rotation, feature, onClick, hovered }) {
+  const IconComponent = feature.icon
+  const hexRadius = 1 // Base radius
+  const innerRadius = hexRadius / PHI // Golden ratio for inner elements
+  const depth = 0.2 // Depth of the hexagonal prism
+
+  // Create hexagonal prism geometry
+  const geometry = useMemo(() => createHexagonalPrismGeometry(hexRadius, depth), [hexRadius, depth])
+
+  // Refs for animations
+  const groupRef = useRef()
+  const glowRef = useRef()
+  const innerLightRef = useRef()
+
+  // Hover animation
+  useFrame(() => {
+    if (groupRef.current) {
+      if (hovered) {
+        groupRef.current.position.z = THREE.MathUtils.lerp(groupRef.current.position.z, 0.2, 0.1)
+      } else {
+        groupRef.current.position.z = THREE.MathUtils.lerp(groupRef.current.position.z, 0, 0.1)
+      }
+    }
+
+    if (glowRef.current) {
+      glowRef.current.material.opacity = hovered
+        ? THREE.MathUtils.lerp(glowRef.current.material.opacity, 0.8, 0.1)
+        : THREE.MathUtils.lerp(glowRef.current.material.opacity, 0.3, 0.1)
+    }
+  })
+
+  return (
+    <group position={position} rotation={rotation}>
+      <group
+        ref={groupRef}
+        onClick={(e) => {
+          e.stopPropagation()
+          onClick(feature)
+        }}
+        onPointerOver={(e) => {
+          document.body.style.cursor = "pointer"
+        }}
+        onPointerOut={(e) => {
+          document.body.style.cursor = "auto"
+        }}
+      >
+        {/* Base hexagonal prism */}
+        <mesh geometry={geometry} receiveShadow castShadow>
+          <meshPhysicalMaterial
+            color="#1e293b"
+            metalness={0.5}
+            roughness={0.2}
+            clearcoat={1}
+            clearcoatRoughness={0.2}
+            envMapIntensity={1}
+            transparent
+            opacity={0.85} // Slightly transparent to see inner light
+          />
+        </mesh>
+
+        {/* Glow effect */}
+        <mesh ref={glowRef} geometry={geometry} position={[0, 0, -0.05]} scale={1.05}>
+          <meshBasicMaterial color={feature.color} transparent={true} opacity={0.3} side={THREE.BackSide} />
+        </mesh>
+
+        {/* Remove the PulsatingLight component and replace with: */}
+
+        {/* Feature name with enhanced visibility */}
+        <Text
+          position={[0, hexRadius * 0.5, depth / 2 + 0.05]}
+          fontSize={hexRadius * 0.22} // Slightly larger font
+          color="#ffffff" // Pure white
+          anchorX="center"
+          anchorY="middle"
+          font={undefined}
+          maxWidth={hexRadius * 1.5}
+          textAlign="center"
+          fontWeight="bold"
+        >
+          {feature.name}
+        </Text>
+
+        {/* Then add this right behind the Text component to create a subtle glow effect: */}
+        <mesh position={[0, hexRadius * 0.5, depth / 2 + 0.03]}>
+          <planeGeometry args={[hexRadius * 1.2, hexRadius * 0.3]} />
+          <meshBasicMaterial
+            color={feature.color}
+            transparent={true}
+            opacity={0.15}
+            blending={THREE.AdditiveBlending}
+          />
+        </mesh>
+
+        {/* Holographic Feature Icon - replaces both the PulsatingLight and Icon3D */}
+        <group position={[0, -hexRadius * 0.2, depth / 2 - 0.1]}>
+          <HolographicIcon type={feature.icon3D} color={feature.color} scale={0.35} />
+        </group>
+      </group>
+    </group>
+  )
+}
+
+// Connection line component with energy flow
+function EnhancedConnectionLine({ start, end, color, visible }) {
+  const ref = useRef()
+
+  useEffect(() => {
+    if (ref.current) {
+      const points = [new THREE.Vector3(...start), new THREE.Vector3(...end)]
+
+      const lineGeometry = new THREE.BufferGeometry().setFromPoints(points)
+      ref.current.geometry = lineGeometry
+    }
+  }, [start, end])
+
+  return (
+    <>
+      <line ref={ref}>
+        <bufferGeometry />
+        <lineBasicMaterial color={color} transparent opacity={visible ? 1 : 0} linewidth={2} />
+      </line>
+      <EnergyFlow from={start} to={end} color={color} active={visible} speed={1 + Math.random() * 0.5} />
+    </>
+  )
+}
+
+// Particles effect component
+function EnhancedParticlesEffect() {
+  return (
+    <Sparkles
+      count={150} // More particles
+      scale={12} // Larger scale
+      size={0.6} // Larger particles
+      speed={0.3}
+      opacity={0.6} // More visible
+      color={"#ffffff"}
+    />
+  )
+}
+
+// Create a component for the hexagonal prism
+function HexagonalPrism({ setSelectedFeature }) {
+  const groupRef = useRef()
+  const [rotationAxis, setRotationAxis] = useState({ x: 0, y: 1, z: 0 })
+  const [rotationSpeed, setRotationSpeed] = useState(0.005)
+  const [hoveredIndex, setHoveredIndex] = useState(null)
+  const [centerPoint] = useState([0, 0, 0])
+  const [isDragging, setIsDragging] = useState(false)
+  const [dragIntensity, setDragIntensity] = useState(0)
+  const { camera } = useThree()
+
+  // Change rotation randomly
+  const changeRotation = () => {
+    // Generate random rotation axis
+    const newAxis = {
+      x: Math.random() * 0.2,
+      y: Math.random() * 0.8 + 0.2, // Keep y as primary rotation axis
+      z: Math.random() * 0.2,
+    }
+
+    // Normalize the vector
+    const length = Math.sqrt(newAxis.x ** 2 + newAxis.y ** 2 + newAxis.z ** 2)
+    newAxis.x /= length
+    newAxis.y /= length
+    newAxis.z /= length
+
+    // Set new rotation speed (between 0.003 and 0.008)
+    const newSpeed = 0.003 + Math.random() * 0.005
+
+    setRotationAxis(newAxis)
+    setRotationSpeed(newSpeed)
+  }
+
+  // Initial random rotation
+  useEffect(() => {
+    changeRotation()
+
+    // Setup drag detection
+    const handleDragStart = () => setIsDragging(true)
+    const handleDragEnd = () => {
+      setIsDragging(false)
+      // Don't immediately reset intensity to allow trails to fade naturally
+      setTimeout(() => setDragIntensity(0), 1000)
+    }
+
+    window.addEventListener("mousedown", handleDragStart)
+    window.addEventListener("touchstart", handleDragStart)
+    window.addEventListener("mouseup", handleDragEnd)
+    window.addEventListener("touchend", handleDragEnd)
+
+    return () => {
+      window.removeEventListener("mousedown", handleDragStart)
+      window.removeEventListener("touchstart", handleDragStart)
+      window.removeEventListener("mouseup", handleDragEnd)
+      window.removeEventListener("touchend", handleDragEnd)
+    }
+  }, [])
+
+  // Previous rotation for calculating velocity
+  const prevRotation = useRef({ x: 0, y: 0, z: 0 })
+
+  // Animation loop
+  useFrame(() => {
+    if (groupRef.current) {
+      // Auto rotation when not dragging
+      if (!isDragging) {
+        groupRef.current.rotation.x += rotationAxis.x * rotationSpeed
+        groupRef.current.rotation.y += rotationAxis.y * rotationSpeed
+        groupRef.current.rotation.z += rotationAxis.z * rotationSpeed
+      }
+
+      // Calculate rotation velocity for trail intensity
+      const rotVelocity = {
+        x: Math.abs(groupRef.current.rotation.x - prevRotation.current.x),
+        y: Math.abs(groupRef.current.rotation.y - prevRotation.current.y),
+        z: Math.abs(groupRef.current.rotation.z - prevRotation.current.z),
+      }
+
+      const totalVelocity = rotVelocity.x + rotVelocity.y + rotVelocity.z
+      setDragIntensity(isDragging ? Math.min(totalVelocity * 200, 1) : dragIntensity * 0.95) // Slower decay
+
+      // Store current rotation for next frame
+      prevRotation.current = {
+        x: groupRef.current.rotation.x,
+        y: groupRef.current.rotation.y,
+        z: groupRef.current.rotation.z,
+      }
+    }
+  })
+
+  // Calculate positions for each face using golden ratio
+  const getFacePositions = () => {
+    const positions = []
+    const radius = PHI * 1.2 // Use golden ratio for radius, slightly larger for better visibility
+    const height = radius / PHI // Height based on golden ratio
+
+    // Side faces
+    for (let i = 0; i < 6; i++) {
+      const angle = (i / 6) * Math.PI * 2
+      const x = Math.sin(angle) * radius
+      const z = Math.cos(angle) * radius
+
+      positions.push({
+        position: [x, 0, z],
+        rotation: [0, -angle + Math.PI, 0],
+        connectionStart: [x * 0.2, 0, z * 0.2], // Start point near the face
+        connectionEnd: centerPoint, // End at center
+      })
+    }
+
+    return positions
+  }
+
+  const facePositions = getFacePositions()
+
+  return (
+    <Float
+      speed={2} // Animation speed
+      rotationIntensity={0.2} // XYZ rotation intensity
+      floatIntensity={0.2} // Up/down float intensity
+    >
+      <group ref={groupRef} onClick={() => changeRotation()} onPointerMissed={() => changeRotation()}>
+        {/* Central node with enhanced visibility */}
+        <mesh position={centerPoint} castShadow>
+          <dodecahedronGeometry args={[0.45, 0]} /> {/* Slightly larger */}
+          <MeshTransmissionMaterial
+            backside={true}
+            samples={10}
+            thickness={0.2}
+            chromaticAberration={0.05}
+            anisotropy={0.1}
+            distortion={0.5}
+            distortionScale={0.3}
+            temporalDistortion={0.1}
+            iridescence={1}
+            iridescenceIOR={1}
+            iridescenceThicknessRange={[0, 1400]}
+            transmission={0.95} // More transparent
+            clearcoat={1} // Add clearcoat for more shine
+          />
+        </mesh>
+
+        {/* Pulsating core light - enhanced */}
+        <PulsatingLight
+          color="#40C4FF"
+          intensity={1.2}
+          frequency={0.3}
+          offset={0}
+          position={centerPoint}
+          scale={1.2} // Larger light
+        />
+
+        {/* Enhanced cosmic trails for central node - now ionic electric blue rays */}
+        <EnhancedCosmicTrail target={groupRef} active={isDragging || dragIntensity > 0.1} color="#00BFFF" />
+        <EnhancedCosmicTrail target={groupRef} active={isDragging || dragIntensity > 0.1} color="#4FC3F7" />
+        <EnhancedCosmicTrail target={groupRef} active={isDragging || dragIntensity > 0.1} color="#40C4FF" />
+
+        {/* Enhanced Northern Lights Effect */}
+        <EnhancedNorthernLights active={isDragging || dragIntensity > 0.2} intensity={dragIntensity} />
+
+        {/* Connection lines with energy flow */}
+        {facePositions.map((face, index) => (
+          <EnhancedConnectionLine
+            key={`connection-${index}`}
+            start={face.connectionStart}
+            end={face.connectionEnd}
+            color={features[index].color}
+            visible={hoveredIndex === index || Math.random() < 0.2} // Occasionally show connections
+          />
+        ))}
+
+        {/* Feature faces with pulsating inner light */}
+        {features.map((feature, index) => (
+          <HexagonalFace
+            key={index}
+            index={index}
+            position={facePositions[index].position}
+            rotation={facePositions[index].rotation}
+            feature={feature}
+            onClick={setSelectedFeature}
+            hovered={hoveredIndex === index}
+            onHover={() => setHoveredIndex(index)}
+            onUnhover={() => setHoveredIndex(null)}
+          />
+        ))}
+
+        {/* Enhanced particle effects */}
+        <EnhancedParticlesEffect />
+      </group>
+    </Float>
+  )
+}
+
+// Main component
+export default function FeaturePrism() {
+  const [selectedFeature, setSelectedFeature] = useState(null)
+  const [cameraPosition, setCameraPosition] = useState([0, 0, 8])
+
+  // Responsive camera position
+  useEffect(() => {
+    const handleResize = () => {
+      const isMobile = window.innerWidth < 768
+      setCameraPosition([0, 0, isMobile ? 10 : 8])
+    }
+
+    handleResize()
+    window.addEventListener("resize", handleResize)
+    return () => window.removeEventListener("resize", handleResize)
+  }, [])
+
+  return (
+    <ErrorBoundary>
+      <div className="w-full h-full relative">
+        <Canvas shadows dpr={[1, 2]}>
+          <color attach="background" args={["#030712"]} />
+          <fog attach="fog" args={["#030712", 5, 20]} />
+
+          <PerspectiveCamera makeDefault position={cameraPosition} fov={45} />
+
+          {/* Lighting setup */}
+          <ambientLight intensity={0.2} />
+          <spotLight
+            position={[10, 10, 10]}
+            angle={0.15}
+            penumbra={1}
+            intensity={1}
+            castShadow
+            shadow-mapSize={[2048, 2048]}
+          />
+          <spotLight position={[-10, -10, -10]} angle={0.15} penumbra={1} intensity={0.5} />
+
+          {/* Environment for reflections */}
+          <Environment preset="night" />
+
+          {/* Main 3D content */}
+          <HexagonalPrism setSelectedFeature={setSelectedFeature} />
+
+          {/* Controls */}
+          <OrbitControls
+            enableZoom={true}
+            enablePan={false}
+            minPolarAngle={Math.PI / 4}
+            maxPolarAngle={Math.PI / 1.5}
+            autoRotate={false}
+            dampingFactor={0.05}
+            enableDamping={true}
+          />
+        </Canvas>
+
+        {/* Feature Modal */}
+        <Dialog open={!!selectedFeature} onOpenChange={() => setSelectedFeature(null)}>
+          <DialogContent className="sm:max-w-md bg-gray-900 text-white border-gray-700">
+            <DialogHeader>
+              <DialogTitle className="flex items-center gap-2 text-xl">
+                {selectedFeature && (
+                  <>
+                    {React.createElement(selectedFeature.icon, {
+                      className: "h-6 w-6",
+                      style: { color: selectedFeature.color },
+                    })}
+                    <span style={{ color: selectedFeature.color }}>{selectedFeature.name}</span>
+                  </>
+                )}
+              </DialogTitle>
+            </DialogHeader>
+
+            <div className="py-4">
+              <p className="text-gray-200 text-lg leading-relaxed">{selectedFeature?.description}</p>
+            </div>
+
+            <DialogFooter>
+              <Button
+                onClick={() => setSelectedFeature(null)}
+                style={{
+                  backgroundColor: selectedFeature?.color,
+                  borderColor: selectedFeature?.color,
+                }}
+                className="hover:opacity-90"
+              >
+                Close
+              </Button>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
+
+        {/* Instructions overlay */}
+        <div className="absolute bottom-4 left-4 right-4 bg-black/70 text-white p-3 rounded-md text-center">
+          <p className="text-sm md:text-base">
+            Click on any hexagon to learn more about each feature.
+            <br className="hidden md:block" />
+            Click and drag to rotate and create cosmic trails.
+          </p>
+        </div>
+      </div>
+    </ErrorBoundary>
+  )
+}
