@@ -41,7 +41,7 @@ class ErrorBoundary extends React.Component {
           <div className="text-center p-6 max-w-md">
             <h2 className="text-xl font-bold text-red-400 mb-4">Something went wrong</h2>
             <p className="text-gray-300 mb-4">
-              We couldn't load the 3D visualization. This might be due to browser compatibility issues.
+              We were unable to load the 3D visualization. This might be due to browser compatibility issues.
             </p>
             <button
               onClick={() => this.setState({ hasError: false })}
