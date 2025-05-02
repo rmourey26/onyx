@@ -2,9 +2,9 @@ import {
   LucideProps,
   Moon,
   SunMedium,
-  type Icon as LucideIcon,
   Menu,
   Linkedin,
+  LucideIcon,
 } from "lucide-react"
 
 export type Icon = LucideIcon
