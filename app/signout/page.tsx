@@ -1,5 +1,5 @@
 import { signOut } from "@/app/auth/actions";
-import SignOut from "@/components/sign-out";
+import { SignOut }from "@/components/sign-out";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import React, { useTransition } from "react";
