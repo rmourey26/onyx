@@ -25,7 +25,7 @@ export default async function IndexPage() {
           Onyx SaaS PWA Template
         </h1>
 
-     {*/ refining styling will release again soon. check out rmourey26/3D-prism-infographic for live version. It uses Fibonaccis golden ratio to produce various parts of the visualization.
+     {/* refining styling will release again soon. check out rmourey26/3D-prism-infographic for live version. It uses Fibonaccis golden ratio to produce various parts of the visualization.
         <PrismContainer />
      */}
         <p className="max-w-3xl text-lg lg:text-xl xs:text-justify text-muted-foreground">
