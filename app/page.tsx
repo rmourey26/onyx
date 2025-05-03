@@ -25,8 +25,7 @@ export default async function IndexPage() {
           Onyx SaaS PWA Template
         </h1>
 
-     {*/ Uses Fibonacci Golden Ratio to create visualization. Updating deps to enable. 
-        Check out working implementation at rmourey26/3d-prism-infographic 3d-prism-infographic.vercel.app
+     {/* The PrismContainer uses dynamic client-side rendering to display the FeaturesAnimation component. I wanted to demo the usage of Fibonacci's Golden Ratio in an interactive 3D component for devs who may be interested in expanding upon the general concept of the animation. Theres a working implementation running NextJS 15 and React 19 at github.com/rmourey26/3d-prism-infographic and 3d-prism-infographic.vercel.app. The Onyx version needs some tinkering to work properly with React 18.3. I should be able to get that done by 05-10-2025. We'll see. 
         <PrismContainer />
       */}
         <p className="max-w-3xl text-lg lg:text-xl xs:text-justify text-muted-foreground">
