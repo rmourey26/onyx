@@ -1,11 +1,18 @@
 import { signOut } from "@/app/auth/actions";
 import { SignOut }from "@/components/sign-out";
+import { readUserSession } from "@/utils/actions";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import React, { useTransition } from "react";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 export default function page() {
+
+        const { data: userSession } = await readUserSession();
+
+        if (!userSession.session) {
+                return redirect("/");
+        }
 
     return (
           <div className="container px-4 py-8 items-centered">
