@@ -24,7 +24,10 @@ export default async function IndexPage() {
         <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold leading-tight tracking-tighter md:text-6xl text-center">
           Onyx SaaS PWA Template
         </h1>
+
+     {*/ refining styling will release again soon. check out rmourey26/3D-prism-infographic for live version. It uses Fibonaccis golden ratio to produce various parts of the visualization.
         <PrismContainer />
+     */}
         <p className="max-w-3xl text-lg lg:text-xl xs:text-justify text-muted-foreground">
          Secure user authentication + RBAC, Zod validated Supabase Postgres DB CRUD ops, Rust serverless API runtime, TanStack queries with Supabase cache helpers, Resend, SID.ai, NextMDX, admin dashboard, and more. Onboard users and receive inquiries immediately. 
         </p>
