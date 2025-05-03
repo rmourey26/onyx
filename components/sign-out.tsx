@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 import React, { useTransition } from "react";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
-export default function SignOut() {
+export function SignOut() {
         const [isPending, startTransition] = useTransition();
         const onSubmit = async () => {
                 startTransition(async () => {
