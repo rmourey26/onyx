@@ -89,7 +89,7 @@ const router = useRouter();
                                                         <FormItem>
                                                                 <FormLabel>Email</FormLabel>
                                                                 <FormControl>
-                                                                        <Input placeholder="email@example.com" {...field} disabled={isLoading}/>
+                                                                        <Input placeholder="onyx@example.com" {...field} disabled={isLoading}/>
                                                                 </FormControl>
 
                                                                 <FormMessage />
@@ -111,7 +111,7 @@ const router = useRouter();
                                                                 </FormControl>
                                                                 <FormDescription>
                                                                         {
-                                                                                "This a form description"
+                                                                                "This is a form description."
                                                                         }
                                                                 </FormDescription>
                                                                 <FormMessage />
@@ -121,7 +121,7 @@ const router = useRouter();
            <Button
             type="submit"
             disabled={isLoading}
-                                className="w-full flex items-center gap-2"
+                                className="w-1/2 flex items-center gap-2"
                                 variant="outline"
                         >
                                 Send Message
