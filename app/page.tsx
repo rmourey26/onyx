@@ -25,9 +25,10 @@ export default async function IndexPage() {
           Onyx SaaS PWA Template
         </h1>
 
-     {*/ Uses Fibonacci Golden Ratio to create visualization. This is here to show how to create a complex animation and obviously will not fit every theme or use case for Onyx. To remove and or change the theme, simply comment out the component and update the globals CSS file with your preferred light|dark TailwindCSS theme.*/}
+     {*/ Uses Fibonacci Golden Ratio to create visualization. Updating deps to enable. 
+        Check out working implementation at rmourey26/3d-prism-infographic 3d-prism-infographic.vercel.app
         <PrismContainer />
-
+      */}
         <p className="max-w-3xl text-lg lg:text-xl xs:text-justify text-muted-foreground">
          Secure user authentication + RBAC, Zod validated Supabase Postgres DB CRUD ops, Rust serverless API runtime, TanStack queries with Supabase cache helpers, Resend, SID.ai, NextMDX, admin dashboard, and more. Onboard users and receive inquiries immediately. 
         </p>
