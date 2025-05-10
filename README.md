@@ -49,12 +49,11 @@ complete Supabase SSR Auth and DB integration, Zod validation, Tanstack React Qu
 - First, configure your environment
   - Create a file named .env.local in project root
   - Create a Supabase account and add the following to your env file
-    - NEXT_PUBLIC_SUPABASE_KEY="Your supabase anon key"
+    - NEXT_PUBLIC_SUPABASE_ANON_KEY="Your supabase anon key"
     - SUPABASE_JWT_SECRET="Your supabase JWT secret"
     - NEXT_PUBLIC_SUPABASE_URL="Your supabase project URL"
     - SUPABASE_SERVIC_ROLE_KEY="Your supabase service role key"
-    - NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_...
-   - STRIPE_SECRET_KEY=sk_test_...
+
   - Ensure your Supabase tables match the tables and types found in '@/lib/supabase'.
   - Add authorized development and production URL's to Supabase URL config. 
 ### Run  
