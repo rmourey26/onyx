@@ -68,7 +68,7 @@
     "js-cookie": "^3.0.5",
     "lodash": "^4.17.21",
     "lucide-react": "0.302.0",
-    "next": "14.2.4",
+    "next": "14.2.30",
     "next-compose-plugins": "^2.2.1",
     "next-themes": "^0.2.1",
     "postcss-flexbugs-fixes": "^5.0.2",
