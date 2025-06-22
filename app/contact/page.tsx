@@ -9,7 +9,7 @@ import { redirect } from "next/navigation";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { type User } from '@supabase/supabase-js'
 
-export default async function ContactPage() {
+export default async function ContactPage({ user }: { user: User | null })  {
   const cookieStore = cookies()
   const supabase = createClient(cookieStore)  
 
@@ -35,7 +35,7 @@ export default async function ContactPage() {
                 Rather talk? Call us at +1-555-867-5309.
               </p>
             </div>
-                        <Contact/>
+                        <Contact user={user} />
                 </div>
                </div>
         );
