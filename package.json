@@ -66,7 +66,7 @@
     "google-one-tap": "^1.0.6",
     "googleapis": "^148.0.0",
     "js-cookie": "^3.0.5",
-    "lodash": "^4.17.21",
+    "lodash": "^4.17.23",
     "lucide-react": "0.302.0",
     "next": "14.2.4",
     "next-compose-plugins": "^2.2.1",
