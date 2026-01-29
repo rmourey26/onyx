@@ -84,7 +84,7 @@ if (data.url) {
 
 export async function signInWithGoogle(): Promise<{ error?: string; url?: string }> {
   try {
-    const supabase = createSupbaseServerClient()
+    const supabase = await createSupbaseServerClient()
 
     
     const { data, error } = await (await supabase).auth.signInWithOAuth({

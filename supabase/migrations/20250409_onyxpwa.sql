@@ -112,6 +112,6 @@ CREATE POLICY "Individuals can view their own todos." ON public.todos FOR SELECT
 CREATE POLICY "Individuals can insert their own todos." ON public.todos FOR INSERT TO authenticated WITH CHECK ((select auth.uid()) = user_id);
 CREATE POLICY "Individuals can update their own todos." ON public.todos FOR UPDATE TO authenticated USING ((select auth.uid()) = user_id) WITH CHECK ((select auth.uid()) = user_id);
 CREATE POLICY "Individuals can delete their own todos." ON public.todos FOR DELETE TO authenticated USING ((select auth.uid()) = user_id);
-```
+\`\`\`
 
 -- Remember to create RLS policies for this table before using it with Supabase APIs.

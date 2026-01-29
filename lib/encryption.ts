@@ -29,5 +29,3 @@ export async function decrypt(text: string): Promise<string> {
   decrypted = Buffer.concat([decrypted, decipher.final()])
   return decrypted.toString()
 }
-
-

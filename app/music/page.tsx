@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   description: "Your music and podcast app.",
 }
 
-export default function MusicPage() {
+export default async function MusicPage() {
   return (
   <div className="block xs:max-w-dvw xs:w-full">
      <Menu />

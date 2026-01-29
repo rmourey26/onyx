@@ -2,7 +2,7 @@
 
 import React from "react"
 import { motion, useAnimation } from "framer-motion"
-import { Leaf, Recycle, Heart, AwardIcon } from "lucide-react"
+import { Leaf, Recycle, Heart, AwardIcon, type LucideIcon } from "lucide-react"
 import { useInView } from "react-intersection-observer"
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -13,7 +13,7 @@ const InfoGraphicItem = ({
   text,
   icon: Icon,
   index,
-}: { percentage: number; text: string; icon: React.ElementType; index: number }) => {
+}: { percentage: number; text: string; icon: LucideIcon; index: number }) => {
   const controls = useAnimation()
   const [ref, inView] = useInView({
     threshold: 0.1,
@@ -74,25 +74,21 @@ const AnimatedInfographic = () => {
       text: "Loyal to brands with similar values.",
       icon: Heart,
     },
-    { 
-      percentage: 70, 
-      text: "Pay a premium for digital solutions.", 
-      icon: Leaf 
+    {
+      percentage: 70,
+      text: "Pay a premium for digital solutions.",
+      icon: Leaf,
     },
     {
       percentage: 66,
       text: "Ease of use significant factor.",
       icon: Recycle,
     },
-    { 
+    {
       percentage: 64,
       text: "Alter behavior via incentives and rewards",
       icon: AwardIcon,
     },
-    
-    
-    
-
   ]
 
   return (

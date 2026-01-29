@@ -1,40 +1,37 @@
+// Original implementation used google-auth-library which doesn't work in browser-based preview
+
 "use server"
 
-import { OAuth2Client } from "google-auth-library"
-
-// Initialize the OAuth2 client with your credentials
-const oauth2Client = new OAuth2Client(
-  process.env.GOOGLE_CLIENT_ID,
-  process.env.GOOGLE_CLIENT_SECRET,
-  process.env.NODE_ENV === "production"
-    ? `${process.env.NEXT_PUBLIC_SITE_URL}/api/auth/callback/google`
-    : "http://localhost:3000/api/auth/callback/google",
-)
-
-// Generate a URL for the user to authorize the application
+/**
+ * Stub implementation for generating Google OAuth URL.
+ * In production, this would use the Google OAuth2 client.
+ */
 export async function getAuthUrl() {
-  const scopes = ["https://www.googleapis.com/auth/calendar", "https://www.googleapis.com/auth/calendar.events"]
-
-  return oauth2Client.generateAuthUrl({
-    access_type: "offline",
-    scope: scopes,
-    prompt: "consent",
-  })
+  console.log("[v0] Google Auth integration disabled for preview mode")
+  return "https://accounts.google.com/o/oauth2/auth?mock=true"
 }
 
-// Exchange the authorization code for tokens
+/**
+ * Stub implementation for exchanging authorization code for tokens.
+ * In production, this would exchange the code with Google's OAuth2 service.
+ */
 export async function getTokens(code: string) {
-  const { tokens } = await oauth2Client.getToken(code)
-  oauth2Client.setCredentials(tokens)
-  return tokens
+  console.log("[v0] Google Auth integration disabled for preview mode")
+  return {
+    access_token: "mock-access-token",
+    refresh_token: "mock-refresh-token",
+    expiry_date: Date.now() + 3600000,
+  }
 }
 
-// Set credentials from existing tokens
+/**
+ * Stub implementation for setting credentials.
+ * In production, this would configure the OAuth2 client with real tokens.
+ */
 export async function setCredentials(tokens: any) {
-  oauth2Client.setCredentials(tokens)
-  return oauth2Client
+  console.log("[v0] Google Auth integration disabled for preview mode")
+  return null
 }
 
-// Export the oauth2Client for use in other server components
-export { oauth2Client }
-
+// Export a mock oauth2Client for compatibility
+export const oauth2Client = null

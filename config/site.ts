@@ -19,8 +19,8 @@ export const siteConfig = {
       href: "/dashboard",
     },
     { 
-      title: "OpenAI",
-      href: "/playground",
+      title: "OnyxAI",
+      href: "/chat",
     },
     { 
       title: "Podcasts",

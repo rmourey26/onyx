@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   description: "Open AI playground.",
 }
 
-export default function PlaygroundPage() {
+export default async function PlaygroundPage() {
   return (
     <>
       <div className="max-w-dvw w-full h-full flex-col md:flex">

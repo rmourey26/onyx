@@ -1,4 +1,3 @@
-
 import { Separator } from "@/components/ui/separator"
 import AccountForm from "./supa-account-form"
 import { cookies } from 'next/headers'
@@ -25,14 +24,6 @@ data: { user },} = await supabase.auth.getUser()
         <p className="text-base text-justify ">
           Update your account...</p>
 
-        <Link
-          href="/playground"
-          target="_blank"
-          rel="noreferrer"
-          className="text-1xl font-bold tracking-tighter sm:text-3xl"
-        >
-         Check out the OpenAI Playground!
-        </Link>
        </div>
       <Separator />
       <AccountForm user={user}/>

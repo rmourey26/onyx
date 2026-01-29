@@ -1,3 +1,4 @@
+import * as React from "react"
 import { siteConfig } from '@/config/site'
 import { Icons } from '@/components/icons'
 import { buttonVariants } from '@/components/ui/button'
@@ -10,19 +11,19 @@ export function CookieButton() {
 return (
 <div className="fixed bottom-0 right-0 z-50">
 
-              <div
+              <Link
+                 href="#"
                 className={buttonVariants({
                   size: "icon",
                   variant: "ghost",
-                })}
-              >
+                })}>
 
-       <a href="#" className={cn("yourConsentManager")}>
+       
 
-                <Icons.cookie className="h-5 w-5" />
-</a>
+                <Icons.logo className="h-5 w-5" />
+
                 <span className="sr-only">Cookie Preferences</span>
-              </div>
+              </Link>
 
 </div>
 

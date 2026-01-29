@@ -83,4 +83,3 @@ const WhyOnyx: React.FC = () => {
 }
 
 export default WhyOnyx
-

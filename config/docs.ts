@@ -20,8 +20,8 @@ export const docsConfig: DocsConfig = {
       href: "/dashboard",
     },
     { 
-      title: "OpenAI",
-      href: "/playground",
+      title: "OnyxAI",
+      href: "/chat",
     },
 
     { 

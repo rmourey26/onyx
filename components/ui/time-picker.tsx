@@ -42,4 +42,3 @@ export function TimePicker({ setTime, interval = 15 }: TimePickerProps) {
     </ScrollArea>
   )
 }
-

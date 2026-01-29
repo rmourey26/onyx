@@ -1,10 +1,9 @@
-import { useEffect, useState } from 'react'
+"use client"
 
-export const useLocalStorage = <T>(
-  key: string,
-  initialValue: T
-): [T, (value: T) => void] => {
-  const [storedValue, setStoredValue] = useState(initialValue)
+import { useEffect, useState } from "react"
+
+export function useLocalStorage<T>(key: string, initialValue: T): [T, (value: T) => void] {
+  const [storedValue, setStoredValue] = useState<T>(initialValue)
 
   useEffect(() => {
     // Retrieve from localStorage
