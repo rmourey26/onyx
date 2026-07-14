@@ -1,4 +1,4 @@
-# Kronova Asset Intelligence Platform
+# Kronova Asset Intelligence and Orchestration Platform
 
 Welcome to the official open-source frontend and orchestration layer for the Kronova Asset Intelligence ecosystem.
 
@@ -31,8 +31,8 @@ You can run the entire intelligence platform locally without an AetherNet subscr
 ### 1. Clone and Install
 
 ```bash
-git clone https://github.com/kronova/asset-intelligence-platform.git
-cd asset-intelligence-platform
+git clone https://github.com/kronova/asset-intel-orchestration-engine.git
+cd asset-intel-orchestration-engine
 npm install
 ```
 
