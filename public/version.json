@@ -1,0 +1,16 @@
+{
+  "v0Version": "v88",
+  "appVersion": "1.0.0",
+  "apiVersion": "v1.6.0",
+  "schemaVersion": "2.0.0",
+  "lastDeployed": "2025-01-01T00:00:00.000Z",
+  "environment": "production",
+  "features": {
+    "assetTokenization": true,
+    "learningLayers": true,
+    "plaidIntegration": true,
+    "aetherNet": true,
+    "suiBlockchain": true,
+    "oauthInfrastructure": true
+  }
+}

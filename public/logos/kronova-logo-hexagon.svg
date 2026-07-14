@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="kronovaHexGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0047AB"/>
+      <stop offset="50%" style="stop-color:#0088CC"/>
+      <stop offset="100%" style="stop-color:#00CED1"/>
+    </linearGradient>
+    <linearGradient id="kronovaHexGradientReverse" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#00CED1"/>
+      <stop offset="100%" style="stop-color:#0047AB"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Hexagon container -->
+  <polygon points="50,5 93,27.5 93,72.5 50,95 7,72.5 7,27.5" 
+           fill="none" stroke="url(#kronovaHexGradient)" stroke-width="3"/>
+  
+  <!-- Inner K with data flow lines -->
+  <g transform="translate(50, 50)">
+    <!-- K structure -->
+    <line x1="-15" y1="-25" x2="-15" y2="25" stroke="url(#kronovaHexGradient)" stroke-width="5" stroke-linecap="round"/>
+    <line x1="-15" y1="0" x2="20" y2="-25" stroke="url(#kronovaHexGradient)" stroke-width="5" stroke-linecap="round"/>
+    <line x1="-15" y1="0" x2="20" y2="25" stroke="url(#kronovaHexGradient)" stroke-width="5" stroke-linecap="round"/>
+    
+    <!-- Data nodes -->
+    <circle cx="-15" cy="-25" r="4" fill="url(#kronovaHexGradient)"/>
+    <circle cx="-15" cy="0" r="5" fill="url(#kronovaHexGradient)"/>
+    <circle cx="-15" cy="25" r="4" fill="url(#kronovaHexGradient)"/>
+    <circle cx="20" cy="-25" r="4" fill="url(#kronovaHexGradientReverse)"/>
+    <circle cx="20" cy="25" r="4" fill="url(#kronovaHexGradientReverse)"/>
+  </g>
+</svg>

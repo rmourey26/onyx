@@ -1,0 +1,17 @@
+{
+  "imports": {
+    "@supabase/supabase-js": "https://esm.sh/@supabase/supabase-js@2.39.0",
+    "@supabase/functions-js": "https://esm.sh/@supabase/functions-js@2.1.5",
+    "postgres": "https://deno.land/x/postgres@v0.19.2/mod.ts",
+    "mysql": "https://deno.land/x/mysql@v2.12.1/mod.ts",
+    "std/": "https://deno.land/std@0.208.0/",
+    "std/http/": "https://deno.land/std@0.208.0/http/",
+    "std/path/": "https://deno.land/std@0.208.0/path/",
+    "std/fs/": "https://deno.land/std@0.208.0/fs/",
+    "std/encoding/": "https://deno.land/std@0.208.0/encoding/",
+    "std/crypto/": "https://deno.land/std@0.208.0/crypto/",
+    "std/uuid/": "https://deno.land/std@0.208.0/uuid/",
+    "openai": "https://esm.sh/openai@4.24.1",
+    "zod": "https://esm.sh/zod@3.22.4"
+  }
+}

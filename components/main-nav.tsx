@@ -1,41 +1,73 @@
-import * as React from "react"
+"use client"
 import Link from "next/link"
+import type React from "react"
 
-import { NavItem } from "@/types/nav"
-import { siteConfig } from "@/config/site"
+import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
-import { Icons } from "@/components/icons"
+import { buttonVariants } from "@/components/ui/button"
 
 interface MainNavProps {
-  items?: NavItem[]
+  items?: {
+    title: string
+    href: string
+    description?: string
+    icon?: React.ReactNode
+    variant?: "default" | "ghost" | "link"
+  }[]
 }
 
 export function MainNav({ items }: MainNavProps) {
+  const pathname = usePathname()
+
+  const navItems = [
+    {
+     title: "Home",
+     href: "/",
+     variant: "ghost",
+    },
+    //{
+      //title: "About",
+      //href: "/about",
+      //variant: "ghost",
+    //},
+    //{
+      //title: "API-Docs",
+      //href: "/api-docs",
+      //variant: "ghost",
+   // },
+    
+   // {
+      //title: "Ecosystem",
+     // href: "/ecosystem",
+     // variant: "ghost",
+    //},
+    // {
+    //   title: "Embeddings",
+    //   href: "/ai-suite/embeddings",
+    //   icon: <Database className="h-4 w-4" />,
+    //   variant: "ghost",
+    // }, 
+    ...(items || []),
+  ]
+
   return (
-        <div className="mr-2 hidden gap-4 md:flex md:gap-8">
-      <Link href="/" className="flex items-center space-x-2">
-        <Icons.logo className="h-6 w-6" />
-        <span className="inline-block font-bold">{siteConfig.name}</span>
-      </Link>
-      {items?.length ? (
-        <nav className="flex gap-6">
-          {items?.map(
-            (item, index) =>
-              item.href && (
-                <Link
-                  key={index}
-                  href={item.href}
-                  className={cn(
-                    "flex items-center text-sm font-medium text-muted-foreground",
-                    item.disabled && "cursor-not-allowed opacity-80"
-                  )}
-                >
-                  {item.title}
-                </Link>
-              )
+    <div className="hidden md:flex gap-6 md:gap-8">
+      {navItems.map((item) => (
+        <Link
+          key={item.href}
+          href={item.href}
+          className={cn(
+            buttonVariants({ variant: item.variant || "link", size: "sm" }),
+            pathname === item.href
+              ? "text-green-600 dark:text-green-400"
+              : "text-gray-500 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400",
+            "px-0",
           )}
-        </nav>
-      ) : null}
+        >
+          {item.icon && <span className="mr-2">{item.icon}</span>}
+          {item.title}
+        </Link>
+      ))}
     </div>
   )
 }

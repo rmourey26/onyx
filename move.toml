@@ -1,0 +1,12 @@
+[package]
+name = "business-card-nft"
+version = "0.1.0"
+published-at = "0x0"
+
+[dependencies]
+suins = { git = "https://github.com/mystenlabs/suins-contracts/", subdir = "packages/suins", rev = "releases/mainnet/core/v3" }
+Sui = { git = "https://github.com/MystenLabs/sui.git", subdir = "crates/sui-framework/packages/sui-framework", rev = "framework/mainnet" }
+
+[addresses]
+business_card_nft = "0x0"
+sui = "0x2"

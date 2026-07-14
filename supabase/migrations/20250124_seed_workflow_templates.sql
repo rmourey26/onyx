@@ -1,0 +1,906 @@
+-- Migration: Seed System Workflow Templates
+-- Description: Insert AI workflow templates from lib/workflows/workflow-templates.ts into system_workflow_templates table
+
+-- First, ensure we have the necessary categories in template_categories
+INSERT INTO template_categories (name, display_name, description, icon, sort_order)
+VALUES 
+  ('Agentic AI', 'Agentic AI', 'Autonomous AI agent solutions for monitoring and optimization', '🤖', 1),
+  ('IoT Devices', 'IoT Devices', 'Internet of Things device management and intelligence', '📡', 2),
+  ('Robotics', 'Robotics', 'Robotic fleet coordination and optimization', '🦾', 3),
+  ('Supply Chain', 'Supply Chain', 'Supply chain intelligence and logistics optimization', '🚚', 4),
+  ('Autonomous Vehicles', 'Autonomous Vehicles', 'Autonomous vehicle fleet coordination', '🚗', 5),
+  ('Drones', 'Drones', 'Drone swarm intelligence and coordination', '🚁', 6),
+  ('RWA Tokenization', 'RWA Tokenization', 'Real-world asset tokenization pipelines', '🪙', 7),
+  ('Data Centers', 'Data Centers', 'Data center optimization and management', '🏢', 8),
+  ('Medical Devices', 'Medical Devices', 'Medical device intelligence and monitoring', '🏥', 9),
+  ('Product Lifecycle', 'Product Lifecycle', 'Product lifecycle tracking and optimization', '♻️', 10),
+  ('Scientific R&D', 'Scientific R&D', 'Scientific research acceleration', '🔬', 11),
+  ('Business Operations', 'Business Operations', 'Business operations intelligence', '📊', 12)
+ON CONFLICT (name) DO UPDATE SET
+  display_name = EXCLUDED.display_name,
+  description = EXCLUDED.description,
+  icon = EXCLUDED.icon,
+  sort_order = EXCLUDED.sort_order;
+
+-- Insert workflow templates
+INSERT INTO system_workflow_templates (
+  template_id,
+  name,
+  description,
+  category,
+  icon,
+  difficulty,
+  estimated_time,
+  tags,
+  trigger_type,
+  trigger_config,
+  steps,
+  is_active,
+  is_featured,
+  version
+) VALUES 
+-- Agentic AI Orchestration Hub
+(
+  'agentic-ai-orchestration',
+  'Agentic AI Orchestration Hub',
+  'Deploy autonomous AI agents to monitor, analyze, and optimize real-world asset performance across multiple domains',
+  'Agentic AI',
+  '🤖',
+  'advanced',
+  20,
+  ARRAY['autonomous', 'multi-agent', 'real-time', 'optimization'],
+  'schedule',
+  '{"interval": "5m"}'::jsonb,
+  '[
+    {
+      "id": "deploy-monitoring-agents",
+      "type": "agent",
+      "name": "Deploy Asset Monitoring Agents",
+      "description": "Launch autonomous agents to monitor RWA performance metrics",
+      "config": {
+        "agent_id": "monitoring-agent-001",
+        "query": "Monitor real-world asset performance metrics and identify anomalies, optimization opportunities, and critical alerts based on incoming data streams.",
+        "agent_type": "monitoring",
+        "system_prompt": "You are an autonomous monitoring agent responsible for tracking real-world asset performance. Analyze incoming data streams and identify anomalies, optimization opportunities, and critical alerts.",
+        "parameters": {"temperature": 0.3, "max_tokens": 1000}
+      },
+      "next_steps": ["analyze-performance-data"]
+    },
+    {
+      "id": "analyze-performance-data",
+      "type": "data_analysis",
+      "name": "Real-Time Performance Analysis",
+      "description": "Process and analyze asset performance data using AI",
+      "config": {
+        "operation": "analyze",
+        "analysis_type": "real_time_performance",
+        "data_source": "context.results.deploy-monitoring-agents",
+        "metrics": ["efficiency", "utilization", "predictive_maintenance", "cost_optimization"],
+        "ai_model": "gpt-4"
+      },
+      "next_steps": ["generate-optimization-recommendations"]
+    },
+    {
+      "id": "generate-optimization-recommendations",
+      "type": "agent",
+      "name": "Generate Optimization Strategies",
+      "description": "Create actionable optimization recommendations",
+      "config": {
+        "agent_id": "optimization-agent-001",
+        "query": "Based on the performance analysis results: ${context.results.analyze-performance-data}, generate specific, actionable optimization recommendations for real-world assets focusing on efficiency improvements, cost reduction, and predictive maintenance.",
+        "agent_type": "optimization",
+        "system_prompt": "Based on the performance analysis, generate specific, actionable optimization recommendations for real-world assets. Focus on efficiency improvements, cost reduction, and predictive maintenance.",
+        "parameters": {"temperature": 0.4, "max_tokens": 1500}
+      },
+      "next_steps": ["execute-autonomous-actions"]
+    },
+    {
+      "id": "execute-autonomous-actions",
+      "type": "custom",
+      "name": "Execute Autonomous Optimizations",
+      "description": "Implement approved optimizations automatically",
+      "config": {
+        "function_name": "save_data",
+        "parameters": {
+          "destination": "supabase",
+          "table": "optimization_actions",
+          "operation": "insert"
+        },
+        "action_type": "autonomous_execution",
+        "approval_threshold": 0.8,
+        "safety_checks": true
+      },
+      "next_steps": []
+    }
+  ]'::jsonb,
+  true,
+  true,
+  '1.0'
+),
+
+-- IoT Device Intelligence Network
+(
+  'iot-device-intelligence',
+  'IoT Device Intelligence Network',
+  'Transform IoT sensor data into actionable intelligence with predictive analytics and automated responses',
+  'IoT Devices',
+  '📡',
+  'intermediate',
+  15,
+  ARRAY['iot', 'sensors', 'predictive', 'automation'],
+  'event',
+  '{"event_type": "iot_data_received"}'::jsonb,
+  '[
+    {
+      "id": "collect-iot-data",
+      "type": "custom",
+      "name": "Collect IoT Sensor Data",
+      "description": "Aggregate data from distributed IoT sensors",
+      "config": {
+        "function_name": "fetch_data",
+        "data_sources": ["temperature", "humidity", "pressure", "vibration", "location"],
+        "collection_interval": "30s",
+        "data_validation": true
+      },
+      "next_steps": ["process-sensor-data"]
+    },
+    {
+      "id": "process-sensor-data",
+      "type": "data_analysis",
+      "name": "Process Sensor Intelligence",
+      "description": "Apply AI to extract insights from sensor data",
+      "config": {
+        "operation": "analyze",
+        "analysis_type": "time_series_prediction",
+        "data_source": "context.results.collect-iot-data",
+        "algorithms": ["anomaly_detection", "trend_analysis", "predictive_modeling"],
+        "window_size": "1h"
+      },
+      "next_steps": ["generate-alerts"]
+    },
+    {
+      "id": "generate-alerts",
+      "type": "agent",
+      "name": "Intelligent Alert Generation",
+      "description": "Generate contextual alerts and recommendations",
+      "config": {
+        "agent_id": "alert-generator-001",
+        "query": "Analyze the IoT sensor data analysis results and generate intelligent alerts. Prioritize critical issues, provide context, and suggest immediate actions considering historical patterns and predictive indicators.",
+        "agent_type": "alert_generator",
+        "system_prompt": "Analyze IoT sensor data and generate intelligent alerts. Prioritize critical issues, provide context, and suggest immediate actions. Consider historical patterns and predictive indicators.",
+        "parameters": {"temperature": 0.2, "max_tokens": 800}
+      },
+      "next_steps": ["automated-response"]
+    },
+    {
+      "id": "automated-response",
+      "type": "custom",
+      "name": "Automated Response System",
+      "description": "Execute automated responses to sensor alerts",
+      "config": {
+        "function_name": "save_data",
+        "response_types": ["notification", "system_adjustment", "maintenance_request"],
+        "escalation_rules": true,
+        "safety_protocols": true
+      },
+      "next_steps": []
+    }
+  ]'::jsonb,
+  true,
+  true,
+  '1.0'
+),
+
+-- Robotics Fleet Intelligence
+(
+  'robotics-fleet-management',
+  'Robotics Fleet Intelligence',
+  'Coordinate and optimize robotic fleet operations with AI-driven task allocation and performance monitoring',
+  'Robotics',
+  '🦾',
+  'advanced',
+  25,
+  ARRAY['robotics', 'fleet', 'coordination', 'optimization'],
+  'manual',
+  '{}'::jsonb,
+  '[
+    {
+      "id": "assess-fleet-status",
+      "type": "custom",
+      "name": "Fleet Status Assessment",
+      "description": "Evaluate current status and capabilities of robotic fleet",
+      "config": {
+        "metrics": ["battery_level", "task_queue", "location", "operational_status", "maintenance_schedule"],
+        "real_time_monitoring": true
+      },
+      "next_steps": ["optimize-task-allocation"]
+    },
+    {
+      "id": "optimize-task-allocation",
+      "type": "agent",
+      "name": "AI Task Allocation",
+      "description": "Intelligently allocate tasks across robotic fleet",
+      "config": {
+        "agent_type": "task_optimizer",
+        "system_prompt": "You are a fleet coordination AI. Analyze robot capabilities, current tasks, locations, and priorities to optimize task allocation. Consider efficiency, battery life, travel time, and robot specializations.",
+        "parameters": {"temperature": 0.3, "max_tokens": 1200}
+      },
+      "next_steps": ["monitor-execution"]
+    },
+    {
+      "id": "monitor-execution",
+      "type": "data_analysis",
+      "name": "Real-Time Execution Monitoring",
+      "description": "Monitor task execution and performance metrics",
+      "config": {
+        "monitoring_type": "real_time_performance",
+        "kpis": ["task_completion_rate", "efficiency_score", "error_rate", "energy_consumption"],
+        "alert_thresholds": true
+      },
+      "next_steps": ["adaptive-optimization"]
+    },
+    {
+      "id": "adaptive-optimization",
+      "type": "agent",
+      "name": "Adaptive Fleet Optimization",
+      "description": "Continuously optimize fleet performance based on real-time data",
+      "config": {
+        "agent_type": "adaptive_optimizer",
+        "system_prompt": "Continuously analyze fleet performance and adapt strategies in real-time. Identify bottlenecks, predict maintenance needs, and optimize routes and task sequences for maximum efficiency.",
+        "parameters": {"temperature": 0.4, "max_tokens": 1000}
+      },
+      "next_steps": []
+    }
+  ]'::jsonb,
+  true,
+  true,
+  '1.0'
+),
+
+-- Supply Chain Intelligence Hub
+(
+  'supply-chain-intelligence',
+  'Supply Chain Intelligence Hub',
+  'Transform supply chain operations with AI-powered demand forecasting, route optimization, and risk management',
+  'Supply Chain',
+  '🚚',
+  'intermediate',
+  18,
+  ARRAY['supply-chain', 'logistics', 'forecasting', 'optimization'],
+  'schedule',
+  '{"interval": "1h"}'::jsonb,
+  '[
+    {
+      "id": "demand-forecasting",
+      "type": "data_analysis",
+      "name": "AI Demand Forecasting",
+      "description": "Predict demand patterns using historical data and market indicators",
+      "config": {
+        "analysis_type": "demand_prediction",
+        "data_sources": ["historical_sales", "market_trends", "seasonal_patterns", "external_factors"],
+        "prediction_horizon": "30d",
+        "confidence_intervals": true
+      },
+      "next_steps": ["inventory-optimization"]
+    },
+    {
+      "id": "inventory-optimization",
+      "type": "agent",
+      "name": "Inventory Optimization",
+      "description": "Optimize inventory levels based on demand forecasts",
+      "config": {
+        "agent_type": "inventory_optimizer",
+        "system_prompt": "Analyze demand forecasts and current inventory levels to optimize stock allocation. Consider lead times, storage costs, stockout risks, and seasonal variations. Provide specific recommendations for inventory adjustments.",
+        "parameters": {"temperature": 0.2, "max_tokens": 1000}
+      },
+      "next_steps": ["route-optimization"]
+    },
+    {
+      "id": "route-optimization",
+      "type": "supply_chain",
+      "name": "Dynamic Route Optimization",
+      "description": "Optimize delivery routes in real-time",
+      "config": {
+        "optimization_type": "multi_objective",
+        "objectives": ["minimize_cost", "minimize_time", "maximize_efficiency"],
+        "constraints": ["vehicle_capacity", "time_windows", "driver_hours"],
+        "real_time_traffic": true
+      },
+      "next_steps": ["risk-assessment"]
+    },
+    {
+      "id": "risk-assessment",
+      "type": "agent",
+      "name": "Supply Chain Risk Analysis",
+      "description": "Identify and assess supply chain risks",
+      "config": {
+        "agent_type": "risk_analyzer",
+        "system_prompt": "Analyze supply chain data to identify potential risks including supplier disruptions, demand volatility, transportation issues, and external factors. Assess risk probability and impact, and recommend mitigation strategies.",
+        "parameters": {"temperature": 0.3, "max_tokens": 1200}
+      },
+      "next_steps": []
+    }
+  ]'::jsonb,
+  true,
+  true,
+  '1.0'
+),
+
+-- Autonomous Vehicle Fleet Coordination
+(
+  'autonomous-vehicle-coordination',
+  'Autonomous Vehicle Fleet Coordination',
+  'Coordinate autonomous vehicle fleets with real-time traffic optimization and predictive maintenance',
+  'Autonomous Vehicles',
+  '🚗',
+  'advanced',
+  22,
+  ARRAY['autonomous', 'vehicles', 'coordination', 'traffic'],
+  'event',
+  '{"event_type": "vehicle_status_update"}'::jsonb,
+  '[
+    {
+      "id": "vehicle-status-monitoring",
+      "type": "custom",
+      "name": "Real-Time Vehicle Monitoring",
+      "description": "Monitor autonomous vehicle fleet status and performance",
+      "config": {
+        "monitoring_metrics": ["location", "battery_level", "passenger_count", "route_progress", "system_health"],
+        "update_frequency": "10s",
+        "anomaly_detection": true
+      },
+      "next_steps": ["traffic-analysis"]
+    },
+    {
+      "id": "traffic-analysis",
+      "type": "data_analysis",
+      "name": "Traffic Pattern Analysis",
+      "description": "Analyze real-time traffic patterns and predict congestion",
+      "config": {
+        "analysis_type": "traffic_prediction",
+        "data_sources": ["gps_data", "traffic_sensors", "historical_patterns", "events"],
+        "prediction_window": "30m",
+        "route_alternatives": true
+      },
+      "next_steps": ["fleet-coordination"]
+    },
+    {
+      "id": "fleet-coordination",
+      "type": "agent",
+      "name": "AI Fleet Coordination",
+      "description": "Coordinate vehicle movements and optimize routes",
+      "config": {
+        "agent_type": "fleet_coordinator",
+        "system_prompt": "Coordinate autonomous vehicle fleet operations. Optimize routes based on traffic conditions, passenger demands, and vehicle capabilities. Ensure efficient distribution and minimize wait times while maximizing fleet utilization.",
+        "parameters": {"temperature": 0.3, "max_tokens": 1500}
+      },
+      "next_steps": ["predictive-maintenance"]
+    },
+    {
+      "id": "predictive-maintenance",
+      "type": "data_analysis",
+      "name": "Predictive Maintenance Analysis",
+      "description": "Predict maintenance needs for autonomous vehicles",
+      "config": {
+        "analysis_type": "predictive_maintenance",
+        "sensors": ["engine", "brakes", "battery", "sensors", "software_systems"],
+        "prediction_horizon": "7d",
+        "maintenance_scheduling": true
+      },
+      "next_steps": []
+    }
+  ]'::jsonb,
+  true,
+  true,
+  '1.0'
+),
+
+-- Drone Swarm Intelligence Network
+(
+  'drone-swarm-intelligence',
+  'Drone Swarm Intelligence Network',
+  'Coordinate drone swarms for surveillance, delivery, and data collection with AI-powered mission planning',
+  'Drones',
+  '🚁',
+  'advanced',
+  20,
+  ARRAY['drones', 'swarm', 'surveillance', 'coordination'],
+  'manual',
+  '{}'::jsonb,
+  '[
+    {
+      "id": "mission-planning",
+      "type": "agent",
+      "name": "AI Mission Planning",
+      "description": "Plan optimal drone missions based on objectives and constraints",
+      "config": {
+        "agent_type": "mission_planner",
+        "system_prompt": "Plan drone swarm missions considering objectives, weather conditions, airspace restrictions, battery life, and payload requirements. Optimize flight paths, coordinate multiple drones, and ensure mission success while maintaining safety protocols.",
+        "parameters": {"temperature": 0.2, "max_tokens": 1200}
+      },
+      "next_steps": ["swarm-coordination"]
+    },
+    {
+      "id": "swarm-coordination",
+      "type": "custom",
+      "name": "Swarm Coordination System",
+      "description": "Coordinate multiple drones in real-time",
+      "config": {
+        "coordination_type": "distributed_swarm",
+        "communication_protocol": "mesh_network",
+        "collision_avoidance": true,
+        "formation_control": true
+      },
+      "next_steps": ["data-collection"]
+    },
+    {
+      "id": "data-collection",
+      "type": "data_analysis",
+      "name": "Real-Time Data Processing",
+      "description": "Process data collected by drone swarm",
+      "config": {
+        "data_types": ["video", "images", "sensor_data", "gps_coordinates"],
+        "processing_type": "real_time_analysis",
+        "ai_enhancement": true,
+        "pattern_recognition": true
+      },
+      "next_steps": ["intelligence-synthesis"]
+    },
+    {
+      "id": "intelligence-synthesis",
+      "type": "agent",
+      "name": "Intelligence Synthesis",
+      "description": "Synthesize collected data into actionable intelligence",
+      "config": {
+        "agent_type": "intelligence_analyst",
+        "system_prompt": "Analyze data collected by drone swarms to generate actionable intelligence. Identify patterns, anomalies, and insights. Provide clear recommendations and highlight critical findings that require immediate attention.",
+        "parameters": {"temperature": 0.3, "max_tokens": 1000}
+      },
+      "next_steps": []
+    }
+  ]'::jsonb,
+  true,
+  true,
+  '1.0'
+),
+
+-- RWA Tokenization Intelligence Pipeline
+(
+  'rwa-tokenization-pipeline',
+  'RWA Tokenization Intelligence Pipeline',
+  'Automate real-world asset tokenization with AI-powered valuation, compliance, and smart contract deployment',
+  'RWA Tokenization',
+  '🪙',
+  'advanced',
+  30,
+  ARRAY['tokenization', 'blockchain', 'valuation', 'compliance'],
+  'manual',
+  '{}'::jsonb,
+  '[
+    {
+      "id": "asset-valuation",
+      "type": "agent",
+      "name": "AI Asset Valuation",
+      "description": "Perform comprehensive asset valuation using AI analysis",
+      "config": {
+        "agent_type": "asset_valuator",
+        "system_prompt": "Conduct comprehensive real-world asset valuation. Analyze market data, comparable sales, asset condition, location factors, and future potential. Provide detailed valuation report with confidence intervals and risk assessments.",
+        "parameters": {"temperature": 0.2, "max_tokens": 2000}
+      },
+      "next_steps": ["compliance-check"]
+    },
+    {
+      "id": "compliance-check",
+      "type": "agent",
+      "name": "Regulatory Compliance Analysis",
+      "description": "Verify regulatory compliance for tokenization",
+      "config": {
+        "agent_type": "compliance_analyzer",
+        "system_prompt": "Analyze regulatory requirements for asset tokenization. Check compliance with securities laws, KYC/AML requirements, and jurisdiction-specific regulations. Identify any compliance gaps and recommend remediation steps.",
+        "parameters": {"temperature": 0.1, "max_tokens": 1500}
+      },
+      "next_steps": ["smart-contract-generation"]
+    },
+    {
+      "id": "smart-contract-generation",
+      "type": "code_generation",
+      "name": "Smart Contract Generation",
+      "description": "Generate secure smart contracts for asset tokenization",
+      "config": {
+        "contract_type": "erc721_asset_token",
+        "security_features": ["multi_sig", "time_locks", "access_control"],
+        "audit_requirements": true,
+        "blockchain": "ethereum"
+      },
+      "next_steps": ["tokenization-deployment"]
+    },
+    {
+      "id": "tokenization-deployment",
+      "type": "custom",
+      "name": "Tokenization Deployment",
+      "description": "Deploy tokenization infrastructure and mint tokens",
+      "config": {
+        "deployment_type": "automated_tokenization",
+        "verification_steps": true,
+        "escrow_setup": true,
+        "metadata_generation": true
+      },
+      "next_steps": []
+    }
+  ]'::jsonb,
+  true,
+  true,
+  '1.0'
+),
+
+-- Data Center Intelligence Hub
+(
+  'data-center-optimization',
+  'Data Center Intelligence Hub',
+  'Optimize data center operations with AI-powered energy management, predictive maintenance, and workload distribution',
+  'Data Centers',
+  '🏢',
+  'intermediate',
+  15,
+  ARRAY['data-center', 'energy', 'optimization', 'monitoring'],
+  'schedule',
+  '{"interval": "15m"}'::jsonb,
+  '[
+    {
+      "id": "energy-monitoring",
+      "type": "custom",
+      "name": "Real-Time Energy Monitoring",
+      "description": "Monitor data center energy consumption and efficiency",
+      "config": {
+        "monitoring_points": ["servers", "cooling", "networking", "storage", "lighting"],
+        "metrics": ["power_consumption", "pue", "temperature", "humidity"],
+        "real_time_alerts": true
+      },
+      "next_steps": ["workload-analysis"]
+    },
+    {
+      "id": "workload-analysis",
+      "type": "data_analysis",
+      "name": "Workload Pattern Analysis",
+      "description": "Analyze compute workload patterns and resource utilization",
+      "config": {
+        "analysis_type": "workload_optimization",
+        "metrics": ["cpu_utilization", "memory_usage", "network_traffic", "storage_io"],
+        "prediction_models": true,
+        "capacity_planning": true
+      },
+      "next_steps": ["optimization-recommendations"]
+    },
+    {
+      "id": "optimization-recommendations",
+      "type": "agent",
+      "name": "AI Optimization Engine",
+      "description": "Generate data center optimization recommendations",
+      "config": {
+        "agent_type": "datacenter_optimizer",
+        "system_prompt": "Analyze data center performance metrics to generate optimization recommendations. Focus on energy efficiency, cooling optimization, workload distribution, and predictive maintenance. Provide specific, actionable recommendations with expected impact.",
+        "parameters": {"temperature": 0.3, "max_tokens": 1200}
+      },
+      "next_steps": ["automated-adjustments"]
+    },
+    {
+      "id": "automated-adjustments",
+      "type": "custom",
+      "name": "Automated System Adjustments",
+      "description": "Implement approved optimizations automatically",
+      "config": {
+        "function_name": "save_data",
+        "adjustment_types": ["cooling_optimization", "workload_migration", "power_management"],
+        "safety_checks": true,
+        "rollback_capability": true
+      },
+      "next_steps": []
+    }
+  ]'::jsonb,
+  true,
+  true,
+  '1.0'
+),
+
+-- Medical Device Intelligence Network
+(
+  'medical-device-intelligence',
+  'Medical Device Intelligence Network',
+  'Monitor and optimize medical device performance with AI-powered diagnostics and predictive maintenance',
+  'Medical Devices',
+  '🏥',
+  'advanced',
+  25,
+  ARRAY['medical', 'healthcare', 'diagnostics', 'monitoring'],
+  'event',
+  '{"event_type": "device_data_update"}'::jsonb,
+  '[
+    {
+      "id": "device-monitoring",
+      "type": "custom",
+      "name": "Medical Device Monitoring",
+      "description": "Monitor medical device performance and patient data",
+      "config": {
+        "function_name": "fetch_data",
+        "device_types": ["ventilators", "monitors", "infusion_pumps", "imaging_equipment"],
+        "monitoring_frequency": "1m",
+        "patient_safety_alerts": true,
+        "hipaa_compliance": true
+      },
+      "next_steps": ["diagnostic-analysis"]
+    },
+    {
+      "id": "diagnostic-analysis",
+      "type": "agent",
+      "name": "AI Diagnostic Analysis",
+      "description": "Analyze device data for diagnostic insights",
+      "config": {
+        "agent_type": "medical_diagnostician",
+        "system_prompt": "Analyze medical device data to identify patterns, anomalies, and diagnostic insights. Focus on patient safety, device performance, and early warning indicators. Maintain strict medical accuracy and highlight any critical findings requiring immediate attention.",
+        "parameters": {"temperature": 0.1, "max_tokens": 1500}
+      },
+      "next_steps": ["predictive-maintenance"]
+    },
+    {
+      "id": "predictive-maintenance",
+      "type": "data_analysis",
+      "name": "Predictive Maintenance Analysis",
+      "description": "Predict maintenance needs for medical devices",
+      "config": {
+        "analysis_type": "medical_device_maintenance",
+        "failure_prediction": true,
+        "maintenance_scheduling": true,
+        "compliance_tracking": true,
+        "criticality_assessment": true
+      },
+      "next_steps": ["clinical-recommendations"]
+    },
+    {
+      "id": "clinical-recommendations",
+      "type": "agent",
+      "name": "Clinical Decision Support",
+      "description": "Generate clinical recommendations based on device data",
+      "config": {
+        "agent_type": "clinical_advisor",
+        "system_prompt": "Provide clinical decision support based on medical device data analysis. Generate evidence-based recommendations for patient care, device optimization, and safety protocols. Ensure all recommendations follow medical best practices and regulatory guidelines.",
+        "parameters": {"temperature": 0.1, "max_tokens": 1000}
+      },
+      "next_steps": []
+    }
+  ]'::jsonb,
+  true,
+  true,
+  '1.0'
+),
+
+-- Product Lifecycle Intelligence Hub
+(
+  'product-lifecycle-intelligence',
+  'Product Lifecycle Intelligence Hub',
+  'Track and optimize product lifecycle from design to disposal with AI-powered insights and sustainability metrics',
+  'Product Lifecycle',
+  '♻️',
+  'intermediate',
+  18,
+  ARRAY['lifecycle', 'sustainability', 'optimization', 'tracking'],
+  'schedule',
+  '{"interval": "6h"}'::jsonb,
+  '[
+    {
+      "id": "lifecycle-tracking",
+      "type": "custom",
+      "name": "Product Lifecycle Tracking",
+      "description": "Track products through all lifecycle stages",
+      "config": {
+        "stages": ["design", "manufacturing", "distribution", "usage", "maintenance", "disposal"],
+        "tracking_methods": ["rfid", "qr_codes", "iot_sensors", "blockchain"],
+        "data_collection": true
+      },
+      "next_steps": ["sustainability-analysis"]
+    },
+    {
+      "id": "sustainability-analysis",
+      "type": "data_analysis",
+      "name": "Sustainability Impact Analysis",
+      "description": "Analyze environmental impact across product lifecycle",
+      "config": {
+        "analysis_type": "lifecycle_assessment",
+        "metrics": ["carbon_footprint", "water_usage", "waste_generation", "energy_consumption"],
+        "benchmarking": true,
+        "improvement_opportunities": true
+      },
+      "next_steps": ["optimization-recommendations"]
+    },
+    {
+      "id": "optimization-recommendations",
+      "type": "agent",
+      "name": "Lifecycle Optimization Engine",
+      "description": "Generate product lifecycle optimization recommendations",
+      "config": {
+        "agent_type": "lifecycle_optimizer",
+        "system_prompt": "Analyze product lifecycle data to identify optimization opportunities. Focus on sustainability improvements, cost reduction, quality enhancement, and circular economy principles. Provide specific recommendations for each lifecycle stage.",
+        "parameters": {"temperature": 0.3, "max_tokens": 1500}
+      },
+      "next_steps": ["circular-economy-planning"]
+    },
+    {
+      "id": "circular-economy-planning",
+      "type": "agent",
+      "name": "Circular Economy Planning",
+      "description": "Develop circular economy strategies for products",
+      "config": {
+        "agent_type": "circular_economy_planner",
+        "system_prompt": "Develop circular economy strategies for product lifecycle optimization. Focus on reuse, recycling, remanufacturing, and waste reduction. Create actionable plans for implementing circular economy principles throughout the product lifecycle.",
+        "parameters": {"temperature": 0.4, "max_tokens": 1200}
+      },
+      "next_steps": []
+    }
+  ]'::jsonb,
+  true,
+  true,
+  '1.0'
+),
+
+-- Scientific Research Acceleration Hub
+(
+  'scientific-research-acceleration',
+  'Scientific Research Acceleration Hub',
+  'Accelerate scientific research with AI-powered hypothesis generation, experiment design, and data analysis',
+  'Scientific R&D',
+  '🔬',
+  'advanced',
+  28,
+  ARRAY['research', 'science', 'experimentation', 'discovery'],
+  'manual',
+  '{}'::jsonb,
+  '[
+    {
+      "id": "literature-analysis",
+      "type": "agent",
+      "name": "Scientific Literature Analysis",
+      "description": "Analyze scientific literature for research insights",
+      "config": {
+        "agent_type": "research_analyst",
+        "system_prompt": "Analyze scientific literature to identify research gaps, emerging trends, and potential breakthrough opportunities. Synthesize findings from multiple sources and generate novel research hypotheses based on current knowledge and identified gaps.",
+        "parameters": {"temperature": 0.4, "max_tokens": 2000}
+      },
+      "next_steps": ["hypothesis-generation"]
+    },
+    {
+      "id": "hypothesis-generation",
+      "type": "agent",
+      "name": "AI Hypothesis Generation",
+      "description": "Generate novel research hypotheses using AI",
+      "config": {
+        "agent_type": "hypothesis_generator",
+        "system_prompt": "Generate novel, testable research hypotheses based on literature analysis and scientific principles. Ensure hypotheses are innovative, feasible, and have potential for significant scientific impact. Provide rationale and expected outcomes for each hypothesis.",
+        "parameters": {"temperature": 0.5, "max_tokens": 1500}
+      },
+      "next_steps": ["experiment-design"]
+    },
+    {
+      "id": "experiment-design",
+      "type": "agent",
+      "name": "Experiment Design Optimization",
+      "description": "Design optimal experiments to test hypotheses",
+      "config": {
+        "agent_type": "experiment_designer",
+        "system_prompt": "Design rigorous experiments to test research hypotheses. Consider statistical power, control variables, sample sizes, and methodological best practices. Optimize for efficiency, accuracy, and reproducibility while minimizing costs and ethical concerns.",
+        "parameters": {"temperature": 0.3, "max_tokens": 1800}
+      },
+      "next_steps": ["data-analysis-pipeline"]
+    },
+    {
+      "id": "data-analysis-pipeline",
+      "type": "data_analysis",
+      "name": "Advanced Data Analysis",
+      "description": "Perform sophisticated analysis of experimental data",
+      "config": {
+        "analysis_type": "scientific_research",
+        "methods": ["statistical_analysis", "machine_learning", "pattern_recognition", "visualization"],
+        "significance_testing": true,
+        "reproducibility_checks": true
+      },
+      "next_steps": ["research-synthesis"]
+    },
+    {
+      "id": "research-synthesis",
+      "type": "agent",
+      "name": "Research Synthesis & Publication",
+      "description": "Synthesize findings and prepare research outputs",
+      "config": {
+        "agent_type": "research_synthesizer",
+        "system_prompt": "Synthesize experimental results and analysis into coherent research findings. Identify implications, limitations, and future research directions. Prepare publication-ready summaries and identify potential applications of the research.",
+        "parameters": {"temperature": 0.3, "max_tokens": 2000}
+      },
+      "next_steps": []
+    }
+  ]'::jsonb,
+  true,
+  true,
+  '1.0'
+),
+
+-- Business Operations Intelligence Hub
+(
+  'business-operations-intelligence',
+  'Business Operations Intelligence Hub',
+  'Optimize business operations with AI-powered process automation, performance monitoring, and strategic insights',
+  'Business Operations',
+  '📊',
+  'intermediate',
+  16,
+  ARRAY['operations', 'automation', 'analytics', 'optimization'],
+  'schedule',
+  '{"interval": "2h"}'::jsonb,
+  '[
+    {
+      "id": "process-monitoring",
+      "type": "custom",
+      "name": "Business Process Monitoring",
+      "description": "Monitor key business processes and KPIs",
+      "config": {
+        "processes": ["sales", "marketing", "customer_service", "finance", "hr", "operations"],
+        "kpis": ["revenue", "conversion_rates", "customer_satisfaction", "efficiency_metrics"],
+        "real_time_dashboards": true
+      },
+      "next_steps": ["performance-analysis"]
+    },
+    {
+      "id": "performance-analysis",
+      "type": "data_analysis",
+      "name": "Performance Analytics",
+      "description": "Analyze business performance across all operations",
+      "config": {
+        "analysis_type": "business_intelligence",
+        "metrics": ["productivity", "profitability", "growth_rates", "market_share"],
+        "trend_analysis": true,
+        "benchmarking": true,
+        "forecasting": true
+      },
+      "next_steps": ["optimization-opportunities"]
+    },
+    {
+      "id": "optimization-opportunities",
+      "type": "agent",
+      "name": "Business Optimization Engine",
+      "description": "Identify and prioritize optimization opportunities",
+      "config": {
+        "agent_type": "business_optimizer",
+        "system_prompt": "Analyze business performance data to identify optimization opportunities. Focus on process improvements, cost reduction, revenue enhancement, and strategic advantages. Prioritize recommendations based on impact, feasibility, and resource requirements.",
+        "parameters": {"temperature": 0.3, "max_tokens": 1500}
+      },
+      "next_steps": ["strategic-recommendations"]
+    },
+    {
+      "id": "strategic-recommendations",
+      "type": "agent",
+      "name": "Strategic Intelligence",
+      "description": "Generate strategic business recommendations",
+      "config": {
+        "agent_type": "strategic_advisor",
+        "system_prompt": "Provide strategic business recommendations based on performance analysis and market insights. Consider competitive landscape, market trends, and organizational capabilities. Focus on sustainable growth, competitive advantage, and long-term value creation.",
+        "parameters": {"temperature": 0.4, "max_tokens": 1800}
+      },
+      "next_steps": []
+    }
+  ]'::jsonb,
+  true,
+  true,
+  '1.0'
+)
+ON CONFLICT (template_id) DO UPDATE SET
+  name = EXCLUDED.name,
+  description = EXCLUDED.description,
+  category = EXCLUDED.category,
+  icon = EXCLUDED.icon,
+  difficulty = EXCLUDED.difficulty,
+  estimated_time = EXCLUDED.estimated_time,
+  tags = EXCLUDED.tags,
+  trigger_type = EXCLUDED.trigger_type,
+  trigger_config = EXCLUDED.trigger_config,
+  steps = EXCLUDED.steps,
+  is_active = EXCLUDED.is_active,
+  is_featured = EXCLUDED.is_featured,
+  version = EXCLUDED.version,
+  updated_at = now();

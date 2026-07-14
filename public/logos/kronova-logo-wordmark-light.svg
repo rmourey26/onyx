@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 60">
+  <defs>
+    <linearGradient id="lightGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#0047AB"/>
+      <stop offset="100%" style="stop-color:#00CED1"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Primary wordmark - ultra-light, transcendent -->
+  <text x="0" y="40" font-family="system-ui, -apple-system, sans-serif" font-size="42" font-weight="100" letter-spacing="16" fill="url(#lightGradient)">KRONOVA</text>
+  
+  <!-- Subtle accent line -->
+  <line x1="0" y1="52" x2="290" y2="52" stroke="url(#lightGradient)" stroke-width="0.5" opacity="0.3"/>
+</svg>

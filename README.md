@@ -1,85 +1,93 @@
-<a href="https://onyx-rho-pink.vercel.app/">
-  <img alt="Onyx open graph image." src="https://quantumone.b-cdn.net/onyx-git/og-image.jpg">
-  <h1 align="center">Onyx MVP Template</h1>
-</a>
+# Kronova Asset Intelligence Platform
 
-<a href="https://securityheaders.com/">
-  <img alt="Onyx security score image." src="https://quantumone.b-cdn.net/onyx-git/onyx-security-score-ls.jpg">
-  <h2 align="center">Onyx SecurityHeaders.com Score</h2>
-</a>
+Welcome to the official open-source frontend and orchestration layer for the Kronova Asset Intelligence ecosystem.
 
+This repository provides a production-ready Next.js application designed to orchestrate Real-World Asset (RWA) tokenization, run complex AI Agent workflows, and manage an OAuth 2.1 MCP server. It includes our comprehensive 44-field asset schema and a library of integrated AI tools out of the box.
 
-### What is Onyx?
-- Onyx is a turnkey, full stack NextJS 14+ progressive web app written in Typescript that includes role based access control (RBAC),
-complete Supabase SSR Auth and DB integration, Zod validation, Tanstack React Query, Rust serverless function runtime and API, Markdown pages with ability to insert React components, React Hook form, and more. Fork, customize, and deploy on Vercel or elsewhere to have your MVP up and running in a few days or less. Stack details are below. 
+---
 
-### Stack and Features
-- NextJS 14 App Router in Typescript 
-- Supabase 
-  - SSR Auth with
-    - Fully configured email/password signup, login, oauth, PKCE and confirm routes 
-    - middleware 
-    - server actions
-    - typed Auth & DB clients
-    - readOnly userSession clients
-  - Postgres DB with CRUD functions configured
-    - User account and profile management configured 
-    - RBAC configured admin dashboard with data visualization, members administration and todo lists
-    - Contact form with toast, Zod validation, server side table insert  
-- TanStack React Query, Table, and Dev Tools
-  - Demo SSR with Supabase DB & cache helpers 
-- Zod data validation, schemas, event handling.
-- Shadcn-UI, Radix-UI primitives, Tailwind CSS
-- Markdown pages with Next/MDX - create page.mdx and layout.tsx for each markdown page
-- Next-PWA
-- Next Compose Plugins  
-- React Hook Form
-- OpenAI playground UI
-- Onboarding, signIn/signUp pages
-- Podcast UI
-- CookieButton component configured to work with Consent Manager from Termly free plan. Just create a free Termly account, add your Script tag on the app/layout page using Next Script and then add your CookieButton to your app/layout just above the ThemeProvider and just below your termly Script tag.  
-- Custom Formik Components with MUI are not used in app but code is solid for use in a "MUI Base X TailwindCSS config". Onyx is NOT currently configured for MUI nor MUI Base X TailwindCSS. 
-- Lucide React Icons with many brand SVGs ready for your props 
-- More..
+## Architecture: Open Orchestration, Secure Execution
 
-### API 
-- [Rust runtime for Vercel Serverless Functions](https://github.com/vercel-community/rust)
+We believe that AI orchestration and UI layers should be open, flexible, and community-driven. However, we also know that executing legally binding financial state changes and managing post-quantum secure cryptographic settlement requires a zero-trust environment.
 
-### Getting started with Onyx:
-- First, configure your environment
-  - Create a file named .env.local in project root
-  - Create a Supabase account and add the following to your env file
-    - NEXT_PUBLIC_SUPABASE_ANON_KEY="Your supabase anon key"
-    - SUPABASE_JWT_SECRET="Your supabase JWT secret"
-    - NEXT_PUBLIC_SUPABASE_URL="Your supabase project URL"
-    - SUPABASE_SERVIC_ROLE_KEY="Your supabase service role key"
+To give developers complete freedom over their UI without compromising enterprise security, we utilize a **Decoupled Settlement Architecture**:
 
-  - Ensure your Supabase tables match the tables and types found in '@/lib/supabase'.
-  - Add authorized development and production URL's to Supabase URL config. 
-### Run  
-- Development server:
+### 1. The Orchestrator (This Repository)
+
+Everything you see here is open-source under the **Apache 2.0 License**. You have complete freedom to run this locally, deploy it to your own infrastructure, add new AI models, or fork the UI. It handles the "thinking" — the AI routing, the data ingestion, and the payload construction.
+
+### 2. The Engine: AetherNet QUAS (The Settlement Layer)
+
+When your AI agents need to stop "thinking" and start "executing" (e.g., finalizing an RWA tokenization, moving funds, or interacting with secure hardware enclaves), this repository relies on the **AetherNet QUAS API**.
+
+AetherNet acts as a black-box secure gateway, utilizing Canton smart contracts to ensure MEV resistance and post-quantum security.
+
+---
+
+## Getting Started
+
+You can run the entire intelligence platform locally without an AetherNet subscription.
+
+### 1. Clone and Install
 
 ```bash
-npm i && npm run dev
-# or
-yarn i && yarn run dev
-# or
-pnpm i && pnpm dev
-# or
-bun i && bun dev
+git clone https://github.com/kronova/asset-intelligence-platform.git
+cd asset-intelligence-platform
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Configure Environment Variables
 
+Copy the `.env.example` file. For local development and testing, you can leave the AetherNet variables blank or use the provided sandbox endpoints.
 
-### Deploy on Vercel
+```bash
+cp .env.example .env.local
+```
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Frmourey26%2Fonyx%2Ftree%2Fmain)
+### 3. Run the Development Server
 
+```bash
+npm run dev
+```
 
-### Reference/Credit
-- @chensokheng
+---
 
+## Going to Production: The AetherNet QUAS API
 
-### Tips/Support
-<a href="https://www.buymeacoffee.com/rmoureyjr" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="51" width="217"></a>
+While the open-source sandbox is perfect for building UI and testing multi-agent workflows, public Web3 infrastructure cannot execute legally binding financial contracts or interact with Trusted Execution Environments (TEEs).
+
+To move your workflows into production and unlock secure machine-to-machine settlement, this platform integrates seamlessly with the **AetherNet QUAS API**.
+
+### Enterprise Pilot Program
+
+We are currently onboarding a select group of institutional partners for the AetherNet Enterprise Pilot. Pilot partners receive:
+
+- Dedicated API keys for the AetherNet Canton settlement layer.
+- Custom K8s/Docker deployment configurations.
+- Direct engineering support for integrating our 44-field RWA schema with your existing compliance engines.
+
+**[Apply for the Enterprise Pilot Program Here &rarr;](https://kronova.io/enterprise-pilot)**
+
+---
+
+## Contributing
+
+This platform is actively evolving, and we welcome community contributions! We are currently looking for help with:
+
+- Adding support for localized, open-weight LLMs.
+- Expanding the 44-field RWA schema for new asset classes.
+- Extending the OAuth 2.1 MCP server capabilities.
+
+Please see our [CONTRIBUTING.md](./CONTRIBUTING.md) for guidelines on submitting Pull Requests.
+
+---
+
+## License
+
+This project is licensed under the **Apache License 2.0**. See the [LICENSE](./LICENSE) file for the full text.
+
+Apache 2.0 includes an explicit patent rights grant, meaning that contributors who submit code to this repository grant you a royalty-free license to any patents they hold that are necessarily infringed by their contribution.
+
+## Trademark Notice
+
+The Apache 2.0 license governs the source code in this repository. It does not grant permission to use the **Kronova** or **AetherNet** trade names, trademarks, or service marks in any way that implies endorsement or affiliation beyond describing the origin of the software. Forks and derivative works must remove all Kronova and AetherNet branding.

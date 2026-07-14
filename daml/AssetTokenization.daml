@@ -1,0 +1,301 @@
+-- Kronova Asset Tokenization Smart Contracts for Canton Network
+-- DAML 2.x compliant for privacy-preserving enterprise tokenization
+
+module AssetTokenization where
+
+import DA.Date
+import DA.Time
+import DA.Finance.Types
+import DA.Map (Map)
+import qualified DA.Map as Map
+
+-- Asset Tokenization Contract
+-- Represents a tokenized real-world asset with fractional ownership
+template TokenizedAsset
+  with
+    issuer : Party
+    assetId : Text
+    assetName : Text
+    assetType : Text
+    totalShares : Int
+    pricePerShare : Decimal
+    totalValuation : Decimal
+    complianceJurisdiction : Text
+    secondaryMarketEnabled : Bool
+    metadata : Map Text Text
+    createdAt : Time
+    observers : [Party]
+  where
+    signatory issuer
+    observer observers
+
+    -- Ensure valid tokenization parameters
+    ensure
+      totalShares > 0 &&
+      pricePerShare > 0.0 &&
+      totalValuation > 0.0
+
+    -- Create fractional ownership shares
+    choice CreateFractionalShares : [ContractId FractionalShare]
+      with
+        buyers : [Party]
+        sharesPerBuyer : [Int]
+      controller issuer
+      do
+        -- Validate total shares match
+        assert (sum sharesPerBuyer == totalShares)
+        assert (length buyers == length sharesPerBuyer)
+        
+        -- Create individual fractional share contracts
+        forA (zip buyers sharesPerBuyer) $ \(buyer, shares) -> do
+          create FractionalShare with
+            owner = buyer
+            issuer
+            assetId
+            assetName
+            numberOfShares = shares
+            pricePerShare
+            purchaseDate = createdAt
+            transferable = secondaryMarketEnabled
+            complianceJurisdiction
+            metadata
+
+    -- Update asset valuation
+    choice UpdateValuation : ContractId TokenizedAsset
+      with
+        newValuation : Decimal
+        newPricePerShare : Decimal
+        valuationDate : Time
+      controller issuer
+      do
+        create this with
+          totalValuation = newValuation
+          pricePerShare = newPricePerShare
+          metadata = Map.insert "lastValuationDate" (show valuationDate) metadata
+
+    -- Enable/disable secondary market trading
+    choice ToggleSecondaryMarket : ContractId TokenizedAsset
+      with
+        enabled : Bool
+      controller issuer
+      do
+        create this with secondaryMarketEnabled = enabled
+
+-- Fractional Share Contract
+-- Represents individual ownership of fractional asset shares
+template FractionalShare
+  with
+    owner : Party
+    issuer : Party
+    assetId : Text
+    assetName : Text
+    numberOfShares : Int
+    pricePerShare : Decimal
+    purchaseDate : Time
+    transferable : Bool
+    complianceJurisdiction : Text
+    metadata : Map Text Text
+  where
+    signatory issuer, owner
+
+    ensure numberOfShares > 0
+
+    -- Transfer shares to another party
+    choice TransferShares : ContractId FractionalShare
+      with
+        newOwner : Party
+        shareCount : Int
+        transferPrice : Decimal
+      controller owner
+      do
+        -- Ensure transferable and valid share count
+        assert transferable
+        assert (shareCount > 0 && shareCount <= numberOfShares)
+        
+        -- Create new share contract for buyer
+        create FractionalShare with
+          owner = newOwner
+          numberOfShares = shareCount
+          purchaseDate = purchaseDate
+          pricePerShare = transferPrice
+          ..
+        
+        -- Return remaining shares to seller if partial transfer
+        if shareCount < numberOfShares
+          then do
+            create this with numberOfShares = numberOfShares - shareCount
+            return ()
+          else return ()
+
+    -- Sell shares back to issuer
+    choice SellToIssuer : ()
+      with
+        sellPrice : Decimal
+      controller owner
+      do
+        -- Execute sale and archive contract
+        create ShareSaleRecord with
+          seller = owner
+          buyer = issuer
+          assetId
+          numberOfShares
+          pricePerShare = sellPrice
+          saleDate = purchaseDate
+          totalValue = (intToDecimal numberOfShares) * sellPrice
+        return ()
+
+    -- Claim dividends/revenue share
+    choice ClaimDividend : ContractId DividendPayment
+      with
+        dividendPerShare : Decimal
+        paymentDate : Time
+      controller issuer
+      do
+        create DividendPayment with
+          recipient = owner
+          issuer
+          assetId
+          numberOfShares
+          dividendPerShare
+          totalPayment = (intToDecimal numberOfShares) * dividendPerShare
+          paymentDate
+          status = "pending"
+
+-- Dividend Payment Contract
+template DividendPayment
+  with
+    recipient : Party
+    issuer : Party
+    assetId : Text
+    numberOfShares : Int
+    dividendPerShare : Decimal
+    totalPayment : Decimal
+    paymentDate : Time
+    status : Text
+  where
+    signatory issuer
+    observer recipient
+
+    -- Complete dividend payment
+    choice CompleteDividendPayment : ()
+      controller issuer
+      do
+        -- Mark as paid and archive
+        return ()
+
+-- Share Sale Record (audit trail)
+template ShareSaleRecord
+  with
+    seller : Party
+    buyer : Party
+    assetId : Text
+    numberOfShares : Int
+    pricePerShare : Decimal
+    saleDate : Time
+    totalValue : Decimal
+  where
+    signatory seller, buyer
+
+-- Canton Privacy Pool for Confidential Asset Trading
+template PrivacyPoolAsset
+  with
+    poolOperator : Party
+    assetId : Text
+    totalLiquidity : Decimal
+    participants : [Party]
+    complianceRules : Map Text Text
+    createdAt : Time
+  where
+    signatory poolOperator
+    observer participants
+
+    -- Add liquidity to privacy pool
+    choice AddLiquidity : ContractId PrivacyPoolAsset
+      with
+        amount : Decimal
+        contributor : Party
+      controller contributor
+      do
+        create this with
+          totalLiquidity = totalLiquidity + amount
+          participants = contributor :: participants
+
+    -- Execute confidential trade within privacy pool
+    choice ExecuteConfidentialTrade : ContractId ShareSaleRecord
+      with
+        seller : Party
+        buyer : Party
+        shareCount : Int
+        tradePrice : Decimal
+        tradeDate : Time
+      controller poolOperator
+      do
+        -- Canton ensures transaction privacy
+        create ShareSaleRecord with
+          seller
+          buyer
+          assetId
+          numberOfShares = shareCount
+          pricePerShare = tradePrice
+          saleDate = tradeDate
+          totalValue = (intToDecimal shareCount) * tradePrice
+
+-- Helper function to convert Int to Decimal
+intToDecimal : Int -> Decimal
+intToDecimal n = fromIntegral n
+
+-- OAuth 2.1 MCP Integration Contract
+template OAuthAssetAccess
+  with
+    resourceOwner : Party
+    clientApp : Party
+    assetId : Text
+    scopes : [Text]
+    accessToken : Text
+    expiresAt : Time
+    issuer : Party
+  where
+    signatory issuer, resourceOwner
+    observer clientApp
+
+    ensure not (null scopes)
+
+    -- Verify access token and grant permissions
+    choice GrantAccess : Bool
+      with
+        requestedScope : Text
+        currentTime : Time
+      controller clientApp
+      do
+        -- Check token validity and scope
+        if currentTime < expiresAt && elem requestedScope scopes
+          then return True
+          else return False
+
+    -- Revoke access token
+    choice RevokeAccess : ()
+      controller resourceOwner
+      do return ()
+
+-- Voice Agent Authorization Contract
+template VoiceAgentAuth
+  with
+    user : Party
+    agentId : Text
+    assetId : Text
+    authorizedActions : [Text]
+    validUntil : Time
+    issuer : Party
+  where
+    signatory user, issuer
+    
+    -- Execute voice-authorized action
+    choice ExecuteVoiceAction : Bool
+      with
+        action : Text
+        currentTime : Time
+      controller user
+      do
+        if currentTime < validUntil && elem action authorizedActions
+          then return True
+          else return False

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 56">
+  <defs>
+    <linearGradient id="footerDarkGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0047AB"/>
+      <stop offset="50%" stop-color="#0088CC"/>
+      <stop offset="100%" stop-color="#00CED1"/>
+    </linearGradient>
+    <linearGradient id="footerDarkGradientRev" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#00CED1"/>
+      <stop offset="100%" stop-color="#0047AB"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Footer icon for dark backgrounds -->
+  <g transform="translate(4, 4)">
+    <circle cx="24" cy="24" r="22" fill="none" stroke="url(#footerDarkGradient)" stroke-width="2"/>
+    <path d="M15 10 L15 38 M15 24 L33 10 M15 24 L33 38" 
+          stroke="url(#footerDarkGradient)" stroke-width="3" stroke-linecap="round" fill="none"/>
+    <circle cx="15" cy="10" r="3" fill="url(#footerDarkGradient)"/>
+    <circle cx="15" cy="24" r="3.5" fill="url(#footerDarkGradient)"/>
+    <circle cx="15" cy="38" r="3" fill="url(#footerDarkGradient)"/>
+    <circle cx="33" cy="10" r="3" fill="url(#footerDarkGradientRev)"/>
+    <circle cx="33" cy="38" r="3" fill="url(#footerDarkGradientRev)"/>
+  </g>
+  
+  <!-- White wordmark for dark footer backgrounds -->
+  <text x="60" y="30" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" 
+        font-size="22" font-weight="700" letter-spacing="0.5" fill="#FFFFFF">
+    KRONOVA
+  </text>
+  <text x="62" y="46" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" 
+        font-size="8" font-weight="500" letter-spacing="1.5" fill="#9CA3AF">
+    INTELLIGENT SYSTEMS
+  </text>
+</svg>

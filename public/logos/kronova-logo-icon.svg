@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="kronovaIconGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0047AB"/>
+      <stop offset="50%" style="stop-color:#0088CC"/>
+      <stop offset="100%" style="stop-color:#00CED1"/>
+    </linearGradient>
+    <linearGradient id="kronovaIconGradientReverse" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#00CED1"/>
+      <stop offset="100%" style="stop-color:#0047AB"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background circle with subtle glow -->
+  <circle cx="50" cy="50" r="39.625" fill="none" stroke="url(#kronovaIconGradient)" stroke-width="3" filter="url(#glow)"/>
+  
+  <!-- Using path element instead of individual lines to ensure K letterform renders correctly with all components visible -->
+  <!-- Abstract K with neural network aesthetic -->
+  <g transform="translate(50, 50)">
+    <!-- K letterform as unified path -->
+    <path d="M-15,-25 L-15,25 M-15,0 L20,-25 M-15,0 L20,25" 
+          stroke="url(#kronovaIconGradient)" stroke-width="5" stroke-linecap="round" fill="none"/>
+    
+    <!-- Connection nodes -->
+    <circle cx="-15" cy="-25" r="5" fill="url(#kronovaIconGradient)"/>
+    <circle cx="-15" cy="0" r="6" fill="url(#kronovaIconGradient)"/>
+    <circle cx="-15" cy="25" r="5" fill="url(#kronovaIconGradient)"/>
+    <circle cx="20" cy="-25" r="5" fill="url(#kronovaIconGradientReverse)"/>
+    <circle cx="20" cy="25" r="5" fill="url(#kronovaIconGradientReverse)"/>
+  </g>
+</svg>

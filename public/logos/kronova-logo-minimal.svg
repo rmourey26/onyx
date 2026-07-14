@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="kronovaMinimalGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0047AB"/>
+      <stop offset="50%" style="stop-color:#0088CC"/>
+      <stop offset="100%" style="stop-color:#00CED1"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Simple K monogram with crown-like top -->
+  <g transform="translate(50, 50)">
+    <!-- Main K structure -->
+    <path d="M-20 -35 L-20 35 M-20 0 L25 -35 M-20 0 L25 35" 
+          stroke="url(#kronovaMinimalGradient)" stroke-width="8" stroke-linecap="round" fill="none"/>
+    
+    <!-- Crown accent at top -->
+    <path d="M-25 -42 L-20 -35 L-15 -42" 
+          stroke="url(#kronovaMinimalGradient)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </g>
+</svg>

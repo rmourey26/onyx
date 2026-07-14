@@ -1,46 +1,85 @@
-{
-  "name": "Onyx",
-  "short_name": "Onyx",
-  "description": "A batteries included MVP Template.",
-  "start_url": "/", 
+.",
+  "start_url": "/",
   "display": "standalone",
-  "background_color": "#fff",
+  "background_color": "#ffffff",
+  "theme_color": "#0047AB",
+  "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "images/touch/homescreen48.png",
-      "sizes": "48x48",
-      "type": "image/png"
-    },
-    {
-      "src": "images/touch/homescreen72.png",
+      "src": "/logos/kronova-logo-icon.svg",
       "sizes": "72x72",
-      "type": "image/png"
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
     },
     {
-      "src": "images/touch/homescreen96.png",
+      "src": "/logos/kronova-logo-icon.svg",
       "sizes": "96x96",
-      "type": "image/png"
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
     },
     {
-      "src": "images/touch/homescreen144.png",
+      "src": "/logos/kronova-logo-icon.svg",
+      "sizes": "128x128",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/logos/kronova-logo-icon.svg",
       "sizes": "144x144",
-      "type": "image/png"
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
     },
     {
-      "src": "images/touch/homescreen168.png",
-      "sizes": "168x168",
-      "type": "image/png"
+      "src": "/logos/kronova-logo-icon.svg",
+      "sizes": "152x152",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
     },
     {
-      "src": "images/touch/homescreen192.png",
+      "src": "/logos/kronova-logo-icon.svg",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/logos/kronova-logo-icon.svg",
+      "sizes": "384x384",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/logos/kronova-logo-icon.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
     }
   ],
-  "related_applications": [
+  "shortcuts": [
     {
-      "platform": "play",
-      "url": "https://play.google.com/store/apps/details?id=yourApp"
+      "name": "Dashboard",
+      "short_name": "Dashboard",
+      "description": "View your AI dashboard",
+      "url": "/dashboard",
+      "icons": [{ "src": "/logos/kronova-logo-icon.svg", "sizes": "192x192" }]
+    },
+    {
+      "name": "AI Business Suite",
+      "short_name": "AI Suite",
+      "description": "Chat, code, create AI agents who continuously learn your business",
+      "url": "/ai-suite",
+      "icons": [{ "src": "/logos/kronova-logo-icon.svg", "sizes": "192x192" }]
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshots/dashboard.png",
+      "sizes": "1280x720",
+      "type": "image/png"
+    },
+    {
+      "src": "/screenshots/card-view.png",
+      "sizes": "1280x720",
+      "type": "image/png"
     }
   ]
 }

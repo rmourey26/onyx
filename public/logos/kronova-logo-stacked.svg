@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="kronovaStackedGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0047AB"/>
+      <stop offset="50%" style="stop-color:#0088CC"/>
+      <stop offset="100%" style="stop-color:#00CED1"/>
+    </linearGradient>
+    <linearGradient id="kronovaStackedGradientReverse" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#00CED1"/>
+      <stop offset="100%" style="stop-color:#0047AB"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Centered Icon -->
+  <g transform="translate(100, 70)">
+    <!-- Outer ring -->
+    <circle cx="0" cy="0" r="50" fill="none" stroke="url(#kronovaStackedGradient)" stroke-width="3"/>
+    
+    <!-- K shape -->
+    <line x1="-18" y1="-30" x2="-18" y2="30" stroke="url(#kronovaStackedGradient)" stroke-width="6" stroke-linecap="round"/>
+    <line x1="-18" y1="0" x2="25" y2="-30" stroke="url(#kronovaStackedGradient)" stroke-width="6" stroke-linecap="round"/>
+    <line x1="-18" y1="0" x2="25" y2="30" stroke="url(#kronovaStackedGradient)" stroke-width="6" stroke-linecap="round"/>
+    
+    <!-- Nodes -->
+    <circle cx="-18" cy="-30" r="6" fill="url(#kronovaStackedGradient)"/>
+    <circle cx="-18" cy="0" r="7" fill="url(#kronovaStackedGradient)"/>
+    <circle cx="-18" cy="30" r="6" fill="url(#kronovaStackedGradient)"/>
+    <circle cx="25" cy="-30" r="6" fill="url(#kronovaStackedGradientReverse)"/>
+    <circle cx="25" cy="30" r="6" fill="url(#kronovaStackedGradientReverse)"/>
+  </g>
+  
+  <!-- Wordmark -->
+  <text x="100" y="155" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="32" font-weight="700" fill="url(#kronovaStackedGradient)">
+    KRONOVA
+  </text>
+  
+  <!-- Tagline -->
+  <text x="100" y="175" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="400" fill="#6B7280" letter-spacing="1.5">
+    INTELLIGENT SYSTEMS
+  </text>
+</svg>

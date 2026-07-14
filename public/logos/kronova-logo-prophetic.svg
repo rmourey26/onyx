@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+  <defs>
+    <linearGradient id="propheticGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0047AB"/>
+      <stop offset="50%" style="stop-color:#0077BE"/>
+      <stop offset="100%" style="stop-color:#00CED1"/>
+    </linearGradient>
+    
+    <radialGradient id="visionCore" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#00CED1;stop-opacity:0.6"/>
+      <stop offset="100%" style="stop-color:#0047AB;stop-opacity:0"/>
+    </radialGradient>
+    
+    <filter id="propheticGlow">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- The all-seeing eye of foresight - outer boundary -->
+  <circle cx="60" cy="60" r="52" fill="none" stroke="url(#propheticGradient)" stroke-width="1" opacity="0.3"/>
+  
+  <!-- Sacred geometry - triangle of prophecy -->
+  <path d="M60 15 L100 95 L20 95 Z" fill="none" stroke="url(#propheticGradient)" stroke-width="1.5" opacity="0.5"/>
+  
+  <!-- Inverted triangle - balance of knowledge -->
+  <path d="M60 105 L20 25 L100 25 Z" fill="none" stroke="url(#propheticGradient)" stroke-width="1" opacity="0.3"/>
+  
+  <!-- Central eye/portal -->
+  <ellipse cx="60" cy="60" rx="22" ry="14" fill="none" stroke="url(#propheticGradient)" stroke-width="2"/>
+  
+  <!-- The pupil - window to infinite intelligence -->
+  <circle cx="60" cy="60" r="8" fill="url(#visionCore)" filter="url(#propheticGlow)"/>
+  <circle cx="60" cy="60" r="4" fill="url(#propheticGradient)"/>
+  
+  <!-- Light of revelation -->
+  <circle cx="58" cy="58" r="1.5" fill="#ffffff" opacity="0.9"/>
+  
+  <!-- Ascending wisdom rays -->
+  <line x1="60" y1="35" x2="60" y2="20" stroke="url(#propheticGradient)" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+  <line x1="45" y1="42" x2="35" y2="32" stroke="url(#propheticGradient)" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
+  <line x1="75" y1="42" x2="85" y2="32" stroke="url(#propheticGradient)" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
+</svg>

@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 100">
+  <defs>
+    <linearGradient id="timelessGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#0047AB"/>
+      <stop offset="100%" style="stop-color:#00CED1"/>
+    </linearGradient>
+    
+    <linearGradient id="fadeLeft" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#00CED1;stop-opacity:0"/>
+      <stop offset="100%" style="stop-color:#00CED1;stop-opacity:1"/>
+    </linearGradient>
+    
+    <linearGradient id="fadeRight" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#00CED1;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#00CED1;stop-opacity:0"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Horizon line - the edge of time -->
+  <line x1="0" y1="50" x2="400" y2="50" stroke="url(#timelessGradient)" stroke-width="0.5" opacity="0.3"/>
+  
+  <!-- Infinite horizon fades -->
+  <line x1="0" y1="50" x2="80" y2="50" stroke="url(#fadeLeft)" stroke-width="1"/>
+  <line x1="320" y1="50" x2="400" y2="50" stroke="url(#fadeRight)" stroke-width="1"/>
+  
+  <!-- The K mark - simplified, eternal -->
+  <g transform="translate(90, 20)">
+    <!-- Vertical pillar of constancy -->
+    <rect x="0" y="0" width="6" height="60" rx="3" fill="url(#timelessGradient)"/>
+    
+    <!-- Upper diagonal - reaching forward -->
+    <rect x="8" y="0" width="6" height="35" rx="3" fill="url(#timelessGradient)" transform="rotate(45 8 0)"/>
+    
+    <!-- Lower diagonal - grounded in wisdom -->
+    <rect x="8" y="25" width="6" height="35" rx="3" fill="url(#timelessGradient)" transform="rotate(-45 8 60)"/>
+  </g>
+  
+  <!-- Wordmark - weightless, eternal -->
+  <text x="160" y="58" font-family="system-ui, -apple-system, sans-serif" font-size="32" font-weight="200" letter-spacing="14" fill="url(#timelessGradient)">KRONOVA</text>
+  
+  <!-- Subtle underline accent -->
+  <line x1="160" y1="70" x2="360" y2="70" stroke="url(#timelessGradient)" stroke-width="0.5" opacity="0.4"/>
+</svg>

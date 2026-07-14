@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 100">
+  <defs>
+    <linearGradient id="kronovaGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0047AB"/>
+      <stop offset="50%" style="stop-color:#0088CC"/>
+      <stop offset="100%" style="stop-color:#00CED1"/>
+    </linearGradient>
+    <linearGradient id="kronovaGradientReverse" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#00CED1"/>
+      <stop offset="100%" style="stop-color:#0047AB"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Icon: Abstract K with neural network nodes -->
+  <g transform="translate(10, 10)">
+    <!-- Outer ring -->
+    <circle cx="40" cy="40" r="38" fill="none" stroke="url(#kronovaGradient)" stroke-width="2.5"/>
+    
+    <!-- K shape formed by connected nodes -->
+    <path d="M25 20 L25 60 M25 40 L55 20 M25 40 L55 60" 
+          stroke="url(#kronovaGradient)" stroke-width="4" stroke-linecap="round" fill="none"/>
+    
+    <!-- Neural connection nodes -->
+    <circle cx="25" cy="20" r="4" fill="url(#kronovaGradient)"/>
+    <circle cx="25" cy="40" r="5" fill="url(#kronovaGradient)"/>
+    <circle cx="25" cy="60" r="4" fill="url(#kronovaGradient)"/>
+    <circle cx="55" cy="20" r="4" fill="url(#kronovaGradientReverse)"/>
+    <circle cx="55" cy="60" r="4" fill="url(#kronovaGradientReverse)"/>
+  </g>
+  
+  <!-- Wordmark -->
+  <text x="105" y="62" font-family="system-ui, -apple-system, sans-serif" font-size="42" font-weight="700" fill="url(#kronovaGradient)">
+    KRONOVA
+  </text>
+  
+  <!-- Tagline -->
+  <text x="107" y="82" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="400" fill="#6B7280" letter-spacing="2">
+    INTELLIGENT SYSTEMS
+  </text>
+</svg>

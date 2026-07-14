@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 40">
+  <defs>
+    <linearGradient id="headerDarkGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0047AB"/>
+      <stop offset="50%" stop-color="#0088CC"/>
+      <stop offset="100%" stop-color="#00CED1"/>
+    </linearGradient>
+    <linearGradient id="headerDarkGradientRev" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#00CED1"/>
+      <stop offset="100%" stop-color="#0047AB"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Compact icon for dark backgrounds -->
+  <g transform="translate(2, 2)">
+    <circle cx="18" cy="18" r="16" fill="none" stroke="url(#headerDarkGradient)" stroke-width="1.5"/>
+    <path d="M11 8 L11 28 M11 18 L25 8 M11 18 L25 28" 
+          stroke="url(#headerDarkGradient)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+    <circle cx="11" cy="8" r="2.5" fill="url(#headerDarkGradient)"/>
+    <circle cx="11" cy="18" r="3" fill="url(#headerDarkGradient)"/>
+    <circle cx="11" cy="28" r="2.5" fill="url(#headerDarkGradient)"/>
+    <circle cx="25" cy="8" r="2.5" fill="url(#headerDarkGradientRev)"/>
+    <circle cx="25" cy="28" r="2.5" fill="url(#headerDarkGradientRev)"/>
+  </g>
+  
+  <!-- White wordmark for dark backgrounds -->
+  <text x="44" y="26" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" 
+        font-size="20" font-weight="700" letter-spacing="0.5" fill="#FFFFFF">
+    KRONOVA
+  </text>
+</svg>

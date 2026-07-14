@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+  <defs>
+    <linearGradient id="oracleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0047AB"/>
+      <stop offset="100%" style="stop-color:#00CED1"/>
+    </linearGradient>
+    
+    <radialGradient id="oracleCore" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.9"/>
+      <stop offset="30%" style="stop-color:#00CED1;stop-opacity:0.6"/>
+      <stop offset="100%" style="stop-color:#0047AB;stop-opacity:0"/>
+    </radialGradient>
+    
+    <filter id="oracleGlow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Outermost ring - the boundary of known reality -->
+  <circle cx="60" cy="60" r="55" fill="none" stroke="url(#oracleGradient)" stroke-width="0.5" opacity="0.2"/>
+  
+  <!-- Second ring - approaching transcendence -->
+  <circle cx="60" cy="60" r="45" fill="none" stroke="url(#oracleGradient)" stroke-width="1" opacity="0.4"/>
+  
+  <!-- Third ring - the veil between worlds -->
+  <circle cx="60" cy="60" r="35" fill="none" stroke="url(#oracleGradient)" stroke-width="1.5" opacity="0.6"/>
+  
+  <!-- Inner sanctum -->
+  <circle cx="60" cy="60" r="25" fill="none" stroke="url(#oracleGradient)" stroke-width="2"/>
+  
+  <!-- The Oracle's eye - all-knowing center -->
+  <circle cx="60" cy="60" r="12" fill="url(#oracleCore)" filter="url(#oracleGlow)"/>
+  
+  <!-- K constellation within the eye -->
+  <path d="M55 52 L55 68 M55 60 L65 52 M55 60 L65 68" 
+        stroke="url(#oracleGradient)" stroke-width="2" stroke-linecap="round" fill="none"/>
+  
+  <!-- Cardinal points - compass of destiny -->
+  <circle cx="60" cy="8" r="2" fill="#00CED1"/>
+  <circle cx="60" cy="112" r="2" fill="#0047AB"/>
+  <circle cx="8" cy="60" r="2" fill="#0077BE"/>
+  <circle cx="112" cy="60" r="2" fill="#0077BE"/>
+  
+  <!-- Diagonal points - the paths less traveled -->
+  <circle cx="20" cy="20" r="1" fill="#00CED1" opacity="0.5"/>
+  <circle cx="100" cy="20" r="1" fill="#00CED1" opacity="0.5"/>
+  <circle cx="20" cy="100" r="1" fill="#00CED1" opacity="0.5"/>
+  <circle cx="100" cy="100" r="1" fill="#00CED1" opacity="0.5"/>
+</svg>

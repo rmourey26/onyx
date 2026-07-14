@@ -1,137 +1,146 @@
 import type React from "react"
 import type { Metadata, Viewport } from "next"
-import { Analytics } from "@vercel/analytics/react"
-import { SpeedInsights } from "@vercel/speed-insights/next"
 import "./globals.css"
-import { ThemeProvider } from "@/components/theme-provider"
-import { CookieButton } from "@/components/cookie-button"
-import { fontSans } from "@/lib/font"
-import { siteConfig } from "@/config/site"
-import { ReactQueryClientProvider } from "@/components/react-query-client-provider"
-import { Toaster } from "@/components/ui/toaster"
-import { SiteHeader } from "@/components/site-header"
-import { SiteFooter } from "@/components/site-footer"
-import { AIChatbot } from "@/components/ai-chatbot"
+import { Eczar, Roboto_Condensed } from "next/font/google"
+import { ClientProviders } from "@/components/client-providers"
+import { ConditionalSiteHeader } from "@/components/conditional-site-header"
+import { ConditionalFooter } from "@/components/conditional-footer"
 import { cn } from "@/lib/utils"
+import { FeedbackProvider } from "@/components/feedback/feedback-provider"
+import { Analytics } from "@vercel/analytics/react"
+import { getVersion } from "@/lib/version"
+
+export const dynamic = "force-dynamic"
+
+const eczar = Eczar({ subsets: ["latin"], variable: "--font-eczar" })
+const robotoCondensed = Roboto_Condensed({
+  subsets: ["latin"],
+  weight: ["300", "400", "700"],
+  variable: "--font-roboto-condensed",
+})
 
 export const metadata: Metadata = {
   title: {
-    default: siteConfig.name,
-    template: `%s - ${siteConfig.name}`,
+    default: "Kronova Intelligent Systems",
+    template: "%s | Kronova",
   },
-  description: siteConfig.description,
-  manifest: "https://onyx-rho-pink.vercel.app/manifest.json",
-  metadataBase: new URL("https://onyx-rho-pink.vercel.app"),
-  alternates: {
-    canonical: "/",
-    languages: {
-      "en-US": "/en-US",
-      "de-DE": "/de-DE",
-      "es-ES": "/es-ES",
-      "fr-FR": "/fr-FR",
-      "jp-JP": "/jp-JP",
-      "ko-KO": "/ko-KP",
-      "zh-ZH": "/zh-ZH",
-      "pt-PT": "/pt-PT",
-    },
+  description:
+    "Enterprise AI that Pays for Itself in 90 days. The only platform combining Canton Network, private stablecoins, and 18 proprietary AI tools. Replace 12 vendors with one. See ROI in your first quarter.",
+  generator: `app.kronova.io v${getVersion().appVersion}`,
+  manifest: "/manifest.json",
+  applicationName: "Kronova",
+  appleWebApp: {
+    capable: true,
+    title: "Kronova",
+    statusBarStyle: "default",
   },
-  referrer: "origin-when-cross-origin",
-  keywords: [
-    "NextJS 14 TypeScript",
-    "Supabase SSR",
-    "TanStack React Query",
-    "vercel",
-    "openai",
-    "MVP Template",
-    "Onyx SaaS PWA template",
-    "Zod",
-    "Shadcn-UI",
-    "Tailwind CSS",
-    "SaaS",
-    "NextJS Supabase Postgres Tailwind TanStack",
-    "NextJS CSP",
-    "PWA",
-    "NextJS SaaS PWA Template",
-    "CRUD ops",
-    "secure headers",
-    "NextJS templates with user authentication, RBAC, and CRUD ops",
-    "NextJS templates with data validation and database integration",
-    "Rust API runtime for vercel serverless functions",
-    "NextJS secure headers",
-    "NextJS NextMDX",
-  ],
-  authors: [{ name: "Robert Mourey Jr" }],
-  creator: "Robert Mourey Jr",
-  publisher: "Robert Mourey Jr",
   formatDetection: {
-    email: false,
-    address: false,
     telephone: false,
   },
-  generator: "NextJS",
-  icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon-16x16.png",
-    apple: "/apple-touch-icon.png",
+  openGraph: {
+    type: "website",
+    siteName: "Kronova Intelligent Systems",
+    title: {
+      default: "Kronova Intelligent Systems",
+      template: "%s | Kronova",
+    },
+    description:"Enterprise AI That Pays For Itself in 90 Days. The only platform combining Canton Network, private stablecoins, and 18 proprietary AI tools. Replace 12 vendors with one. See ROI in your first quarter.",
+    url: "https://app.kronova.io",
+    images: [
+      {
+        url: "/images/landing/aether-ecosystem-hero.png",
+        width: 1200,
+        height: 630,
+        alt: "Kronova - Intelligent Systems",
+        type: "image/png",
+      },
+      {
+        url: "/images/landing/hero-platform-preview.png",
+        width: 1200,
+        height: 630,
+        alt: "Kronova Platform Preview - AI Business Suite",
+        type: "image/png",
+      },
+      {
+        url: "/images/landing/feature-ai-agent-network.png",
+        width: 1200,
+        height: 630,
+        alt: "AetherNet - Secure AI Agent Network",
+        type: "image/png",
+      },
+      {
+        url: "/images/landing/feature-blockchain-integration.png",
+        width: 1200,
+        height: 630,
+        alt: "AetherChain - High-Performance Rust Blockchain",
+        type: "image/png",
+      },
+      {
+        url: "/images/landing/resendit-optimization-engine.png",
+        width: 1200,
+        height: 630,
+        alt: "Kronova Optimization Engine - ROI and Sustainability Metrics",
+        type: "image/png",
+      },
+    ],
   },
-
+  twitter: {
+    card: "summary_large_image",
+    title: {
+      default: "Kronova Intelligent Systems",
+      template: "%s | Kronova",
+    },
+    description:
+      "Enterprise AI that Pays for itself in 90 days and delivers 25:1 ROI.The only platform combining Canton Network, private stablecoins, and 18 proprietary AI tools. Replace 12 vendors with one. See ROI in your first quarter.",
+    images: [
+      {
+        url: "/images/landing/aether-ecosystem-hero.png",
+        alt: "Kronova - ",
+      },
+    ],
+    creator: "@KronovaAI",
+    site: "@KronovaAI",
+  },
   robots: {
-    index: false,
+    index: true,
     follow: true,
-    nocache: true,
     googleBot: {
       index: true,
-      follow: false,
-      noimageindex: true,
+      follow: true,
       "max-video-preview": -1,
       "max-image-preview": "large",
       "max-snippet": -1,
     },
   },
-  openGraph: {
-    title: siteConfig.name,
-    description: siteConfig.description,
-    siteName: siteConfig.name,
-    url: "https://onyx-rho-pink.vercel.app",
-    images: [
+  icons: {
+    icon: [
       {
-        url: "https://onyx-rho-pink.vercel.app/og-image.jpg", // Must be an absolute URL
-        width: 1230,
-        height: 640,
+        url: "/favicon.svg",
+        sizes: "32x32",
+        type: "image/svg+xml",
       },
       {
-        url: "https://quantumone.b-cdn.net/onyx/opengraph-image.jpg", // Must be an absolute URL
-        width: 1800,
-        height: 1600,
-        alt: "blockchain business",
+        url: "/favicon.svg",
+        sizes: "16x16",
+        type: "image/svg+xml",
       },
     ],
-    locale: "en_US",
-    type: "website",
-  },
-  twitter: {
-    title: siteConfig.name,
-    description: siteConfig.description,
-    site: "@r_mourey_jr",
-    creator: "@r_mourey_jr",
-    images: [
+    shortcut: "/favicon.svg",
+    apple: [
       {
-        url: "https://onyx-rho-pink.vercel.app/twitter-image.jpg", // Must be an absolute URL
-        width: 1800,
-        height: 900,
-      },
-      {
-        url: "https://quantumone.b-cdn.net/onyx/twitter-image.jpg",
-        width: 1800,
-        height: 900,
+        url: "/logos/kronova-logo-icon.svg",
+        sizes: "180x180",
+        type: "image/svg+xml",
       },
     ],
   },
+  verification: {},
 }
+
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "white" },
-    { media: "(prefers-color-scheme: dark)", color: "black" },
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#0A0A0A" },
   ],
   width: "device-width",
   initialScale: 1,
@@ -139,46 +148,27 @@ export const viewport: Viewport = {
   userScalable: false,
 }
 
-interface RootLayoutProps {
+export default function RootLayout({
+  children,
+}: {
   children: React.ReactNode
-}
-
-export default function RootLayout({ children }: RootLayoutProps) {
+}) {
   return (
-    <ReactQueryClientProvider>
-      <html lang="en" suppressHydrationWarning>
-        <head>
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `
-                // Prevent FOUC (Flash of Unstyled Content)
-                document.documentElement.classList.add('dark');
-              `,
-            }}
-          />
-        </head>
-        <body className={cn("min-h-screen bg-background font-sans antialiased", fontSans.variable)}>
-          <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
+    <html lang="en" suppressHydrationWarning>
+      <body
+        className={cn("min-h-screen bg-background font-sans antialiased", eczar.variable, robotoCondensed.variable)}
+      >
+        <ClientProviders>
+          <FeedbackProvider>
             <div className="relative flex min-h-screen flex-col">
-              <SiteHeader />
-              <div className="flex-1">
-                {children}
-                <Toaster />
-                <Analytics />
-                <SpeedInsights />
-              </div>
+              <ConditionalSiteHeader />
+              <main className="flex-1">{children}</main>
+              <ConditionalFooter />
             </div>
-            <SiteFooter />
-            {/* enter your api info from termly.io or a provider of your choice
-            <Script
-              type="text/javascript"
-              src="https://app.termly.io/resource-blocker/123456789abcdefg"/>
-            */}
-            <CookieButton />
-            <AIChatbot />
-          </ThemeProvider>
-        </body>
-      </html>
-    </ReactQueryClientProvider>
+          </FeedbackProvider>
+        </ClientProviders>
+        <Analytics />
+      </body>
+    </html>
   )
 }

@@ -1,0 +1,53 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "lib": ["deno.window", "dom"],
+    "strict": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true
+  },
+  "importMap": "./import_map.json",
+  "tasks": {
+    "dev": "deno run --allow-net --allow-env --allow-read --watch index.ts",
+    "serve": "deno run --allow-net --allow-env --allow-read index.ts",
+    "test": "deno test --allow-net --allow-env --allow-read",
+    "fmt": "deno fmt",
+    "lint": "deno lint",
+    "check": "deno check **/*.ts"
+  },
+  "fmt": {
+    "files": {
+      "include": ["**/*.ts", "**/*.js", "**/*.json"],
+      "exclude": ["node_modules/", "dist/", ".git/"]
+    },
+    "options": {
+      "useTabs": false,
+      "lineWidth": 120,
+      "indentWidth": 2,
+      "semiColons": false,
+      "singleQuote": false,
+      "proseWrap": "preserve"
+    }
+  },
+  "lint": {
+    "files": {
+      "include": ["**/*.ts", "**/*.js"],
+      "exclude": ["node_modules/", "dist/", ".git/"]
+    },
+    "rules": {
+      "tags": ["recommended"],
+      "include": ["ban-untagged-todo"],
+      "exclude": ["no-unused-vars"]
+    }
+  },
+  "test": {
+    "files": {
+      "include": ["**/*_test.ts", "**/*_test.js", "**/test_*.ts", "**/test_*.js"],
+      "exclude": ["node_modules/", "dist/"]
+    }
+  },
+  "exclude": ["node_modules/", "dist/", ".git/", "**/*.min.js"]
+}

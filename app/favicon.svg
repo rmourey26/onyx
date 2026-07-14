@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <defs>
+    <linearGradient id="favGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0047AB"/>
+      <stop offset="50%" stop-color="#0088CC"/>
+      <stop offset="100%" stop-color="#00CED1"/>
+    </linearGradient>
+    <linearGradient id="favGradientRev" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#00CED1"/>
+      <stop offset="100%" stop-color="#0047AB"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Favicon-optimized icon at 32x32 -->
+  <!-- Outer ring -->
+  <circle cx="16" cy="16" r="14.5" fill="none" stroke="url(#favGradient)" stroke-width="1.5"/>
+  
+  <!-- K letterform - simplified for small sizes -->
+  <path d="M10 6 L10 26 M10 16 L22 6 M10 16 L22 26" 
+        stroke="url(#favGradient)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+  
+  <!-- Neural nodes - minimal for favicon clarity -->
+  <circle cx="10" cy="6" r="2" fill="url(#favGradient)"/>
+  <circle cx="10" cy="16" r="2.5" fill="url(#favGradient)"/>
+  <circle cx="10" cy="26" r="2" fill="url(#favGradient)"/>
+  <circle cx="22" cy="6" r="2" fill="url(#favGradientRev)"/>
+  <circle cx="22" cy="26" r="2" fill="url(#favGradientRev)"/>
+</svg>

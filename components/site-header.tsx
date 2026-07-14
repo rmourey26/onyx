@@ -1,54 +1,48 @@
-import Link from "next/link"
+import { HeaderContent } from "@/components/header-content"
+import { createServerSupabaseClient } from "@/lib/supabase/server"
 
-import { siteConfig } from "@/config/site"
-import { buttonVariants } from "@/components/ui/button"
-import { Icons } from "@/components/icons"
-import { MainNav } from "@/components/main-nav"
-import { MobileNav } from '@/components/mobile-nav'
-import { ThemeToggle } from "@/components/theme-toggle"
+export async function SiteHeader() {
+  let user = null
 
-export function SiteHeader() {
+  try {
+    const supabase = await createServerSupabaseClient()
+    const {
+      data: { user: authUser },
+      error,
+    } = await supabase.auth.getUser()
+
+    if (error) {
+      console.log("[v0] SiteHeader: Auth error (user will be null):", error.message)
+    } else {
+      user = authUser
+      console.log("[v0] SiteHeader: User fetched:", user ? "authenticated" : "not authenticated")
+    }
+  } catch (error) {
+    console.error("[v0] SiteHeader: Failed to create Supabase client:", error)
+
+  const mainNavItems = [
+    { title: "About", href: "/about" },
+    
+  ]
+
+  const authNavItems = user
+    ? [
+        { title: "AI Suite", href: "/ai-suite" },
+        //{ title: "Integrations", href: "/ai-suite/integrations" },
+        //{ title: "Subscription", href: "/ai-suite/billing" },
+        //{ title: "Demo", href: "/demo" },
+        //{ title: "CRM", href: "/admin/crm" },
+      ]
+    : [
+        { title: "Login", href: "/login" },
+        { title: "Sign Up", href: "/signup" },
+      ]
+
+  const allNavItems = [...mainNavItems, ...authNavItems]
+
   return (
-    <header className="sticky top-0 z-40 w-full border-b bg-background">
-      <div className="container flex h-16 items-center space-x-4 sm:justify-between sm:space-x-0 xs:space-x0">
-        <MainNav items={siteConfig.mainNav} />
-    <MobileNav />    
- <div className="flex flex-1 items-center justify-end space-x-4">
-          <nav className="flex items-center space-x-1">
-            <Link
-              href={siteConfig.links.github}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <div
-                className={buttonVariants({
-                  size: "icon",
-                  variant: "ghost",
-                })}
-              >
-                <Icons.gitHub className="h-5 w-5" />
-                <span className="sr-only">GitHub</span>
-              </div>
-            </Link>
-            <Link
-              href={siteConfig.links.twitter}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <div
-                className={buttonVariants({
-                  size: "icon",
-                  variant: "ghost",
-                })}
-              >
-                <Icons.twitter className="h-4 w-4 fill-current" />
-                <span className="sr-only">Twitter</span>
-              </div>
-            </Link>
-            <ThemeToggle />
-          </nav>
-        </div>
-      </div>
+    <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <HeaderContent user={user} mainNavItems={mainNavItems} authNavItems={authNavItems} allNavItems={allNavItems} />
     </header>
   )
 }

@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 120">
+  <defs>
+    <!-- Cosmic gradient -->
+    <linearGradient id="cosmicGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0047AB"/>
+      <stop offset="50%" style="stop-color:#0077BE"/>
+      <stop offset="100%" style="stop-color:#00CED1"/>
+    </linearGradient>
+    
+    <!-- Ethereal glow -->
+    <radialGradient id="etherealGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#00CED1;stop-opacity:0.8"/>
+      <stop offset="70%" style="stop-color:#0047AB;stop-opacity:0.3"/>
+      <stop offset="100%" style="stop-color:#0047AB;stop-opacity:0"/>
+    </radialGradient>
+    
+    <!-- Infinite light -->
+    <linearGradient id="infiniteLight" x1="0%" y1="50%" x2="100%" y2="50%">
+      <stop offset="0%" style="stop-color:#00CED1;stop-opacity:0"/>
+      <stop offset="50%" style="stop-color:#00CED1;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#00CED1;stop-opacity:0"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Outer cosmic ring - representing eternity -->
+  <circle cx="60" cy="60" r="48" fill="none" stroke="url(#cosmicGradient)" stroke-width="1.5" opacity="0.4"/>
+  
+  <!-- Middle ring - the boundary between realms -->
+  <circle cx="60" cy="60" r="38" fill="none" stroke="url(#cosmicGradient)" stroke-width="2"/>
+  
+  <!-- Inner ethereal core -->
+  <circle cx="60" cy="60" r="28" fill="url(#etherealGlow)"/>
+  
+  <!-- The Kronova symbol - stylized K as a portal/gateway -->
+  <path d="M48 35 L48 85 M48 60 L72 35 M48 60 L72 85" 
+        stroke="url(#cosmicGradient)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  
+  <!-- Transcendent light beam through the K -->
+  <line x1="35" y1="60" x2="85" y2="60" stroke="url(#infiniteLight)" stroke-width="2" opacity="0.6"/>
+  
+  <!-- Celestial points - stars of guidance -->
+  <circle cx="60" cy="18" r="2" fill="#00CED1"/>
+  <circle cx="60" cy="102" r="2" fill="#00CED1"/>
+  <circle cx="18" cy="60" r="1.5" fill="#00CED1" opacity="0.7"/>
+  <circle cx="102" cy="60" r="1.5" fill="#00CED1" opacity="0.7"/>
+  
+  <!-- Wordmark -->
+  <text x="130" y="52" font-family="system-ui, -apple-system, sans-serif" font-size="36" font-weight="200" letter-spacing="8" fill="url(#cosmicGradient)">KRONOVA</text>
+  
+  <!-- Tagline -->
+  <text x="130" y="78" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="300" letter-spacing="4" fill="#0077BE" opacity="0.8">BEYOND TIME · BEYOND LIMITS</text>
+</svg>

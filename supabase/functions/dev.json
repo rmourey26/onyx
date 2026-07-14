@@ -1,0 +1,18 @@
+{
+  "env": {
+    "DENO_ENV": "development"
+  },
+  "permissions": {
+    "allow-net": true,
+    "allow-env": true,
+    "allow-read": true,
+    "allow-write": false,
+    "allow-run": false
+  },
+  "unstable": [],
+  "watch": {
+    "paths": ["./"],
+    "extensions": ["ts", "js", "json"],
+    "exclude": ["node_modules/", "dist/", ".git/"]
+  }
+}

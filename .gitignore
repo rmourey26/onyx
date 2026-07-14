@@ -1,27 +1,54 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# v0 runtime files
+__v0_runtime_loader.js
+__v0_devtools.tsx
+__v0_jsx-dev-runtime.ts
 
-# dependencies
-/node_modules
+# Common ignores
+node_modules
+.next/
+.env*.local
+.DS_Store
 
-# next.js
-/.next/
-/out/
+# Private / confidential documents — must not be published to the public repo
+# Valuation and financial analysis
+PLATFORM_VALUATION_ANALYSIS.md
+PLATFORM_VALUATION_ANALYSIS_v2.0.md
+PLATFORM_VALUATION_V3.0.md
+PLATFORM_VALUATION_V4.0.md
+PLATFORM_VALUATION_V5.0.md
+PLATFORM_VALUATION_V6.0.md
+KRONOVA_PLATFORM_VALUATION.md
 
-# production
-/build
+# Revenue and growth strategy
+IMMEDIATE_REVENUE_GENERATION_STRATEGY.md
+IMMEDIATE_REVENUE_GENERATION_STRATEGY_V2.0.md
+IMMEDIATE_REVENUE_GENERATION_STRATEGY_V3.0.md
+IMMEDIATE_REVENUE_GENERATION_STRATEGY_V4.0.md
+IMMEDIATE_REVENUE_GENERATION_STRATEGY_V5.0.md
+KRONOVA_6_MONTH_STRATEGIC_ROADMAP.md
+RESEND_IT_6_MONTH_STRATEGIC_ROADMAP.md
 
-# debug
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-.pnpm-debug.log*
+# Investor and fundraising materials
+ACQUISITION_PITCH_DECK.md
+ACQUISITION_PITCH_DECK_V2.0.md
+ACQUISITION_PITCH_DECK_V3.0.md
+ACQUISITION_PITCH_DECK_V4.0.md
+KEVIN_NOLAN_INVESTOR_PITCH.md
+KRONOVA_ANGEL_INVESTOR_EQUITY_PROPOSAL_V1.0.md
+KRONOVA_FOUNDING_INVESTOR_EQUITY_ANALYSIS_V1.0.md
 
-# env files
-.env*
+# Personal / personnel documents
+RESUME_SUMMARY.md
+RESUME_SUMMARY_V2.0.md
+RESUME_SUMMARY_V3.0.md
+SUPABASE_EXPERIENCE_RESUME.md
+ENGINEERING_RECOMMENDATIONS_KEVIN_NOLAN.md
 
-# vercel
-.vercel
-
-# typescript
-*.tsbuildinfo
-next-env.d.ts
+# Internal rebrand and pre-rebrand artifacts
+RESENDIT_REBRAND_COSMIC_NAMES.md
+RESENDIT_REBRAND_NAME_OPTIONS.md
+KRONOVA_REBRAND_SUMMARY.md
+BLOG_ARTICLE_RESENDIT_AETHERNET_INNOVATION.md
+RESENDIT_24_ENTERPRISE_PROBLEMS_COMPLETE_ANALYSIS.md
+RESENDIT_PROBLEMS_SOLVED_AND_ROI_ANALYSIS.md
+RESENDIT_PROBLEMS_SOLVED_AND_ROI_ANALYSIS_V2.0.md

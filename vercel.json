@@ -1,7 +1,52 @@
 {
-  "functions": {
-    "app/api/**/*.rs": {
-      "runtime": "vercel-rust@4.0.8"
+  "version": 2,
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "build": {
+    "env": {
+      "DISABLE_CACHE": "1",
+      "NEXT_TELEMETRY_DISABLED": "1",
+      "TURBOPACK": "1"
     }
-  }
+  },
+  "crons": [],
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "functions": {
+    "app/api/supabase/edge-functions/route.ts": {
+      "runtime": "vercel/nodejs@22.10.0"
+    },
+    "app/api/supabase/functions/*.ts": {
+      "runtime": "vercel/nodejs@22.10.0"
+    }
+  },
+  "headers": [
+    {
+      "source": "supabase/functions/(.*)",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        },
+        {
+          "key": "Access-Control-Allow-Methods",
+          "value": "GET, POST, PUT, DELETE, OPTIONS"
+        },
+        {
+          "key": "Access-Control-Allow-Headers",
+          "value": "Content-Type, Authorization, x-client-info, apikey"
+        }
+      ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "app/api/supabase/edge-functions/(.*)",
+      "destination": "/supabase/functions/$1"
+    }
+  ],
+  "installCommand": "rm -rf .next node_modules/.cache && rm -f bun.lockb package-lock.json yarn.lock && bun install --no-cache --force",
+  "buildCommand": "rm -rf .next && bun run build",
+  "devCommand": "bun run dev",
+  "framework": "nextjs",
+  "regions": ["iad1", "sfo1"]
 }
