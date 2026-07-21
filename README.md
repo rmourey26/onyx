@@ -2,7 +2,7 @@
 
 Welcome to the official open-source frontend and orchestration layer for the Kronova Asset Intelligence ecosystem.
 
-This repository provides a production-ready Next.js application designed to orchestrate Real-World Asset (RWA) tokenization, run complex AI Agent workflows, and manage an OAuth 2.1 MCP server. It includes our comprehensive 44-field asset schema and a library of integrated AI tools out of the box.
+Although much of this extensive codebase is production ready, this is a work in progress.    For example, the Pro monthly subscription is functional, however the remaining Subscriptions need to be created within Stripe and properly configured with their respective price IDs. A comprehensive TODO list will be added soon. So what is this? A Next.js 16 application designed to orchestrate Real-World Asset (RWA) tokenization, run complex AI Agent workflows, and manage an OAuth 2.1 MCP server. It includes our comprehensive 44-field asset schema and a library of integrated AI tools, fundamental voice-ops, and more out of the box.
 
 ---
 
