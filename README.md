@@ -1,4 +1,4 @@
-+daQq9om# Kronova Asset Intelligence and Orchestration Platform
+# Kronova Asset Intelligence and Orchestration Platform
 
 Welcome to the official open-source frontend  and intelligent orchestration layer for the Kronova Intelligent Systems ecosystem. Most of the codebase is functional, production worthy, and scalable with relatively minor tweaks. However, the platform and API is a work in progress and we encourage developers to take the reigns from here. 
 
