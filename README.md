@@ -1,10 +1,12 @@
-# Kronova Asset Intelligence and Orchestration Platform
++daQq9om# Kronova Asset Intelligence and Orchestration Platform
 
-Welcome to the official open-source frontend and orchestration layer for the Kronova Asset Intelligence ecosystem.
+Welcome to the official open-source frontend  and intelligent orchestration layer for the Kronova Intelligent Systems ecosystem. Most of the codebase is functional, production worthy, and scalable with relatively minor tweaks. However, the platform and API is a work in progress and we encourage developers to take the reigns from here. 
 
-Although much of this codebase is production ready, this is a work in progress.   Currently access is free but the Pro monthly subscription is functional for developers looking to fork this and or see a working Stripe integration. Our Stripe checkout session is configured to send an email invoice rather than process payment for Pro monthly sub. The remaining subscriptions are not created in our Stripe account and thus non-functional. A comprehensive TODO list will be added soon. 
+Built with a NextJS 16 TypeScript Tailwind Shadcn-UI frontend, Supabase backend with Qdrant migration plan, Stripe ai_token metered subscriptions, any AI model with 30+ models pre-configured, embedding, RAG, and dataset management, Qdrant and Weaviate dataset imports, integrations including Salesforce, CrmOne, NetSuite, Shopify, Wix, Plaid, Resend, UPS, FedEx, Canton Network, Sui, and more. 
 
-So what is this? A Next.js 16 application designed to orchestrate Real-World Asset (RWA) tokenization, run complex AI Agent workflows, and manage an OAuth 2.1 MCP server. It includes our comprehensive 44-field asset schema and a library of integrated AI tools, fundamental voice-ops, and more out of the box.
+This SaaS platform and API is designed to enable individuals and companies to explore, augment, and or complete AI and Web 3 native digital transformations with a focus on Real World Asset (RWA) tokenization, real time agentic asset intelligence reporting, optimizations, and learning layers, voice NLP platform operations, OAuth 2.1 MCP server and client management, perpetual AI ROI analytics, and more. Users can deploy, run, orchestrate, and continously optimize AI agents and complex workflows using any AI model, an extensive library of pre-configured agents and flows and or build them from scratch. Direct agent output to learning layers, enhance agentic ops with 18 custom AI tools, import and or create assets using our comprehensive 44-field asset schema, and more out of the box. 
+
+For developers looking for a different UI and a lighting fast Rust and rspc powered backend, check out [Kronova Rust NextJS Example](https://github.com/kronova-intelligent-systems/kronova-rust-nextjs-example).  
 
 ---
 
@@ -18,11 +20,11 @@ To give developers complete freedom over their UI without compromising enterpris
 
 Everything you see here is open-source under the **Apache 2.0 License**. You have complete freedom to run this locally, deploy it to your own infrastructure, add new AI models, or fork the UI. It handles the "thinking" — the AI routing, the data ingestion, and the payload construction.
 
-### 2. The Engine: AetherNet QUAS (The Settlement Layer)
+### 2. The Engine: AetherNet QUAS and KVS (High speed, horizontally scalable, post quantum secure execution, kinetic vector store, and instsnt settlement layer)
 
-When your AI agents need to stop "thinking" and start "executing" (e.g., finalizing an RWA tokenization, moving funds, or interacting with secure hardware enclaves), this repository relies on the **AetherNet QUAS API**.
+When your AI agents need to stop "thinking" and start "executing" (e.g., finalizing an RWA tokenization, institutional MCP order routing and trades, multi-party conditional escrows, off-chain data delivery, risk engine automated refund routing, MCPs as payload, interacting with secure hardware enclaves), this repository relies on the **AetherNet QUAS API**.
 
-AetherNet acts as a black-box secure gateway, utilizing Canton smart contracts to ensure MEV resistance and post-quantum security.
+AetherNet QUAS (Quantum Universal Agentic Substrate) and KVS (Kinetic Vector Store) act as an institutional grade, sovereign, new-era mainframe capable of handling the entire agentic/M2M commerce life cycle. The Substrate leverages a proprietary, cloud agnostic, sovereign, Rust based trusted exeution environment (TEE) secured by proprietary post quantum FIPS 203 ML-DSA KMS and HSM along with optional post quantum FIPS 204 ML-KEM E2EE for mission critical cases. By shifting execution off chain and into our sovereign, Rust QTEE, AetherNet QUAS mathematically eliminates MEV, MIT, and HNDL attacks. The Rust QTEE then hands off the transaction to our custom enterprise grade Canton node and DAML smart contracts that assure deterministic, AP2 interoperable, instant, and private settlement on Canton Network. For use delivering a turnkey post-quantum agentic substrate, AetherNet enables institutional partners to immediately deploy autonomous AI agent workflows while completely mitigating quantum decryption risk, MEV exploitation, and deferred finality costs. require public settlement, delivering a turnkey post-quantum agentic substrate, AetherNet enables institutional partners to immediately deploy autonomous AI agent workflows while completely mitigating quantum decryption risk, MEV exploitation, and deferred finality costs. iemrkjj3 EVM chains, BitCoin, 
 
 ---
 
