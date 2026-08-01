@@ -60,7 +60,7 @@ export function BusinessCardPreview({ profile, showEditor = true, isRecipient = 
   const profileUrl =
     typeof window !== "undefined"
       ? `${window.location.origin}/p/${profile.public_id || profile.id}`
-      : `${process.env.NEXT_PUBLIC_APP_URL || "https://app.resend-it.com"}/p/${profile.public_id || profile.id}`
+      : `${process.env.NEXT_PUBLIC_APP_URL || "https://app.kronova.io"}/p/${profile.public_id || profile.id}`
 
   const handleEditorUpdate = () => {
     router.refresh()

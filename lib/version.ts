@@ -1,6 +1,5 @@
 /**
  * Kronova Platform Version Tracking
- * (Formerly Resend-It)
  *
  * This file tracks the v0 workspace version deployed to production.
  * Update this file when deploying new versions to production.

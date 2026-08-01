@@ -1,5 +1,5 @@
 /**
- * Resend-It v1 Embeddings API
+ * Kronova v1 Embeddings API
  * Enterprise-grade vector embeddings management
  */
 

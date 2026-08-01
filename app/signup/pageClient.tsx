@@ -140,18 +140,16 @@ export default function SignupPageClient() {
         >
           <div className="glass-morphism rounded-2xl p-6 sm:p-10 shadow-2xl">
             <div className="mb-8 text-center">
-              <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-accent to-primary shadow-lg">
-              <Image
-                            src="/logos/kronova-logo-icon.svg"
-                                          alt="Kronova"
-                                                        width={48}
-                                                                      height={48}
-                                                                                    className="h-7 w-7"
-                                                                                                  priority
-                                                                                                              />
-
-                
-              </div>
+              <Link href="/" className="inline-flex items-center justify-center mb-6 transition-opacity hover:opacity-80">
+                <Image
+                  src="/logos/kronova-logo-footer.svg"
+                  alt="Kronova"
+                  width={200}
+                  height={44}
+                  className="h-11 w-auto"
+                  priority
+                />
+              </Link>
               <h1 className="mb-2 font-sans text-3xl font-bold tracking-tight text-foreground">Create your account</h1>
               <p className="text-sm text-muted-foreground">
                 Join the enterprise platform for AI-powered business management

@@ -25,6 +25,11 @@ export async function getActiveAIModels() {
   }
 }
 
+// Alias used by SupportChatWidget — fetches active chat models ordered by provider/name
+export async function getChatModels() {
+  return getAIModelsByType("chat")
+}
+
 export async function getAIModelsByType(type: "chat" | "embedding" | "image" | "audio") {
   const supabase = await createServerSupabaseClient()
 

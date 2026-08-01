@@ -6,7 +6,7 @@ import { WebhookManagement } from "@/components/webhooks/webhook-management"
 import { NotificationSettingsComponent } from "@/components/settings/notification-settings"
 import { SecuritySettingsComponent } from "@/components/settings/security-settings"
 import { Card, CardContent } from "@/components/ui/card"
-import { Key, User, Bell, Shield, Webhook, Lock, Network } from "lucide-react"
+import { Key, User, Bell, Shield, Webhook, Lock, Network, Server } from "lucide-react"
 import ProfileForm from "@/app/profile/ProfileForm"
 import Link from "next/link"
 
@@ -26,7 +26,7 @@ export function SettingsClient({ user, profile }: SettingsClientProps) {
       <Card className="enterprise-card glass-morphism border-none">
         <CardContent className="p-4 sm:p-6">
           <Tabs defaultValue="profile" className="space-y-6">
-            <TabsList className="inline-flex w-full overflow-x-auto overflow-y-hidden lg:grid lg:grid-cols-7 gap-1 scrollbar-hide bg-muted/50 backdrop-blur-sm">
+            <TabsList className="inline-flex w-full overflow-x-auto overflow-y-hidden lg:grid lg:grid-cols-8 gap-1 scrollbar-hide bg-muted/50 backdrop-blur-sm">
               <TabsTrigger
                 value="profile"
                 className="flex items-center gap-2 text-xs sm:text-sm whitespace-nowrap flex-shrink-0 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
@@ -76,6 +76,17 @@ export function SettingsClient({ user, profile }: SettingsClientProps) {
                   <Lock className="h-4 w-4" />
                   <span className="hidden sm:inline">OAuth 2.1</span>
                   <span className="sm:hidden">OAuth</span>
+                </Link>
+              </TabsTrigger>
+              <TabsTrigger
+                value="service-accounts"
+                className="flex items-center gap-2 text-xs sm:text-sm whitespace-nowrap flex-shrink-0 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+                asChild
+              >
+                <Link href="/ai-suite/settings/service-accounts">
+                  <Server className="h-4 w-4" />
+                  <span className="hidden sm:inline">Service Accounts</span>
+                  <span className="sm:hidden">SA</span>
                 </Link>
               </TabsTrigger>
               <TabsTrigger

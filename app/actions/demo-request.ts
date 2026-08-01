@@ -15,8 +15,8 @@ export async function sendDemoRequest(data: DemoRequestData) {
 
   try {
     const { data: emailData, error } = await resend.emails.send({
-      from: "ResendIt Demo <demo@resend-it.com>",
-      to: ["demo@resend-it.com"],
+      from: "Kronova Demo <demo@kronova.io>",
+      to: ["demo@kronova.io"],
       subject: `Demo Request from ${name}`,
       reply_to: email,
       text: `

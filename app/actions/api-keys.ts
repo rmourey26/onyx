@@ -1,6 +1,7 @@
 "use server"
 
 import { createServerSupabaseClient } from "@/lib/supabase/server"
+import { storeSecret } from "@/app/actions/vault-actions"
 
 export interface APIKey {
   id: string
@@ -76,6 +77,11 @@ export async function createAPIKey(name: string, expiresInDays?: number, scopes?
     if (error) {
       console.error("Error creating API key:", error)
       return { error: "Failed to create API key" }
+    }
+
+    // Store raw key in Vault for short-term admin recovery (30-day window)
+    if (data?.[0]?.id) {
+      await storeSecret(`api_key_raw_${data[0].id}`, apiKey)
     }
 
     // Return the full key only once (it won't be stored in plain text)

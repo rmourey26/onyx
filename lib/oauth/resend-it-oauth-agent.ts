@@ -2,12 +2,11 @@
  * Kronova OAuth 2.1 AI Agent System
  * Enables platform, marketplace, and users to build AI native apps
  * with OAuth-connected integrations
- * (Formerly Resend-It)
  */
 
 import { createServerSupabaseClient } from "@/lib/supabase/server"
-import { KronovaOAuthConfig } from "./resend-it-oauth-agent" // Ensure this import is correct
 
+/** @deprecated Use KronovaOAuthConfig instead. */
 export type ResendItOAuthConfig = KronovaOAuthConfig
 
 export class KronovaOAuthAgent {

@@ -67,7 +67,7 @@ const marketStats = [
 ]
 
 const comparisonData = [
-  { feature: "Products Covered", current: "1 (Resend-It)", platform: "50+ (multi-vendor)" },
+  { feature: "Products Covered", current: "1 (Kronova)", platform: "50+ (multi-vendor)" },
   { feature: "Customization", current: "Fixed inputs", platform: "Dynamic input builder" },
   { feature: "Data Sources", current: "Hardcoded", platform: "API-driven, live data" },
   { feature: "Industry Models", current: "7 industries", platform: "15+ with deep benchmarks" },

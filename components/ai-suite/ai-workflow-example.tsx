@@ -77,7 +77,7 @@ export function AIWorkflowExample() {
             },
             generate_resources: {
               welcome_email:
-                "Welcome to Resendit-It! We're excited to help you transform your business card experience...",
+                "Welcome to Kronova! We're excited to help you transform your business card experience...",
               tutorial_links: ["Getting Started Guide", "NFT Integration Tutorial", "Mobile App Setup"],
               faq_items: [
                 "How do I mint my first NFT?",
@@ -88,7 +88,7 @@ export function AIWorkflowExample() {
             setup_account: {
               account_id: "cust_67890",
               api_key: "sk_test_••••••••••••••••",
-              dashboard_url: "https://app.resendit.it/dashboard/cust_67890",
+              dashboard_url: "https://app.kronova.io/dashboard/cust_67890",
             },
           },
         })

@@ -101,7 +101,7 @@ export function DeveloperApiSection() {
                 icon: <Layers className="w-7 h-7 text-primary" />,
                 title: "Modular & Cross-Industry Solutions",
                 description:
-                  "Utilize Resend-It's Business Optimization Engine, Smart Packaging, and Rewards App modules, or build your own solutions on the Aether foundation.",
+                  "Utilize Kronova's Business Optimization Engine, Smart Packaging, and Rewards App modules, or build your own solutions on the Aether foundation.",
               },
             ].map((item) => (
               <motion.div key={item.title} variants={fadeIn} className="flex items-start space-x-4">

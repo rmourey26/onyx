@@ -1,5 +1,5 @@
 /**
- * Resend-It v1 Embedding Detail API
+ * Kronova v1 Embedding Detail API
  */
 
 import type { NextRequest } from "next/server"

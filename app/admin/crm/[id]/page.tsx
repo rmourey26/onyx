@@ -12,7 +12,7 @@ import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "CRM Connection Details - Resend-It",
+  title: "CRM Connection Details - Kronova",
   description: "View and manage data for a specific CRM connection",
 }
 

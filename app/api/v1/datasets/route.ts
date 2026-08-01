@@ -1,5 +1,5 @@
 /**
- * Resend-It v1 Datasets API
+ * Kronova v1 Datasets API
  * Manage embedding datasets for RAG applications
  */
 

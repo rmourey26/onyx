@@ -1,5 +1,5 @@
 /**
- * Resend-It Enterprise API Authentication Module
+ * Kronova Enterprise API Authentication Module
  * Provides standardized authentication for all v1 API endpoints
  */
 

@@ -1,5 +1,5 @@
 /**
- * Resend-It v1 Asset Insights API
+ * Kronova v1 Asset Insights API
  * AI-powered asset analysis
  */
 

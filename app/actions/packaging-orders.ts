@@ -519,7 +519,7 @@ async function sendOrderConfirmationEmail(email: string, order: any) {
       : "To be determined"
 
     await resend.emails.send({
-      from: "orders@resendit.com",
+      from: "orders@kronova.io",
       to: email,
       subject: `Order Confirmation - #${order.id.substring(0, 8)}`,
       html: `
@@ -604,12 +604,12 @@ async function sendOrderConfirmationEmail(email: string, order: any) {
             
             <div style="margin-top: 30px; text-align: center;">
               <p>You can view your order status at any time by visiting your <a href="${process.env.NEXT_PUBLIC_APP_URL}/packaging/orders/${order.id}" style="color: #0f766e; text-decoration: none; font-weight: bold;">account dashboard</a>.</p>
-              <p>Thank you for choosing Resend-It for your sustainable packaging needs!</p>
+              <p>Thank you for choosing Kronova for your sustainable packaging needs!</p>
             </div>
           </div>
           
           <div style="text-align: center; padding: 20px; color: #64748b; font-size: 12px;">
-            <p>© ${new Date().getFullYear()} Resend-It. All rights reserved.</p>
+            <p>© ${new Date().getFullYear()} Kronova. All rights reserved.</p>
             <p>123 Sustainability Way, Green City, EC0 123</p>
           </div>
         </div>
@@ -629,8 +629,8 @@ async function sendOrderNotificationEmail(order: any) {
     const category = packageCategories.find((c) => c.id === order.package_category)
 
     await resend.emails.send({
-      from: "orders@resendit.com",
-      to: "support@resendit.com",
+      from: "orders@kronova.io",
+      to: "support@kronova.io",
       subject: `New Packaging Order - #${order.id.substring(0, 8)}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -684,7 +684,7 @@ async function sendOrderNotificationEmail(order: any) {
           </div>
           
           <div style="text-align: center; padding: 20px; color: #64748b; font-size: 12px;">
-            <p>© ${new Date().getFullYear()} Resend-It. All rights reserved.</p>
+            <p>© ${new Date().getFullYear()} Kronova. All rights reserved.</p>
             <p>This is an automated message. Please do not reply directly to this email.</p>
           </div>
         </div>
@@ -712,7 +712,7 @@ async function sendOrderStatusUpdateEmail(email: string, order: any) {
       : "To be determined"
 
     await resend.emails.send({
-      from: "orders@resendit.com",
+      from: "orders@kronova.io",
       to: email,
       subject: `Order Status Update - #${order.id.substring(0, 8)}`,
       html: `
@@ -788,12 +788,12 @@ async function sendOrderStatusUpdateEmail(email: string, order: any) {
             
             <div style="margin-top: 30px; text-align: center;">
               <p>You can view your order status at any time by visiting your <a href="${process.env.NEXT_PUBLIC_APP_URL}/packaging/orders/${order.id}" style="color: #0f766e; text-decoration: none; font-weight: bold;">account dashboard</a>.</p>
-              <p>Thank you for choosing Resend-It for your sustainable packaging needs!</p>
+              <p>Thank you for choosing Kronova for your sustainable packaging needs!</p>
             </div>
           </div>
           
           <div style="text-align: center; padding: 20px; color: #64748b; font-size: 12px;">
-            <p>© ${new Date().getFullYear()} Resend-It. All rights reserved.</p>
+            <p>© ${new Date().getFullYear()} Kronova. All rights reserved.</p>
             <p>123 Sustainability Way, Green City, EC0 123</p>
           </div>
         </div>
@@ -807,7 +807,7 @@ async function sendOrderStatusUpdateEmail(email: string, order: any) {
 async function sendOrderCancellationEmail(email: string, order: any) {
   try {
     await resend.emails.send({
-      from: "orders@resendit.com",
+      from: "orders@kronova.io",
       to: email,
       subject: `Order Cancellation - #${order.id.substring(0, 8)}`,
       html: `
@@ -832,7 +832,7 @@ async function sendOrderCancellationEmail(email: string, order: any) {
           </div>
           
           <div style="text-align: center; padding: 20px; color: #64748b; font-size: 12px;">
-            <p>© ${new Date().getFullYear()} Resend-It. All rights reserved.</p>
+            <p>© ${new Date().getFullYear()} Kronova. All rights reserved.</p>
             <p>123 Sustainability Way, Green City, EC0 123</p>
           </div>
         </div>

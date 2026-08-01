@@ -1,10 +1,10 @@
 /**
- * LEGACY FILE - Resend-It Proprietary AI Tools
- * 
- * This file has been deprecated and now re-exports from kronova-proprietary-tools.ts
- * for backward compatibility. All new code should import from kronova-proprietary-tools.ts
- * 
- * @deprecated Import from './kronova-proprietary-tools' instead. Resend-It has been rebranded to Kronova.
+ * LEGACY FILE - Kronova Proprietary AI Tools (backward-compat shim)
+ *
+ * This file re-exports from kronova-proprietary-tools.ts for backward compatibility.
+ * All new code should import from kronova-proprietary-tools.ts directly.
+ *
+ * @deprecated Import from './kronova-proprietary-tools' instead.
  */
 
 // Re-export everything from the new Kronova file

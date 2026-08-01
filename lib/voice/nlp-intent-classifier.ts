@@ -80,7 +80,7 @@ export class NLPIntentClassifier {
     context?: Record<string, any>,
     options?: IntentClassificationOptions,
   ): Promise<Intent> {
-    const prompt = `You are an advanced NLP intent classifier for the Resend-It platform.
+    const prompt = `You are an advanced NLP intent classifier for the Kronova platform.
 
 AVAILABLE ACTIONS:
 1. execute_agent - Run an AI agent with a prompt

@@ -1111,7 +1111,7 @@ export async function generateAIResponse({
 }) {
   try {
     // Get the model details from the database to determine the provider
-    const supabase = createServerSupabaseClient()
+    const supabase = await createServerSupabaseClient()
     const { data: modelData, error: modelError } = await supabase
       .from("ai_models")
       .select("provider, model_id")

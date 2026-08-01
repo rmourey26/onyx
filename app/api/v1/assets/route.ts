@@ -1,5 +1,5 @@
 /**
- * Resend-It v1 Assets API
+ * Kronova v1 Assets API
  */
 
 import type { NextRequest } from "next/server"

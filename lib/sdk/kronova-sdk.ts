@@ -1,10 +1,10 @@
 /**
- * Kronova Enterprise SDK
- * Official TypeScript/JavaScript SDK for the Kronova Platform API
- * (Formerly Resend-It)
+ * @kronova-intelligent-systems/sdk
+ * Official TypeScript/JavaScript SDK for the Kronova Asset Intelligence Platform
  *
  * @version 2.0.0
  * @license MIT
+ * @see https://docs.kronova.io
  */
 
 // =============================================================================
@@ -19,16 +19,8 @@ export interface KronovaConfig {
   debug?: boolean
 }
 
-// Legacy type alias for backward compatibility
+/** @deprecated Use KronovaConfig instead. */
 export type ResenditConfig = KronovaConfig
-
-export interface ResenditConfig_DEPRECATED {
-  apiKey: string
-  baseUrl?: string
-  timeout?: number
-  retries?: number
-  debug?: boolean
-}
 
 export interface APIResponse<T> {
   success: boolean
@@ -46,6 +38,7 @@ export interface PaginationParams {
   page?: number
   limit?: number
   offset?: number
+  [key: string]: string | number | boolean | undefined
 }
 
 // Asset Types
@@ -340,8 +333,8 @@ export interface SendA2AMessageInput {
 // SDK IMPLEMENTATION
 // =============================================================================
 
-export class ResenditSDK {
-  private config: Required<ResenditConfig>
+export class KronovaSDKBase {
+  private config: Required<KronovaConfig>
 
   // Sub-clients
   public assets: AssetsClient
@@ -355,7 +348,7 @@ export class ResenditSDK {
   public oauth: OAuthClient_SDK
   public a2a: A2AClient
 
-  constructor(config: ResenditConfig) {
+  constructor(config: KronovaConfig) {
     this.config = {
       apiKey: config.apiKey,
       baseUrl: config.baseUrl || "https://api.kronova.ai/v1",
@@ -412,7 +405,7 @@ export class ResenditSDK {
     for (let attempt = 0; attempt < this.config.retries; attempt++) {
       try {
         if (this.config.debug) {
-          console.log(`[ResenditSDK] ${method} ${url.toString()}`)
+          console.log(`[KronovaSDK] ${method} ${url.toString()}`)
         }
 
         const controller = new AbortController()
@@ -430,7 +423,7 @@ export class ResenditSDK {
         const data = await response.json()
 
         if (!response.ok) {
-          throw new ResenditAPIError(data.error || `HTTP ${response.status}`, response.status, data)
+          throw new KronovaAPIError(data.error || `HTTP ${response.status}`, response.status, data)
         }
 
         return data as APIResponse<T>
@@ -438,7 +431,7 @@ export class ResenditSDK {
         lastError = error as Error
 
         // Don't retry on client errors (4xx)
-        if (error instanceof ResenditAPIError && error.status >= 400 && error.status < 500) {
+        if (error instanceof KronovaAPIError && error.status >= 400 && error.status < 500) {
           throw error
         }
 
@@ -455,7 +448,7 @@ export class ResenditSDK {
   /**
    * Get SDK configuration
    */
-  getConfig(): Readonly<Required<ResenditConfig>> {
+  getConfig(): Readonly<Required<KronovaConfig>> {
     return { ...this.config }
   }
 }
@@ -489,7 +482,7 @@ export class ResenditAPIError extends KronovaAPIError {
 // =============================================================================
 
 class AssetsClient {
-  constructor(private sdk: ResenditSDK) {}
+  constructor(private sdk: KronovaSDKBase) {}
 
   async list(params?: PaginationParams): Promise<APIResponse<Asset[]>> {
     return this.sdk.request("GET", "/assets", { params })
@@ -517,7 +510,7 @@ class AssetsClient {
 }
 
 class EmbeddingsClient {
-  constructor(private sdk: ResenditSDK) {}
+  constructor(private sdk: KronovaSDKBase) {}
 
   async list(params?: PaginationParams & { dataset_id?: string }): Promise<APIResponse<Embedding[]>> {
     return this.sdk.request("GET", "/embeddings", { params })
@@ -554,7 +547,7 @@ class EmbeddingsClient {
 }
 
 class DatasetsClient {
-  constructor(private sdk: ResenditSDK) {}
+  constructor(private sdk: KronovaSDKBase) {}
 
   async list(params?: PaginationParams): Promise<APIResponse<Dataset[]>> {
     return this.sdk.request("GET", "/datasets", { params })
@@ -574,7 +567,7 @@ class DatasetsClient {
 }
 
 class TokenizationClient {
-  constructor(private sdk: ResenditSDK) {}
+  constructor(private sdk: KronovaSDKBase) {}
 
   async list(params?: PaginationParams): Promise<APIResponse<TokenizedAsset[]>> {
     return this.sdk.request("GET", "/tokenization", { params })
@@ -598,7 +591,7 @@ class TokenizationClient {
 }
 
 class StablecoinsClient {
-  constructor(private sdk: ResenditSDK) {}
+  constructor(private sdk: KronovaSDKBase) {}
 
   async list(params?: PaginationParams): Promise<APIResponse<Stablecoin[]>> {
     return this.sdk.request("GET", "/stablecoins", { params })
@@ -632,7 +625,7 @@ class StablecoinsClient {
 }
 
 class AgentsClient {
-  constructor(private sdk: ResenditSDK) {}
+  constructor(private sdk: KronovaSDKBase) {}
 
   async list(params?: PaginationParams): Promise<APIResponse<Agent[]>> {
     return this.sdk.request("GET", "/agents", { params })
@@ -661,7 +654,7 @@ class AgentsClient {
     })
 
     if (!response.ok) {
-      throw new ResenditAPIError(`HTTP ${response.status}`, response.status)
+      throw new KronovaAPIError(`HTTP ${response.status}`, response.status)
     }
 
     const reader = response.body?.getReader()
@@ -696,7 +689,7 @@ class AgentsClient {
 }
 
 class WorkflowsClient {
-  constructor(private sdk: ResenditSDK) {}
+  constructor(private sdk: KronovaSDKBase) {}
 
   async list(params?: PaginationParams): Promise<APIResponse<Workflow[]>> {
     return this.sdk.request("GET", "/workflows", { params })
@@ -712,7 +705,7 @@ class WorkflowsClient {
 }
 
 class DataStreamsClient {
-  constructor(private sdk: ResenditSDK) {}
+  constructor(private sdk: KronovaSDKBase) {}
 
   /**
    * Subscribe to real-time data streams using Server-Sent Events
@@ -773,7 +766,7 @@ class DataStreamsClient {
 }
 
 class OAuthClient_SDK {
-  constructor(private sdk: ResenditSDK) {}
+  constructor(private sdk: KronovaSDKBase) {}
 
   async listClients(): Promise<APIResponse<OAuthClient[]>> {
     return this.sdk.request("GET", "/oauth/clients")
@@ -849,7 +842,7 @@ class OAuthClient_SDK {
 }
 
 class A2AClient {
-  constructor(private sdk: ResenditSDK) {}
+  constructor(private sdk: KronovaSDKBase) {}
 
   // Agent Card Management
   async listAgentCards(params?: PaginationParams): Promise<APIResponse<A2AAgentCard[]>> {
@@ -943,7 +936,11 @@ class A2AClient {
     capabilities?: string[]
     protocol_version?: string
   }): Promise<APIResponse<A2AAgentCard[]>> {
-    return this.sdk.request("GET", "/a2a/discover", { params })
+    const flatParams: Record<string, string | number | boolean | undefined> = {
+      protocol_version: params?.protocol_version,
+      ...(params?.capabilities ? { capabilities: params.capabilities.join(",") } : {}),
+    }
+    return this.sdk.request("GET", "/a2a/discover", { params: flatParams })
   }
 
   // Interoperability with external A2A networks
@@ -957,17 +954,110 @@ class A2AClient {
 }
 
 // =============================================================================
+// KAIRO SUPPORT CLIENT
+// =============================================================================
+
+export interface KairoMessage {
+  role: "user" | "assistant"
+  content: string
+}
+
+export interface KairoSendResult {
+  success: boolean
+  reply?: string
+  conversationId?: string
+  error?: string
+}
+
+export interface KairoTranscribeResult {
+  success: boolean
+  text?: string
+  error?: string
+}
+
+/**
+ * KairoSupportClient — lightweight client for the Kairo chatbot API.
+ *
+ * Designed for use in external projects (e.g. kronova.io) that call
+ * the Kronova platform API rather than running server actions directly.
+ * Wraps /v1/support/message and /v1/support/transcribe endpoints.
+ */
+class KairoSupportClient {
+  constructor(private sdk: KronovaSDKBase) {}
+
+  /**
+   * Send a message to Kairo and receive an AI-generated reply.
+   * The platform handles RAG retrieval, persistence, and model routing.
+   */
+  async send(
+    messages: KairoMessage[],
+    options?: {
+      conversationId?: string
+      modelId?: string
+      inputMode?: "text" | "voice"
+    },
+  ): Promise<APIResponse<KairoSendResult>> {
+    return this.sdk.request("POST", "/support/message", {
+      body: {
+        messages,
+        conversation_id: options?.conversationId,
+        model_id: options?.modelId ?? "openai/gpt-4o",
+        input_mode: options?.inputMode ?? "text",
+      },
+    })
+  }
+
+  /**
+   * Transcribe an audio ArrayBuffer via the platform's voice pipeline.
+   * Returns the transcribed text ready to pass to send().
+   */
+  async transcribe(audioBuffer: ArrayBuffer): Promise<APIResponse<KairoTranscribeResult>> {
+    const config = this.sdk.getConfig()
+    const url = `${config.baseUrl}/support/transcribe`
+
+    const blob = new Blob([audioBuffer], { type: "audio/wav" })
+    const formData = new FormData()
+    formData.append("audio", blob, "audio.wav")
+
+    const response = await fetch(url, {
+      method: "POST",
+      headers: { Authorization: `Bearer ${config.apiKey}` },
+      body: formData,
+    })
+
+    if (!response.ok) {
+      throw new KronovaAPIError(`HTTP ${response.status}`, response.status)
+    }
+
+    return response.json()
+  }
+
+  /**
+   * Close a support conversation — stamps ended_at on the session row.
+   */
+  async closeConversation(conversationId: string): Promise<APIResponse<{ closed: boolean }>> {
+    return this.sdk.request("POST", `/support/conversations/${conversationId}/close`)
+  }
+}
+
+// =============================================================================
 // FACTORY FUNCTION
 // =============================================================================
 
 /**
  * Kronova SDK - Primary branded SDK class
  */
-export class KronovaSDK extends ResenditSDK {
+export class KronovaSDK extends KronovaSDKBase {
+  public support: KairoSupportClient
+
   constructor(config: KronovaConfig) {
     super(config)
+    this.support = new KairoSupportClient(this)
   }
 }
+
+/** @deprecated Use KronovaSDK instead. Retained for backward compatibility. */
+export const ResenditSDK = KronovaSDK
 
 /**
  * Create a new Kronova SDK instance
@@ -977,12 +1067,11 @@ export function createKronovaClient(config: KronovaConfig): KronovaSDK {
 }
 
 /**
- * Create a new Resend-It SDK instance
- * @deprecated Use createKronovaClient instead. Resend-It has been rebranded to Kronova.
+ * @deprecated Use createKronovaClient instead.
  */
-export function createResenditClient(config: ResenditConfig): ResenditSDK {
-  return new ResenditSDK(config)
+export function createResenditClient(config: KronovaConfig): KronovaSDK {
+  return new KronovaSDK(config)
 }
 
 // Default export
-export default ResenditSDK
+export default KronovaSDK

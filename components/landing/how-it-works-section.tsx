@@ -43,8 +43,9 @@ export function HowItWorksSection() {
   }
 
   return (
-    <section className="py-16 md:py-24 bg-background">
-      <div className="container mx-auto px-4 md:px-6">
+    <section className="relative py-16 md:py-24 overflow-hidden">
+      <div className="absolute inset-0 tech-grid opacity-15 pointer-events-none" />
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -52,7 +53,9 @@ export function HowItWorksSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12 md:mb-16"
         >
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">From Deployment to Dominance in Three Steps</h2>
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl enterprise-text-gradient">
+            From Deployment to Dominance in Three Steps
+          </h2>
           <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
             Our platform provides a seamless flow from initial setup to verifiable outcomes and maximized business
             value.
@@ -60,7 +63,7 @@ export function HowItWorksSection() {
         </motion.div>
 
         <motion.div
-          className="grid gap-10 md:gap-12"
+          className="grid gap-8 md:gap-10"
           variants={sectionVariants}
           initial="hidden"
           whileInView="visible"
@@ -70,27 +73,29 @@ export function HowItWorksSection() {
             <motion.div
               key={step.title}
               variants={itemVariants}
-              className={`flex flex-col ${
+              className={`enterprise-card flex flex-col ${
                 index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-              } items-center gap-8 md:gap-12 p-6 bg-card rounded-xl shadow-lg hover:shadow-primary/10 transition-shadow`}
+              } items-center gap-8 md:gap-12 p-6 md:p-8`}
             >
-              <div className="md:w-1/2 relative aspect-video w-full overflow-hidden rounded-lg border">
+              <div className="md:w-1/2 relative aspect-video w-full overflow-hidden rounded-xl border border-border/40">
                 <Image src={step.image || "/placeholder.svg"} alt={step.alt} fill className="object-cover" />
               </div>
               <div className="md:w-1/2 space-y-4">
-                <div className="flex items-center gap-3">
-                  <div className="p-3 bg-primary/10 rounded-full">{step.icon}</div>
+                <div className="flex items-center gap-4">
+                  <div className="p-3 bg-gradient-to-br from-primary/20 to-accent/10 rounded-xl border border-primary/20">
+                    {step.icon}
+                  </div>
                   <h3 className="text-2xl font-semibold">{step.title}</h3>
                 </div>
                 <p className="text-muted-foreground leading-relaxed">{step.description}</p>
                 {index === 0 && (
-                  <div className="flex items-center text-sm text-primary pt-2">
-                    <Bot className="w-4 h-4 mr-2" /> AetherNet API v1 (Secure AI Agents) - Launching Soon
+                  <div className="flex items-center text-sm text-primary pt-2 border-l-2 border-primary/40 pl-3">
+                    <Bot className="w-4 h-4 mr-2 shrink-0" /> AetherNet API v1 (Secure AI Agents) - Launching Soon
                   </div>
                 )}
                 {index === 1 && (
-                  <div className="flex items-center text-sm text-primary pt-2">
-                    <ShieldCheck className="w-4 h-4 mr-2" /> AetherChain (Trust Layer) - Launching Q3 2025
+                  <div className="flex items-center text-sm text-primary pt-2 border-l-2 border-primary/40 pl-3">
+                    <ShieldCheck className="w-4 h-4 mr-2 shrink-0" /> AetherChain (Trust Layer) - Launching Q3 2025
                   </div>
                 )}
               </div>

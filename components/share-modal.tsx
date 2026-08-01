@@ -60,7 +60,7 @@ export function ShareModal({ profileId, userData }: ShareModalProps) {
       const url =
         typeof window !== "undefined"
           ? `${window.location.origin}/p/${publicId}`
-          : `${process.env.NEXT_PUBLIC_APP_URL || "https://app.resend-it.com"}/p/${publicId}`
+          : `${process.env.NEXT_PUBLIC_APP_URL || "https://app.kronova.io"}/p/${publicId}`
       setShareUrl(url)
     }
   }, [publicId])
@@ -83,7 +83,7 @@ export function ShareModal({ profileId, userData }: ShareModalProps) {
           const url =
             typeof window !== "undefined"
               ? `${window.location.origin}/p/${result.public_id}`
-              : `${process.env.NEXT_PUBLIC_APP_URL || "https://app.resend-it.com"}/p/${result.public_id}`
+              : `${process.env.NEXT_PUBLIC_APP_URL || "https://app.kronova.io"}/p/${result.public_id}`
 
           setShareUrl(url)
         } else {

@@ -1,5 +1,5 @@
 /**
- * Resend-It v1 Semantic Search API
+ * Kronova v1 Semantic Search API
  * Vector similarity search across embeddings
  */
 

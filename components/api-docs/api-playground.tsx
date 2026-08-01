@@ -545,7 +545,7 @@ export function APIPlayground() {
       }
     })
 
-    const url = `https://assetintel.resend-it.com/api/v1${path}${queryParams.toString() ? "?" + queryParams.toString() : ""}`
+    const url = `https://api.kronova.io/v1${path}${queryParams.toString() ? "?" + queryParams.toString() : ""}`
 
     let curl = `curl -X ${state.selectedEndpoint.method} "${url}" \\
   -H "Authorization: Bearer YOUR_API_KEY" \\
@@ -563,9 +563,9 @@ export function APIPlayground() {
     if (!state.selectedEndpoint) return ""
 
     const endpoint = state.selectedEndpoint
-    let code = `import { createResenditClient } from '@resendit/sdk'
+    let code = `import { createKronovaClient } from '@kronova-intelligent-systems/sdk'
 
-const client = createResenditClient({ apiKey: 'YOUR_API_KEY' })
+const client = createKronovaClient({ apiKey: 'YOUR_API_KEY' })
 
 `
 

@@ -20,7 +20,7 @@ export function ApiWorkflowGuide() {
       <div className="flex flex-col gap-2">
         <h2 className="text-3xl font-bold tracking-tight">AI Workflow System</h2>
         <p className="text-muted-foreground">
-          The Resendit-It AI Workflow System allows you to create, manage, and execute complex AI-powered workflows that
+          The Kronova AI Workflow System allows you to create, manage, and execute complex AI-powered workflows that
           integrate multiple components of the platform.
         </p>
       </div>
@@ -44,7 +44,7 @@ export function ApiWorkflowGuide() {
             </CardHeader>
             <CardContent className="space-y-4">
               <p>
-                The Resendit-It AI Workflow System is a powerful orchestration engine that allows you to create
+                The Kronova AI Workflow System is a powerful orchestration engine that allows you to create
                 multi-step processes combining various AI capabilities, data operations, and business logic. Workflows
                 enable you to automate complex tasks that would otherwise require multiple manual steps.
               </p>
@@ -86,7 +86,7 @@ export function ApiWorkflowGuide() {
                 <AlertTitle>Workflow System Architecture</AlertTitle>
                 <AlertDescription>
                   The Workflow System is built on a flexible architecture that allows for extensibility and integration
-                  with various components of the Resendit-It platform. Workflows are stored in the database and can be
+                  with various components of the Kronova platform. Workflows are stored in the database and can be
                   executed on-demand or triggered by events.
                 </AlertDescription>
               </Alert>

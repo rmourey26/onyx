@@ -301,17 +301,17 @@ export async function removeMember(memberId: string) {
 
 async function sendInvitationEmail(email: string, organizationName: string, inviterName: string, role: string) {
   try {
-    const signupUrl = `${process.env.NEXT_PUBLIC_APP_URL || "https://app.resend-it.com"}/signup?email=${encodeURIComponent(email)}&referrer=org-invite`
+    const signupUrl = `${process.env.NEXT_PUBLIC_APP_URL || "https://app.kronova.io"}/signup?email=${encodeURIComponent(email)}&referrer=org-invite`
 
     await resend.emails.send({
-      from: "team@resendit.com",
+      from: "team@kronova.io",
       to: email,
-      subject: `You've been invited to join ${organizationName} on Resend-It`,
+      subject: `You've been invited to join ${organizationName} on Kronova`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <div style="background-color: #0e7490; padding: 20px; text-align: center; border-radius: 8px 8px 0 0;">
             <h1 style="color: white; margin: 0;">You're Invited!</h1>
-            <p style="color: #e0f2fe;">Join ${organizationName} on Resend-It</p>
+            <p style="color: #e0f2fe;">Join ${organizationName} on Kronova</p>
           </div>
           
           <div style="padding: 20px; border: 1px solid #e2e8f0; border-top: none; border-radius: 0 0 8px 8px;">
@@ -319,13 +319,13 @@ async function sendInvitationEmail(email: string, organizationName: string, invi
             
             <p style="font-size: 16px; color: #334155;">
               <strong>${inviterName}</strong> has invited you to join <strong>${organizationName}</strong> 
-              as a <strong>${role}</strong> on the Resend-It platform.
+              as a <strong>${role}</strong> on the Kronova platform.
             </p>
             
             <div style="background-color: #f0f9ff; padding: 15px; border-radius: 8px; margin: 20px 0;">
-              <h3 style="color: #0e7490; margin-top: 0;">What is Resend-It?</h3>
+              <h3 style="color: #0e7490; margin-top: 0;">What is Kronova?</h3>
               <p style="color: #334155; margin-bottom: 0;">
-                Resend-It is an enterprise AI platform that helps organizations manage assets, workflows, 
+                Kronova is an enterprise AI platform that helps organizations manage assets, workflows, 
                 and team collaboration with powerful AI-driven insights and automation.
               </p>
             </div>
@@ -345,12 +345,12 @@ async function sendInvitationEmail(email: string, organizationName: string, invi
             
             <p style="margin-top: 30px; color: #64748b; font-size: 14px;">
               If you have any questions, feel free to reach out to ${inviterName} or visit our 
-              <a href="${process.env.NEXT_PUBLIC_APP_URL || "https://app.resend-it.com"}/about" style="color: #0e7490; text-decoration: none;">help center</a>.
+              <a href="${process.env.NEXT_PUBLIC_APP_URL || "https://app.kronova.io"}/about" style="color: #0e7490; text-decoration: none;">help center</a>.
             </p>
           </div>
           
           <div style="text-align: center; padding: 20px; color: #64748b; font-size: 12px;">
-            <p>© ${new Date().getFullYear()} Resend-It. All rights reserved.</p>
+            <p>© ${new Date().getFullYear()} Kronova. All rights reserved.</p>
             <p>This invitation was sent to ${email}</p>
             <p style="margin-top: 10px;">
               <a href="${signupUrl}" style="color: #0e7490; text-decoration: none;">Sign Up Now</a>

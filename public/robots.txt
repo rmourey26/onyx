@@ -3,4 +3,4 @@ User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://app.resend-it.com/sitemap.xml
+Sitemap: https://app.kronova.io/sitemap.xml

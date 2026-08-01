@@ -7,7 +7,7 @@ import type { Metadata } from "next"
 export const dynamic = "force-dynamic"
 
 export const metadata: Metadata = {
-  title: "Asset Intelligence - Resend-It",
+  title: "Asset Intelligence - Kronova",
   description: "AI-powered asset lifecycle management with real-time tracking and predictive analytics",
 }
 

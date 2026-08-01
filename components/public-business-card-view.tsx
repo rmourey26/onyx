@@ -262,7 +262,7 @@ export function PublicBusinessCardView({ card }: PublicBusinessCardViewProps) {
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex flex-col">
       <header className="bg-white dark:bg-gray-800 shadow-sm py-4 px-6">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
-          <h1 className="text-xl font-bold">Resend-It</h1>
+          <h1 className="text-xl font-bold">Kronova</h1>
         </div>
       </header>
 
@@ -296,7 +296,7 @@ export function PublicBusinessCardView({ card }: PublicBusinessCardViewProps) {
       </main>
 
       <footer className="bg-white dark:bg-gray-800 py-4 px-6 text-center text-sm text-gray-500">
-        <p>© {new Date().getFullYear()} Resend-It. All rights reserved.</p>
+        <p>© {new Date().getFullYear()} Kronova. All rights reserved.</p>
       </footer>
     </div>
   )

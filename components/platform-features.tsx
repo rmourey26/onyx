@@ -82,7 +82,7 @@ export function PlatformFeatures() {
       <div className="container mx-auto px-4 relative z-10">
         <div className="flex items-center justify-center mb-12">
           <div className="relative h-16 w-16 mr-4">
-            <Image src="/images/resendit-icon.png" alt="Resend-It Logo" fill className="object-contain" />
+            <Image src="/images/resendit-icon.png" alt="Kronova Logo" fill className="object-contain" />
           </div>
           <h2 className="text-4xl font-bold text-center text-white">
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-green-600">

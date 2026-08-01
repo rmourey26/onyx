@@ -397,7 +397,7 @@ And Kronova is the only platform that brings all four pillars—A2A, AetherNet, 
 
 **Try the SDK:**
 ```bash
-npm install @kronova/sdk
+npm install @kronova-intelligent-systems/sdk
 ```
 
 **Request Enterprise Access:**

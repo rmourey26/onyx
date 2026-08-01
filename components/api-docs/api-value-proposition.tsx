@@ -7,7 +7,7 @@ export function ApiValueProposition() {
       <div>
         <h2 className="text-2xl font-bold tracking-tight">Value Proposition</h2>
         <p className="text-muted-foreground mt-2">
-          The Resendit-It API delivers significant business value through seamless integration, automation, and enhanced
+          The Kronova API delivers significant business value through seamless integration, automation, and enhanced
           capabilities.
         </p>
       </div>
@@ -162,7 +162,7 @@ export function ApiValueProposition() {
       <div className="mt-8">
         <h3 className="text-xl font-semibold">Sustainability Impact</h3>
         <p className="mt-2 text-sm">
-          Beyond the direct business benefits, the Resendit-It API enables significant environmental impact through
+          Beyond the direct business benefits, the Kronova API enables significant environmental impact through
           sustainable packaging practices.
         </p>
 
@@ -214,7 +214,7 @@ export function ApiValueProposition() {
               </div>
             </div>
             <p className="mt-4 text-sm">
-              "By integrating the Resendit-It API with our e-commerce platform, we reduced packaging costs by 32% and
+              "By integrating the Kronova API with our e-commerce platform, we reduced packaging costs by 32% and
               improved our sustainability metrics significantly. Our customers love the eco-friendly packaging options."
             </p>
             <div className="mt-4 flex items-center justify-between">
@@ -244,7 +244,7 @@ export function ApiValueProposition() {
               </div>
             </div>
             <p className="mt-4 text-sm">
-              "The Resendit-It API allowed us to implement a closed-loop packaging system for our B2B customers. We've
+              "The Kronova API allowed us to implement a closed-loop packaging system for our B2B customers. We've
               seen dramatic reductions in packaging waste and significant cost savings."
             </p>
             <div className="mt-4 flex items-center justify-between">

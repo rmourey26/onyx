@@ -309,7 +309,7 @@ function VerticalSolutionsContent() {
     <MotionDiv>
       <FeatureVisual
         imgSrc="/images/landing/resendit-optimization-engine.png"
-        altText="Resend-It Business Optimization Engine"
+        altText="Kronova Business Optimization Engine"
       />
       <FeatureText
         title="Vertical AI Solutions"
@@ -341,7 +341,7 @@ function DeveloperEcosystemContent() {
     <MotionDiv>
       <FeatureText
         title="Pioneering Developer Ecosystem"
-        description="Build the future on Aether. Our comprehensive APIs, SDKs, and tools empower developers to create custom AI agents for AetherNet, deploy Rust smart contracts on AetherChain, and integrate with the entire Resend-It Ecosystem."
+        description="Build the future on Aether. Our comprehensive APIs, SDKs, and tools empower developers to create custom AI agents for AetherNet, deploy Rust smart contracts on AetherChain, and integrate with the entire Kronova Ecosystem."
         points={[
           {
             icon: <Wrench size={20} />,

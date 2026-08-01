@@ -1,5 +1,5 @@
 /**
- * Resend-It Supabase Edge Function: Process Embeddings
+ * Kronova Supabase Edge Function: Process Embeddings
  * Background processing for embedding generation
  */
 
@@ -41,7 +41,7 @@ serve(async (req) => {
     console.log(`[process-embeddings] Processing job ${jobId}`)
 
     // Call the app's embedding endpoint
-    const appUrl = Deno.env.get("NEXT_PUBLIC_APP_URL") || "https://app.resend-it.com"
+    const appUrl = Deno.env.get("NEXT_PUBLIC_APP_URL") || "https://app.kronova.io"
 
     const response = await fetch(`${appUrl}/api/internal/embeddings/process`, {
       method: "POST",

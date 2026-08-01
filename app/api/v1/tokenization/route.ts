@@ -1,5 +1,5 @@
 /**
- * Resend-It v1 Tokenization API
+ * Kronova v1 Tokenization API
  * Enterprise asset tokenization on Sui blockchain
  */
 

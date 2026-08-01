@@ -86,8 +86,8 @@ export async function mintSuiNFT(profileId: string, name: string, description: s
 
     // Prepare the NFT data
     const nftName = name || "NFT"
-    const nftDescription = description || "Resend-It Digital ID NFT"
-    const nftUrl = imageUrl || "https://dev.resend-it.com/images/resendit-icon.png"
+    const nftDescription = description || "Kronova Digital ID NFT"
+    const nftUrl = imageUrl || "https://app.kronova.io/images/kronova-icon.png"
 
     // Call the mint function on the NFT contract
     // This is a simplified example - you'll need to replace with your actual contract details

@@ -1,0 +1,58 @@
+{
+  "name": "@kronova-intelligent-systems/sdk",
+  "version": "2.0.0",
+  "description": "Official TypeScript/JavaScript SDK for the Kronova Intelligent Systems Asset Intelligence Platform",
+  "author": "Kronova Intelligent Systems <dev@kronova.io>",
+  "license": "MIT",
+  "homepage": "https://docs.kronova.io",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kronova-intelligent-systems/sdk"
+  },
+  "bugs": {
+    "url": "https://github.com/kronova-intelligent-systems/sdk/issues"
+  },
+  "keywords": [
+    "kronova",
+    "asset-intelligence",
+    "ai",
+    "agents",
+    "workflows",
+    "tokenization",
+    "sdk",
+    "typescript"
+  ],
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js",
+      "types": "./dist/types/index.d.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "npm run build:esm && npm run build:cjs && npm run build:types",
+    "build:esm": "tsc -p tsconfig.esm.json",
+    "build:cjs": "tsc -p tsconfig.cjs.json",
+    "build:types": "tsc -p tsconfig.types.json",
+    "clean": "rm -rf dist",
+    "prepublishOnly": "npm run clean && npm run build"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
+}

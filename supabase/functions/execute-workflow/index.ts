@@ -92,7 +92,7 @@ serve(async (req) => {
 
     try {
       // Call the app's execute workflow endpoint
-      const appUrl = Deno.env.get("NEXT_PUBLIC_APP_URL") || "https://app.resend-it.com"
+      const appUrl = Deno.env.get("NEXT_PUBLIC_APP_URL") || "https://app.kronova.io"
       const executeResponse = await fetch(`${appUrl}/api/v1/workflows/${workflowId}/execute`, {
         method: "POST",
         headers: {

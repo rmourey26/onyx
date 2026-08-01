@@ -198,7 +198,7 @@ export function APIKeyManagement() {
               <DialogHeader>
                 <DialogTitle>Create API Key</DialogTitle>
                 <DialogDescription>
-                  Generate a new API key for accessing the Resend-It API programmatically with granular permissions.
+                  Generate a new API key for accessing the Kronova Platform API programmatically with granular permissions.
                 </DialogDescription>
               </DialogHeader>
               {!createdKey ? (

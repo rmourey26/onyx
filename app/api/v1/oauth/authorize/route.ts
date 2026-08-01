@@ -1,5 +1,5 @@
 /**
- * Resend-It v1 OAuth 2.1 Authorization Endpoint
+ * Kronova v1 OAuth 2.1 Authorization Endpoint
  * MCP-compliant OAuth authorization server
  */
 

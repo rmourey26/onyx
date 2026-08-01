@@ -170,18 +170,16 @@ export default function LoginPage() {
         >
           <div className="glass-morphism rounded-2xl p-4 sm:p-5 shadow-2xl">
             <div className="mb-8 text-center">
-              <div className="mx-auto mb-4 flex items-center justify-center rounded-2xl shadow-lg max-w-[62.5%] bg-transparent">
-                <Link href="/" className="flex items-center gap-3 transition-transform hover:scale-105">
-                  <Image
-                    src="/logos/kronova-logo-footer.svg"
-                    alt="Kronova"
-                    width={360}
-                    height={80}
-                    className="h-14 w-auto"
-                    priority
-                  />
-                </Link>
-              </div>
+              <Link href="/" className="inline-flex items-center justify-center mb-6 transition-opacity hover:opacity-80">
+                <Image
+                  src="/logos/kronova-logo-footer.svg"
+                  alt="Kronova"
+                  width={200}
+                  height={44}
+                  className="h-11 w-auto"
+                  priority
+                />
+              </Link>
               <h1 className="mb-2 font-sans text-3xl font-bold tracking-tight text-foreground">Welcome back</h1>
               <p className="text-sm text-muted-foreground">Sign in to access your enterprise platform</p>
             </div>

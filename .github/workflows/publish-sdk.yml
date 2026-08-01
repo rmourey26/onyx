@@ -1,0 +1,46 @@
+name: Publish SDK to NPM
+
+on:
+  push:
+    tags:
+      - "sdk-v*"   # trigger on tags like sdk-v1.0.0, sdk-v1.2.3
+
+jobs:
+  publish:
+    name: Build & Publish @kronova-intelligent-systems/sdk
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write  # required for npm provenance
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Install TypeScript (SDK build deps only)
+        working-directory: lib/sdk
+        run: npm install
+
+      - name: Compile — ESM
+        working-directory: lib/sdk
+        run: npx tsc -p tsconfig.esm.json
+
+      - name: Compile — CJS
+        working-directory: lib/sdk
+        run: npx tsc -p tsconfig.cjs.json
+
+      - name: Compile — Types
+        working-directory: lib/sdk
+        run: npx tsc -p tsconfig.types.json
+
+      - name: Publish to NPM
+        working-directory: lib/sdk
+        run: npm publish --access public --provenance
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}

@@ -215,7 +215,7 @@ serve(async (req) => {
               )
 
               try {
-                const appUrl = Deno.env.get("NEXT_PUBLIC_APP_URL") || "https://app.resend-it.com"
+                const appUrl = Deno.env.get("NEXT_PUBLIC_APP_URL") || "https://app.kronova.io"
                 const processResponse = await fetch(`${appUrl}/api/v1/voice/process`, {
                   method: "POST",
                   headers: {

@@ -479,7 +479,7 @@ export function ApiRoiCalculator() {
       <div className="mt-8 border rounded-lg p-6">
         <h3 className="text-xl font-semibold">Implementation Timeline</h3>
         <p className="text-sm text-muted-foreground mt-1">
-          Typical timeline for implementing the Resendit-It platform and realizing ROI
+          Typical timeline for implementing the Kronova platform and realizing ROI
         </p>
 
         <div className="mt-6 relative">
@@ -491,7 +491,7 @@ export function ApiRoiCalculator() {
             </div>
             <h4 className="font-medium">API Integration (2-4 weeks)</h4>
             <p className="text-sm mt-1">
-              Connect your systems to the Resendit-It API. Our documentation and SDKs make this process straightforward.
+              Connect your systems to the Kronova API. Our documentation and SDKs make this process straightforward.
             </p>
           </div>
 

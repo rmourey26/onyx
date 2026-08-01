@@ -7,7 +7,7 @@ export const dynamic = "force-dynamic"
 
 export const metadata: Metadata = {
   title: "Managed Databases - AI Business Suite",
-  description: "Create and manage your dedicated Supabase databases for the Resend-It ecosystem.",
+  description: "Create and manage your dedicated Supabase databases for the Kronova ecosystem.",
 }
 
 export default async function ManagedDatabasesPage() {

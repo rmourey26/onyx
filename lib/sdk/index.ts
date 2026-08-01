@@ -1,17 +1,17 @@
 /**
- * Kronova SDK - Main Entry Point
+ * @kronova-intelligent-systems/sdk — Main Entry Point
  * @packageDocumentation
  */
 
 export {
   KronovaSDK,
-  ResenditSDK, // Legacy export for backward compatibility
+  ResenditSDK, // @deprecated — use KronovaSDK
   createKronovaClient,
-  createResenditClient, // Legacy export for backward compatibility
+  createResenditClient, // @deprecated — use createKronovaClient
   KronovaAPIError,
-  ResenditAPIError, // Legacy export for backward compatibility
+  ResenditAPIError, // @deprecated — use KronovaAPIError
   type KronovaConfig,
-  type ResenditConfig, // Legacy type for backward compatibility
+  type ResenditConfig, // @deprecated — use KronovaConfig
   type APIResponse,
   type PaginationParams,
   type Asset,
@@ -44,4 +44,7 @@ export {
   type A2AMessage,
   type CreateA2ATaskInput,
   type SendA2AMessageInput,
+  type KairoMessage,
+  type KairoSendResult,
+  type KairoTranscribeResult,
 } from "./kronova-sdk"

@@ -92,7 +92,7 @@ export async function GET(request: NextRequest) {
         user_id: profileId,
         public_id,
         public_access: true,
-        full_name: "Resend-It User",
+        full_name: "Kronova User",
         created_at: new Date().toISOString(),
         updated_at: new Date().toISOString(),
       })

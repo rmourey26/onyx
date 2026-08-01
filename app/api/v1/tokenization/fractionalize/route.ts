@@ -1,5 +1,5 @@
 /**
- * Resend-It v1 Fractionalization API
+ * Kronova v1 Fractionalization API
  */
 
 import type { NextRequest } from "next/server"

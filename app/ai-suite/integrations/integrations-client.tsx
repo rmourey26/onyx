@@ -73,7 +73,7 @@ export function IntegrationsClient({ initialIntegrations }: IntegrationsClientPr
             External Integrations
           </h1>
           <p className="mt-3 max-w-2xl mx-auto text-lg text-muted-foreground">
-            Connect your e-commerce stores and external platforms to the Resend-It ecosystem.
+            Connect your e-commerce stores and external platforms to the Kronova ecosystem.
           </p>
         </div>
 

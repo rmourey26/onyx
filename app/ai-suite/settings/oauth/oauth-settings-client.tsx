@@ -234,7 +234,7 @@ export function OAuthSettingsClient({ oauthClients, userId }: OAuthSettingsClien
         <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle>Create OAuth Client</DialogTitle>
-            <DialogDescription>Create a new OAuth 2.1 client to integrate with the Resend-It API</DialogDescription>
+            <DialogDescription>Create a new OAuth 2.1 client to integrate with the Kronova Platform API</DialogDescription>
           </DialogHeader>
 
           <div className="space-y-6 py-4">
@@ -497,7 +497,7 @@ export function OAuthSettingsClient({ oauthClients, userId }: OAuthSettingsClien
                     Our API uses OAuth 2.1 with PKCE. Redirect users to:
                   </p>
                   <code className="block bg-muted p-3 rounded text-xs overflow-x-auto">
-                    {`https://app.resendit.com/oauth/authorize?
+                    {`https://app.kronova.io/oauth/authorize?
   response_type=code
   &client_id=YOUR_CLIENT_ID
   &redirect_uri=YOUR_REDIRECT_URI
@@ -510,7 +510,7 @@ export function OAuthSettingsClient({ oauthClients, userId }: OAuthSettingsClien
                 <div>
                   <h4 className="font-semibold mb-2">3. Exchange Code for Tokens</h4>
                   <code className="block bg-muted p-3 rounded text-xs overflow-x-auto">
-                    {`POST https://app.resendit.com/oauth/token
+                    {`POST https://app.kronova.io/oauth/token
 {
   "grant_type": "authorization_code",
   "client_id": "YOUR_CLIENT_ID",
@@ -524,7 +524,7 @@ export function OAuthSettingsClient({ oauthClients, userId }: OAuthSettingsClien
                 <div>
                   <h4 className="font-semibold mb-2">4. Make API Requests</h4>
                   <code className="block bg-muted p-3 rounded text-xs overflow-x-auto">
-                    {`GET https://app.resendit.com/api/v1/agents
+                    {`GET https://app.kronova.io/api/v1/agents
 Authorization: Bearer YOUR_ACCESS_TOKEN`}
                   </code>
                 </div>

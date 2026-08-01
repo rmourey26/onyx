@@ -2,6 +2,7 @@
 
 import { createServerSupabaseClient } from "@/lib/supabase/server"
 import { revalidatePath } from "next/cache"
+import { storeSecret } from "@/app/actions/vault-actions"
 
 export async function createOAuthClient(data: {
   clientName: string
@@ -29,6 +30,14 @@ export async function createOAuthClient(data: {
   if (error) {
     console.error("[v0] Error creating OAuth client:", error)
     return { error: error.message }
+  }
+
+  // Store client secret in Vault for secure retrieval
+  if (result?.[0]?.client_id && result?.[0]?.client_secret) {
+    await storeSecret(
+      `oauth_client_secret_${result[0].client_id}`,
+      result[0].client_secret,
+    )
   }
 
   revalidatePath("/ai-suite/settings/oauth")
@@ -115,6 +124,11 @@ export async function rotateOAuthClientSecret(clientId: string) {
   if (error) {
     console.error("[v0] Error rotating OAuth client secret:", error)
     return { error: error.message }
+  }
+
+  // Update Vault with the new rotated secret
+  if (data?.[0]?.client_secret) {
+    await storeSecret(`oauth_client_secret_${clientId}`, data[0].client_secret)
   }
 
   revalidatePath("/ai-suite/settings/oauth")

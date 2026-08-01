@@ -6,7 +6,7 @@ export function ApiArchitecture() {
       <div>
         <h2 className="text-2xl font-bold tracking-tight">API Architecture</h2>
         <p className="text-muted-foreground mt-2">
-          The Resendit-It API is built on a modern, scalable architecture designed for performance and reliability.
+          The Kronova API is built on a modern, scalable architecture designed for performance and reliability.
         </p>
       </div>
 
@@ -43,7 +43,7 @@ export function ApiArchitecture() {
           </CardHeader>
           <CardContent>
             <p className="text-sm">
-              Behind our unified API facade, Resendit-It uses a microservices architecture that allows us to scale
+              Behind our unified API facade, Kronova uses a microservices architecture that allows us to scale
               individual components independently. Each core function (shipping, packaging, business cards, AI) is
               implemented as a separate service, enabling rapid development and deployment.
             </p>
@@ -126,7 +126,7 @@ export function ApiArchitecture() {
           </div>
         </div>
         <p className="mt-4 text-sm text-muted-foreground">
-          The diagram above illustrates the high-level architecture of the Resendit-It platform, showing how the API
+          The diagram above illustrates the high-level architecture of the Kronova platform, showing how the API
           gateway routes requests to the appropriate microservices, and how data flows between components.
         </p>
       </div>
@@ -134,7 +134,7 @@ export function ApiArchitecture() {
       <div className="mt-8">
         <h3 className="text-xl font-semibold">Integration Patterns</h3>
         <p className="mt-2 text-sm">
-          Resendit-It supports multiple integration patterns to accommodate different use cases and technical
+          Kronova supports multiple integration patterns to accommodate different use cases and technical
           requirements.
         </p>
 

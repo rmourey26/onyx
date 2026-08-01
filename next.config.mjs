@@ -5,6 +5,42 @@ const require = createRequire(import.meta.url)
 const nextConfig = {
   turbopack: {},
   reactStrictMode: true,
+  async headers() {
+    return [
+      {
+        // Apply to all routes
+        source: "/(.*)",
+        headers: [
+          // Allow microphone access on all pages (required for voice NLP)
+          {
+            key: "Permissions-Policy",
+            value: "microphone=(self), camera=(), geolocation=()",
+          },
+          // Legacy Feature-Policy for older Android/Samsung Browser compatibility
+          {
+            key: "Feature-Policy",
+            value: "microphone 'self'",
+          },
+          // Allow blob: URIs for MediaRecorder audio chunks and data: for inline assets
+          {
+            key: "Content-Security-Policy",
+            value: [
+              "default-src 'self'",
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
+              "style-src 'self' 'unsafe-inline'",
+              "img-src 'self' data: blob: https:",
+              // blob: required for MediaRecorder .ondataavailable chunks
+              "media-src 'self' blob: https:",
+              "connect-src 'self' https: wss:",
+              "font-src 'self' https: data:",
+              "frame-src 'self' https:",
+              "worker-src 'self' blob:",
+            ].join("; "),
+          },
+        ],
+      },
+    ]
+  },
   transpilePackages: ["@mysten/dapp-kit", "@mysten/sui", "@mysten/bcs"],
   typescript: {
     ignoreBuildErrors: true,

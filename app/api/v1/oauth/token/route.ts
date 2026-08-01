@@ -1,5 +1,5 @@
 /**
- * Resend-It v1 OAuth 2.1 Token Endpoint
+ * Kronova v1 OAuth 2.1 Token Endpoint
  */
 
 import type { NextRequest } from "next/server"

@@ -1,5 +1,5 @@
 /**
- * Resend-It Supabase Edge Function: OAuth Token Introspection
+ * Kronova Supabase Edge Function: OAuth Token Introspection
  * RFC 7662 compliant token introspection
  */
 

@@ -1,5 +1,5 @@
 /**
- * Resend-It v1 OAuth Client Management API
+ * Kronova v1 OAuth Client Management API
  */
 
 import type { NextRequest } from "next/server"
@@ -49,7 +49,7 @@ export async function POST(request: NextRequest) {
       return apiError("Missing required fields: name, redirectUris", 400)
     }
 
-    const clientId = `resendit_${crypto.randomBytes(16).toString("hex")}`
+    const clientId = `kronova_${crypto.randomBytes(16).toString("hex")}`
     const clientSecret = clientType === "confidential" ? crypto.randomBytes(32).toString("hex") : null
 
     const supabase = await createServerSupabaseClient()

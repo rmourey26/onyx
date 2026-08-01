@@ -19,8 +19,10 @@ export function RoiSustainabilityFocusSection() {
   }
 
   return (
-    <section className="py-16 md:py-24 bg-background">
-      <div className="container mx-auto px-4 md:px-6">
+    <section className="relative py-16 md:py-24 overflow-hidden">
+      <div className="absolute inset-0 tech-grid opacity-15 pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-primary/6 rounded-full blur-3xl pointer-events-none" />
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -28,7 +30,9 @@ export function RoiSustainabilityFocusSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12 md:mb-16"
         >
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Exponential Efficiency, Verifiable ROI</h2>
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl enterprise-text-gradient">
+            Exponential Efficiency, Verifiable ROI
+          </h2>
           <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
             Move beyond incremental improvements. Our platform is engineered to deliver a step-change in operational
             performance and quantifiable business value.
@@ -41,7 +45,7 @@ export function RoiSustainabilityFocusSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.7 }}
-            className="relative aspect-video rounded-xl overflow-hidden shadow-2xl group"
+            className="enterprise-card relative aspect-video overflow-hidden group"
           >
             <Image
               src="/images/landing/workflow-roi-sustainability-dashboard.png"
@@ -49,29 +53,29 @@ export function RoiSustainabilityFocusSection() {
               fill
               className="object-cover transition-transform duration-500 group-hover:scale-105"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
             <div className="absolute bottom-0 left-0 p-6 text-white">
               <h3 className="text-xl font-semibold">Actionable Intelligence</h3>
               <p className="text-sm opacity-90 mt-1">Powered by the Aether Ecosystem.</p>
             </div>
           </motion.div>
 
-          <div className="space-y-6">
+          <div className="space-y-4">
             {[
               {
-                icon: <Zap className="h-7 w-7 text-primary" />,
+                icon: <Zap className="h-6 w-6 text-primary" />,
                 title: "Up to 200x Faster Results",
                 description:
                   "Autonomous AI agents operate in parallel, 24/7, delivering actionable results and completing complex workflows at a speed traditional computing and manual processes cannot match.",
               },
               {
-                icon: <Users className="h-7 w-7 text-primary" />,
+                icon: <Users className="h-6 w-6 text-primary" />,
                 title: "Massive Labor Hour Reduction",
                 description:
                   "Automate entire categories of manual, repetitive, and cognitive tasks, freeing up your human team to focus on high-value strategic initiatives and innovation.",
               },
               {
-                icon: <Cpu className="h-7 w-7 text-primary" />,
+                icon: <Cpu className="h-6 w-6 text-primary" />,
                 title: "Optimized for Advanced IoT",
                 description:
                   "Our platform is purpose-built for the demands of modern hardware, providing the necessary speed and security to manage fleets of drones, robotics, and medical devices.",
@@ -84,12 +88,14 @@ export function RoiSustainabilityFocusSection() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.5 }}
-                className="flex items-start gap-4 p-4 bg-card/50 border rounded-lg shadow-sm hover:shadow-md transition-shadow"
+                className="enterprise-card flex items-start gap-4 p-5"
               >
-                <div className="flex-shrink-0 mt-1">{item.icon}</div>
+                <div className="flex-shrink-0 p-2.5 bg-gradient-to-br from-primary/20 to-accent/10 rounded-lg border border-primary/20 mt-0.5">
+                  {item.icon}
+                </div>
                 <div>
-                  <h3 className="text-lg font-semibold">{item.title}</h3>
-                  <p className="text-muted-foreground text-sm mt-1">{item.description}</p>
+                  <h3 className="text-base font-semibold text-foreground">{item.title}</h3>
+                  <p className="text-muted-foreground text-sm mt-1 leading-relaxed">{item.description}</p>
                 </div>
               </motion.div>
             ))}
@@ -99,11 +105,11 @@ export function RoiSustainabilityFocusSection() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.5 }}
-              className="pt-4"
+              className="pt-2"
             >
               <Link
                 href="/contact-sales"
-                className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-11 px-8 w-full sm:w-auto"
+                className="enterprise-button inline-flex items-center justify-center text-sm font-semibold h-11 px-8 w-full sm:w-auto rounded-lg"
               >
                 Calculate Your ROI <ArrowRight className="ml-2 h-5 w-5" />
               </Link>

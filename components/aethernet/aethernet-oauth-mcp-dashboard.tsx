@@ -73,7 +73,7 @@ export function AetherNetOAuthMCPDashboard({
     },
     {
       title: "AetherNet QUAS — Canton Settlement Layer",
-      description: "AetherNet QUAS (Quantum-Unified Agent Settlement) executes legally binding machine-to-machine financial contracts inside Trusted Execution Environments (TEEs) on the Canton Network. QUAS is architecturally independent of OAuth — it is not an extension of it.",
+      description: "AetherNet QUAS (Quantum Universal Agentic Substrate) executes legally binding machine-to-machine financial contracts inside Trusted Execution Environments (TEEs) on the Canton Network. QUAS is architecturally independent of OAuth — it is not an extension of it.",
       icon: Network,
       color: "text-purple-500",
       bgColor: "bg-purple-500/10",

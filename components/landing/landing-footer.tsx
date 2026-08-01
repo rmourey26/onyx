@@ -38,8 +38,8 @@ export function LandingFooter() {
     {
       label: "Resources",
       items: [
-        { href: "/api-docs", name: "API Documentation" },
-        { href: "/support", name: "Support Center" },
+        { href: "/api-docs", name: "Documentation & SDK" },
+        { href: "/support", name: "Support & Kairo" },
         { href: "/sustainability", name: "Sustainability" },
       ],
     },

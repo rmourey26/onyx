@@ -6,50 +6,50 @@
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "/logos/kronova-logo-icon.svg",
-      "sizes": "72x72",
-      "type": "image/svg+xml",
-      "purpose": "any maskable"
+      "src": "/icons/kronova-icon-300x300.png",
+      "sizes": "300x300",
+      "type": "image/png",
+      "purpose": "any"
     },
     {
-      "src": "/logos/kronova-logo-icon.svg",
-      "sizes": "96x96",
-      "type": "image/svg+xml",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "/logos/kronova-logo-icon.svg",
-      "sizes": "128x128",
-      "type": "image/svg+xml",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "/logos/kronova-logo-icon.svg",
-      "sizes": "144x144",
-      "type": "image/svg+xml",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "/logos/kronova-logo-icon.svg",
-      "sizes": "152x152",
-      "type": "image/svg+xml",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "/logos/kronova-logo-icon.svg",
+      "src": "/icons/kronova-icon-300x300.png",
       "sizes": "192x192",
-      "type": "image/svg+xml",
-      "purpose": "any maskable"
+      "type": "image/png",
+      "purpose": "any"
     },
     {
-      "src": "/logos/kronova-logo-icon.svg",
-      "sizes": "384x384",
-      "type": "image/svg+xml",
-      "purpose": "any maskable"
+      "src": "/icons/kronova-icon-300x300.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
     },
     {
-      "src": "/logos/kronova-logo-icon.svg",
-      "sizes": "512x512",
+      "src": "/icons/kronova-icon-300x300.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/kronova-icon-300x300.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/kronova-icon-300x300.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/kronova-icon-300x300.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "https://quantumone.b-cdn.net/kronova/kronova-svg-icon.svg",
+      "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any maskable"
     }
@@ -60,14 +60,14 @@
       "short_name": "Dashboard",
       "description": "View your AI dashboard",
       "url": "/dashboard",
-      "icons": [{ "src": "/logos/kronova-logo-icon.svg", "sizes": "192x192" }]
+      "icons": [{ "src": "/icons/kronova-icon-300x300.png", "sizes": "192x192", "type": "image/png" }]
     },
     {
       "name": "AI Business Suite",
       "short_name": "AI Suite",
-      "description": "Chat, code, create AI agents who continuously learn your business",
+      "description": "Create, deploy, orchestrate, and securely transact value instantly.",
       "url": "/ai-suite",
-      "icons": [{ "src": "/logos/kronova-logo-icon.svg", "sizes": "192x192" }]
+      "icons": [{ "src": "/icons/kronova-icon-300x300.png", "sizes": "192x192", "type": "image/png" }]
     }
   ],
   "screenshots": [

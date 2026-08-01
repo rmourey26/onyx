@@ -20,8 +20,8 @@ export interface CantonConfig {
 }
 
 const DEFAULT_CONFIG: Partial<CantonConfig> = {
-  ledgerApiUrl: process.env.CANTON_LEDGER_API_URL || "https://canton.resend-it.io/api/ledger",
-  applicationId: "resend-it-stablecoin",
+  ledgerApiUrl: process.env.CANTON_LEDGER_API_URL || "https://canton.kronova.io/api/ledger",
+  applicationId: "kronova-stablecoin",
 }
 
 // ==================== Schemas ====================

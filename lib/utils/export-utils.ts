@@ -111,7 +111,7 @@ export function generateJSON(data: Record<string, any>[], includeMetadata = true
     recordCount: data.length,
     ...(includeMetadata && {
       metadata: {
-        exportedBy: "Resend-It Platform",
+        exportedBy: "Kronova Platform",
         version: "1.0",
       },
     }),

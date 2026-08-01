@@ -7,7 +7,7 @@ export const dynamic = "force-dynamic"
 
 export const metadata: Metadata = {
   title: "External Integrations - AI Business Suite",
-  description: "Connect your e-commerce stores and external platforms to the Resend-It ecosystem.",
+  description: "Connect your e-commerce stores and external platforms to the Kronova ecosystem.",
 }
 
 export default async function IntegrationsPage() {

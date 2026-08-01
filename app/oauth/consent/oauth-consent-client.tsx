@@ -122,7 +122,7 @@ export function OAuthConsentClient({ authDetails, authorizationId, user }: OAuth
           <Alert>
             <AlertCircle className="h-4 w-4" />
             <AlertDescription>
-              <strong>{clientName}</strong> is requesting access to your Resend-It account
+              <strong>{clientName}</strong> is requesting access to your Kronova account
             </AlertDescription>
           </Alert>
         </CardHeader>

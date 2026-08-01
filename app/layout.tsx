@@ -9,6 +9,7 @@ import { cn } from "@/lib/utils"
 import { FeedbackProvider } from "@/components/feedback/feedback-provider"
 import { Analytics } from "@vercel/analytics/react"
 import { getVersion } from "@/lib/version"
+import { UnifiedFAB } from "@/components/support/unified-fab"
 
 export const dynamic = "force-dynamic"
 
@@ -114,23 +115,38 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
+      // Modern browsers: SVG scales perfectly at any resolution
       {
-        url: "/favicon.svg",
-        sizes: "32x32",
+        url: "https://quantumone.b-cdn.net/kronova/kronova-svg-icon.svg",
         type: "image/svg+xml",
       },
+      // Legacy fallback: 256x256 ICO covers 16, 32, 48, 256 in one file
       {
-        url: "/favicon.svg",
-        sizes: "16x16",
-        type: "image/svg+xml",
+        url: "/favicon.ico",
+        sizes: "any",
+      },
+      // Explicit PNG for platforms that prefer raster over SVG
+      {
+        url: "/icons/kronova-icon-300x300.png",
+        sizes: "300x300",
+        type: "image/png",
       },
     ],
-    shortcut: "/favicon.svg",
+    shortcut: "/favicon.ico",
     apple: [
+      // Apple Touch Icon — 180x180 is the canonical size for iOS home screen
       {
-        url: "/logos/kronova-logo-icon.svg",
+        url: "/icons/kronova-icon-300x300.png",
         sizes: "180x180",
-        type: "image/svg+xml",
+        type: "image/png",
+      },
+    ],
+    other: [
+      // Android / Chrome maskable icon
+      {
+        rel: "mask-icon",
+        url: "https://quantumone.b-cdn.net/kronova/kronova-svg-icon.svg",
+        color: "#0047AB",
       },
     ],
   },
@@ -165,6 +181,7 @@ export default function RootLayout({
               <main className="flex-1">{children}</main>
               <ConditionalFooter />
             </div>
+            <UnifiedFAB />
           </FeedbackProvider>
         </ClientProviders>
         <Analytics />

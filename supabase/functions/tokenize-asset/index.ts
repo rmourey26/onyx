@@ -1,5 +1,5 @@
 /**
- * Resend-It Supabase Edge Function: Tokenize Asset
+ * Kronova Supabase Edge Function: Tokenize Asset
  * Blockchain tokenization processing
  */
 
@@ -46,7 +46,7 @@ serve(async (req) => {
     console.log(`[tokenize-asset] Tokenizing asset ${assetId} for user ${user.id}`)
 
     // Call the app's tokenization endpoint
-    const appUrl = Deno.env.get("NEXT_PUBLIC_APP_URL") || "https://app.resend-it.com"
+    const appUrl = Deno.env.get("NEXT_PUBLIC_APP_URL") || "https://app.kronova.io"
 
     const response = await fetch(`${appUrl}/api/v1/tokenization`, {
       method: "POST",

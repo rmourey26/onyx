@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion"
 import { NetworkIcon as NetworkOff, Layers, Cpu, Clock } from "lucide-react"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
 const problems = [
   {
@@ -29,7 +28,7 @@ const solution = {
   icon: <Layers className="h-10 w-10 text-primary" />,
   title: "A Unified Platform for Autonomous Operations",
   description:
-    "The Resend-It platform provides a single, cohesive foundation for intelligent automation. Our secure AI communication network (AetherNet) allows AI agents to collaborate. The Learning Layer ensures they grow smarter with your business. And the post-quantum secure AetherChain provides an immutable source of truth for all operations, especially for high-stakes environments like IoT, robotics, and autonomous vehicles.",
+    "The Kronova platform provides a single, cohesive foundation for intelligent automation. Our secure AI communication network (AetherNet) allows AI agents to collaborate. The Learning Layer ensures they grow smarter with your business. And the post-quantum secure AetherChain provides an immutable source of truth for all operations, especially for high-stakes environments like IoT, robotics, and autonomous vehicles.",
 }
 
 export function ProblemSolutionSection() {
@@ -46,25 +45,27 @@ export function ProblemSolutionSection() {
   }
 
   return (
-    <section className="py-16 md:py-24 bg-background">
-      <div className="container mx-auto px-4 md:px-6">
+    <section className="relative py-16 md:py-24 overflow-hidden">
+      <div className="absolute inset-0 tech-grid opacity-15 pointer-events-none" />
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6 }}
+          className="text-center"
         >
-          <h2 className="text-3xl font-bold tracking-tight text-center sm:text-4xl">
-            Break Free From Yesterday's Limitations
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl enterprise-text-gradient">
+            Break Free From Yesterday&apos;s Limitations
           </h2>
           <p className="mt-4 text-lg text-muted-foreground text-center max-w-3xl mx-auto">
             Businesses globally are struggling to integrate AI meaningfully, ensure trust, and escape the hamster wheel
-            of manual work. The Resend-It platform provides the architectural breakthrough for the next generation of
+            of manual work. The Kronova platform provides the architectural breakthrough for the next generation of
             autonomous enterprise.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8 mt-12">
+        <div className="grid md:grid-cols-3 gap-6 mt-12">
           {problems.map((problem, i) => (
             <motion.div
               key={problem.title}
@@ -74,32 +75,32 @@ export function ProblemSolutionSection() {
               whileInView="visible"
               viewport={{ once: true, amount: 0.5 }}
             >
-              <Card className="h-full shadow-lg hover:shadow-xl transition-shadow bg-card">
-                <CardHeader>
-                  <div className="flex items-center space-x-3">
+              <div className="enterprise-card h-full p-6 space-y-4">
+                <div className="flex items-center gap-3">
+                  <div className="p-2.5 bg-gradient-to-br from-primary/15 to-accent/10 rounded-lg border border-primary/20">
                     {problem.icon}
-                    <CardTitle>{problem.title}</CardTitle>
                   </div>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground">{problem.description}</p>
-                </CardContent>
-              </Card>
+                  <h3 className="font-semibold text-foreground">{problem.title}</h3>
+                </div>
+                <p className="text-muted-foreground text-sm leading-relaxed">{problem.description}</p>
+              </div>
             </motion.div>
           ))}
         </div>
 
         <motion.div
-          className="mt-16 bg-card border rounded-xl p-8 md:p-12 shadow-2xl"
-          initial={{ opacity: 0, scale: 0.95 }}
+          className="enterprise-card mt-12 p-8 md:p-12"
+          initial={{ opacity: 0, scale: 0.97 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6, delay: 0.3 }}
         >
-          <div className="flex flex-col md:flex-row items-center gap-6 md:gap-8">
-            <div className="flex-shrink-0 p-4 bg-primary/10 rounded-full">{solution.icon}</div>
+          <div className="flex flex-col md:flex-row items-center gap-6 md:gap-10">
+            <div className="flex-shrink-0 p-4 bg-gradient-to-br from-primary/20 to-accent/10 rounded-2xl border border-primary/20">
+              {solution.icon}
+            </div>
             <div>
-              <h3 className="text-2xl font-semibold text-primary">{solution.title}</h3>
+              <h3 className="text-2xl font-semibold enterprise-text-gradient">{solution.title}</h3>
               <p className="mt-3 text-muted-foreground leading-relaxed">{solution.description}</p>
             </div>
           </div>

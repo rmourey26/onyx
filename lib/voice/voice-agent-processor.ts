@@ -146,7 +146,7 @@ async function extractIntentFromText(
   const agentSystem = new AgentSystem()
 
   const intentPrompt = `
-You are an NLP intent classifier for the Resend-It Asset Intelligence Platform.
+You are an NLP intent classifier for the Kronova Asset Intelligence Platform.
 Analyze the following user voice command and extract:
 1. The primary action/intent
 2. All relevant entities (asset names, agent names, numbers, etc.)

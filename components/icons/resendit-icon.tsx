@@ -1,7 +1,8 @@
+/** @deprecated Use KronovaIcon from './kronova-icon' instead. */
 export function ResenditIcon({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
-      <g clipPath="url(#clip0_resendit)">
+      <g clipPath="url(#clip0_kronova_legacy)">
         {/* Outer circle border */}
         <circle cx="100" cy="100" r="95" stroke="currentColor" strokeWidth="6" fill="none" />
 
@@ -27,7 +28,7 @@ export function ResenditIcon({ className }: { className?: string }) {
         </g>
       </g>
       <defs>
-        <clipPath id="clip0_resendit">
+        <clipPath id="clip0_kronova_legacy">
           <rect width="200" height="200" fill="white" />
         </clipPath>
       </defs>
