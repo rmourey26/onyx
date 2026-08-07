@@ -23,6 +23,7 @@
     "@mysten/bcs": "^2.1.0",
     "@mysten/dapp-kit": "latest",
     "@mysten/sui": "latest",
+    "@radix-ui/react-alert-dialog": "latest",
     "@radix-ui/react-avatar": "latest",
     "@radix-ui/react-checkbox": "latest",
     "@radix-ui/react-collapsible": "^1.1.7",
