@@ -7,10 +7,10 @@
   "homepage": "https://docs.kronova.io",
   "repository": {
     "type": "git",
-    "url": "https://github.com/kronova-intelligent-systems/sdk"
+    "url": "https://github.com/kronova-intelligent-systems/asset-intel-orchestration-engine"
   },
   "bugs": {
-    "url": "https://github.com/kronova-intelligent-systems/sdk/issues"
+    "url": "https://github.com/kronova-intelligent-systems/asset-intel-orchestration-engine/issues"
   },
   "keywords": [
     "kronova",
