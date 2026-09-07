@@ -631,7 +631,7 @@ export class AIClient {
         break
       case "openrouter":
         headers["Authorization"] = `Bearer ${this.apiKey}`
-        headers["HTTP-Referer"] = process.env.NEXT_PUBLIC_APP_URL || "https://kronova.ai"
+        headers["HTTP-Referer"] = process.env.NEXT_PUBLIC_APP_URL || "https://kronova.io"
         headers["X-Title"] = "Kronova AI Suite"
         break
       case "baseten":

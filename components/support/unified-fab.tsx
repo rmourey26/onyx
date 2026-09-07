@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect, useRef } from "react"
-import { MessageCircle, Lightbulb, Bug, X, Plus } from "lucide-react"
+import { MessageCircle, Lightbulb, Bug, X, Plus, Sparkles } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { FeedbackModal } from "@/components/feedback/feedback-modal"
 import { SupportChatWidget } from "@/components/support/support-chat-widget"
@@ -53,18 +53,21 @@ export function UnifiedFAB() {
           )}
           aria-hidden={!isOpen}
         >
-          {/* Chat with Kairo */}
+          {/* Chat with Kairo — the hero action, visually distinct from the neutral FAB toggle */}
           <button
             onClick={handleChatClick}
             className="group flex items-center gap-3 focus:outline-none"
             tabIndex={isOpen ? 0 : -1}
             aria-label="Chat with Kairo"
           >
-            <span className="hidden sm:flex items-center h-8 px-3 rounded-lg glass-morphism border border-primary/20 text-xs font-medium text-foreground shadow-md group-hover:border-primary/40 group-hover:shadow-primary/10 transition-all whitespace-nowrap">
+            <span className="hidden sm:flex items-center h-8 px-3 rounded-lg glass-morphism border border-primary/20 text-xs font-semibold enterprise-text-gradient shadow-md group-hover:border-primary/40 group-hover:shadow-primary/10 transition-all whitespace-nowrap">
               Chat with Kairo
             </span>
-            <div className="h-10 w-10 rounded-full enterprise-button flex items-center justify-center shadow-lg group-hover:scale-105 transition-all duration-200">
-              <MessageCircle className="h-4 w-4" />
+            <div className="relative h-12 w-12 rounded-full enterprise-button flex items-center justify-center shadow-xl shadow-primary/30 ring-2 ring-primary/20 group-hover:ring-primary/40 group-hover:scale-105 transition-all duration-200">
+              <MessageCircle className="h-5 w-5" />
+              <span className="absolute -top-0.5 -right-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-background border border-primary/30">
+                <Sparkles className="h-2.5 w-2.5 text-primary" />
+              </span>
             </div>
           </button>
 
@@ -103,15 +106,15 @@ export function UnifiedFAB() {
           </FeedbackModal>
         </div>
 
-        {/* Primary FAB toggle */}
+        {/* Primary FAB toggle — neutral, understated control that opens the speed-dial */}
         <button
           onClick={() => setIsOpen(o => !o)}
           aria-label={isOpen ? "Close support menu" : "Open support menu"}
           aria-expanded={isOpen}
           className={cn(
             "h-14 w-14 rounded-full flex items-center justify-center",
-            "enterprise-button shadow-xl shadow-primary/25",
-            "hover:scale-105 active:scale-95 transition-all duration-200",
+            "bg-foreground text-background border border-border/40 shadow-lg",
+            "hover:bg-foreground/90 hover:scale-105 active:scale-95 transition-all duration-200",
             "focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2",
           )}
         >

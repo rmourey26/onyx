@@ -15,13 +15,13 @@ export const BRAND = {
   formerName: "Resend-It",
   
   // URLs and domains
-  website: process.env.NEXT_PUBLIC_SITE_URL || "https://kronova.ai",
-  appUrl: process.env.NEXT_PUBLIC_APP_URL || "https://app.kronova.ai",
+  website: process.env.NEXT_PUBLIC_SITE_URL || "https://kronova.io",
+  appUrl: process.env.NEXT_PUBLIC_APP_URL || "https://app.kronova.io",
   
   // Social and support
   support: {
-    email: "support@kronova.ai",
-    docs: "https://docs.kronova.ai",
+    email: "support@kronova.io",
+    docs: "https://docs.kronova.io",
     github: "https://github.com/kronova",
   },
   

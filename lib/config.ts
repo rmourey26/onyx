@@ -33,9 +33,9 @@ export type SiteConfig = {
 export const siteConfig: SiteConfig = {
   name: "Kronova",
   description:
-    "The world's most advanced Vertical AI Agent Platform - Build and deploy autonomous teams of AI agents with unprecedented efficiency and automation",
-  url: process.env.NEXT_PUBLIC_SITE_URL || "https://kronova.ai",
-  ogImage: "https://kronova.ai/og.jpg",
+    "An open-source AI asset intelligence and orchestration platform. Use it for free, fork the codebase, and connect to AetherNet QUAS and KVS for sovereign, post-quantum-secure execution.",
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://app.kronova.io",
+  ogImage: "https://app.kronova.io/images/landing/aether-ecosystem-hero.png",
   links: {
     twitter: "https://twitter.com/kronovaai",
     github: "https://github.com/kronova/platform",

@@ -44,7 +44,7 @@ Creates a new Kronova SDK instance.
 | Option | Type | Default | Description |
 |--------|------|---------|-------------|
 | `apiKey` | `string` | required | Your Kronova API key |
-| `baseUrl` | `string` | `https://api.kronova.ai/v1` | API base URL |
+| `baseUrl` | `string` | `https://api.kronova.io/v1` | API base URL |
 | `timeout` | `number` | `30000` | Request timeout in ms |
 | `retries` | `number` | `3` | Number of retries on failure |
 | `debug` | `boolean` | `false` | Enable debug logging |

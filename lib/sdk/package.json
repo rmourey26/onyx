@@ -1,13 +1,14 @@
 {
   "name": "@kronova-intelligent-systems/sdk",
-  "version": "2.0.0",
+  "version": "2.1.1",
   "description": "Official TypeScript/JavaScript SDK for the Kronova Intelligent Systems Asset Intelligence Platform",
   "author": "Kronova Intelligent Systems <dev@kronova.io>",
   "license": "MIT",
   "homepage": "https://docs.kronova.io",
   "repository": {
     "type": "git",
-    "url": "https://github.com/kronova-intelligent-systems/asset-intel-orchestration-engine"
+    "url": "https://github.com/kronova-intelligent-systems/asset-intel-orchestration-engine",
+    "directory": "lib/sdk"
   },
   "bugs": {
     "url": "https://github.com/kronova-intelligent-systems/asset-intel-orchestration-engine/issues"

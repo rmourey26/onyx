@@ -18,17 +18,19 @@ export async function authenticateAPIKey(request: NextRequest): Promise<NextResp
   // Validate the API key using the new function that sets RLS context
   const result = await validateAPIKeyWithContext(token)
 
-  if (!result.valid) {
+  // Hard-fail if the RPC reported valid but is missing the identity fields we
+  // need -- never fall back to a partially-built/undefined identity.
+  if (!result.valid || !result.userId || !result.apiKeyId) {
     return NextResponse.json({ error: result.error || "Invalid API key" }, { status: 401 })
   }
 
   // Add user_id and scopes to request headers for downstream use
   const requestHeaders = new Headers(request.headers)
-  requestHeaders.set("x-user-id", result.key!.user_id)
-  requestHeaders.set("x-api-key-id", result.key!.id)
+  requestHeaders.set("x-user-id", result.userId)
+  requestHeaders.set("x-api-key-id", result.apiKeyId)
 
-  if (result.key!.scopes) {
-    requestHeaders.set("x-api-key-scopes", JSON.stringify(result.key!.scopes))
+  if (result.scopes) {
+    requestHeaders.set("x-api-key-scopes", JSON.stringify(result.scopes))
   }
 
   return null // Authentication successful, continue to route handler

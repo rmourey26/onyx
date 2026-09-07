@@ -282,7 +282,7 @@ export class KronovaA2AClient {
     this.userId = config.userId
     this.agentCardId = config.agentCardId
     this.aethernetAddress = config.aethernetAddress
-    this.baseUrl = config.baseUrl || "https://api.kronova.ai/a2a"
+    this.baseUrl = config.baseUrl || "https://api.kronova.io/a2a"
   }
 
   // ==========================================================================

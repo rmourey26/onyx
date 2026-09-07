@@ -527,6 +527,21 @@ export interface KairoTranscribeResult {
     error?: string;
 }
 /**
+ * A single Server-Sent-Events chunk emitted by /support/message/stream.
+ * "delta" chunks carry incremental text; "done" carries final metadata
+ * once the platform has finished RAG retrieval, generation, and persistence.
+ */
+export type KairoStreamChunk = {
+    type: "delta";
+    text: string;
+} | {
+    type: "done";
+    conversationId?: string;
+} | {
+    type: "error";
+    error: string;
+};
+/**
  * KairoSupportClient — lightweight client for the Kairo chatbot API.
  *
  * Designed for use in external projects (e.g. kronova.io) that call
@@ -545,6 +560,20 @@ declare class KairoSupportClient {
         modelId?: string;
         inputMode?: "text" | "voice";
     }): Promise<APIResponse<KairoSendResult>>;
+    /**
+     * Send a message to Kairo and stream the reply as it's generated.
+     * The platform still handles RAG retrieval, persistence, and model
+     * routing server-side — only the response delivery is incremental.
+     *
+     * Consume with `for await (const chunk of sdk.support.sendStream(...))`.
+     * Requires the platform's /support/message/stream endpoint (SSE).
+     */
+    sendStream(messages: KairoMessage[], options?: {
+        conversationId?: string;
+        modelId?: string;
+        inputMode?: "text" | "voice";
+        signal?: AbortSignal;
+    }): AsyncGenerator<KairoStreamChunk, void, unknown>;
     /**
      * Transcribe an audio ArrayBuffer via the platform's voice pipeline.
      * Returns the transcribed text ready to pass to send().

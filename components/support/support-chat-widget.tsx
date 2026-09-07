@@ -360,7 +360,10 @@ export function SupportChatWidget({ externalOpen, onExternalClose }: SupportChat
                 }
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-64 glass-morphism border-primary/20">
+            <DropdownMenuContent
+              align="end"
+              className="z-[70] w-64 border-primary/20 bg-popover shadow-2xl"
+            >
               <DropdownMenuLabel className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
                 AI Model
               </DropdownMenuLabel>

@@ -413,8 +413,8 @@
 }
 
 .enterprise-button {
-  background: linear-gradient(to right, hsl(var(--primary)), hsl(var(--accent)));
-  color: hsl(var(--primary-foreground));
+  background: linear-gradient(to right, var(--primary), var(--accent));
+  color: var(--primary-foreground);
   font-weight: 600;
   padding: 0.75rem 1.5rem;
   border-radius: 0.5rem;
@@ -424,7 +424,7 @@
 }
 
 .enterprise-button:hover {
-  box-shadow: 0 10px 15px -3px hsl(var(--primary) / 0.25);
+  box-shadow: 0 10px 15px -3px color-mix(in oklch, var(--primary) 25%, transparent);
   transform: scale(1.05);
 }
 
@@ -436,7 +436,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(to right, hsl(var(--accent)), hsl(var(--primary)));
+  background: linear-gradient(to right, var(--accent), var(--primary));
   opacity: 0;
   transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }

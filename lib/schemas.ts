@@ -47,6 +47,11 @@ export const AVAILABLE_SCOPES = [
   { value: "read:assets", label: "Read Assets", description: "View asset data" },
   { value: "write:assets", label: "Write Assets", description: "Create and modify assets" },
   { value: "read:analytics", label: "Read Analytics", description: "Access analytics data" },
+  {
+    value: "access:support",
+    label: "Kairo Support Chat",
+    description: "Send messages to the Kairo support assistant via the SDK, including streaming replies",
+  },
   { value: "execute:*", label: "Execute All", description: "Execute any operation" },
   { value: "*:*", label: "Full Access", description: "Complete API access (admin)" },
 ] as const

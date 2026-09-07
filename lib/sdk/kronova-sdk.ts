@@ -351,7 +351,7 @@ export class KronovaSDKBase {
   constructor(config: KronovaConfig) {
     this.config = {
       apiKey: config.apiKey,
-      baseUrl: config.baseUrl || "https://api.kronova.ai/v1",
+      baseUrl: config.baseUrl || "https://api.kronova.io/v1",
       timeout: config.timeout || 30000,
       retries: config.retries || 3,
       debug: config.debug || false,
@@ -976,6 +976,16 @@ export interface KairoTranscribeResult {
 }
 
 /**
+ * A single Server-Sent-Events chunk emitted by /support/message/stream.
+ * "delta" chunks carry incremental text; "done" carries final metadata
+ * once the platform has finished RAG retrieval, generation, and persistence.
+ */
+export type KairoStreamChunk =
+  | { type: "delta"; text: string }
+  | { type: "done"; conversationId?: string }
+  | { type: "error"; error: string }
+
+/**
  * KairoSupportClient — lightweight client for the Kairo chatbot API.
  *
  * Designed for use in external projects (e.g. kronova.io) that call
@@ -1005,6 +1015,77 @@ class KairoSupportClient {
         input_mode: options?.inputMode ?? "text",
       },
     })
+  }
+
+  /**
+   * Send a message to Kairo and stream the reply as it's generated.
+   * The platform still handles RAG retrieval, persistence, and model
+   * routing server-side — only the response delivery is incremental.
+   *
+   * Consume with `for await (const chunk of sdk.support.sendStream(...))`.
+   * Requires the platform's /support/message/stream endpoint (SSE).
+   */
+  async *sendStream(
+    messages: KairoMessage[],
+    options?: {
+      conversationId?: string
+      modelId?: string
+      inputMode?: "text" | "voice"
+      signal?: AbortSignal
+    },
+  ): AsyncGenerator<KairoStreamChunk, void, unknown> {
+    const config = this.sdk.getConfig()
+    const response = await fetch(`${config.baseUrl}/support/message/stream`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${config.apiKey}`,
+        "Content-Type": "application/json",
+        Accept: "text/event-stream",
+      },
+      body: JSON.stringify({
+        messages,
+        conversation_id: options?.conversationId,
+        model_id: options?.modelId ?? "openai/gpt-4o",
+        input_mode: options?.inputMode ?? "text",
+        stream: true,
+      }),
+      signal: options?.signal,
+    })
+
+    if (!response.ok || !response.body) {
+      throw new KronovaAPIError(`HTTP ${response.status}`, response.status)
+    }
+
+    const reader = response.body.getReader()
+    const decoder = new TextDecoder()
+    let buffer = ""
+
+    try {
+      while (true) {
+        const { done, value } = await reader.read()
+        if (done) break
+
+        buffer += decoder.decode(value, { stream: true })
+        const lines = buffer.split("\n")
+        buffer = lines.pop() ?? ""
+
+        for (const line of lines) {
+          const trimmed = line.trim()
+          if (!trimmed.startsWith("data:")) continue
+
+          const payload = trimmed.slice(5).trim()
+          if (payload === "[DONE]") return
+
+          try {
+            yield JSON.parse(payload) as KairoStreamChunk
+          } catch {
+            // Skip malformed SSE frames rather than aborting the whole stream.
+          }
+        }
+      }
+    } finally {
+      reader.releaseLock()
+    }
   }
 
   /**
